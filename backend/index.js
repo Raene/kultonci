@@ -3,9 +3,9 @@ const koa = require('koa');
 const koaRouter = require('koa-router');
 const json = require('koa-json');
 const bodyParser = require('koa-body');
-const mime = require('mime-types')
 const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
+
 
 let con = require('./models/connection')(host,user,password,database);
 
@@ -57,16 +57,22 @@ router.use(auth(koaRouter,con).routes());
 router.post('/upload', async(ctx) => {
   try {
     console.log('here')
-    const {path, name, type} = ctx.request.files.avatar;
+    await upload(ctx.request.files.avatar);
+    await upload(ctx.request.files.woo);
+
+  } catch (err) {
+    console.log(`error ${err.message}`)
+  }
+})
+
+async function upload(fileObj) {
+  const {path, name, type} = fileObj;
     console.log(`path: ${path}`);
     const fileExtension = mime.extension(type);
     console.log(`filename: ${name}`);
     console.log(`type: ${type}`);
     console.log(`fileExtension: ${fileExtension}`)
-  } catch (err) {
-    console.log(`error ${err.message}`)
-  }
-})
+}
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());
