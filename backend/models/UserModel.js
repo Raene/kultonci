@@ -2,10 +2,12 @@
 
 const Db  = require('./dbModel');
 
-const UserModel = function (userSchema,con,TableName) {
+const UserModel = function (userSchema,kyc_id,con,TableName) {
     Db.call(this,con,TableName);
     ({name: this.name, email: this.email, password: this.password} = userSchema);
     this.userSchema = Object.assign({},{name: this.name, email: this.email, password: this.password});
+
+    this.userSchema.kyc_id = kyc_id
     
 } 
 
