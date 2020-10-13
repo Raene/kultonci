@@ -1,5 +1,7 @@
 'use strict';
 
+const { interfaces } = require("mocha");
+
 var dbm;
 var type;
 var seed;
@@ -15,18 +17,30 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable('kyc', {
+  return db.createTable('investmentPKG', {
     id: {
       type: 'int',
       primaryKey: true,
       autoIncrement: true,
-      unsigned: true,
+      unsigned:true,
       notNull: true,
       length: 10
     },
-    kycId: {
+    name:  {
       type: 'string',
-      length: 2048
+      length: 40
+    },
+    percentage: {
+      type: 'int',
+      length:10
+    },
+    minPrice: {
+      type: 'int',
+      lenght: 10
+    },
+    maxPrice: {
+      type: 'int',
+      length: 10
     },
     created_at: {
       type: 'timestamp',
@@ -45,7 +59,7 @@ exports.up = function(db) {
 };
 
 exports.down = function(db) {
-  return db.dropTable('kyc');
+  return db.dropTable('investmentPKG');
 };
 
 exports._meta = {
