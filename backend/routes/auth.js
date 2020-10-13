@@ -4,10 +4,10 @@ let controller = require('../contollers/auth');
 const UserSchemaValidator = require('../middlewares/UserSchemaValidator');
 
 exports.auth = function(router,con) {
-    var router = new router({
+    const route = new router({
         prefix: '/auth'
     });
-    return router.post('/register', UserSchemaValidator,controller.register(con))
+    return route.post('/register', UserSchemaValidator,controller.register(con))
                  .post('/login',controller.login(con))
                  .get('/:id',controller.get(con));
 }

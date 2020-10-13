@@ -33,7 +33,7 @@ UserModel.prototype.create = async function () {
 UserModel.get = async function (con,TableName,value,valueType) {
     try {
         let db = new Db(con,TableName);
-        let user = await db.get(value,valueType);
+        let user = await db.getByID(value,valueType);
         return user;   
     } catch (error) {
         throw new Error(error);
