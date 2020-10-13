@@ -24,11 +24,7 @@ exports.up = function(db) {
       notNull: true,
       length: 10
     },
-    selfie: {
-      type: 'string',
-      length: 2048
-    },
-    nationalId: {
+    kycId: {
       type: 'string',
       length: 2048
     }

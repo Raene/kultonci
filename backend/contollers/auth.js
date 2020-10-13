@@ -10,12 +10,11 @@ exports.register = function (con) {
         try {
             const data = ctx.request.body;
             const kyc = {};
-            kyc.selfie = await upload(ctx.request.files.passport);
-            kyc.nationalId    = await upload(ctx.request.files.nID);
-            
+            kyc.kycId    = await upload(ctx.request.files.kyc);
+    
             const kycUser = new KYCModel(kyc,con,'kyc');
             const kycID   = await kycUser.create();
-            console.log(kycID.insertId)
+        
             const user = new UserModel(data,kycID.insertId, con, 'user');
             await user.create();
             ctx.body = { message: 'User Created' };
