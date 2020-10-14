@@ -5,6 +5,8 @@ const json = require('koa-json');
 const bodyParser = require('koa-body');
 const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
+const {subscription} = require('./routes/subscription');
+const {admin}        = require('./routes/admin');
 
 
 let con = require('./models/connection')(host,user,password,database);
@@ -53,26 +55,8 @@ app.use(bodyParser({
 app.use(json());
 
 router.use(auth(koaRouter,con).routes());
-
-router.post('/upload', async(ctx) => {
-  try {
-    console.log('here')
-    await upload(ctx.request.files.avatar);
-    await upload(ctx.request.files.woo);
-
-  } catch (err) {
-    console.log(`error ${err.message}`)
-  }
-})
-
-async function upload(fileObj) {
-  const {path, name, type} = fileObj;
-    console.log(`path: ${path}`);
-    const fileExtension = mime.extension(type);
-    console.log(`filename: ${name}`);
-    console.log(`type: ${type}`);
-    console.log(`fileExtension: ${fileExtension}`)
-}
+router.use(subscription(koaRouter,con).routes());
+router.use(admin(koaRouter,con).routes());
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());
