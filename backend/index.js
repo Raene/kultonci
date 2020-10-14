@@ -6,6 +6,7 @@ const bodyParser = require('koa-body');
 const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
 const {subscription} = require('./routes/subscription');
+const {admin}        = require('./routes/admin');
 
 
 let con = require('./models/connection')(host,user,password,database);
@@ -55,6 +56,7 @@ app.use(json());
 
 router.use(auth(koaRouter,con).routes());
 router.use(subscription(koaRouter,con).routes());
+router.use(admin(koaRouter,con).routes());
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());

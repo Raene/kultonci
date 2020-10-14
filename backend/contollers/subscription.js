@@ -9,9 +9,9 @@ exports.subscribe = function (con) {
             const sub = new SubModel({},con,'investmentPKG');
             let payload ={}
             payload.subscription = await sub.get(id,'id');
-            console.log(process.env.BTC_ADDRESS)
+            
             payload.btc = process.env.BTC_ADDRESS
-            ctx.body = {data: payload, sucsess:true}
+            ctx.body = {data: payload, success:true}
             ctx.status = 200;   
         } catch (error) {
             ctx.throw(500,error);
