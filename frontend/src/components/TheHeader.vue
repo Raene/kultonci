@@ -21,11 +21,11 @@
                     <li>
                         <router-link to="/investment-packages" class="smoothScroll">Investment Packages</router-link>
                     </li>
-                    <li><a href="#courses" class="smoothScroll">Cryptocurrency List</a></li>
+                    <li><router-link to="/cryptocurrency-list" class="smoothScroll">Cryptocurrency List</router-link></li>
                     <li><router-link to="/faqs" class="smoothScroll">FAQs</router-link></li>
-                    <li><a href="#reviews" class="smoothScroll">Testimonials</a></li>
+                    <!-- <li><a href="#reviews" class="smoothScroll">Testimonials</a></li> -->
                     <li><router-link to="/support" class="smoothScroll">Support</router-link></li>
-                    <li><a href="#riskdisclaimer" class="smoothScroll">Risk Disclaimer</a></li>
+                    <!-- <li><a href="#riskdisclaimer" class="smoothScroll">Risk Disclaimer</a></li> -->
                 </ul>
                 <ul class="nav navbar-nav navbar-nav-first">
                     <li><router-link to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link></li>

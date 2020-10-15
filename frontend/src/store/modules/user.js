@@ -1,4 +1,5 @@
 import Vue from "vue";
+import axios from "axios";
 
 const user = {
 	namespaced: true,
@@ -10,7 +11,17 @@ const user = {
 			Vue.set(state, "initialSignupDetails", payload);
 		}
 	},
-	actions: {},
+	actions: {
+		signup(context, user) {
+			return axios.post("http://localhost:3000/auth/register", user)
+				.then((data) => {
+					return data;
+				})
+				.catch(err => {
+					return err;
+				});
+		}
+	},
 	getters: {
 		getInitialSignupDetails(state) {
 			return state.initialSignupDetails;

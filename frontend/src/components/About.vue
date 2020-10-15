@@ -20,16 +20,30 @@
                             To this end, we carefully analyse each individual’s financial situation and work with them in order to optimise results within their parameters. Whether it’s making sure you get the right background information so you can make smart decisions, or assisting with diversifying your portfolio, we look forward to helping you on your path towards a secure financial future.
                         </p>
                     </div>
-                   <!--  <div class="bottom-btns">
-                    	<a href="/login" class="section-btn btn btn-default smoothScroll">Send an email to our chief-trader</a>
-                    	<router-link style="margin-left: 20px;" to="/login" class="section-btn btn btn-default smoothScroll">I want to invest</router-link>
-                    	
+                    <!--  <div class="bottom-btns">
+                        <a href="/login" class="section-btn btn btn-default smoothScroll">Send an email to our chief-trader</a>
+                        <router-link style="margin-left: 20px;" to="/login" class="section-btn btn btn-default smoothScroll">I want to invest</router-link>
+                        
                     </div> -->
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <coingecko-coin-list-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-list-widget>
+                </div>
+            </div>
         </div>
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-list-widget.js" />
     </section>
 </template>
+<script>
+import VueInjectJs from "vue-inject-js";
+export default {
+    components: {
+        VueInjectJs
+    }
+};
+</script>
 <style scoped>
 @media (min-width: 960px) {
     .col-md-4 {
@@ -62,6 +76,7 @@ p {
     flex-direction: column;
     align-items: center;
 }
+
 .section-btn {
     background: #e3e17b;
     border-radius: 50px;
@@ -71,18 +86,17 @@ p {
     font-weight: normal;
     padding: 15px 30px;
     transition: 0.5s;
-  }
+}
 
-  .section-btn:hover {
+.section-btn:hover {
     background: #000000;
     border-color: #e3e17b;
     color: #e3e17b;
-  }
+}
 
-  .bottom-btns {
-  	display: flex;
-  	justify-content: flex-start;
+.bottom-btns {
+    display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
-  }
-
+}
 </style>
