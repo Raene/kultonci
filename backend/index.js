@@ -7,6 +7,11 @@ const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
 const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
+const cors = require('@koa/cors');
+const koaOptions = {
+  origin: true,
+  credentials: true
+};
 
 
 let con = require('./models/connection')(host,user,password,database);
@@ -59,7 +64,8 @@ router.use(subscription(koaRouter,con).routes());
 router.use(admin(koaRouter,con).routes());
 
 //Router Middleware
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods())
+    .use(cors(koaOptions));
 
 const server = app.listen(port, ()=> console.log('Server Started...'));
 //Set Up Auth Api
