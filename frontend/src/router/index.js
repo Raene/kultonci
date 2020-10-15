@@ -72,6 +72,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "support" */ "../views/UserWallet.vue")
+  },
+  {
+    path: "/cryptocurrency-list",
+    name: "CryptocurrencyList",
+    // route level code-splitting
+    // this generates a separate chunk (cryptocurrency-list.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "support" */ "../views/CryptocurrencyList.vue")
   }
 ];
 

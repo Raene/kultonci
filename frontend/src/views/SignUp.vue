@@ -6,7 +6,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form @submit.prevent="signUp" method="POST" class="register-form" id="register-form">
+                        <form @submit.prevent="storeSignUpDetails" method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account"></i></label>
                                 <input v-model="user.name" type="text" name="name" id="name" placeholder="Your Name" />
@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                <input v-model="user.repeat_password" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
                             </div>
                             <div class="form-group">
                                 <input v-model="termAgreementisChecked" type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -66,7 +66,8 @@ export default {
             user: {
                 name: null,
                 email: null,
-                password: null
+                password: null,
+                repeat_password: null
             },
             termAgreementisChecked: null,
             subscribeIsChecked: null,
@@ -75,12 +76,13 @@ export default {
     },
 
     methods: {
-        signUp() {
+        storeSignUpDetails() {
             this.$store.commit("user/SET_INITIAL_SIGNUP_DETAILS", {
                 name: this.user.name,
                 email: this.user.email,
                 password: this.user.password,
-                subscribe: this.subscribeIsChecked
+                repeat_password: this.user.repeat_password
+                // subscribe: this.subscribeIsChecked
             });
             this.kycReady = true;
             console.log("shit, it worked");
