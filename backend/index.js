@@ -9,7 +9,7 @@ const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
 const cors = require('@koa/cors');
 const koaOptions = {
-  origin: true,
+  origin: "*",
   credentials: true
 };
 
@@ -17,6 +17,9 @@ const koaOptions = {
 let con = require('./models/connection')(host,user,password,database);
 
 const app = new koa();
+//set cors
+app.use(cors(koaOptions));
+
 const router = new koaRouter();
 
 //error middleware
@@ -64,8 +67,7 @@ router.use(subscription(koaRouter,con).routes());
 router.use(admin(koaRouter,con).routes());
 
 //Router Middleware
-app.use(router.routes()).use(router.allowedMethods())
-    .use(cors(koaOptions));
+app.use(router.routes()).use(router.allowedMethods());
 
 const server = app.listen(port, ()=> console.log('Server Started...'));
 //Set Up Auth Api
