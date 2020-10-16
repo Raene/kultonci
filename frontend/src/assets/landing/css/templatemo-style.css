@@ -9,7 +9,7 @@ https://templatemo.com/tm-516-known
 @import url('https://fonts.googleapis.com/css?family=Muli:300,700|Nunito');
 
 body {
-    background: #ffffff;
+    background: #000000 !important;
     font-family: 'Nunito', sans-serif;
     overflow-x: hidden;
     padding-top: 70px;
@@ -38,9 +38,13 @@ h1 {
 }
 
 h2 {
-    color: #353535;
-    font-size: 2em;
+    color: #ffffff;
+    font-size: 2em !important;
     padding-bottom: 10px;
+}
+
+h2 small {
+    color: #ffffff;
 }
 
 h3 {
@@ -50,14 +54,33 @@ h3 {
 
 h3,
 h3 a {
-    color: #454545;
+    color: #ffffff;
+}
+
+h4,
+h5 {
+    color: #ffffff
 }
 
 p {
-    color: #757575;
+    color: #ffffff;
     font-size: 14px;
     font-weight: normal;
     line-height: 24px;
+}
+
+@media (max-width: 480px) {
+    p {
+        text-align: center !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    .item p {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 
@@ -88,7 +111,7 @@ button,
 a:hover,
 a:active,
 a:focus {
-    color: #e3e17b;
+    color: #ffffff;
     outline: none;
 }
 
@@ -170,10 +193,10 @@ section {
     padding: 100px 0;
 }
 
-#team,
+/*#team,
 #testimonial {
     background: #f9f9f9;
-}
+}*/
 
 #team,
 #testimonial {
@@ -225,7 +248,7 @@ section {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    background: none repeat scroll 0 0 #ffffff;
+    background: none repeat scroll 0 0 #000000;
 }
 
 .spinner {
@@ -246,7 +269,7 @@ section {
     margin-left: -10px;
     border-radius: 50%;
     border: 1px solid #575757;
-    border-top-color: #ffffff;
+    border-top-color: #000000;
     animation: spinner .9s linear infinite;
 }
 
@@ -269,7 +292,7 @@ section {
   -----------------------------------------*/
 
 .custom-navbar {
-    background: #ffffff;
+    background: #000000;
     border-top: 5px solid #e3e17b;
     border-bottom: 0;
     -webkit-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
@@ -299,7 +322,7 @@ section {
 .custom-navbar .navbar-nav.navbar-right li a .fa {
     background: #e3e17b;
     border-radius: 100%;
-    color: #ffffff;
+    color: #000000;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -322,13 +345,13 @@ section {
 
 .custom-navbar .nav li a:hover {
     background-color: #e3e17b;
-    color: #ffffff;
+    color: #000000;
 }
 
-.custom-navbar .nav li.active>a {
+/*.custom-navbar .nav li.active>a {
     background-color: #e3e17b;
-    color: #ffffff;
-}
+    color: #000000;
+}*/
 
 .custom-navbar .navbar-toggle {
     border: none;
@@ -446,13 +469,13 @@ section {
       ABOUT              
   -----------------------------------------*/
 
-#about figure {
+.about figure {
     display: inline-block;
     vertical-align: top;
     margin-left: 15px;
 }
 
-#about figure span {
+.about figure span {
     float: left;
     margin-left: -15px;
     padding: 15px 20px;
@@ -460,10 +483,10 @@ section {
     top: 20px;
 }
 
-#about figure span i {
+.about figure span i {
     background: #e3e17b;
     border-radius: 50px;
-    color: #ffffff;
+    color: #000000;
     font-size: 25px;
     width: 50px;
     height: 50px;
@@ -478,7 +501,7 @@ section {
   -----------------------------------------*/
 
 .team-thumb {
-    background: #ffffff;
+    background: #000000;
     position: relative;
     overflow: hidden;
     text-align: left;
@@ -498,7 +521,7 @@ section {
 }
 
 .team-thumb .social-icon li a {
-    background: #ffffff;
+    background: #000000;
     color: #252020;
 }
 
@@ -557,7 +580,7 @@ section {
 }
 
 .courses-date span {
-    color: #ffffff;
+    color: #000000;
     display: inline-block;
     margin-right: 10px;
 }
@@ -599,7 +622,7 @@ section {
 .courses-price span {
     background: #e3e17b;
     border-radius: 2px;
-    color: #ffffff;
+    color: #000000;
     display: block;
     padding: 5px 10px;
 }
@@ -644,7 +667,7 @@ section {
   -----------------------------------------*/
 
 #testimonial .item {
-    background: #ffffff;
+    background: #0b090a;
     margin: 20px 0;
     padding: 4em 3em;
     text-align: left;
@@ -700,11 +723,13 @@ section {
   -----------------------------------------*/
 
 #contact {
-    background: #e3e17b;
+    background: #000000;
+    border: 1px dashed #e3e17b;
+    /*color: #e3e17b !important;*/
 }
 
 #contact h2 {
-    color: #ffffff;
+    color: #e3e17b;
 }
 
 #contact .section-title {
@@ -743,9 +768,9 @@ section {
 }
 
 #contact-form input[type='submit']:hover {
-    background: transparent;
+    background: #e3e17b;
     border-color: #ffffff;
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -756,7 +781,7 @@ section {
   -----------------------------------------*/
 
 footer {
-    background: #252020;
+    background: #e3e17b;
     padding: 120px 0;
 }
 
@@ -770,7 +795,7 @@ footer h2 {
 
 footer a,
 footer p {
-    color: #909090;
+    color: #000000;
 }
 
 footer strong {
@@ -790,7 +815,7 @@ footer .social-icon {
 }
 
 .footer-info h2 {
-    color: #ffffff;
+    color: #000000;
     padding: 0;
 }
 
@@ -823,7 +848,7 @@ footer .social-icon {
     background: transparent;
     border: 1px solid #f9f9f9;
     border-radius: 50px;
-    color: #ffffff;
+    color: #000000;
     display: block;
     margin-top: 20px;
     outline: none;
@@ -876,7 +901,7 @@ footer .social-icon {
 
 .social-icon li a:hover {
     background: #e3e17b;
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -934,7 +959,7 @@ footer .social-icon {
     }
 
     .custom-navbar {
-        background: #ffffff;
+        background: #000000;
         -webkit-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
         box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
@@ -1023,11 +1048,11 @@ hr {
 }
 
 .inner-section {
-  padding: 0;
+    padding: 0;
 }
 
-@media (max-width: 400px) {
+/*@media (max-width: 400px) {
     hr {
         width: 200px;
     }
-}
+}*/

@@ -1,6 +1,6 @@
 <template>
     <section id="testimonial">
-        <div id="about" class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
@@ -75,6 +75,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .section-btn {

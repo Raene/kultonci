@@ -83,4 +83,7 @@ export default {
   padding: 0;
 }
 
+body {
+  background: #ffffff !important;
+}
 </style>

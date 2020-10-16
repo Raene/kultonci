@@ -13,6 +13,7 @@ const user = {
 	},
 	actions: {
 		signup(context, user) {
+			console.log("user: ", user);
 			return axios.post("http://localhost:3000/auth/register", user)
 				.then((data) => {
 					return data;

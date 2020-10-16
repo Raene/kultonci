@@ -2,8 +2,8 @@
     <div id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     	<!-- <Preloader /> -->
     	<TheHeader />
-    	<Banner />
-        <About />
+    	<Banner id="home" />
+        <About id="about-us" />
     	<Reviews />
         <WhyUs />
     	<RiskDisclaimer />
