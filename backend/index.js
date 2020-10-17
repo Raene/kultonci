@@ -9,10 +9,21 @@ const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
 const cors = require('@koa/cors');
 const koaOptions = {
-  origin: "*",
+  origin: true,
   credentials: true
 };
+const path = require('path');
+const Bree = require('bree');
 
+const root = path.join(__dirname, 'jobs');
+const jobArr = require(root);
+
+const bree = new Bree({
+    jobs:  jobArr
+    // closeWorkerAfterMs: ms('10s')
+})
+
+bree.start();
 
 let con = require('./models/connection')(host,user,password,database);
 

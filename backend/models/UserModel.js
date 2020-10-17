@@ -1,53 +1,88 @@
 'use strict';
 
-const Db  = require('./dbModel');
+const Db = require('./dbModel');
+const bcrypt = require('bcrypt');
+const db = require('../jobs/connection');
+const jwt = require("jsonwebtoken");
 
-const UserModel = function (userSchema,kyc_id,con,TableName) {
-    Db.call(this,con,TableName);
-    ({name: this.name, email: this.email, password: this.password} = userSchema);
-    this.userSchema = Object.assign({},{name: this.name, email: this.email, password: this.password});
+const UserModel = function (userSchema, kyc_id, con, TableName) {
+    Db.call(this, con, TableName);
+    ({ name: this.name, email: this.email, password: this.password } = userSchema);
+    this.userSchema = Object.assign({}, { name: this.name, email: this.email, password: this.password });
 
     this.userSchema.kyc_id = kyc_id
-    
-} 
+
+}
 
 //assign parent constructor to child constructor prototype
 UserModel.prototype = Object.create(Db.prototype);
 
-Object.defineProperty(UserModel.prototype, 'constructor', { 
-    value: UserModel, 
+Object.defineProperty(UserModel.prototype, 'constructor', {
+    value: UserModel,
     enumerable: false, // so that it does not appear in 'for in' loop
-    writable: true });
+    writable: true
+});
 
 //wrapper function to utilize db insertToTable function
 UserModel.prototype.create = async function () {
     try {
         //this.insertToTable, since UserMdel is now child of Db no need to use call on methods
+        let u = await this.getByField(this.userSchema.email, 'email');
+        if (u.length > 0) {
+            throw new Error("User already exists");
+        }
+        this.userSchema.password = await hashPassword(this.userSchema.password)
         let user = await this.insertToTable(this.userSchema);
-        return user;   
-    } catch (error) {
-        throw new Error(error);
-    }
-}
-
-UserModel.get = async function (con,TableName,value,valueType) {
-    try {
-        let db = new Db(con,TableName);
-        let user = await db.getByID(value,valueType);
-        return user;   
-    } catch (error) {
-        throw new Error(error);
-    }
-}
-
-UserModel.login = async function (con,TableName,{email,password}) {
-    try {
-        let user = await UserModel.get(con,TableName,email);
-        if (user.password != password) throw new Error('Incorrect Password');
         return user;
     } catch (error) {
         throw new Error(error);
     }
 }
 
+UserModel.get = async function (con, TableName, value, valueType) {
+    try {
+        let db = new Db(con, TableName);
+        let user = await db.getByField(value, valueType);
+        return user;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+UserModel.prototype.login = async function () {
+    try {
+        let u = await this.getByField(this.userSchema.email, 'email');
+        if (u.length < 0) {
+            throw new Error("Email does not exist");
+        }
+        let {id,email,role,name} = u[0];
+        let exists = await compareHashPassword(this.userSchema.password, u[0].password);
+        if (exists != true) {
+            throw new Error('Password is incorrect')
+        }
+        let token = jwt.sign(
+            {
+                id,
+                email,
+                role
+            },
+            process.env.SECRET_KEY,
+            { expiresIn: "120h" }
+        )
+        return {id,name,email,token}
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+async function compareHashPassword(password, passwordHash) {
+    const match = await bcrypt.compare(password, passwordHash);
+    return match;
+}
+
+async function hashPassword(password) {
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+    return hash;
+}
 module.exports = UserModel;

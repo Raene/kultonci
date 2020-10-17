@@ -20,8 +20,7 @@ exports.register = function (con) {
             ctx.body = { message: 'User Created' };
             ctx.status = 200;
         } catch (error) {
-            console.log(error);
-            ctx.throw(500, error);
+            ctx.throw(500, error.message);
         }
     }
 };
@@ -29,7 +28,10 @@ exports.register = function (con) {
 exports.login = function (con) {
     return async (ctx) => {
         try {
-            console.log(ctx.request.body);
+            const data = ctx.request.body;
+            const user = new UserModel(data,null,con,'user')
+            let payload = await user.login()
+            ctx.body = { message: payload };
             ctx.status = 200;
         } catch (error) {
             console.log(error);
