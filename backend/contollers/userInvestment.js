@@ -2,7 +2,7 @@
 
 let UserInvestmentModel = require('../models/userInvestments');
 
-exports.getInvestments = function (params) {
+exports.getInvestments = function (con) {
     return async (ctx) => {
         try {
             const  id = ctx.params.id;

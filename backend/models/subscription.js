@@ -17,7 +17,7 @@ Object.defineProperty(SubModel.prototype, 'constructor', {
 
 SubModel.prototype.get = async function (value,valueType) {
     try {
-        let sub = await this.getByID(value,valueType);
+        let sub = await this.getByField(value,valueType);
         return sub;
     } catch (error) {
         throw new Error(error);

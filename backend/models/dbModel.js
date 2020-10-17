@@ -15,7 +15,7 @@ Db.prototype.insertToTable = function (obj) {
     });
 };
 
-Db.prototype.getByID = function (value,valueType){
+Db.prototype.getByField = function (value,valueType){
     return new Promise((resolve, reject) => {
         let sql = `SELECT * FROM ${this.TableName} WHERE ${valueType} = ?`;
         this.con.query(sql,value, function (err,results) {
