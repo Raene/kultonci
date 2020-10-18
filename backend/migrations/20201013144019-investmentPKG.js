@@ -30,18 +30,6 @@ exports.up = function(db) {
       type: 'string',
       length: 40
     },
-    percentage: {
-      type: 'int',
-      length:10
-    },
-    minPrice: {
-      type: 'int',
-      lenght: 10
-    },
-    maxPrice: {
-      type: 'int',
-      length: 10
-    },
     created_at: {
       type: 'timestamp',
       notNull: true,
