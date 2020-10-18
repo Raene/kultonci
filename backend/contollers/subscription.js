@@ -1,5 +1,6 @@
 'use strict';
 
+const BTCModel = require('../models/btcModel');
 const SubModel = require('../models/subscription');
 
 exports.subscribe = function (con) {
@@ -10,7 +11,8 @@ exports.subscribe = function (con) {
             let payload ={}
             payload.subscription = await sub.get(id,'id');
             
-            payload.btc = process.env.BTC_ADDRESS
+            const BTC = new BTCModel({},con,'btc');
+            payload.btc = await BTC.GetLatest()
             ctx.body = {data: payload, success:true}
             ctx.status = 200;   
         } catch (error) {
