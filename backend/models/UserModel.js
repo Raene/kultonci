@@ -39,10 +39,37 @@ UserModel.prototype.create = async function () {
     }
 }
 
+UserModel.prototype.update = async function (valueType,whereType,value,whereValue) {
+    try {
+        let u = await this.updateDb(valueType,whereType,value,whereValue);
+        return u;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
 UserModel.get = async function (con, TableName, value, valueType) {
     try {
         let db = new Db(con, TableName);
         let user = await db.getByField(value, valueType);
+        return user;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+UserModel.getByValue = async function (value,valueType) {
+    try {
+        let user = await this.getByField(value,valueType);
+        return user;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+UserModel.prototype.getAll = async function () {
+    try {
+        let user = await this.getAllDb();
         return user;
     } catch (error) {
         throw new Error(error);
