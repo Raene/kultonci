@@ -18,9 +18,9 @@
                     </thead>
                     <tbody>
                         <tr v-for="user in users" :key="user.id">
-                            <td>{{ user.id }}</td>
+                            <td>{{ user.userId }}</td>
                             <td>{{ user.name }}</td>
-                            <td>{{ user.email }}</td>
+                            <td>{{ user.userEmail }}</td>
                             <td>{{ user.verified === 0? "Not Verified":"Verified" }}</td>
                             <!-- <td>901-6206 Cras Av.</td> -->
                             <!-- <td>Apr 24, 2019</td> -->
