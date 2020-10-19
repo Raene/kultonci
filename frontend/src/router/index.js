@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import UserList from "@/components/dashboard/UserList.vue";
 
 Vue.use(VueRouter);
 
@@ -11,7 +12,7 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
+    path: "/about-us",
     name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -71,7 +72,7 @@ const routes = [
     // this generates a separate chunk (user-wallet.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "support" */ "../views/UserWallet.vue")
+      import(/* webpackChunkName: "user--wallet" */ "../views/UserWallet.vue")
   },
   {
     path: "/cryptocurrency-list",
@@ -80,7 +81,31 @@ const routes = [
     // this generates a separate chunk (cryptocurrency-list.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "support" */ "../views/CryptocurrencyList.vue")
+      import(/* webpackChunkName: "cryptocurrency-list" */ "../views/CryptocurrencyList.vue")
+  },
+  {
+    path: "/testimonies",
+    name: "Testimonies",
+    // route level code-splitting
+    // this generates a separate chunk (testimonies.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "testimonies" */ "../views/Testimonies.vue")
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    // route level code-splitting
+    // this generates a separate chunk (dashboard.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
+      children: [
+        {
+          path: "users",
+          component: UserList
+        }
+      ]
   }
 ];
 

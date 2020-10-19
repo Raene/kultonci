@@ -1,3 +1,12 @@
 module.exports = {
-  transpileDependencies: ["vuetify"]
+    transpileDependencies: ["vuetify"],
+    // configureWebpack: {
+    //     plugins: [
+    //         new webpack.ProvidePlugin({
+    //             $: 'jquery',
+    //             jQuery: 'jquery',
+    //             'window.jQuery': 'jquery'
+    //         }),
+    //     ]
+    // }
 };

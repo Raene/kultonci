@@ -1,30 +1,36 @@
 <template>
     <div id="kyc">
         <div class="container">
-        	<h2 class="form-title">Verify your identity</h2>
-        	<form @submit.prevent="signup" class="register-form">
-        		<div class="form-group">
-        			<p class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
-        			<handy-uploader data-app :documentAttachment.sync="handyAttachments" :fileUploaderType="'simple'" :maxFileSize="10240" :imageCompressor="true" :imageCompressLevel="0.8" :maxFileCount="10" :badgeCounter="false" :thumb="true" :changeFileName="true" :addFileDescription="true" :addFileTag="true" :tags="['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']" :btnColor="'#6dabe4'" :cardType="'raised'"></handy-uploader>
-        		</div>
-        		<div class="form-group form-button">
-                <input
-                  type="submit"
-                  name="signup"
-                  id="signup"
-                  class="form-submit "
-                  value="Signup"
-                />
-              </div>
-        	</form>
+            <h2 class="form-title">Verify your identity</h2>
+            <form @submit.prevent="signup" class="register-form">
+                <div class="form-group">
+                    <p class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
+                    <!-- <input id="kyc-input" type="file" name="kyc"> -->
+                    <!-- <label for="fileInput" class="form-control-label">Upload your passport image, national ID, or Driver's Licence</label> -->
+                    <br />
+                    <label class="form-submit">
+                        <input @change="preview" type="file" id="file-Input" />
+                        Insert Image
+                    </label>
+                    <div class="imagepreview" id="image-Preview">
+                        <img src="" alt="Image Preview" class="imagepreview__image">
+                        <span class="imagepreview__default-text">Image Preview</span>
+                    </div>
+                    <!-- <span class="help-block">Please enter your password</span> -->
+                    <!-- <handy-uploader data-app :documentAttachment.sync="handyAttachments" :fileUploaderType="'simple'" :maxFileSize="10240" :imageCompressor="true" :imageCompressLevel="0.8" :maxFileCount="10" :badgeCounter="false" :thumb="true" :changeFileName="true" :addFileDescription="true" :addFileTag="true" :tags="['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']" :btnColor="'#6dabe4'" :cardType="'raised'"></handy-uploader> -->
+                </div>
+                <div class="form-group form-button">
+                    <input type="submit" name="signup" id="signup" class="form-submit " value="Signup" />
+                </div>
+            </form>
         </div>
     </div>
 </template>
 <script>
-import handyUploader from 'handy-uploader/src/components/handyUploader';
+// import handyUploader from 'handy-uploader/src/components/handyUploader';
 export default {
     components: {
-        handyUploader
+        // handyUploader
     },
     data() {
         return {
@@ -33,10 +39,10 @@ export default {
         };
     },
 
-    mounted() {
-        document.querySelector(".v-btn").style.color = 'white';
-        document.querySelector(".v-btn__content").style.color = 'white';
-    },
+    // mounted() {
+    //     document.querySelector(".v-btn").style.color = 'white';
+    //     document.querySelector(".v-btn__content").style.color = 'white';
+    // },
 
     computed: {
         initialSignupDetails() {
@@ -49,21 +55,77 @@ export default {
 
     methods: {
         signup() {
-            console.log("handyfile: ", this.handyAttachments[0]);
-            this.$store.dispatch("user/signup", { ...this.initialSignupDetails, kyc: this.handyAttachments[0] })
+            const kyc = document.querySelector("#kyc-input");
+            console.log("kyc: ", kyc.files[0]);
+            const fd = new FormData();
+            fd.append("name", this.initialSignupDetails.name);
+            fd.append("email", this.initialSignupDetails.email);
+            fd.append("password", this.initialSignupDetails.password);
+            fd.append("repeat_password", this.initialSignupDetails.repeat_password);
+            fd.append("kyc", kyc.files[0]);
+            this.$store.dispatch("user/signup", fd)
                 .then((data) => {
                     console.log("signup data: ", data);
-                })
-                .catch(err => console.log(err));
+                });
+            // .catch(err => console.log(err));
+        },
+
+        preview() {
+            const imgFile = document.getElementById("file-Input");
+            const previewContainer = document.getElementById("image-Preview");
+            const previewImage = previewContainer.querySelector(".imagepreview__image");
+            const previewDefaultText = previewContainer.querySelector(".imagepreview__default-text");
+            const file = imgFile.files[0];
+            const vm = this;
+            if (file) {
+                const reader = new FileReader();
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
+                reader.addEventListener("load", function() {
+                    previewImage.setAttribute("src", this.result);
+                    vm.$store.commit("setImgUrl", this.result);
+                    localStorage.setItem("imageUrl", this.result);
+                    console.log("result: ", this.result);
+                });
+                reader.readAsDataURL(file);
+            } else {
+                previewDefaultText.style.display = null;
+                previewImage.style.display = null;
+                previewImage.setAttribute("src", "");
+            }
         }
     }
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Muli:300,700|Nunito');
 @import "../assets/fonts/material-icon/css/material-design-iconic-font.min.css";
 @import "../assets/css/style.css";
 
+#kyc {
+    font-family: 'Nunito', sans-serif;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 .form-submit {
+    position: relative;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+
+.form-button .form-submit {
     width: 300px;
 }
 
@@ -74,17 +136,41 @@ export default {
 }
 
 .container {
-	display: flex !important;
-	flex-direction: column !important;
-	align-items: center !important;
-	background: #f8f8f8;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    /*background: #f8f8f8;*/
+    border: 1px dashed gold;
+}
+
+.form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    /*background: #f8f8f8;*/
+    /*border: 1px dashed gold;*/
 }
 
 .text-center {
-	text-align: center;
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
 }
 
-.v-btn {
-    color: white !important;
+.imagepreview {
+    width: 300px;
+    min-height: 100px;
+    border: 2px solid #dddddd;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #eeeeee;
+}
+
+.imagepreview__image {
+    display: none;
+    width: 100%;
 }
 </style>

@@ -1,12 +1,18 @@
 <template>
     <div id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    	<!-- <Preloader /> -->
+    	<Preloader />
     	<TheHeader />
-    	<Banner />
-        <About />
-    	<Reviews />
+    	<Banner id="home" />
+        <SecondBanner />
+        <About id="about-us" />
+        <HowItWorks />
+        <Mission />
+        <Vision />
+        <Goals />
         <WhyUs />
+        <InvestmentPreview />
     	<RiskDisclaimer />
+        <InvestNow />
     	<TheFooter />
         <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
         <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
@@ -18,28 +24,42 @@
     </div>
 </template>
 <script>
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
 // @ is an alias to /src
 import VueInjectJs from "vue-inject-js";
-// import Preloader from "@/components/Preloader.vue";
+import Preloader from "@/components/Preloader.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
+import SecondBanner from "@/components/SecondBanner.vue";
 import About from "@/components/About.vue";
-import Reviews from "@/components/Reviews.vue";
+import HowItWorks from "@/components/HowItWorks.vue";
+import Mission from "@/components/Mission.vue";
+import Vision from "@/components/Vision.vue";
+import Goals from "@/components/Goals.vue";
 import WhyUs from "@/components/WhyUs.vue";
+import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
+import InvestNow from "@/components/InvestNow.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 export default {
     name: "Home",
     components: {
         VueInjectJs,
-        // Preloader,
+        Preloader,
         TheHeader,
         Banner,
+        SecondBanner,
         About,
-        Reviews,
+        HowItWorks,
+        Mission,
+        Vision,
+        Goals,
         WhyUs,
+        InvestmentPreview,
         RiskDisclaimer,
+        InvestNow,
         TheFooter
     }
 };
