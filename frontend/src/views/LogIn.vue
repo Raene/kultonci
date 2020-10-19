@@ -87,16 +87,21 @@ export default {
                 email: this.user.email,
                 password: this.user.password
             })
-            .then((err) => {
-                if(err) {
+            .then((data) => {
+                    console.log("login data says: ", data.data.message);
+                    this.$store.commit("user/SET_PROFILE", data.data.message);
+                    localStorage.setItem("token", data.data.message.token);
                     this.isLoggingIn = false;
-                    console.log(err);
-                }
-                else {
-                    this.isLoggingIn = false;
-                    this.$router.push({ path: "/investment-packages" });
-                }
+                    if (data.data.message.role === 0) {
+                        this.$router.push({ path: "/investment-packages" });
+                    } else {
+                        this.$router.push({ path: "/login" });
+                    }
             })
+            .catch(err => {
+                this.isLoggingIn = false;
+                console.log(err);
+            });
         }
     }
 };

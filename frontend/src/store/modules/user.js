@@ -36,15 +36,7 @@ const user = {
 		},
 
 		login(context, user) {
-			return axios.post("http://localhost:3000/auth/login", user)
-				.then((data) => {
-					console.log("login data says: ", data.data.message);
-					context.commit("SET_PROFILE", data.data.message);
-					localStorage.setItem("token", data.data.message.token);
-				})
-				.catch(err => {
-					return err;
-				});
+			return axios.post("http://localhost:3000/auth/login", user);
 		},
 
 		getUsers(context) {
