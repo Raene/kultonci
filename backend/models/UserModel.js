@@ -78,7 +78,6 @@ UserModel.prototype.getAll = async function () {
 
 UserModel.prototype.login = async function () {
     try {
-        console.log(process.env.SECRET_KEY);
         let u = await this.getByField(this.userSchema.email, 'email');
         if (u.length <= 0) {
             throw new Error("Email does not exist");

@@ -3,23 +3,25 @@
         <div class="card shadow">
             <div class="card-body">
                 <h5 class="card-title">User List</h5>
-                <p class="card-text">There are currently bookCount users in the store.</p>
+                <p class="card-text">There are currently {{ userCount }} users</p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Delete Book</th>
+                            <th>Email</th>
+                            <th>Verified Status</th>
+                            <th>Delete User</th>
                             <!-- <th>Date</th> -->
                             <!-- <th>Status</th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Tomi</td>
-                            <td>3</td>
+                        <tr v-for="user in users" :key="user.id">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.verified === 0? "Not Verified":"Verified" }}</td>
                             <!-- <td>901-6206 Cras Av.</td> -->
                             <!-- <td>Apr 24, 2019</td> -->
                             <td><span class="badge badge-pill badge-danger">Delete</span></td>
@@ -33,23 +35,15 @@
 
 <script>
 export default {
-	// computed: {
- //        books() {
- //            return this.$store.getters['book/books'];
- //        },
+	computed: {
+        users() {
+            return this.$store.getters['user/getUsers'];
+        },
 
- //        genres() {
- //        	return this.$store.getters['genre/genres'];
- //        },
-
- //        authors() {
- //        	return this.$store.getters['author/authors'];
- //        },
-
- //        bookCount() {
- //        	return this.$store.getters['book/bookCount'];
- //        }
- //    },
+        userCount() {
+        	return this.$store.getters['user/getUserCount'];
+        }
+    },
 
     methods: {
 	// refactor later
@@ -88,14 +82,14 @@ export default {
     	// }
     },
 
-    // mounted() {
-    //     this.$store.dispatch("book/loadBooks")
-    //         .then((err) => {
-    //             if (err) {console.log(err)}
-    //             else {console.log("load successful")}
-    //         })
-    //         .catch(err => console.log("err from mounted", err));
-    // }
+    mounted() {
+        this.$store.dispatch("user/getUsers")
+            .then((err) => {
+                if (err) {console.log(err)}
+                else {console.log("load successful")}
+            })
+            .catch(err => console.log("err from mounted", err));
+    }
 };
 </script>
 

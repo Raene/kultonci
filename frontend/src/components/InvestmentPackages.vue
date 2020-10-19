@@ -33,22 +33,25 @@
                                         <h3>Daily Investment Packages</h3>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>1ST PACKAGE</h5>
+                                            <h5>1ST PACKAGE - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,500</strong></p>
                                             <p>Maximum Investment of <strong>$4,999</strong></p>
                                             <p><strong>DAILY RETURNS 1%</strong></p>
+                                            <p><strong>REFERRAL BONUS 5%</strong></p>
                                         </div>
                                         <div class="sub-packages">
-                                            <h5>2ND PACKAGE</h5>
+                                            <h5>2ND PACKAGE - SILVER</h5>
                                             <p>Minimum Investment of <strong>$5,000</strong></p>
                                             <p>Maximum Investment of <strong>$9,999</strong></p>
                                             <p><strong>DAILY RETURNS 1.5%</strong></p>
+                                            <p><strong>REFERRAL BONUS 7%</strong></p>
                                         </div>
                                         <div class="sub-packages">
-                                            <h5>3RD PACKAGE</h5>
+                                            <h5>3RD PACKAGE - GOLD</h5>
                                             <p>Minimum Investment of <strong>$10,000</strong></p>
                                             <p>Maximum Investment of <strong>$19,999</strong></p>
                                             <p><strong>DAILY RETURNS 2%</strong></p>
+                                            <p><strong>REEFERRAL BONUS 10%</strong></p>
                                         </div>
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Get Started</router-link>
                                     </div>
@@ -97,28 +100,32 @@
                                         <h3>Compounding Investment Packages</h3>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>ONE MONTH</h5>
+                                            <h5>ONE MONTH - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,000</strong></p>
                                             <p>Maximum Investment of <strong>$3,999</strong></p>
                                             <p><strong>11% weekly for 4 weeks</strong></p>
+                                            <p><strong>REFERRAL BONUS 5%</strong></p>
                                         </div>
                                         <div class="sub-packages">
-                                            <h5>TWO MONTHS</h5>
+                                            <h5>TWO MONTHS - SILVER</h5>
                                             <p>Minimum Investment of <strong>$4,000</strong></p>
                                             <p>Maximum Investment of <strong>$7,999</strong></p>
                                             <p><strong>13% weekly for 8 weeks</strong></p>
+                                            <p><strong>REFERRAL BONUS 7%</strong></p>
                                         </div>
                                         <div class="sub-packages">
-                                            <h5>THREE MONTHS</h5>
+                                            <h5>THREE MONTHS - GOLD</h5>
                                             <p>Minimum Investment of <strong>$8,000</strong></p>
                                             <p>Maximum Investment of <strong>$11,999</strong></p>
                                             <p><strong>16% weekly for 12 weeks</strong></p>
+                                            <p><strong>REEFERRAL BONUS 10%</strong></p>
                                         </div>
                                         <div class="sub-packages">
-                                            <h5>SIX MONTHS</h5>
+                                            <h5>SIX MONTHS - DIAMOND</h5>
                                             <p>Minimum Investment of <strong>$12,000</strong></p>
                                             <p>Maximum Investment of <strong>$15,999</strong></p>
                                             <p><strong>19% weekly for 24 weeks</strong></p>
+                                            <p><strong>REFERRAL BONUS 15%</strong></p>
                                             <P><strong>INVESTED CAPITAL IS DUE FOR WITHDRAWAL AFTER 4 WEEKS (28 days).</strong></P>
                                         </div>
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Get Started</router-link>

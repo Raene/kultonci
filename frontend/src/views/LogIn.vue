@@ -1,8 +1,9 @@
 <template>
     <div id="sign_up">
         <div class="main">
+            <Preloader v-if="isLoggingIn" />
             <!-- Sing in  Form -->
-            <section class="sign-in">
+            <section class="sign-in" v-if="!isLoggingIn">
                 <div class="signin-content">
                     <div class="signin-form">
                         <h2 class="form-title">Log in</h2>
@@ -28,6 +29,9 @@
                                 </div>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" :disabled="invalid" />
+                                    <div class="spinner-border text-warning" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
                                 </div>
                             </form>
                         </ValidationObserver>
@@ -57,11 +61,13 @@
 <script>
 import VueInjectJs from "vue-inject-js";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
+import Preloader from "@/components/Preloader.vue";
 export default {
     components: {
         VueInjectJs,
         ValidationProvider,
-        ValidationObserver
+        ValidationObserver,
+        Preloader
     },
 
     data() {
@@ -69,16 +75,28 @@ export default {
             user: {
                 email: null,
                 password: null
-            }
+            },
+            isLoggingIn: false
         }
     },
 
     methods: {
         login() {
+            this.isLoggingIn = true;
             this.$store.dispatch("user/login", {
                 email: this.user.email,
                 password: this.user.password
-            });
+            })
+            .then((err) => {
+                if(err) {
+                    this.isLoggingIn = false;
+                    console.log(err);
+                }
+                else {
+                    this.isLoggingIn = false;
+                    this.$router.push({ path: "/investment-packages" });
+                }
+            })
         }
     }
 };

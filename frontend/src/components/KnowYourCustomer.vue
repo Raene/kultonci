@@ -1,6 +1,7 @@
 <template>
     <div id="kyc">
-        <div class="container">
+        <Preloader v-if="isLoggingIn" />
+        <div class="container" v-if="!isLoggingIn">
             <h2 class="form-title">Verify your identity</h2>
             <form @submit.prevent="signup" class="register-form">
                 <div class="form-group">
@@ -27,14 +28,17 @@
     </div>
 </template>
 <script>
+import Preloader from "@/components/Preloader.vue";
 // import handyUploader from 'handy-uploader/src/components/handyUploader';
 export default {
     components: {
         // handyUploader
+        Preloader
     },
     data() {
         return {
-            handyAttachments: []
+            handyAttachments: [],
+            isLoggingIn: false
 
         };
     },
@@ -55,8 +59,8 @@ export default {
 
     methods: {
         signup() {
-            const kyc = document.querySelector("#kyc-input");
-            console.log("kyc: ", kyc.files[0]);
+            const kyc = document.querySelector("#file-Input");
+            console.log("kyc: ", kyc);
             const fd = new FormData();
             fd.append("name", this.initialSignupDetails.name);
             fd.append("email", this.initialSignupDetails.email);
@@ -64,8 +68,14 @@ export default {
             fd.append("repeat_password", this.initialSignupDetails.repeat_password);
             fd.append("kyc", kyc.files[0]);
             this.$store.dispatch("user/signup", fd)
-                .then((data) => {
-                    console.log("signup data: ", data);
+                .then((err) => {
+                    if (err) {
+                        this.isLoggingIn = false;
+                        console.log(err);
+                    } else {
+                        this.isLoggingIn = false;
+                        this.$router.push({ path: "/login" });
+                    }
                 });
             // .catch(err => console.log(err));
         },
