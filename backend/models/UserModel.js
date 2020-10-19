@@ -69,7 +69,7 @@ UserModel.getByValue = async function (value,valueType) {
 
 UserModel.prototype.getAll = async function () {
     try {
-        let user = await this.getAllDb();
+        let user = await this.getUsersJoin();
         return user;
     } catch (error) {
         throw new Error(error);
@@ -78,11 +78,11 @@ UserModel.prototype.getAll = async function () {
 
 UserModel.prototype.login = async function () {
     try {
-        console.log("secret: ", process.env.SECRET_KEY);
         let u = await this.getByField(this.userSchema.email, 'email');
-        if (u.length < 0) {
+        if (u.length <= 0) {
             throw new Error("Email does not exist");
         }
+        console.log(u);
         let {id,email,role,name} = u[0];
         let exists = await compareHashPassword(this.userSchema.password, u[0].password);
         if (exists != true) {
