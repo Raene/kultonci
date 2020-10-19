@@ -1,6 +1,6 @@
 <template>
     <section id="testimonial">
-        <div class="section-title">
+        <div class="section-title show-on-scroll">
             <h2>How it works</h2>
             <em>Four easy steps to start earning</em>
             <hr>

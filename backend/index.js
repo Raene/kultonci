@@ -9,7 +9,7 @@ const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
 const cors = require('@koa/cors');
 const koaOptions = {
-  origin: true,
+  origin: '*',
   credentials: true
 };
 const path = require('path');
