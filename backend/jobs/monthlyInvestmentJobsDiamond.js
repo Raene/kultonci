@@ -12,7 +12,7 @@ function monthly(con){
 
 monthly(con).then((results)=>{
     let percent = results[0].percentageReturns / 100;
-    let sql = `UPDATE userInvestments SET amount_paid = (amount_paid * ${percent}) + amount_paid WHERE investmentPkg_id = ${results[0].id}`
+    let sql = `UPDATE userInvestments SET earnings = (earnings * ${percent}) + earnings WHERE investmentPkg_id = ${results[0].id}`
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log(result.affectedRows + " record(s) updated");
