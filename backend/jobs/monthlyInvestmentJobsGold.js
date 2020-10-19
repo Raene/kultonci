@@ -3,7 +3,7 @@ const { parentPort } = require('worker_threads');
 
 function monthly(con){
    return new Promise((resolve, reject) => {
-    con.query(`SELECT * FROM packageLevels WHERE name = 'bronze'`,function(err, results){
+    con.query(`SELECT * FROM packageLevels WHERE name = 'gold'`,function(err, results){
         if(err) reject(err);
         resolve(results);
     })
