@@ -6,7 +6,7 @@ const SubModel = require('../models/subscription');
 exports.subscribe = function (con) {
     return async (ctx) => {
         try {
-            const id = ctx.params.id;
+            //const id = ctx.params.id;
             const sub = new SubModel({},con,'investmentPKG');
             let payload ={}
             payload.subscription = await sub.get();

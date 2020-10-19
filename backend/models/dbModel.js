@@ -25,6 +25,16 @@ Db.prototype.getByField = function (value,valueType){
     });
 };
 
+Db.prototype.getAllDb = function () {
+    return new Promise((resolve,reject) => {
+        let sql = `SELECT * FROM ${this.TableName}`;
+        this.con.query(sql, function (err,results) {
+            if(err) reject(err);
+            resolve(results);
+        });
+    });
+}
+
 Db.prototype.getLatest = function () {
     return new Promise((resolve,reject)=> {
         this.con.query(`SELECT * FROM ${this.TableName} ORDER BY id DESC LIMIT 1`,function (err,results) {
@@ -42,6 +52,18 @@ Db.prototype.getJoin = function () {
         resolve(result);
         }) 
     });
+}
+
+Db.prototype.updateDb = function (valueType,whereType,value,whereValue) {
+    return new Promise((resolve,reject)=>{
+        let sql = `UPDATE ${this.TableName} SET ${valueType} = ? WHERE ${whereType} = ?`;
+
+        arr = [value,whereValue]
+        this.con.query(sql,arr, function (err,results) {
+            if(err) reject(err);
+            resolve(results);
+        })
+    })
 }
 module.exports = Db;
 
