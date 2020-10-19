@@ -228,6 +228,7 @@ body {
 
 input {
   width: 100%;
+  color: #ffffff;
   display: block;
   border: none;
   border-bottom: 1px solid #ffffff;
@@ -514,4 +515,35 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
+
+.valid {
+  border-bottom: 1px solid green;
+}
+
+.valid:focus {
+  border-color: green;
+  /*outline: none !important;*/
+  box-shadow: none;
+}
+
+
+.invalid {
+  border-bottom: 1px solid #eb0600;
+  outline-color: #eb0600;
+}
+
+.invalid:focus {
+  border-color: #eb0600;
+  /*outline: none !important;*/
+  box-shadow: none;
+}
+
+input.invalid + span {
+  color: #eb0600;
+  font-size: x-small;
+}
+
+.untouched {
+  border-bottom: 1px solid #e3e17b;
+} 
 /*# sourceMappingURL=style.css.map */

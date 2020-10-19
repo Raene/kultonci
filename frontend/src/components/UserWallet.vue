@@ -11,10 +11,306 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h5>You are on the</h5>
+                    <p class="package">
+                        Weekly Package
+                    </p>
+                    <p class="msg">Your account is temporarily closed now</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card white-card text-white bg-light mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 style="color: #000000;">Overall portfolio</h5>
+                                </div>
+                                <div class="col-md-12" style="max-width: 70%; margin: 0 auto;">
+                                    <pie-chart :data="chartData" :options="chartOptions"></pie-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-left">Deposits</h5>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-primary mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-shield uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 1,017.62</h5>
+                                        <p class="card-text">Total Deposits</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-primary mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 1,017.62</h5>
+                                        <p class="card-text">Locked Deposits</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="text-left">Earnings</h5>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-danger mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Total Earnings</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-danger mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Paid Earnings</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-danger mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Compounded Earnings</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-danger mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Referral Earnings</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-left">Get More Bitcoin!</h5>
+                    <p class="text-left">Boost your investment. Sign up & buy bitcoins. <a href="">Help?</a></p>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card text-white get-bitcoin mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5><a target="_blank" href="https://www.coinbase.com/">Coinbase</a></h5>
+                                            <h5><a target="_blank" href="https://cex.io/">Cex.io</a></h5>
+                                            <h5><a target="_blank" href="https://coinmama.com/">CoinMama</a></h5>
+                                            <h5><a target="_blank" href="https://www.bitstamp.net/">Bitstamp</a></h5>
+                                            <h5><a target="_blank" href="https://localbitcoins.com/">LocalBitCoins</a></h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5><a target="_blank" href="https://www.kraken.com/">Kraken</a></h5>
+                                            <h5><a target="_blank" href="https://www.binance.com/">Binance</a></h5>
+                                            <h5><a target="_blank" href="https://gemini.com/">Gemini Exchange</a></h5>
+                                            <h5><a target="_blank" href="https://paxful.com/">Paxful</a></h5>
+                                            <h5><a target="_blank" href="https://xcoins.io/">XCoins</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="text-left">Withdrawals</h5>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-warning mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 1000</h5>
+                                        <p class="card-text">Total Withdrawals</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-warning mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Pending Withdrawals</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-warning mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <h5 class="card-title">USD 306</h5>
+                                        <p class="card-text">Referral Withdrawals</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
     </section>
 </template>
+<script>
+import PieChart from "../utils/pie-chart.js";
+export default {
+    components: {
+        PieChart
+    },
+    data() {
+        return {
+            chartOptions: {
+                hoverBorderWidth: 20
+            },
+            chartData: {
+                hoverBackgroundColor: "red",
+                hoverBorderWidth: 10,
+                labels: ["Deposits", "Earnings", "Withdrawals"],
+                datasets: [{
+                    label: "Data One",
+                    backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
+                    data: [1, 10, 5]
+                }]
+            }
+        };
+    }
+}
+</script>
 <style scoped>
+.get-bitcoin {
+    border: 1px solid #e3e17b;
+    background-color: #e3e17b;
+}
+
+.get-bitcoin a {
+    color: #000000;
+}
+
+.get-bitcoin a:hover {
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: underline !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+}
+
+.bg-warning {
+    background-color: #ffc107;
+}
+
+.item-row {
+    margin-top: 30px;
+}
+
+.white-card {
+    background-color: #ffffff;
+}
+
+.card {
+    padding: 15px;
+}
+
+.uw-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.uw-icon {
+    font-size: 4em;
+    margin: 5px;
+    color: #ffffff;
+}
+
+.item2 {
+    flex-grow: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 20px;
+}
+
+.item2 p {
+    text-align: left;
+    font-weight: bolder;
+}
+
+.item2 h5 {
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.package {
+    background-color: #e3e17b;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    color: #000000;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    /*letter-spacing: 1px;*/
+}
+
+.msg {
+    background-color: red;
+    /*width: 200px;*/
+    margin-top: 20px;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    /*letter-spacing: 1px;*/
+}
+
 @media (min-width: 960px) {
     .col-md-4 {
         max-width: 100% !important;

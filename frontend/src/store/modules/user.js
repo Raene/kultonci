@@ -21,6 +21,14 @@ const user = {
 				.catch(err => {
 					return err;
 				});
+		},
+
+		login(context, user) {
+			return axios.post("http://localhost:3000/auth/login", user)
+				.then((data) => {
+					console.log("login data says: ", data);
+				})
+				.catch(err => console.log(err));
 		}
 	},
 	getters: {

@@ -27,7 +27,7 @@ h4,
 h5,
 h6 {
     font-family: 'Muli', sans-serif;
-    font-weight: bold;
+    font-weight: 900;
     line-height: inherit;
 }
 
@@ -41,6 +41,7 @@ h2 {
     color: #ffffff;
     font-size: 2em !important;
     padding-bottom: 10px;
+    text-transform: uppercase;
 }
 
 h2 small {
@@ -64,9 +65,10 @@ h5 {
 
 p {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 1.2em !important;
     font-weight: normal;
-    line-height: 24px;
+    line-height: 30px;
+    /*text-align: center !important;*/
 }
 
 @media (max-width: 480px) {
@@ -190,7 +192,7 @@ a:focus {
 
 section {
     position: relative;
-    padding: 100px 0;
+    padding: 60px 0;
 }
 
 /*#team,
@@ -216,19 +218,22 @@ section {
   -----------------------------------------*/
 
 .section-btn {
-    background: transparent;
-    border-radius: 50px;
-    border: 1px solid #ffffff;
-    color: #ffffff;
+    background: #e3e17b;
+    border-radius: 5px;
+    border: 1px solid #e3e17b;
+    color: #000000;
     font-size: inherit;
     font-weight: normal;
     padding: 15px 30px;
     transition: 0.5s;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 .section-btn:hover {
-    background: #ffffff;
-    border-color: transparent;
+    background: #000000;
+    border-color: #e3e17b;
+    color: white;
 }
 
 
@@ -383,8 +388,8 @@ section {
 
 #home h3 {
     color: #f9f9f9;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 1.7em;
+    font-weight: 400;
     margin: 0;
     padding: 5px 0 40px 0;
 }
@@ -396,14 +401,32 @@ section {
 }
 
 .home-slider .caption {
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-content: center;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
     background-color: rgba(20, 20, 20, 0.2);
     height: 100%;
     color: #fff;
     cursor: e-resize;
+}
+
+.caption .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2 !important;
+    /*align-content: center;*/
+}
+
+.caption .container h1{
+    text-transform: uppercase;
+}
+
+.caption .container .col-md-6{
+    max-width: 100%;
 }
 
 .home-slider .item {
@@ -422,12 +445,13 @@ section {
 }
 
 .home-slider .item-first {
-    background-image: url(../images/slider-image3.jpg);
+    background-image: url(../images/coin.jpg);
     background-position: center;
 }
 
 .home-slider .item-second {
-    background-image: url(../images/slider-image2.jpg);
+    background-image: url(../images/strategize.jpg);
+    /*opacity: .5;*/
 }
 
 .home-slider .item-third {
@@ -782,7 +806,7 @@ section {
 
 footer {
     background: #e3e17b;
-    padding: 120px 0;
+    padding: 40px 0;
 }
 
 footer .section-title {
@@ -832,6 +856,7 @@ footer .social-icon {
     display: inline-block;
     list-style: none;
     margin: 5px 10px 5px 0;
+    font-size: 16px;
 }
 
 .newsletter-form .form-control {
@@ -1040,19 +1065,18 @@ footer .social-icon {
 }
 
 hr {
-    width: 283px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    width: 80px;
+    margin: 15px auto 20px auto; 
     border: 0;
-    border-top: 5px solid #e3e17b;
+    border-top: 2px solid #e3e17b;
 }
 
 .inner-section {
     padding: 0;
 }
 
-/*@media (max-width: 400px) {
-    hr {
-        width: 200px;
-    }
-}*/
+em {
+    color: #ffffff;
+    font-size: 1.2em;
+    text-transform: capitalize;
+}

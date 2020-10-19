@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <a v-if="routeName==='Home'" href="#about-us" class="smoothScroll">About</a>
-                        <router-link v-else to="/#about-us" class="smoothScroll">About</router-link>    
+                        <router-link v-else to="/about-us" class="smoothScroll">About</router-link>    
                     </li>
                     <li>
                         <router-link to="/investment-packages" class="smoothScroll">Investment Packages</router-link>
@@ -30,7 +30,7 @@
                     <li>
                         <router-link to="/faqs" class="smoothScroll">FAQs</router-link>
                     </li>
-                    <!-- <li><a href="#reviews" class="smoothScroll">Testimonials</a></li> -->
+                    <li><router-link to="/testimonies" class="smoothScroll">Testimony</router-link></li>
                     <li>
                         <router-link to="/support" class="smoothScroll">Support</router-link>
                     </li>
