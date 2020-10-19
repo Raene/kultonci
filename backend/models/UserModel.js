@@ -97,7 +97,7 @@ UserModel.prototype.login = async function () {
             process.env.SECRET_KEY,
             { expiresIn: "120h" }
         )
-        return {id,name,email,token}
+        return {id,name,email,token,role}
     } catch (error) {
         throw new Error(error);
     }
