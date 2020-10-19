@@ -22,10 +22,5 @@ daily(con).then((results)=>{
 }).catch((error)=>{
     throw new Error(error);
 })
-// let sql= `SELECT * FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id`;
-// con.query(sql,function (err,result) {
-//     if(err) throw err;
-//     console.log(result);
-// });
 
 

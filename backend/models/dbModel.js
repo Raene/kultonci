@@ -33,6 +33,16 @@ Db.prototype.getLatest = function () {
         });
     })
 }
+
+Db.prototype.getJoin = function () {
+    return new Promise((resolve,reject)=>{
+        let sql= `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id`;
+        this.con.query(sql,function (err,result) {
+        if(err) reject(err);
+        resolve(result);
+        }) 
+    });
+}
 module.exports = Db;
 
  

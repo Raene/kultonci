@@ -26,12 +26,12 @@ module.exports = [ {
     name: 'monthlyInvestmentJobs',
     cron: '0 0 * * 0'
   },{
-    name: 'monthlyInvestmentSilver',
+    name: 'monthlyInvestmentJobsSilver',
     cron: '0 0 * * 0'
   },{
-    name: 'monthlyInvestmentGold',
+    name: 'monthlyInvestmentJobsGold',
     cron: '0 0 * * 0'
   },{
-    name: 'monthlyInvestmentDiamond',
+    name: 'monthlyInvestmentJobsDiamond',
     cron: '0 0 * * 0'
   }];
