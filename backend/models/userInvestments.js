@@ -2,7 +2,7 @@
 const Db = require('./dbModel');
 
 const InvestmentModel = function(obj,con,TableName) {
-    Db.call(this,con.TableName);
+    Db.call(this,con,TableName);
     this.obj = Object.assign({},obj);
 }
 
@@ -23,9 +23,18 @@ InvestmentModel.prototype.create = async function () {
     }
 }
 
+InvestmentModel.prototype.update = async function (valueType,whereType,value,whereValue) {
+    try {
+        let i = await this.updateDb(valueType,whereType,value,whereValue);
+        return i;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
 InvestmentModel.prototype.get = async function (value,valueType) {
     try {
-        let sub = await this.getByID(value, valueType);
+        let sub = await this.getByField(value, valueType);
         return sub;
     } catch (error) {
         throw new Error(error)

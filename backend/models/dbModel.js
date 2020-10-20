@@ -68,7 +68,7 @@ Db.prototype.updateDb = function (valueType,whereType,value,whereValue) {
     return new Promise((resolve,reject)=>{
         let sql = `UPDATE ${this.TableName} SET ${valueType} = ? WHERE ${whereType} = ?`;
 
-        arr = [value,whereValue]
+        let arr = [value,whereValue]
         this.con.query(sql,arr, function (err,results) {
             if(err) reject(err);
             resolve(results);

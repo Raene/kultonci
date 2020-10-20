@@ -7,12 +7,20 @@ const UserModel = require('../models/UserModel');
 exports.verifySub = function (con) {
     return async (ctx) => {
         try {
-            console.log(ctx.state);
             const data = ctx.request.body;
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
+            
+            let investment = await userInvestment.get(data.id,'id')
+            if(investment[0].id > 0){
+                let new_deposit = investment[0].total_deposit + data.newDeposit
+                
+                let invest = await userInvestment.update('total_deposit','id',new_deposit,investment[0].id)
 
-            const payload = await userInvestment.create()
-            ctx.body = {data: payload, success: true}
+                ctx.body = {data: invest, success: true}
+                return;
+            }
+             const payload = await userInvestment.create()
+             ctx.body = {data: payload, success: true}
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
