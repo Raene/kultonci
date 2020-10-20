@@ -91,9 +91,10 @@ export default {
                     console.log("login data says: ", data.data.message);
                     this.$store.commit("user/SET_PROFILE", data.data.message);
                     localStorage.setItem("token", data.data.message.token);
+                    localStorage.setItem("user", JSON.stringify(data.data.message));
                     this.isLoggingIn = false;
                     if (data.data.message.role === 0) {
-                        this.$router.push({ path: "/investment-packages" });
+                        this.$router.push({ path: "/user-wallet" });
                     } else {
                         this.$router.push({ path: "/dashboard/users" });
                     }

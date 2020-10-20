@@ -8,17 +8,17 @@
         <div class="container">
             <div class="grid-container">
                 <div class="grid-item">
-                    <span><i class="fa fa-globe"></i></span>
+                    <span><i class="fa fa-user-plus"></i></span>
                     <h4>sign up</h4>
                     <p>Register an account and fill in necessary information.</p>
                 </div>
                 <div class="grid-item">
-                    <span><i class="fa fa-users"></i></span>
+                    <span><i class="fa fa-calendar"></i></span>
                     <h4>fund your wallet</h4>
                     <p>Fund your wallet using your local bank card.</p>
                 </div>
                 <div class="grid-item">
-                    <span><i class="fa fa-shield"></i></span>
+                    <span><i class="fa fa-tasks"></i></span>
                     <h4>invest</h4>
                     <p>Invest Preferred amount from your funded wallet.</p>
                 </div>

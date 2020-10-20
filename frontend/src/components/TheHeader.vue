@@ -38,8 +38,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-nav-first">
                     <li>
-                        <router-link to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
-                        <!-- <router-link v-else to="/login"><i class="fa fa-user"></i> Log Out</router-link> -->
+                        <router-link v-if="!profile" to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
+                        <button @click="logout" v-else class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
                     </li>
                 </ul>
             </div>
@@ -61,7 +61,19 @@ export default {
     },
 
     mounted() {
+        const user = localStorage.getItem("user");
         console.log("route name: ", this.profile);
+
+        this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+    },
+
+    methods: {
+        logout() {
+            this.$store.commit("user/CLEAR_TOKEN");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token")
+            this.profile = false;
+        }
     }
 }
 </script>
