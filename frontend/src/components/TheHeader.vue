@@ -39,6 +39,7 @@
                 <ul class="nav navbar-nav navbar-nav-first">
                     <li>
                         <router-link to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
+                        <!-- <router-link v-else to="/login"><i class="fa fa-user"></i> Log Out</router-link> -->
                     </li>
                 </ul>
             </div>
@@ -53,8 +54,14 @@ export default {
         };
     },
 
+    computed: {
+        profile() {
+            return this.$store.getters["user/getProfile"];
+        }
+    },
+
     mounted() {
-        console.log("route name: ", this.routeName);
+        console.log("route name: ", this.profile);
     }
 }
 </script>

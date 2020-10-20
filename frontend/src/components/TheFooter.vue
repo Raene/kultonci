@@ -94,6 +94,10 @@
                                 <li><a href="#">Support</a></li>
                             </ul>
                         </div>
+                        <div class="copyright-text" style="margin-top: 30px;">
+                            <p>Copyright &copy; 2015 - 2020 Kulton CI Trading</p>
+                            <p>All rights reserved</p>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="col-md-4 col-sm-12">

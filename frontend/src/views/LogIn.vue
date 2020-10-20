@@ -95,7 +95,7 @@ export default {
                     if (data.data.message.role === 0) {
                         this.$router.push({ path: "/investment-packages" });
                     } else {
-                        this.$router.push({ path: "/login" });
+                        this.$router.push({ path: "/dashboard/users" });
                     }
             })
             .catch(err => {

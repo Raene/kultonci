@@ -62,6 +62,10 @@ const user = {
 
 		getUserCount(state) {
 			if (state.users) return state.users.length;
+		},
+
+		getProfile(state) {
+			if (state.profile) return state.profile;
 		}
 	}
 }

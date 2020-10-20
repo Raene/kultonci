@@ -1,6 +1,6 @@
 <template>
     <div id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    	<Preloader />
+    	<!-- <Preloader /> -->
     	<TheHeader />
     	<Banner id="home" />
         <SecondBanner />
@@ -28,7 +28,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 // @ is an alias to /src
 import VueInjectJs from "vue-inject-js";
-import Preloader from "@/components/Preloader.vue";
+// import Preloader from "@/components/Preloader.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
@@ -47,7 +47,7 @@ export default {
     name: "Home",
     components: {
         VueInjectJs,
-        Preloader,
+        // Preloader,
         TheHeader,
         Banner,
         SecondBanner,

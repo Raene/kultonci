@@ -13,11 +13,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <h5>You are on the</h5>
-                    <p class="package">
+                    <h5>You're not on any package</h5>
+                    <h5 v-if="false">You are on the</h5>
+                    <p v-if="false" class="package">
                         Weekly Package
                     </p>
-                    <p class="msg">Your account is temporarily closed now</p>
+                    <p v-if="false" class="msg">Your account is temporarily closed now</p>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="card white-card text-white bg-light mb-3">
@@ -43,7 +44,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-shield uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 1,017.62</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Total Deposits</p>
                                     </span>
                                 </div>
@@ -56,7 +57,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 1,017.62</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Locked Deposits</p>
                                     </span>
                                 </div>
@@ -70,7 +71,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -83,7 +84,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -96,7 +97,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Compounded Earnings</p>
                                     </span>
                                 </div>
@@ -109,7 +110,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Earnings</p>
                                     </span>
                                 </div>
@@ -164,7 +165,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Pending Withdrawals</p>
                                     </span>
                                 </div>
@@ -177,7 +178,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 306</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Withdrawals</p>
                                     </span>
                                 </div>
@@ -207,7 +208,7 @@ export default {
                 datasets: [{
                     label: "Data One",
                     backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
-                    data: [1, 10, 5]
+                    data: [0, 0, 0]
                 }]
             }
         };
