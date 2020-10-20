@@ -1,10 +1,15 @@
 <template>
     <section id="testimonial">
         <div class="container">
+            <div class="row coingecko-script">
+                <div class="col-md-12 col-sm-12">
+                    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h2>Welcome</h2>
+                        <h2>Welcome, {{ profile.name }}</h2>
                         <hr>
                         <h5>We're glad you took the bold step to invest with us.</h5>
                         <p style="font-size: 18px;">Keep up with the progress of your investments - view your <strong>Deposits & Earnings</strong> on your fully secure personal investments page.</p>
@@ -14,6 +19,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <h5>You're not on any package</h5>
+                    <router-link class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
                     <h5 v-if="false">You are on the</h5>
                     <p v-if="false" class="package">
                         Weekly Package
@@ -187,14 +193,17 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />   
     </section>
 </template>
 <script>
+import VueInjectJs from "vue-inject-js";
 import PieChart from "../utils/pie-chart.js";
 export default {
     components: {
-        PieChart
+        PieChart,
+        VueInjectJs
     },
     data() {
         return {
@@ -212,6 +221,22 @@ export default {
                 }]
             }
         };
+    },
+
+    computed: {
+        profile () {
+            if (!this.$store.getters["user/getProfile"]) {
+                console.log("no user");
+            }
+            return this.$store.getters["user/getProfile"];
+        }
+    },
+
+    mounted() {
+        const user = localStorage.getItem("user");
+        if (user) {
+            this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+        }
     }
 }
 </script>
@@ -358,6 +383,7 @@ h5 {
     padding: 15px 30px;
     transition: 0.5s;
     margin-top: 7px;
+    text-decoration: none;
 }
 
 .section-btn:hover {
@@ -374,5 +400,9 @@ h5 {
 
 .sub-packages {
     margin-bottom: 7px;
+}
+
+.coingecko-script {
+    margin-bottom: 50px;
 }
 </style>

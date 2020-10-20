@@ -145,10 +145,20 @@ figure span i {
     text-align: center;
 }
 
+footer {
+    padding: 30px;
+}
+
 figcaption {
     margin-left: 10px;
 }
 
+@media (max-width: 480px) {
+    p {
+        text-align: left !important;
+        padding-left: 0 !important;
+    }
+}
 /*figure {
     display: inline-block;
     vertical-align: top;

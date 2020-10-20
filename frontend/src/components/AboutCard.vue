@@ -17,7 +17,7 @@
                 <p>We are 100% hack-proof! We keep all the cryptocurrency in hardware accessible offline wallets.</p>
             </div>
             <div class="grid-item">
-                <i class="fa fa-shield"></i>
+                <i class="fa fa-user"></i>
                 <h4>POWERFUL DASHBOARD</h4>
                 <p>Manage multiple investments using our powerful cutting-edge dashboard built on modern technology.</p>
             </div>

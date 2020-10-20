@@ -21,6 +21,11 @@ const user = {
 		SET_USERS(state, payload) {
 			Vue.set(state, "users", payload);
 			console.log("users set");
+		},
+
+		CLEAR_TOKEN(state) {
+			Vue.set(state, "profile", {});
+			console.log("user cleared: ", state.profile);
 		}
 	},
 	actions: {
