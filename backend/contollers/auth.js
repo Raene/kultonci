@@ -63,5 +63,5 @@ async function upload(fileObj) {
     // console.log(`type: ${type}`);
     // console.log(`fileExtension: ${fileExtension}`)
 
-    return fileDest;
+    return name;
 }

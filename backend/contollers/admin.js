@@ -83,3 +83,17 @@ exports.verifyUser = function (con) {
         }
     }
 }
+
+exports.userToAdmin = function (con) {
+    return async (ctx) => {
+        try {
+            const data = ctx.request.body;
+            const user = new UserModel({}, null, con, 'user');
+            let payload = await user.update('role','id',2,data.id);
+            ctx.body = {success: true, data: payload};
+            ctx.status = 200;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+}
