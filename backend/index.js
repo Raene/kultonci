@@ -3,6 +3,7 @@ const koa = require('koa');
 const koaRouter = require('koa-router');
 const json = require('koa-json');
 const bodyParser = require('koa-body');
+const serve      = require('koa-static');
 const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
 const {subscription} = require('./routes/subscription');
@@ -14,7 +15,6 @@ const koaOptions = {
 };
 const path = require('path');
 const Bree = require('bree');
-
 const root = path.join(__dirname, 'jobs');
 const jobArr = require(root);
 
@@ -31,6 +31,7 @@ const app = new koa();
 //set cors
 app.use(cors(koaOptions));
 
+app.use(serve(__dirname + '/images'));
 const router = new koaRouter();
 
 //error middleware
