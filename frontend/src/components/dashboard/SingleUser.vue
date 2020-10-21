@@ -18,7 +18,7 @@
                                 <div class="card-body text-center">
                                     <div class="avatar avatar-lg mt-4">
                                         <a href="">
-                                            <img :src="kycPath" alt="..." class="avatar-img rounded-circle">
+                                            <img src="../../../../backend/images/img7.png" alt="..." class="avatar-img rounded-circle">
                                         </a>
                                     </div>
                                     <div class="card-text my-2">
@@ -67,22 +67,20 @@ export default {
 
     beforeMount() {
         this.$store.dispatch("user/getUser", this.userId)
-            .then(() => {
-                console.log("getuser endpoint hit");
-            });
-        this.$store.dispatch("user/getUsers")
-            .then((err) => {
-                if (err) { console.log(err) } else { console.log("load from singleuser successful") }
-            })
-            .catch(err => console.log("err from mounted", err));
+            .then((data) => {
+					console.log("userdata: ", data.data.data[0]);
+					this.$store.commit("user/SET_USER", data.data.data[0]);
+					const fullUserPath = data.data.data[0].kycPath;
+					const userPath = fullUserPath.slice(23);
+					this.kycPath = userPath;
+				})
+				.catch(err => {
+					console.log(err);
+				});
     },
 
     mounted() {
-        for (const user of this.users) {
-            if (+user.kycId === +this.user.kyc_id) {
-                this.kycPath = user.kycPath;
-            }
-        }
+        
     },
 
     methods: {

@@ -67,14 +67,7 @@ const user = {
 
 		getUser(context, userId) {
 			const token = localStorage.getItem("token");
-			return axios.get("http://localhost:3000/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } })
-				.then((data) => {
-					console.log("userdata: ", data.data.data[0]);
-					context.commit("SET_USER", data.data.data[0]);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+			return axios.get("http://localhost:3000/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
 		},
 
 		verifyUser(context, userId) {
