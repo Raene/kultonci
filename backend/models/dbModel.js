@@ -64,6 +64,16 @@ Db.prototype.getUsersJoin = function () {
     });
 }
 
+Db.prototype.getUserJoin = function (value,valueType) {
+    return new Promise((resolve,reject)=>{
+        let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified, user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
+        this.con.query(sql,value,function (err,result) {
+        if(err) reject(err);
+        resolve(result);
+        }) 
+    });
+}
+
 Db.prototype.updateDb = function (valueType,whereType,value,whereValue) {
     return new Promise((resolve,reject)=>{
         let sql = `UPDATE ${this.TableName} SET ${valueType} = ? WHERE ${whereType} = ?`;
