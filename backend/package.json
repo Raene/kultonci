@@ -40,7 +40,7 @@
   },
   "scripts": {
     "start-daemon": "nodemon index.js",
-    "start": "node node_modules/pm2/bin/pm2 start index.js -i max --watch",
+    "start": "node node_modules/pm2/bin/pm2 start index.js -i max --watch --ignore-watch='images'",
     "stop": "node node_modules/pm2/bin/pm2 stop all",
     "status": "node node_modules/pm2/bin/pm2 status",
     "test": "node node_modules/mocha/bin/mocha --timeout 10000",

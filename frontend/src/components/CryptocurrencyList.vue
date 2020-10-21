@@ -3,7 +3,11 @@
         <div class="container">
             <div class="row coingecko-script">
                 <div class="col-md-12 col-sm-12">
-                    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
+                    <div class="card bg-danger">
+                        <div class="card-body">
+                            <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -100,7 +104,7 @@ h5 {
 
 .bold-color {
     font-weight: 700;
-    color: #e3e17b;
+    color: gold;
 }
 
 small {

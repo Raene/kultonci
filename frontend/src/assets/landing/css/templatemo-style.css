@@ -470,7 +470,7 @@ section {
     padding: 1em 1em;
     background-color: #040404;
     border-radius: 10px;
-    box-shadow: 2px 2px 15px rgba(70, 70, 70, 0.4);
+    /*box-shadow: 2px 2px 15px rgba(70, 70, 70, 0.4);*/
 }
 
 .feature-thumb span {

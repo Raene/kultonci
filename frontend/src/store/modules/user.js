@@ -75,6 +75,17 @@ const user = {
 				.catch(err => {
 					console.log(err);
 				});
+		},
+
+		verifyUser(context, userId) {
+			const token = localStorage.getItem("token");
+			return axios.post("http://localhost:3000/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
+				.then((data) => {
+					console.log("verify user data: ", data);
+				})
+				.catch(err => {
+					return err;
+				});
 		}
 	},
 	getters: {

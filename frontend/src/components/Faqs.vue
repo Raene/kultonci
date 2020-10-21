@@ -18,14 +18,12 @@
                                 </div> -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>01</span>
                                         <h3>How can I register a new account?</h3>
                                         <hr>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>02</span>
                                         <h3>How does Kulton CI earn profits for its members?</h3>
                                         <hr>
                                     </div>
@@ -34,14 +32,12 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>03</span>
                                         <h3>Are there any withdrawal fees?</h3>
                                         <hr>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>04</span>
                                         <h3>How long does it take for my withdrawal to be sent?</h3>
                                         <hr>
                                     </div>
@@ -50,14 +46,12 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>05</span>
                                         <h3>How can I contact your support?</h3>
                                         <hr>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-md-6 col-sm-12">
                                     <div class="feature-thumb">
-                                        <span>06</span>
                                         <h3>Do I need to make a deposit to refer new members?</h3>
                                         <hr>
                                     </div>
@@ -126,6 +120,7 @@ p {
 }
 
 .feature-thumb {
+    border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
