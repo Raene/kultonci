@@ -234,9 +234,10 @@ export default {
 
     mounted() {
         const user = localStorage.getItem("user");
-        if (user) {
-            this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+        if (!user) {
+            this.$store.commit("user/SET_PROFILE", null);
         }
+        this.$store.commit("user/SET_PROFILE", JSON.parse(user));
     }
 }
 </script>

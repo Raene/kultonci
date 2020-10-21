@@ -21,7 +21,7 @@
 </template>
 <style scoped>
 .container-fluid {
-    border: 1px solid #e3e17b;
+    border: 1px solid gold;
     padding: 20px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 hr {
-    border-color: #ffffff;
+    border-color: gold;
 }
 
 .section-title {
@@ -43,7 +43,7 @@ hr {
     border-radius: 50px;
     border: none;
     transform: scale(1);
-    color: #e3e17b !important;
+    color: gold !important;
     font-size: inherit;
     font-weight: normal;
     padding: 15px 30px;
@@ -54,8 +54,8 @@ hr {
 
 .section-btn:hover {
     background: #000000;
-    border-color: #e3e17b;
-    color: #e3e17b;
+    border-color: gold;
+    color: gold;
     transform: scale(1.1);
 }
 

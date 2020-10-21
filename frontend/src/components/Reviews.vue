@@ -110,9 +110,14 @@ section {
     padding: 0;
 }
 
+h3 {
+    color: gold !important;
+}
+
 .section-title {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
+
 </style>

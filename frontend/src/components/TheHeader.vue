@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <a v-if="routeName==='Home'" href="#about-us" class="smoothScroll">About</a>
-                        <router-link v-else to="/about-us" class="smoothScroll">About</router-link>    
+                        <router-link v-else to="/about-us" class="smoothScroll">About</router-link>
                     </li>
                     <li>
                         <router-link to="/investment-packages" class="smoothScroll">Investment Packages</router-link>
@@ -30,7 +30,9 @@
                     <li>
                         <router-link to="/faqs" class="smoothScroll">FAQs</router-link>
                     </li>
-                    <li><router-link to="/testimonies" class="smoothScroll">Testimony</router-link></li>
+                    <li>
+                        <router-link to="/testimonies" class="smoothScroll">Testimony</router-link>
+                    </li>
                     <li>
                         <router-link to="/support" class="smoothScroll">Support</router-link>
                     </li>
@@ -39,7 +41,8 @@
                 <ul class="nav navbar-nav navbar-nav-first">
                     <li>
                         <router-link v-if="!profile" to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
-                        <button @click="logout" v-else class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
+                        <router-link v-else-if="profile && routeName!=='UserWallet'" to="/user-wallet"><i class="fa fa-user"></i> {{ profile.name }}</router-link>
+                        <button @click="logout" v-if="profile && routeName === 'UserWallet'" class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
                     </li>
                 </ul>
             </div>
@@ -63,16 +66,16 @@ export default {
     mounted() {
         const user = localStorage.getItem("user");
         console.log("route name: ", this.profile);
-
+        if (!user) {
+            this.$store.commit("user/SET_PROFILE", null);
+        }
         this.$store.commit("user/SET_PROFILE", JSON.parse(user));
     },
 
     methods: {
         logout() {
             this.$store.commit("user/CLEAR_TOKEN");
-            localStorage.removeItem("user");
-            localStorage.removeItem("token")
-            this.profile = false;
+            this.$router.push("/");
         }
     }
 }
@@ -89,22 +92,22 @@ export default {
 
 .custom-navbar .navbar-brand,
 .top-nav-collapse .navbar-brand {
-    color: #e3e17b;
+    color: gold;
     font-weight: 600;
 }
 
 .custom-navbar .nav li a,
 .top-nav-collapse .nav li a {
-    color: #e3e17b;
+    color: gold;
 }
 
 .custom-navbar .navbar-toggle .icon-bar {
-    background: #e3e17b;
+    background: gold;
     border-color: transparent;
 }
 
 .router-link-exact-active {
-    background-color: #e3e17b;
+    background-color: gold;
     color: #000000 !important;
 }
 </style>

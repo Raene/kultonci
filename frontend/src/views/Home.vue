@@ -4,8 +4,8 @@
     	<TheHeader />
     	<Banner id="home" />
         <SecondBanner />
-        <About id="about-us" />
         <HowItWorks />
+        <About id="about-us" />
         <Mission />
         <Vision />
         <Goals />

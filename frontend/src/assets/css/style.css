@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:300,700|Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
@@ -233,7 +233,7 @@ input {
   border: none;
   border-bottom: 1px solid #ffffff;
   padding: 6px 30px;
-  font-family: Poppins;
+  font-family: 'Lato', sans-serif;
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
     color: #ffffff; }

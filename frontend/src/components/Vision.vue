@@ -38,6 +38,6 @@
 }
 
 section {
-    padding: 60px 0;
+    padding: 10px 0;
 }
 </style>

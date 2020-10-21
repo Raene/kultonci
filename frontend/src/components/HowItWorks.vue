@@ -39,7 +39,7 @@
 }
 
 .grid-item {
-    border: 1px solid #e3e17b;
+    border: 1px solid gold;
     text-align: center;
     padding: 28px;
 }
@@ -66,10 +66,15 @@
 
 h4 {
     text-transform: uppercase;
+    color: gold;
+}
+
+em {
+    color: gold;
 }
 
 span {
-    background: #e3e17b;
+    background: gold;
     border-radius: 50px;
     color: #000000;
     font-size: 30px;
