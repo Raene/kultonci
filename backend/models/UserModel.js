@@ -58,7 +58,7 @@ UserModel.get = async function (con, TableName, value, valueType) {
     }
 }
 
-UserModel.getByValue = async function (value,valueType) {
+UserModel.prototype.getByValue = async function (value,valueType) {
     try {
         let user = await this.getByField(value,valueType);
         return user;

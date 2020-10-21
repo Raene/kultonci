@@ -1,7 +1,8 @@
 <template>
+  <div class="vertical light">
     <div class="wrapper">
       <!-- <TheHeader /> -->
-      <!-- <TheSidebar /> -->
+      <TheSidebar />
       <main role="main" class="main-content">
         <router-view />
       </main>
@@ -14,17 +15,18 @@
       <VueInjectJs src="/dashboard/js/apexcharts.min.js" />
       <VueInjectJs src="/dashboard/js/apps.js" />
     </div>
+  </div>
 </template>
 
 <script>
 import VueInjectJs from "vue-inject-js";
-// import TheHeader from "@/components/dashboard/TheHeader.vue";s
-// import TheSidebar from "@/components/dashboard/TheSidebar.vue";
+// import TheHeader from "@/components/dashboard/TheHeader.vue";
+import TheSidebar from "@/components/dashboard/TheSidebar.vue";
 export default {
   components: {
     VueInjectJs,
     // TheHeader,
-    // TheSidebar
+    TheSidebar
   }
 }
 </script>

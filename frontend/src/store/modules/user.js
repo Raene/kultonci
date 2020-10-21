@@ -1,12 +1,14 @@
 import Vue from "vue";
 import axios from "axios";
+import _ from "lodash";
 
 const user = {
 	namespaced: true,
 	state: {
 		initialSignupDetails: {},
 		profile: {},
-		users: []
+		users: [],
+		user: {}
 	},
 	mutations: {
 		SET_INITIAL_SIGNUP_DETAILS(state, payload) {
@@ -23,6 +25,11 @@ const user = {
 			console.log("users set");
 		},
 
+		SET_USER(state, payload) {
+			Vue.set(state, "user", payload);
+			console.log("user set");
+		},
+
 		CLEAR_TOKEN(state) {
 			Vue.set(state, "profile", null);
 			localStorage.removeItem("user");
@@ -33,7 +40,7 @@ const user = {
 	actions: {
 		signup(context, user) {
 			console.log("user: ", user);
-			return axios.post("http://198.211.96.170:3000/auth/register", user)
+			return axios.post("http://localhost:3000/auth/register", user)
 				.then((data) => {
 					console.log(data);
 				})
@@ -43,18 +50,30 @@ const user = {
 		},
 
 		login(context, user) {
-			return axios.post("http://198.211.96.170:3000/auth/login", user);
+			return axios.post("http://localhost:3000/auth/login", user);
 		},
 
 		getUsers(context) {
 			const token = localStorage.getItem("token");
-			return axios.get("http://198.211.96.170:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
+			return axios.get("http://localhost:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("data: ", data.data);
 					context.commit("SET_USERS", data.data.data);
 				})
 				.catch(err => {
 					return err;
+				});
+		},
+
+		getUser(context, userId) {
+			const token = localStorage.getItem("token");
+			return axios.get("http://localhost:3000/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } })
+				.then((data) => {
+					console.log("userdata: ", data.data.data[0]);
+					context.commit("SET_USER", data.data.data[0]);
+				})
+				.catch(err => {
+					console.log(err);
 				});
 		}
 	},
@@ -76,6 +95,10 @@ const user = {
 				return null;
 			}
 			return state.profile;
+		},
+
+		getUser(state) {
+			if (_.isEmpty(state.user) === false) return state.user;
 		}
 	}
 }

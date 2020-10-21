@@ -1,9 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import UserList from "@/components/dashboard/UserList.vue";
 import store from "@/store/modules/user";
 import _ from "lodash";
+import Home from "../views/Home.vue";
+import UserList from "@/components/dashboard/UserList.vue";
+import SingleUser from "@/components/dashboard/SingleUser.vue";
 
 Vue.use(VueRouter);
 
@@ -107,9 +108,13 @@ const routes = [
         {
           path: "users",
           component: UserList
+        },
+        {
+          path: "users/:id",
+          component: SingleUser
         }
-      ],
-      meta: { requiresAuth: true }
+      ]
+      // meta: { requiresAuth: true }
   }
 ];
 

@@ -17,78 +17,30 @@
             </a>
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-book fe-16"></i>
-                <span class="ml-3 item-text">Books</span><span class="sr-only">(current)</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/book_create"><span class="ml-1 item-text">Add book</span></router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/books"><span class="ml-1 item-text">View Books</span></router-link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-box fe-16"></i>
-                <span class="ml-3 item-text">Genres</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/genre_create"><span class="ml-1 item-text">Add genre</span>
-                  </router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/genres"><span class="ml-1 item-text">View genre</span></router-link>
-                </li>
-              </ul>
-            </li>
-            <!-- <li class="nav-item w-100">
-              <a class="nav-link" href="widgets.html">
-                <i class="fe fe-layers fe-16"></i>
-                <span class="ml-3 item-text">Widgets</span>
-                <span class="badge badge-pill badge-primary">New</span>
-              </a>
-            </li> -->
-            <li class="nav-item dropdown">
-              <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-credit-card fe-16"></i>
-                <span class="ml-3 item-text">Authors</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="forms">
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/author_create"><span class="ml-1 item-text">Add authors</span></router-link>
-                </li>
-                <li class="nav-item">
-                  <router-link class="nav-link pl-3" to="/store/authors"><span class="ml-1 item-text">View authors</span></router-link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+              <router-link to="/dashboard/users" class="nav-link pl-3">
                 <i class="fe fe-user fe-16"></i>
-                <span class="ml-3 item-text">Profile</span>
+                <span class="ml-3 item-text">Users</span>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <a @click.prevent="logout" href="#" class="nav-link pl-3">
+                <i class="fe fe-log-out fe-16"></i>
+                <span class="ml-3 item-text">Log out</span>
               </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="./profile.html"><span class="ml-1">Overview</span></a>
-                <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Settings</span></a>
-                <a class="nav-link pl-3" href="./profile-security.html"><span class="ml-1">Security</span></a>
-                <a class="nav-link pl-3" href="./profile-notification.html"><span class="ml-1">Notifications</span></a>
-              </ul>
             </li>
           </ul>
-          <!-- <div class="btn-box w-100 mt-4 mb-1">
-            <button type="button" class="btn mb-2 btn-primary btn-lg btn-block">
-              <i class="fe fe-shopping-cart fe-12 mr-2"></i><span class="small">Buy now</span>
-            </button>
-          </div> -->
         </nav>
       </aside>
 </template>
+
+<script>
+export default {
+    methods: {
+        logout() {
+            this.$store.commit("user/CLEAR_TOKEN");
+            window.location.href = "http://localhost:8080";
+        }
+    }
+}
+</script>
