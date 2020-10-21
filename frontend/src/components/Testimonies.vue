@@ -77,6 +77,10 @@ h2 small {
     font-weight: 600;
 }
 
+h3 {
+    color: gold !important;
+}
+
 p {
     font-size: 15px;
     text-align: center;

@@ -66,13 +66,6 @@
                         </div>
                         <p class="text-left">For enquiries, request or complaints...</p>
                         <figure>
-                            <span><i class="fa fa-phone"></i></span>
-                            <figcaption>
-                                <h2>Phone</h2>
-                                <p>+1 (503) 809-0295</p>
-                            </figcaption>
-                        </figure>
-                        <figure>
                             <span><i class="fa fa-envelope"></i></span>
                             <figcaption>
                                 <h2>Email</h2>
@@ -134,7 +127,7 @@ figure {
 }
 
 figure span i {
-    background: #e3e17b;
+    background: gold;
     border: 1px solid black;
     /*border-radius: 50px;*/
     color: #000000;

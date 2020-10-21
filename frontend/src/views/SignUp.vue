@@ -5,7 +5,7 @@
             <section class="signup" v-if="!kycReady">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title text-center">Sign up</h2>
                         <ValidationObserver v-slot="{ invalid }">
                             <form @submit.prevent="storeSignUpDetails" method="POST" class="register-form" id="register-form">
                                 <div class="form-group">
@@ -41,11 +41,11 @@
                                     <label for="agree-term" class="label-agree-term"><span><span></span></span>I accept
                                         <a href="#" class="term-service">terms & conditons</a></label>
                                 </div>
-                                <div class="form-group">
+                               <!--  <div class="form-group">
                                     <input v-model="subscribeIsChecked" type="checkbox" name="agree-term" id="subscribe" class="agree-term" />
                                     <label for="subscribe" class="label-agree-term"><span><span></span></span>I want to subscribe to the
                                         newsletter</label>
-                                </div>
+                                </div> -->
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Continue"
                                     :disabled="invalid"

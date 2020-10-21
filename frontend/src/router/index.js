@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import UserList from "@/components/dashboard/UserList.vue";
+import store from "@/store/modules/user";
+import _ from "lodash";
 
 Vue.use(VueRouter);
 
@@ -72,7 +74,8 @@ const routes = [
     // this generates a separate chunk (user-wallet.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "user--wallet" */ "../views/UserWallet.vue")
+      import(/* webpackChunkName: "user--wallet" */ "../views/UserWallet.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/cryptocurrency-list",
@@ -105,7 +108,8 @@ const routes = [
           path: "users",
           component: UserList
         }
-      ]
+      ],
+      meta: { requiresAuth: true }
   }
 ];
 
@@ -113,6 +117,21 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    console.log("profile: ", _.isEmpty(store.state.profile));
+    if(_.isEmpty(store.state.profile)) {
+      next({
+        name: "LogIn"
+      })
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

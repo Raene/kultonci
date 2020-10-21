@@ -20,8 +20,8 @@
 
 <style scoped>
 .container-fluid {
-    background-color: #e3e17b;
-    background: rgba(227, 225, 123, 0.8);
+    background-color: gold;
+    background: rgba(255, 215, 0, 0.8);
     padding: 20px;
 }
 
@@ -35,7 +35,8 @@ h2, p {
     color: #000000;
 }
 hr {
-    border-color: #ffffff;
+    border-color: #000000;
+    border: 2px solid;
 }
 
 .section-title {

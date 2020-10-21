@@ -6,7 +6,7 @@
             <section class="sign-in" v-if="!isLoggingIn">
                 <div class="signin-content">
                     <div class="signin-form">
-                        <h2 class="form-title">Log in</h2>
+                        <h2 class="form-title text-center">Log in</h2>
                         <ValidationObserver v-slot="{ invalid }">
                             <form @submit.prevent="login" class="register-form" id="login-form">
                                 <div class="form-group">
@@ -29,9 +29,6 @@
                                 </div>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" :disabled="invalid" />
-                                    <div class="spinner-border text-warning" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
                                 </div>
                             </form>
                         </ValidationObserver>
@@ -84,10 +81,17 @@ export default {
         login() {
             this.isLoggingIn = true;
             this.$store.dispatch("user/login", {
-                email: this.user.email,
-                password: this.user.password
-            })
-            .then((data) => {
+                    email: this.user.email,
+                    password: this.user.password
+                })
+                .then((data) => {
+                    this.$swal({
+                        position: "center",
+                        icon: "success",
+                        title: "Login Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     console.log("login data says: ", data.data.message);
                     this.$store.commit("user/SET_PROFILE", data.data.message);
                     localStorage.setItem("token", data.data.message.token);
@@ -98,11 +102,24 @@ export default {
                     } else {
                         this.$router.push({ path: "/dashboard/users" });
                     }
-            })
-            .catch(err => {
-                this.isLoggingIn = false;
-                console.log(err);
-            });
+                })
+                .catch(err => {
+                    this.isLoggingIn = false;
+                    console.log(err);
+                    this.$swal({
+                        icon: "error",
+                        title: "Login Unsuccessful",
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                            toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                        }
+                    });
+                });
         }
     }
 };

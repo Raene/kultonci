@@ -43,6 +43,11 @@
 
 i {
     font-size: 2em;
+    color: gold
+}
+
+h4 {
+    color: gold;
 }
 
 .grid-container {

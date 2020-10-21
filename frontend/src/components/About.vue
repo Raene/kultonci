@@ -9,14 +9,14 @@
                         </h2>
                         <div class="container about-text show-on-scroll">
                             <p>Kulton CI ,founded in 2015, CI is a trading platform managed by a private trader, Mr. Wesley Hargraves, who trades mostly Cryptocurrency. Mr. Wesley Hargraves has been trading for more than 6 years now and has a vast knowledge of the Crypto Online Market and Cryptocurrency Trading Investment. Kulton CI is being known for it's transparency and accountability of managing finance in the world of Cryptocurrency Trading Investment and Account Management. We had a breakthrough in the market during the middle of 2016.</p>
-                            <p v-if="routeName">Kulton CI is a global market place for people to trade Currencies, Commodities, Indices and CFO Stock online in a simple and transparent way. Our goal is to make trading accessible to all investors regardless of age, location, investment, technical knowledge or experience. Trading in Kulton involves the weekly investments where profits are paid directly to clients every week, the Monthly Compounding Investments and the NFP.</p>
-                            <p v-if="routeName"> Kulton CI believes every client is different and requires a unique approach. Our mission is to help people navigate through changing market conditions and several kinds of investment opportunities in order to find a strategic plan that best fits their trading goals.
+                            <p>Kulton CI is a global market place for people to trade Currencies, Commodities, Indices and CFO Stock online in a simple and transparent way. Our goal is to make trading accessible to all investors regardless of age, location, investment, technical knowledge or experience. Trading in Kulton involves the weekly investments where profits are paid directly to clients every week, the Monthly Compounding Investments and the NFP.</p>
+                            <p> Kulton CI believes every client is different and requires a unique approach. Our mission is to help people navigate through changing market conditions and several kinds of investment opportunities in order to find a strategic plan that best fits their trading goals.
                             </p>
                         </div>
                     </div>
-                    <div v-if="!routeName" class="read-btn show-on-scroll">
+                    <!-- <div v-if="!routeName" class="read-btn show-on-scroll">
                         <router-link to="/about-us" class="section-btn btn btn-default smoothScroll">read more <i class="fa fa-angle-double-right"></i></router-link>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="row">

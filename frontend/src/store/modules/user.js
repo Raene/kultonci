@@ -24,14 +24,16 @@ const user = {
 		},
 
 		CLEAR_TOKEN(state) {
-			Vue.set(state, "profile", {});
+			Vue.set(state, "profile", null);
+			localStorage.removeItem("user");
+            localStorage.removeItem("token");
 			console.log("user cleared: ", state.profile);
 		}
 	},
 	actions: {
 		signup(context, user) {
 			console.log("user: ", user);
-			return axios.post("http://localhost:3000/auth/register", user)
+			return axios.post("http://198.211.96.170:3000/auth/register", user)
 				.then((data) => {
 					console.log(data);
 				})
@@ -41,12 +43,12 @@ const user = {
 		},
 
 		login(context, user) {
-			return axios.post("http://localhost:3000/auth/login", user);
+			return axios.post("http://198.211.96.170:3000/auth/login", user);
 		},
 
 		getUsers(context) {
 			const token = localStorage.getItem("token");
-			return axios.get("http://localhost:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
+			return axios.get("http://198.211.96.170:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("data: ", data.data);
 					context.commit("SET_USERS", data.data.data);
@@ -70,7 +72,10 @@ const user = {
 		},
 
 		getProfile(state) {
-			if (state.profile) return state.profile;
+			if (!state.profile) {
+				return null;
+			}
+			return state.profile;
 		}
 	}
 }

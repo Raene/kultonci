@@ -108,7 +108,7 @@ p {
 }
 
 .section-btn {
-    background: #e3e17b;
+    background: gold;
     border-radius: 50px;
     border: 1px solid #000000;
     color: #000000;
@@ -121,8 +121,8 @@ p {
 
 .section-btn:hover {
     background: #000000;
-    border-color: #e3e17b;
-    color: #e3e17b;
+    border-color: gold;
+    color: gold;
 }
 
 .feature-thumb {

@@ -16,9 +16,15 @@
 
 <style scoped>
 .container-fluid {
-	background-color: #e3e17b;
-	background: rgba(227, 225, 123, 0.8);
+	background-color: #ffffff;
+	/*background: rgba(255, 215, 0, 0.8);*/
 	padding: 40px;
+}
+
+.section-btn {
+    background-color: black;
+    color: gold;
+    border-color: black;
 }
 
 .container {
