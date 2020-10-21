@@ -61,7 +61,7 @@ exports.getUserById = function (con) {
         try {
             const id = ctx.params.id;
             const user = new UserModel({},null,con,'user');
-            let payload = await user.getByValue(id,'id');
+            let payload = await user.getUserByJoin(id,'user.id');
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
         } catch (error) {

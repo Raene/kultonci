@@ -67,6 +67,15 @@ UserModel.prototype.getByValue = async function (value,valueType) {
     }
 }
 
+UserModel.prototype.getUserByJoin = async function (value,valueType) {
+    try {
+        let user = await this.getUserJoin(value,valueType);
+        return user;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 UserModel.prototype.getAll = async function () {
     try {
         let user = await this.getUsersJoin();
