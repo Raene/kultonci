@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <a v-if="routeName==='Home'" href="#about-us" class="smoothScroll">About</a>
-                        <router-link v-else to="/about-us" class="smoothScroll">About</router-link>
+                        <!-- <router-link v-else to="/about-us" class="smoothScroll">About</router-link> -->
                     </li>
                     <li>
                         <router-link to="/investment-packages" class="smoothScroll">Investment Packages</router-link>

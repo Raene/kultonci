@@ -22,7 +22,7 @@
                                         </a>
                                     </div>
                                     <div class="card-text my-2">
-                                        <h3><strong class="card-title my-0">{{ user.name }} </strong></h3>	
+                                        <h3><strong class="card-title my-0">{{ user.name }} </strong></h3>
                                         <p class="small mb-0" style="color: white;"><strong>{{ user.email }}</strong></p>
                                         <!-- <p class="small" style="color: white; font-weight: 400;"><span class="badge badge-success">Verify</span></p> -->
                                     </div>
@@ -30,7 +30,7 @@
                                 <div class="card-footer">
                                     <div class="row align-items-center justify-content-between">
                                         <div class="col-auto">
-                                            <button class="btn btn-success">Verify</button>
+                                            <button @click="verifyUser" :disabled="user.verified===1" class="btn btn-success">{{ user.verified === 0?"Verify":"User Verified"}}</button>
                                         </div>
                                         <div class="col-auto">
                                             <button class="btn btn-danger">Delete</button>
@@ -47,52 +47,76 @@
         </div> <!-- .container-fluid -->
     </div>
 </template>
-
 <script>
 export default {
-	data () {
-		return {
-			userId: this.$route.params.id,
-			kycPath: null
-		}
-	},
-	computed: {
-		user() {
-			return this.$store.getters['user/getUser'];
-		},
+    data() {
+        return {
+            userId: this.$route.params.id,
+            kycPath: null
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.getters['user/getUser'];
+        },
 
-		users() {
-			return this.$store.getters['user/getUsers'];
-		}
-	},
+        users() {
+            return this.$store.getters['user/getUsers'];
+        }
+    },
 
-	beforeMount() {
-		this.$store.dispatch("user/getUser", this.userId)
-			.then(() => {
-				console.log("getuser endpoint hit");
-			});
-		this.$store.dispatch("user/getUsers")
+    beforeMount() {
+        this.$store.dispatch("user/getUser", this.userId)
+            .then(() => {
+                console.log("getuser endpoint hit");
+            });
+        this.$store.dispatch("user/getUsers")
             .then((err) => {
-                if (err) {console.log(err)}
-                else {console.log("load from singleuser successful")}
+                if (err) { console.log(err) } else { console.log("load from singleuser successful") }
             })
             .catch(err => console.log("err from mounted", err));
-	},
+    },
 
-	mounted(){
-		for (const user of this.users) {
-			if (+user.kycId === +this.user.kyc_id) {
-				this.kycPath = user.kycPath;
-			}
-		}
-	}
+    mounted() {
+        for (const user of this.users) {
+            if (+user.kycId === +this.user.kyc_id) {
+                this.kycPath = user.kycPath;
+            }
+        }
+    },
+
+    methods: {
+        verifyUser() {
+            this.$store.dispatch("user/verifyUser", { id: this.user.id })
+                .then((err) => {
+                    if (err) {
+                        console.log(err);
+                        this.$swal({
+                            position: "center",
+                            icon: "error",
+                            title: "User Not verified",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        this.$swal({
+                            position: "center",
+                            icon: "success",
+                            title: "User verified",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        this.user.verified = 1;
+                    }
+                })
+        }
+    }
 }
 </script>
-
 <style scoped>
 .btn {
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: white;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: white;
 }
 </style>

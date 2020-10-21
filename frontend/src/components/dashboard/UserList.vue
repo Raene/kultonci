@@ -21,7 +21,7 @@
                             <td>{{ user.userId }}</td>
                             <td>{{ user.name }}</td>
                             <td>{{ user.userEmail }}</td>
-                            <td><router-link :to="'/dashboard/users/' + user.userId"><span :class="{ badge: true, 'badge-pill': true, 'badge-danger': user.userVerified === 0, 'badge-success': user.userVerified === 0 }">{{ user.userVerified === 0? "Verify User":"Verified" }}</span></router-link></td>
+                            <td><router-link :to="'/dashboard/users/' + user.userId"><span :class="{ badge: true, 'badge-pill': true, 'badge-danger': user.userVerified === 0, 'badge-success': user.userVerified === 1 }">{{ user.userVerified === 0? "Verify User":"Verified" }}</span></router-link></td>
                             <!-- <td>901-6206 Cras Av.</td> -->
                             <!-- <td>Apr 24, 2019</td> -->
                             <td><span class="badge badge-pill badge-danger">Delete</span></td>

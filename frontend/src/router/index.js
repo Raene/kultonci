@@ -113,8 +113,8 @@ const routes = [
           path: "users/:id",
           component: SingleUser
         }
-      ]
-      // meta: { requiresAuth: true }
+      ],
+      meta: { requiresAuth: true }
   }
 ];
 
