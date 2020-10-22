@@ -2,7 +2,7 @@
 
 let controller = require('../contollers/admin');
 const { login } = require('../contollers/auth');
-let {loginRequired, isAdmin} = require('../middlewares/auth');
+let {loginRequired, isAdmin, isSuperAdmin} = require('../middlewares/auth');
 
 exports.admin = function(router,con) {
     const route = new router({
@@ -12,5 +12,6 @@ exports.admin = function(router,con) {
                 .post('/btcAddress',loginRequired,isAdmin,controller.insertBTCaddr(con))
                 .get('/users',loginRequired,isAdmin,controller.getAllUsers(con))
                 .post('/users',loginRequired,isAdmin,controller.verifyUser(con))
-                .get('/users/:id',loginRequired,isAdmin,controller.getUserById(con));
+                .get('/users/:id',loginRequired,isAdmin,controller.getUserById(con))
+                .post('/make-admin',loginRequired,isSuperAdmin,controller.userToAdmin(con));
 }
