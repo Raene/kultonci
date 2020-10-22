@@ -40,7 +40,7 @@ const user = {
 	actions: {
 		signup(context, user) {
 			console.log("user: ", user);
-			return axios.post("http://localhost:3000/auth/register", user)
+			return axios.post("http://198.211.96.170:3000/auth/register", user)
 				.then((data) => {
 					console.log(data);
 				})
@@ -50,12 +50,12 @@ const user = {
 		},
 
 		login(context, user) {
-			return axios.post("http://localhost:3000/auth/login", user);
+			return axios.post("http://198.211.96.170:3000/auth/login", user);
 		},
 
 		getUsers(context) {
 			const token = localStorage.getItem("token");
-			return axios.get("http://localhost:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
+			return axios.get("http://198.211.96.170:3000/admin/users", { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("data: ", data.data);
 					context.commit("SET_USERS", data.data.data);
@@ -67,12 +67,12 @@ const user = {
 
 		getUser(context, userId) {
 			const token = localStorage.getItem("token");
-			return axios.get("http://localhost:3000/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
+			return axios.get("http://198.211.96.170:3000/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
 		},
 
 		verifyUser(context, userId) {
 			const token = localStorage.getItem("token");
-			return axios.post("http://localhost:3000/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
+			return axios.post("http://198.211.96.170:3000/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("verify user data: ", data);
 				})
