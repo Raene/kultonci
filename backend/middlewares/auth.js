@@ -19,7 +19,7 @@ exports.loginRequired = async (ctx, next) => {
 
 exports.isAdmin = async function (ctx, next) {
     try {
-        if(ctx.state.user.role != 1 || ctx.state.user.role != 2){
+        if (!(ctx.state.user.role == 2 || 1)){
             throw new Error('not admin');
         }
         await next();
