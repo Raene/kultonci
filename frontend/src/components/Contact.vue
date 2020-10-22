@@ -3,10 +3,10 @@
     <section id="contact" class="inner-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12">
+                <div style="max-width: 700px; margin: 0 auto;" class="col-md-12 col-sm-12">
                     <form id="contact-form" role="form" action="" method="post">
                         <div class="section-title">
-                            <h2>Contact us <small>we love conversations. let us talk!</small></h2>
+                            <h2>Contact us <small>We love conversations. Let us talk!</small></h2>
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
@@ -27,3 +27,10 @@
         </div>
     </section>
 </template>
+
+<style scoped>
+.inner-section {
+    padding: 0 0;
+}
+
+</style>

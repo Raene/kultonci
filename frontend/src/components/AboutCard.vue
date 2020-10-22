@@ -36,7 +36,7 @@
 </template>
 <style scoped>
 .container-fluid {
-    background-color: #1b1b1b;
+    background-color: transparent;
     padding: 20px;
     margin-top: 40px; 
 }

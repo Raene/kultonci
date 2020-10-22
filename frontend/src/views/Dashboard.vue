@@ -1,7 +1,7 @@
 <template>
   <div class="vertical light">
     <div class="wrapper">
-      <!-- <TheHeader /> -->
+      <TheHeader />
       <TheSidebar />
       <main role="main" class="main-content">
         <router-view />
@@ -20,12 +20,12 @@
 
 <script>
 import VueInjectJs from "vue-inject-js";
-// import TheHeader from "@/components/dashboard/TheHeader.vue";
+import TheHeader from "@/components/dashboard/TheHeader.vue";
 import TheSidebar from "@/components/dashboard/TheSidebar.vue";
 export default {
   components: {
     VueInjectJs,
-    // TheHeader,
+    TheHeader,
     TheSidebar
   }
 }

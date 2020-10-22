@@ -187,13 +187,16 @@ section {
     bottom: 0;
 }
 .page-top-banner {
-  background: url(../assets/landing/images/coins.jpg);
-  background-size: cover;
+  background: url(../assets/landing/images/bitcoin pocket.jpg);
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   /* opacity: .9; */
   /* background-color: black; */
 }
 .page-top-banner .overlay-bg {
-  opacity: .8;
+  opacity: 1;
 }
 .page-top-banner h1 {
   color: #fff;
