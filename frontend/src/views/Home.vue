@@ -5,10 +5,10 @@
     	<Banner id="home" />
         <SecondBanner />
         <HowItWorks />
-        <About id="about-us" />
-        <Mission />
+        <!-- <About id="about-us" /> -->
+        <!-- <Mission />
         <Vision />
-        <Goals />
+        <Goals /> -->
         <WhyUs />
         <InvestmentPreview />
     	<RiskDisclaimer />
@@ -32,11 +32,11 @@ import VueInjectJs from "vue-inject-js";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
-import About from "@/components/About.vue";
+// import About from "@/components/About.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
-import Mission from "@/components/Mission.vue";
-import Vision from "@/components/Vision.vue";
-import Goals from "@/components/Goals.vue";
+// import Mission from "@/components/Mission.vue";
+// import Vision from "@/components/Vision.vue";
+// import Goals from "@/components/Goals.vue";
 import WhyUs from "@/components/WhyUs.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
@@ -51,11 +51,11 @@ export default {
         TheHeader,
         Banner,
         SecondBanner,
-        About,
+        // About,
         HowItWorks,
-        Mission,
-        Vision,
-        Goals,
+        // Mission,
+        // Vision,
+        // Goals,
         WhyUs,
         InvestmentPreview,
         RiskDisclaimer,
