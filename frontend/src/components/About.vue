@@ -1,5 +1,6 @@
 <template>
-    <section id="testimonial">
+    <section id="testimonial" class="sect page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+        <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
@@ -46,6 +47,26 @@ export default {
 };
 </script>
 <style scoped>
+.relative {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-top-banner {
+    background: url(../assets/landing/images/coins effect.jpg);
+      background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 @media (min-width: 960px) {
     .col-md-4 {
         max-width: 100% !important;
@@ -69,6 +90,7 @@ h2 small {
 
 p {
     font-size: 18px;
+    font-weight: 600;
     text-align: center;
 }
 

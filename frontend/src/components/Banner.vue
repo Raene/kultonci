@@ -57,7 +57,7 @@ export default {
 </script>
 <style scoped>
 section {
-    padding: 200px 0;
+    padding: 192px 0;
 }
 
 .relative {
@@ -70,22 +70,24 @@ section {
     right: 0;
     top: 0;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/coin.jpg);
+    background: url(../assets/landing/images/bitcoin and money.jpg);
     background-size: cover;
     /* opacity: .9; */
     /* background-color: black; */
 }
 
 .page-top-banner .overlay-bg {
-    opacity: .9;
+    /*opacity: 1;*/
+    /*background-color: black;*/
 }
 
 .page-top-banner h1 {
     color: #fff;
-    font-size: 3.4375rem;
+    font-size: 55px;
     margin-bottom: 10px;
 }
 
@@ -111,6 +113,9 @@ section {
 }
 .banner-caption {
     transform: translateY(4rem);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+                 0px 8px 13px rgba(0, 0, 0, 0.1),
+                 0px 18px 23px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: transform 1s 0.4s ease-out, opacity 0.5s 0.4s ease-out;
     will-change: transform, opacity;

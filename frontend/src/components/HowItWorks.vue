@@ -1,5 +1,6 @@
 <template>
-    <section id="testimonial">
+    <section id="testimonial" class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+        <div class="overlay overlay-bg"></div>
         <div class="section-title show-on-scroll">
             <h2>How it works</h2>
             <em>Four easy steps to start earning</em>
@@ -32,6 +33,26 @@
     </section>
 </template>
 <style scoped>
+/*.relative {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-top-banner {
+    background: url(../assets/landing/images/gir bitcoin hand.jpg);
+      background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
 .grid-container {
     display: grid;
     grid-template-areas: "first second third fourth";
@@ -85,6 +106,10 @@ span {
     line-height: 60px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.section-title {
+    color: white;
 }
 
 @media (max-width: 768px) {
