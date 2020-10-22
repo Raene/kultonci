@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow mb-4">
         <div class="card-body text-center">
-            <img :src="'http://localhost:3000/'+path" alt="...">
+            <img :src="'http://198.211.96.170:3000/'+path" alt="...">
             <div class="card-footer">
                 <div class="row align-items-center justify-content-between">
                     <!-- <div class="col-auto">

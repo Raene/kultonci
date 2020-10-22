@@ -7,6 +7,8 @@
                     <div class="col-lg-12 text-center">
                         <h1>Investment Packages</h1>
                         <!-- <h4>Contact Us For Request & Inquiries</h4> -->
+                        <hr>
+                        <h4>We take great pride in working with honesty and building trust with clients. As professionals in the field, we aim to use our trading knowledge and experience in order to help create a positive investment outcome. Take a look below to see all that we offer, and get in touch.</h4>
                     </div>
                 </div>
             </div>
@@ -16,18 +18,17 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <hr>
-                        <p style="font-size: 18px;">We take great pride in working with honesty and building trust with clients. As professionals in the field, we aim to use our trading knowledge and experience in order to help create a positive investment outcome. Take a look below to see all that we offer, and get in touch.</p>
+                        
                     </div>
                     <section id="feature" class="inner-section">
                         <div class="container">
                             <div class="row">
-                                <!-- <div class="col-md-6 col-sm-12">
+                                <!-- <div class="col-md-12 col-sm-12">
                                     <div class="contact-image">
                                         <img src="../assets/landing/images/contact-image.jpg" class="img-responsive" alt="Smiling Two Girls">
                                     </div>
                                 </div> -->
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb">
                                         <!-- <span>01</span> -->
                                         <h3 class="inv-title">Daily Investment Packages</h3>
@@ -58,30 +59,50 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb middle">
-                                        <h3 class="inv-title2">Investment Plan For NFP Trade</h3>
-                                        <!-- <hr> -->
+                                        <h3 class="inv-title2">Trading Investment Packages</h3>
                                         <div class="sub-packages">
-                                            <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
-                                            <p>Minimum Investment of <strong>$3,000</strong></p>
-                                            <p>Maximum Investment of <strong>$1,000,000</strong></p>
-                                            <p><strong>MONTHLY RETURNS 50% PROFIT</strong></p>
-                                            <P>Every first Saturday of the month is the payday for NFP.</P>
+                                            <h5>1ST PACKAGE - BRONZE</h5>
+                                            <p>Minimum Investment of <strong>$2,000</strong></p>
+                                            <p>Maximum Investment of <strong>$4,999</strong></p>
+                                            <p><strong>WEEKLY RETURNS 10%</strong></p>
+                                            <p><strong>REFERRAL BONUS 5%</strong></p>
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>WHAT IS NFP ( NON-FARM PAYROLL)?</h5>
-                                            <p>The non-farm payroll ( NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of nonprofit organisations. Non-farm Payroll is among the biggest market movers in the foreign exchange market. On the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S - along with other labour market.</p>
+                                            <h5>2ND PACKAGE - SILVER</h5>
+                                            <p>Minimum Investment of <strong>$5,000</strong></p>
+                                            <p>Maximum Investment of <strong>$19,999</strong></p>
+                                            <p><strong>WEEKLY RETURNS 15%</strong></p>
+                                            <p><strong>REFERRAL BONUS 7%</strong></p>
+                                        </div>
+                                        <hr>
+                                        <div class="sub-packages">
+                                            <h5>3RD PACKAG - GOLD</h5>
+                                            <p>Minimum Investment of <strong>$20,000</strong></p>
+                                            <p>Maximum Investment of <strong>$29,999</strong></p>
+                                            <p><strong>WEEKLY RETURNS 20%</strong></p>
+                                            <p><strong>REEFERRAL BONUS 10%</strong></p>
+                                        </div>
+                                        <hr>
+                                        <div class="sub-packages">
+                                            <h5>4TH PACKAGE - DIAMOND</h5>
+                                            <p>Minimum Investment of <strong>$30,000</strong></p>
+                                            <p>Maximum Investment of <strong>$350,000</strong></p>
+                                            <p><strong>WEEKLY RETURNS 25%</strong></p>
+                                            <p><strong>REFERRAL BONUS 15%</strong></p>
                                         </div>
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="feature-thumb middle">
-                                        <h3 class="inv-title2">Compounding Investment Packages</h3>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="feature-thumb">
+                                        <h3 class="inv-title">Compounding Investment Packages</h3>
                                         <!-- <hr> -->
                                         <div class="sub-packages">
                                             <h5>ONE MONTH - BRONZE</h5>
@@ -118,40 +139,23 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="feature-thumb">
-                                        <h3 class="inv-title">Trading Investment Packages</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="feature-thumb middle">
+                                        <h3 class="inv-title2">Investment Plan For NFP Trade</h3>
+                                        <!-- <hr> -->
                                         <div class="sub-packages">
-                                            <h5>1ST PACKAGE - BRONZE</h5>
-                                            <p>Minimum Investment of <strong>$2,000</strong></p>
-                                            <p>Maximum Investment of <strong>$4,999</strong></p>
-                                            <p><strong>WEEKLY RETURNS 10%</strong></p>
-                                            <p><strong>REFERRAL BONUS 5%</strong></p>
+                                            <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
+                                            <p>Minimum Investment of <strong>$3,000</strong></p>
+                                            <p>Maximum Investment of <strong>$1,000,000</strong></p>
+                                            <p><strong>MONTHLY RETURNS 50% PROFIT</strong></p>
+                                            <P>Every first Saturday of the month is the payday for NFP.</P>
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>2ND PACKAGE - SILVER</h5>
-                                            <p>Minimum Investment of <strong>$5,000</strong></p>
-                                            <p>Maximum Investment of <strong>$19,999</strong></p>
-                                            <p><strong>WEEKLY RETURNS 15%</strong></p>
-                                            <p><strong>REFERRAL BONUS 7%</strong></p>
-                                        </div>
-                                        <hr>
-                                        <div class="sub-packages">
-                                            <h5>3RD PACKAG - GOLD</h5>
-                                            <p>Minimum Investment of <strong>$20,000</strong></p>
-                                            <p>Maximum Investment of <strong>$29,999</strong></p>
-                                            <p><strong>WEEKLY RETURNS 20%</strong></p>
-                                            <p><strong>REEFERRAL BONUS 10%</strong></p>
-                                        </div>
-                                        <hr>
-                                        <div class="sub-packages">
-                                            <h5>4TH PACKAGE - DIAMOND</h5>
-                                            <p>Minimum Investment of <strong>$30,000</strong></p>
-                                            <p>Maximum Investment of <strong>$350,000</strong></p>
-                                            <p><strong>WEEKLY RETURNS 25%</strong></p>
-                                            <p><strong>REFERRAL BONUS 15%</strong></p>
+                                            <h5>WHAT IS NFP ( NON-FARM PAYROLL)?</h5>
+                                            <p>The non-farm payroll ( NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of nonprofit organisations. Non-farm Payroll is among the biggest market movers in the foreign exchange market. On the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S - along with other labour market.</p>
                                         </div>
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
@@ -166,8 +170,12 @@
     </div>
 </template>
 <style scoped>
+.col-md-12 {
+    max-width: 650px;
+    margin: 0 auto;
+}
 section {
-    padding:  120px 0;
+    padding:  230px 0;
 }
 
 .sect {
@@ -185,6 +193,7 @@ section {
     right: 0;
     top: 0;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .page-top-banner {
   background: url(../assets/landing/images/bitcoin pocket.jpg);
