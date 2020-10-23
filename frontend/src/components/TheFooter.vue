@@ -57,43 +57,59 @@
     </footer>
  -->
     <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2>Contact Us</h2>
-                        </div>
-                        <p class="text-left">For enquiries, request or complaints...</p>
-                        <figure>
-                            <span><i class="fa fa-envelope"></i></span>
-                            <figcaption>
-                                <h2>Email</h2>
-                                <p><a href="mailto:kultoncitrades@gmail.com">kultoncitrades@gmail.com</a></p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2>Quick Links</h2>
-                        </div>
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a href="#">Investments</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">FAQs</a></li>
-                                <li><a href="#">Support</a></li>
-                            </ul>
-                        </div>
-                        <div class="copyright-text" style="margin-top: 30px;">
-                            <p>Copyright &copy; 2015 - 2020 Kulton CI Trading</p>
-                            <p>All rights reserved</p>
+        <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+            <div class="overlay overlay-bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="footer-info">
+                            <div class="section-title">
+                                <h2>Contact Us</h2>
+                            </div>
+                            <p class="text-left">For enquiries, request or complaints...</p>
+                            <figure>
+                                <span><i class="fa fa-address-card"></i></span>
+                                <figcaption>
+                                    <h4>Address</h4>
+                                    <address>
+                                        <p>
+                                            St Andrews Square, Central Edinburgh, Edinburgh. EH2 , United Kingdom
+                                        </p>
+                                    </address>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <span><i class="fa fa-envelope"></i></span>
+                                <figcaption>
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:kultoncitrades@gmail.com">kultoncitrades@gmail.com</a></p>
+                                </figcaption>
+                            </figure>
                         </div>
                     </div>
-                </div>
-                <!-- <div class="col-md-4 col-sm-12">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="footer-info">
+                            <div class="section-title">
+                                <h2>Quick Links</h2>
+                            </div>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">Investments</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer_image">
+                                <img class="img-responsive" src="@/assets/landing/images/Kulton CI.jpg">
+                            </div>
+                            <div class="copyright-text" style="margin-top: 30px;">
+                                <p>Copyright &copy; 2015 - 2020 Kulton CI Trading</p>
+                                <p>All rights reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-4 col-sm-12">
                     <div class="footer-info newsletter-form">
                         <div class="section-title">
                             <h2>Newsletter Signup</h2>
@@ -109,11 +125,33 @@
                         </div>
                     </div>
                 </div> -->
+                </div>
             </div>
-        </div>
+        </section>
     </footer>
 </template>
 <style scoped>
+.relative {
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 215, 0, 0.6);
+
+}
+.page-top-banner {
+  background: url(../assets/landing/images/coin.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+  /* opacity: .9; */
+  /* background-color: black; */
+}
 footer h2 {
     font-size: 20px !important;
     text-transform: capitalize;
@@ -124,10 +162,11 @@ figure {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 10px;
 }
 
 figure span i {
-    background: gold;
+    background: transparent;
     border: 1px solid black;
     /*border-radius: 50px;*/
     color: #000000;
@@ -139,11 +178,26 @@ figure span i {
 }
 
 footer {
-    padding: 30px;
+    padding: 0;
 }
 
 figcaption {
     margin-left: 10px;
+    line-height: 17px;
+}
+
+figcaption h4 {
+    color: black;
+}
+
+
+address p {
+    line-height: 20px;
+}
+
+.footer_image {
+    width: 60px;
+    margin-top: 15px;
 }
 
 @media (max-width: 480px) {
@@ -152,6 +206,7 @@ figcaption {
         padding-left: 0 !important;
     }
 }
+
 /*figure {
     display: inline-block;
     vertical-align: top;
