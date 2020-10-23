@@ -238,6 +238,26 @@ export default {
             this.$store.commit("user/SET_PROFILE", null);
         }
         this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+        this.$store.dispatch("user/getUser", JSON.parse(user).id)
+            .then((data) => {
+                console.log("userdata: ", data.data.data[0].userVerified);
+                if(data.data.data[0].userVerified === 0) {
+                    this.$swal({
+                        icon: "info",
+                        title: "Your “image” is being processed and your account is under review. Make an Investment now to speed up the process",
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 7000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                            toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                        }
+                    });
+                }
+            })
+            .catch(err => console.log(err));
     }
 }
 </script>
