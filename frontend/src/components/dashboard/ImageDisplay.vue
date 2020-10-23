@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow mb-4">
         <div class="card-body text-center">
-            <img :src="'https://kultonci.com/server/images/'+path" alt="...">
+            <img :src="'https://kultonci.com/images/'+path" alt="...">
             <div class="card-footer">
                 <div class="row align-items-center justify-content-between">
                     <!-- <div class="col-auto">

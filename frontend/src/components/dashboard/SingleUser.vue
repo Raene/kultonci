@@ -18,7 +18,7 @@
                                 <div class="card-body text-center">
                                     <div class="avatar avatar-lg mt-4">
                                         <a @click.prevent="viewImage" href="">
-                                            <img :src="'https://kultonci.com/server/images/'+kycPath" alt="..." class="avatar-img rounded-circle">
+                                            <img :src="'https://kultonci.com/images/'+kycPath" alt="..." class="avatar-img rounded-circle">
                                         </a>
                                     </div>
                                     <div class="card-text my-2">
