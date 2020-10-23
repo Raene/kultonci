@@ -40,6 +40,34 @@ exports.login = function (con) {
     }
 }
 
+exports.passwordResetToken = function (con) {
+    return async (ctx) => {
+        try {
+            const data = ctx.request.body;
+            const user = new UserModel({},null,con,'user');
+            let userExists = await user.getByValue(data.email,'email');
+            if(userExists.length <= 0){
+                throw new Error("Email not Found");
+            }
+
+        } catch (error) {
+            console.log(error);
+            ctx.throw(500,error)
+        }
+    }
+}
+
+exports.passwordReset = function (con) {
+    return async (ctx) => {
+        try {
+            
+        } catch (error) {
+            console.log(error);
+            ctx.throw(500,error)
+        }
+    }
+}
+
 exports.get = function (con) {
     return async (ctx) => {
         try {
