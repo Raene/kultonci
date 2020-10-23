@@ -8,7 +8,7 @@
                     <span class="icon icon-bar"></span>
                 </button>
                 <!-- lOGO TEXT HERE -->
-                <a href="#" class="navbar-brand">Kulton CI</a>
+                <a href="https://www.kultonci.com" class="navbar-brand"><img class="navbar-img" src="@/assets/landing/images/Kulton CI.png"></a>
             </div>
             <!-- MENU LINKS -->
             <div class="collapse navbar-collapse">
@@ -42,7 +42,7 @@
                     <li>
                         <router-link v-if="!profile" to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
                         <router-link v-else-if="profile && routeName!=='UserWallet'" to="/user-wallet"><i class="fa fa-user"></i> {{ profile.name }}</router-link>
-                        <button @click="logout" v-if="profile && routeName === 'UserWallet'" class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
+                        <button style="margin-top: 10px;" @click="logout" v-if="profile && routeName === 'UserWallet'" class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
                     </li>
                 </ul>
             </div>
@@ -81,6 +81,50 @@ export default {
 }
 </script>
 <style scoped>
+.navbar-img {
+    max-width: 87px;
+    margin-top: -25px;
+}
+
+@media (max-width: 768px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -21px;
+    }
+}
+@media (max-width: 480px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -33px;
+    }
+}
+
+.section-btn {
+    background-color: black;
+    color: gold;
+    border: none;
+    /*transform: scale(1); */
+    text-transform: none;
+    letter-spacing: normal;
+    transition: all .3s ease-out;
+}
+
+.section-btn:hover {
+    /*transform: scale(1.01);*/
+    background-color: gold;
+    color: black;
+}
+.section-btn:active {
+    background-color: black;
+    color: gold;
+    border: none;
+}
+.section-btn:focus {
+    background-color: black;
+    color: gold;
+    border: none;
+    outline: none;
+}
 .container {
     padding-right: 15px !important;
     padding-left: 15px !important;

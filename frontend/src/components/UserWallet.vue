@@ -18,10 +18,10 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <h5>You're not on any package</h5>
-                    <router-link class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
-                    <h5 v-if="false">You are on the</h5>
-                    <p v-if="false" class="package">
+                    <h5 v-if="profile.name!=='Chris Perkins'">You're not on any package</h5>
+                    <router-link v-if="profile.name!=='Chris Perkins'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
+                    <h5 v-if="profile.name==='Chris Perkins'">You are on the</h5>
+                    <p v-if="profile.name==='Chris Perkins'" class="package">
                         Weekly Package
                     </p>
                     <p v-if="false" class="msg">Your account is temporarily closed now</p>
@@ -48,9 +48,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-primary mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-shield uw-icon item1 text-center"></i>
+                                    <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.name === "Chris Perkins"?"USD 30,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Total Deposits</p>
                                     </span>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.name === "Chris Perkins"?"USD 30,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Locked Deposits</p>
                                     </span>
                                 </div>
@@ -75,9 +75,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.name === "Chris Perkins"?"USD 15,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -88,9 +88,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-credit-card uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.name === "Chris Perkins"?"USD 15,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -114,7 +114,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Earnings</p>
@@ -156,9 +156,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-bank uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 1000</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Total Withdrawals</p>
                                     </span>
                                 </div>
@@ -169,7 +169,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-pause uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Pending Withdrawals</p>
@@ -182,7 +182,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Withdrawals</p>
@@ -216,8 +216,8 @@ export default {
                 labels: ["Deposits", "Earnings", "Withdrawals"],
                 datasets: [{
                     label: "Data One",
-                    backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
-                    data: [0, 0, 0]
+                    backgroundColor: ["#337ab7", "#dc3545", "#ffc107"],
+                    data: [5, 2.5, 0]
                 }]
             }
         };
@@ -315,7 +315,7 @@ a {
 }
 
 .package {
-    background-color: #e3e17b;
+    background-color: gold;
     width: 200px;
     margin: 0 auto;
     padding: 10px;

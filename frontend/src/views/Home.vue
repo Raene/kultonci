@@ -4,6 +4,7 @@
     	<TheHeader />
     	<Banner id="home" />
         <SecondBanner />
+        <AboutPreview />
         <HowItWorks />
         <!-- <About id="about-us" /> -->
         <!-- <Mission />
@@ -32,7 +33,7 @@ import VueInjectJs from "vue-inject-js";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
-// import About from "@/components/About.vue";
+import AboutPreview from "@/components/AboutPreview.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 // import Mission from "@/components/Mission.vue";
 // import Vision from "@/components/Vision.vue";
@@ -51,7 +52,7 @@ export default {
         TheHeader,
         Banner,
         SecondBanner,
-        // About,
+        AboutPreview,
         HowItWorks,
         // Mission,
         // Vision,
