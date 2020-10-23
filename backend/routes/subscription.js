@@ -5,7 +5,7 @@ let userInvestment = require('../contollers/userInvestment');
 
 exports.subscription = function (router,con) {
    const route = new router({
-       prefix: '/subscription'
+       prefix: '/server/subscription'
    });
    return route.get('/', controller.subscribe(con))
                .get('/investments/:id', userInvestment.getInvestments(con));

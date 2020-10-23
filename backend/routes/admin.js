@@ -6,7 +6,7 @@ let {loginRequired, isAdmin, isSuperAdmin} = require('../middlewares/auth');
 
 exports.admin = function(router,con) {
     const route = new router({
-        prefix: '/admin'
+        prefix: '/server/admin'
     });
     return route.post('/verifySub',loginRequired,isAdmin,controller.verifySub(con))
                 .post('/btcAddress',loginRequired,isAdmin,controller.insertBTCaddr(con))
