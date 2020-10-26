@@ -51,6 +51,15 @@ const routes = [
       import(/* webpackChunkName: "investment-packages" */ "../views/InvestmentPackages.vue")
   },
   {
+    path: "/investment-packages/:id",
+    name: "singlePackage",
+    // route level code-splitting
+    // this generates a separate chunk (investment-packages.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "single-package" */ "../views/SinglePackage.vue")
+  },
+  {
     path: "/faqs",
     name: "FAQs",
     // route level code-splitting

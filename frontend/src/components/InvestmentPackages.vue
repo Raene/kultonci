@@ -56,7 +56,7 @@
                                             <p><strong>DAILY RETURNS 2%</strong></p>
                                             <p><strong>REEFERRAL BONUS 10%</strong></p>
                                         </div>
-                                        <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
+                                        <router-link :to="!user? '/login': '/investment-packages/2'" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
                             </div>
@@ -169,6 +169,26 @@
     </section>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            user: localStorage.getItem("user")
+        }
+    }
+    // computed: {
+    //     path() {
+    //         const user = localStorage.getItem("user");
+    //         if(!user) {
+    //             return "/login";
+    //         }
+    //         return "/signup";
+    //     }
+    // }
+}
+</script>
+
 <style scoped>
 .col-md-12 {
     max-width: 650px;
