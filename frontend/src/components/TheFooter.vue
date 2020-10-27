@@ -82,7 +82,7 @@
                                 <span><i class="fa fa-envelope"></i></span>
                                 <figcaption>
                                     <h4>Email</h4>
-                                    <p><a href="mailto:kultoncitrades@gmail.com">kultoncitrades@gmail.com</a></p>
+                                    <p><a href="mailto:support@kultonci.com">support@kultonci.com</a></p>
                                 </figcaption>
                             </figure>
                         </div>
