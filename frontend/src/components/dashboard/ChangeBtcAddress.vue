@@ -2,7 +2,7 @@
     <div class="col-md-12 my-4">
         <div class="card shadow mb-4">
             <div class="card-header">
-                <strong class="card-title">Change BTC address</strong>
+                <strong class="card-title">Create BTC address</strong>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -12,7 +12,7 @@
                                 <!-- <label for="simpleinput">Text</label> -->
                                 <input v-model="btcAddress" type="text" id="simpleinput" class="form-control" placeholder="Enter BTC address">
                             </div>
-                            <button type="submit" class="btn btn-primary">Change</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </form>
                     </div> <!-- /.col -->
                 </div>
@@ -31,13 +31,20 @@ export default {
     methods: {
         changeBtcAddress() {
             console.log("changed to: ", this.btcAddress);
-            this.$swal({
-                position: "center",
-                icon: "success",
-                title: "BTC address changed",
-                showConfirmButton: false,
-                timer: 1500
-            })
+            this.$store.dispatch("btc/create_btc_address", {address: this.btcAddress})
+                .then((data) => {
+                    console.log("btc data: ", data.data);
+                    this.$store.commit("btc/SET_BTC_ADDRESS", data);
+                    this.$swal({
+                        position: "center",
+                        icon: "success",
+                        title: data.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    this.btcAddress = null;
+                })
+                .catch(err => console.log(err));
         }
     }
 }

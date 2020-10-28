@@ -6,7 +6,7 @@
                 <div class="row mt-5 align-items-center">
                     <div class="col-md-3 text-center mb-5">
                         <div class="avatar avatar-xl">
-                            <img :src="'https://kultonci.com/images/'+kycPath" alt="..." class="avatar-img rounded-circle img-thumbnail">
+                            <img :src="url + kycPath" alt="..." class="avatar-img rounded-circle img-thumbnail">
                         </div>
                     </div>
                     <div class="col">
@@ -213,7 +213,8 @@ export default {
     data() {
         return {
             userId: this.$route.params.profileId,
-            kycPath: null
+            kycPath: null,
+            url: process.env.VUE_APP_IMAGE_URL
         };
     },
 
@@ -231,6 +232,7 @@ export default {
                 this.$store.commit("user/SET_USER", data.data.data[0]);
                 const fullUserPath = data.data.data[0].kycPath;
                 this.kycPath = fullUserPath;
+                console.log("kycPath: ", this.kycPath);
             })
             .catch(err => {
                 console.log(err);
