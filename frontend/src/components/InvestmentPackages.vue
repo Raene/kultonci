@@ -216,7 +216,7 @@ section {
     background-color: rgba(0, 0, 0, 0.5);
 }
 .page-top-banner {
-  background: url(../assets/landing/images/bitcoin pocket.jpg);
+  background: url(../assets/landing/images/bitcoin pocket_1.jpg);
   background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

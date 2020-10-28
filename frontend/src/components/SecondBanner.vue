@@ -1,6 +1,6 @@
 <template>
     <section id="testimonial" class="testimonial show-on-scroll">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
@@ -22,7 +22,7 @@
     </section>
 </template>
 <style scoped>
-.container-fluid {
+.container:nth-child(1) {
     border: 1px solid gold;
     padding: 20px;
 }

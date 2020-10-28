@@ -8,7 +8,7 @@
                     <span class="icon icon-bar"></span>
                 </button>
                 <!-- lOGO TEXT HERE -->
-                <a href="https://www.kultonci.com" class="navbar-brand"><img class="navbar-img" src="@/assets/landing/images/Kulton CI.png"></a>
+                <a href="https://kultonci.com" class="navbar-brand"><img class="navbar-img" src="@/assets/landing/images/Kulton CI.png"></a>
             </div>
             <!-- MENU LINKS -->
             <div class="collapse navbar-collapse">

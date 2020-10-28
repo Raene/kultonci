@@ -60,7 +60,7 @@ section {
 
 }
 .page-top-banner {
-  background: url(../assets/landing/images/girl bitcoin body.jpg);
+  background: url(../assets/landing/images/girl bitcoin body_1.jpg);
   background-size: cover;
   background-attachment: fixed;
     background-position: center;

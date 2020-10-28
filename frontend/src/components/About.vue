@@ -40,7 +40,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="contact-image">
               <img
-                src="@/assets/landing/images/coin.jpg"
+                src="@/assets/landing/images/coin_1.jpg"
                 class="img-responsive img-thumbnail"
                 alt="Smiling Two Girls"
               />
@@ -69,7 +69,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="contact-image">
               <img
-                src="@/assets/landing/images/deal.jpg"
+                src="@/assets/landing/images/deal_1.jpg"
                 class="img-responsive img-thumbnail"
                 alt="Smiling Two Girls"
               />
@@ -80,7 +80,7 @@
           <div class="col-md-6 col-sm-12">
             <div class="contact-image">
               <img
-                src="@/assets/landing/images/man silver bitcoin.jpg"
+                src="@/assets/landing/images/man silver bitcoin_1.jpg"
                 class="img-responsive img-thumbnail"
                 alt="Smiling Two Girls"
               />
@@ -97,27 +97,12 @@
             <p>Whether it is our customer service, variety of instruments and platform or any of our other services – we work hard to insure our clients have a pleasant earning experience with us.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-            <coingecko-coin-list-widget
-              coin-ids="bitcoin,ethereum,eos,ripple,litecoin"
-              currency="usd"
-              locale="en"
-            ></coingecko-coin-list-widget>
-          </div>
-        </div>
       </div>
     </section>
-    <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-list-widget.js" />
   </div>
 </template>
 <script>
-import VueInjectJs from "vue-inject-js";
 export default {
-  components: {
-    VueInjectJs
-  },
-
   computed: {
     routeName() {
       if (this.$route.name !== "About") {
@@ -161,7 +146,7 @@ export default {
 }
 
 .page-top-banner {
-  background: url(../assets/landing/images/coins effect.jpg);
+  background: url(../assets/landing/images/coins effect_1.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
