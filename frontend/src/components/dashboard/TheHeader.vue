@@ -1,5 +1,6 @@
 <template>
       <nav class="topnav navbar navbar-light">
+      	<a href="https://kultonci.com" class="navbar-brand"><img class="navbar-img" src="@/assets/landing/images/Kulton CI.png"></a>
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
           <i class="fe fe-menu navbar-toggler-icon"></i>
         </button>
@@ -8,3 +9,24 @@
         </form> -->
       </nav>
 </template>
+
+<style scoped>
+.navbar-img {
+    max-width: 87px;
+    margin-top: -25px;
+}
+
+@media (max-width: 768px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -21px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -33px;
+    }
+}
+</style>

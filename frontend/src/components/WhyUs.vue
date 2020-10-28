@@ -60,7 +60,7 @@ export default {
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/gir bitcoin hand.jpg);
+    background: url(../assets/landing/images/gir bitcoin hand_1.jpg);
       background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

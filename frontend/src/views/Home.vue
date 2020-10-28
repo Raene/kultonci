@@ -4,6 +4,13 @@
         <TheHeader />
         <Banner id="home" />
         <SecondBanner />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <coingecko-coin-list-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-list-widget>
+                </div>
+            </div>
+        </div>
         <AboutPreview />
         <HowItWorks />
         <!-- <About id="about-us" /> -->
@@ -17,6 +24,7 @@
         <TheFooter />
         <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
         <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-list-widget.js" />
         <VueInjectJs src="/landing/js/jquery.js" />
         <!-- <VueInjectJs src="/landing/js/smoothscroll.js" /> -->
         <VueInjectJs src="/landing/js/bootstrap.min.js" />

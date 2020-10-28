@@ -144,7 +144,7 @@
 
 }
 .page-top-banner {
-  background: url(../assets/landing/images/coin.jpg);
+  background: url(../assets/landing/images/coin_1.jpg);
   background-size: cover;
   background-attachment: fixed;
     background-position: center;
@@ -204,6 +204,8 @@ address p {
     p {
         text-align: left !important;
         padding-left: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
     }
 }
 

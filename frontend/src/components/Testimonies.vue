@@ -73,7 +73,7 @@
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/old man money.jpg);
+    background: url(../assets/landing/images/old man money_1.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
