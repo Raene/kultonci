@@ -1,6 +1,7 @@
 <template>
     <div>
-        <section id="testimonial">
+        <section id="testimonial" class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+            <div class="overlay overlay-bg"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
@@ -13,9 +14,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="feature" class="inner-section page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
-            <div class="overlay overlay-bg"></div>
+            <section id="feature" class="inner-section">
             <div class="container">
                 <div class="row">
                     <!-- <div class="col-md-6 col-sm-12">
@@ -56,6 +55,7 @@
                 </div>
             </div>
         </section>
+        </section>
     </div>
 </template>
 <style scoped>
@@ -69,11 +69,11 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/old man money.jpg);
+    background: url(../assets/landing/images/old man money_1.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

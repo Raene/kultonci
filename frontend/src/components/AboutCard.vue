@@ -62,7 +62,7 @@ h4 {
     color: white;
     padding: 20px;
     background: #000000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 1);*/
 }
 
 /*.grid-item:nth-child(1) {

@@ -56,11 +56,11 @@ section {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
 
 }
 .page-top-banner {
-  background: url(../assets/landing/images/girl bitcoin body.jpg);
+  background: url(../assets/landing/images/girl bitcoin body_1.jpg);
   background-size: cover;
   background-attachment: fixed;
     background-position: center;

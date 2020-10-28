@@ -74,7 +74,7 @@ section {
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/bitcoin and money.jpg);
+    background: url(../assets/landing/images/coins_1.jpg);
     background-size: cover;
     /* opacity: .9; */
     /* background-color: black; */

@@ -34,7 +34,7 @@
                                         <h3 class="inv-title">Daily Investment Packages</h3>
                                         <!-- <hr> -->
                                         <div class="sub-packages">
-                                            <h5>1ST PACKAGE - BRONZE</h5>
+                                            <h5>DAILY - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,500</strong></p>
                                             <p>Maximum Investment of <strong>$4,999</strong></p>
                                             <p><strong>DAILY RETURNS 1%</strong></p>
@@ -42,7 +42,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>2ND PACKAGE - SILVER</h5>
+                                            <h5>DAILY - SILVER</h5>
                                             <p>Minimum Investment of <strong>$5,000</strong></p>
                                             <p>Maximum Investment of <strong>$9,999</strong></p>
                                             <p><strong>DAILY RETURNS 1.5%</strong></p>
@@ -50,22 +50,22 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>3RD PACKAGE - GOLD</h5>
+                                            <h5>DAILY - GOLD</h5>
                                             <p>Minimum Investment of <strong>$10,000</strong></p>
                                             <p>Maximum Investment of <strong>$19,999</strong></p>
                                             <p><strong>DAILY RETURNS 2%</strong></p>
                                             <p><strong>REEFERRAL BONUS 10%</strong></p>
                                         </div>
-                                        <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
+                                        <router-link :to="!user? '/login': '/investment-packages/2'" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb middle">
-                                        <h3 class="inv-title2">Trading Investment Packages</h3>
+                                        <h3 class="inv-title2">Weekly Investment Packages</h3>
                                         <div class="sub-packages">
-                                            <h5>1ST PACKAGE - BRONZE</h5>
+                                            <h5>WEEKLY - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,000</strong></p>
                                             <p>Maximum Investment of <strong>$4,999</strong></p>
                                             <p><strong>WEEKLY RETURNS 10%</strong></p>
@@ -73,7 +73,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>2ND PACKAGE - SILVER</h5>
+                                            <h5>WEEKLY - SILVER</h5>
                                             <p>Minimum Investment of <strong>$5,000</strong></p>
                                             <p>Maximum Investment of <strong>$19,999</strong></p>
                                             <p><strong>WEEKLY RETURNS 15%</strong></p>
@@ -81,7 +81,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>3RD PACKAG - GOLD</h5>
+                                            <h5>WEEKLY - GOLD</h5>
                                             <p>Minimum Investment of <strong>$20,000</strong></p>
                                             <p>Maximum Investment of <strong>$29,999</strong></p>
                                             <p><strong>WEEKLY RETURNS 20%</strong></p>
@@ -89,7 +89,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>4TH PACKAGE - DIAMOND</h5>
+                                            <h5>WEEKLY - DIAMOND</h5>
                                             <p>Minimum Investment of <strong>$30,000</strong></p>
                                             <p>Maximum Investment of <strong>$350,000</strong></p>
                                             <p><strong>WEEKLY RETURNS 25%</strong></p>
@@ -105,7 +105,7 @@
                                         <h3 class="inv-title">Compounding Investment Packages</h3>
                                         <!-- <hr> -->
                                         <div class="sub-packages">
-                                            <h5>ONE MONTH - BRONZE</h5>
+                                            <h5>MONTHLY - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,000</strong></p>
                                             <p>Maximum Investment of <strong>$3,999</strong></p>
                                             <p><strong>11% weekly for 4 weeks</strong></p>
@@ -113,7 +113,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>TWO MONTHS - SILVER</h5>
+                                            <h5>MONTHLY - SILVER</h5>
                                             <p>Minimum Investment of <strong>$4,000</strong></p>
                                             <p>Maximum Investment of <strong>$7,999</strong></p>
                                             <p><strong>13% weekly for 8 weeks</strong></p>
@@ -121,7 +121,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>THREE MONTHS - GOLD</h5>
+                                            <h5>MONTHLY - GOLD</h5>
                                             <p>Minimum Investment of <strong>$8,000</strong></p>
                                             <p>Maximum Investment of <strong>$11,999</strong></p>
                                             <p><strong>16% weekly for 12 weeks</strong></p>
@@ -129,7 +129,7 @@
                                         </div>
                                         <hr>
                                         <div class="sub-packages">
-                                            <h5>SIX MONTHS - DIAMOND</h5>
+                                            <h5>MONTHLY - DIAMOND</h5>
                                             <p>Minimum Investment of <strong>$12,000</strong></p>
                                             <p>Maximum Investment of <strong>$15,999</strong></p>
                                             <p><strong>19% weekly for 24 weeks</strong></p>
@@ -169,6 +169,26 @@
     </section>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            user: localStorage.getItem("user")
+        }
+    }
+    // computed: {
+    //     path() {
+    //         const user = localStorage.getItem("user");
+    //         if(!user) {
+    //             return "/login";
+    //         }
+    //         return "/signup";
+    //     }
+    // }
+}
+</script>
+
 <style scoped>
 .col-md-12 {
     max-width: 650px;
@@ -196,7 +216,7 @@ section {
     background-color: rgba(0, 0, 0, 0.5);
 }
 .page-top-banner {
-  background: url(../assets/landing/images/bitcoin pocket.jpg);
+  background: url(../assets/landing/images/bitcoin pocket_1.jpg);
   background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -291,6 +311,7 @@ h5 {
     background-color: gold;
     color: black;
     width: 100%;
+    text-transform: uppercase;
 }
 
 .middle {
@@ -338,5 +359,6 @@ middle:nth-child(1) .section-btn {
     background-color: black;
     color: gold;
     width: 100%;
+    text-transform: uppercase;
 }
 </style>

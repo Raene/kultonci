@@ -27,6 +27,12 @@
     border-color: black;
 }
 
+.section-btn:hover {
+    background: gold;
+    color: black;
+    border-color: black;
+}
+
 .container {
 	padding-left: 11%;
 	padding-right: 11%;

@@ -18,13 +18,15 @@
                     </thead>
                     <tbody>
                         <tr v-for="user in users" :key="user.id">
-                            <td>{{ user.userId }}</td>
-                            <td>{{ user.name }}</td>
-                            <td>{{ user.userEmail }}</td>
-                            <td><router-link :to="'/dashboard/users/' + user.userId"><span :class="{ badge: true, 'badge-pill': true, 'badge-danger': user.userVerified === 0, 'badge-success': user.userVerified === 1 }">{{ user.userVerified === 0? "Verify User":"Verified" }}</span></router-link></td>
-                            <!-- <td>901-6206 Cras Av.</td> -->
-                            <!-- <td>Apr 24, 2019</td> -->
-                            <td><span class="badge badge-pill badge-danger">Delete</span></td>
+                                <td>{{ user.userId }}</td>
+                                <td><router-link class="link-text" :to="'/dashboard/users/' + user.userId + '/profile'">{{ user.name }}</router-link></td>
+                                <td>{{ user.userEmail }}</td>
+                                <td>
+                                    <router-link :to="'/dashboard/users/' + user.userId"><span :class="{ badge: true, 'badge-pill': true, 'badge-danger': user.userVerified === 0, 'badge-success': user.userVerified === 1 }">{{ user.userVerified === 0? "Verify User":"Verified" }}</span></router-link>
+                                </td>
+                                <!-- <td>901-6206 Cras Av.</td> -->
+                                <!-- <td>Apr 24, 2019</td> -->
+                                <td><span @click="deleteUser(user.userId)" class="badge badge-pill badge-danger">Delete</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -32,69 +34,71 @@
         </div>
     </div> <!-- simple table -->
 </template>
-
 <script>
 export default {
-	computed: {
+    computed: {
         users() {
             return this.$store.getters['user/getUsers'];
         },
 
         userCount() {
-        	return this.$store.getters['user/getUserCount'];
+            return this.$store.getters['user/getUserCount'];
         }
     },
 
     methods: {
-	// refactor later
-    	// get genre via id
-    	// getGenre(book) {
-    	// 	let genreName;
-    	// 	for (const genre of this.genres) {
-    	// 		if (+book.genreId === +genre.id) {
-    	// 			genreName = genre.name;
-    	// 		}
-    	// 	}
-    	// 	return genreName;
-    	// },
-
-    	// // get author via id
-    	// getAuthor(book) {
-    	// 	let authorName;
-    	// 	this.authors.forEach((author) => {
-    	// 		if (+book.authorId === +author.id) {
-    	// 			authorName = author.name;
-    	// 		}
-    	// 	});
-    	// 	return authorName;
-    	// },
-
-    	// delete a book
-    	// deleteBook(bookId) {
-    	// 	this.$store.dispatch("book/deleteBook", bookId)
-     //            .then((err) => {
-     //                if (err) {
-     //                    console.log(err);
-     //                } else {
-     //                    console.log("Delete successful");
-     //                }
-     //            });
-    	// }
+        deleteUser(userId) {
+            this.$swal({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete user!"
+            }).then((result) => {
+                if (result.value) {
+                    this.$store.dispatch("user/deleteUser", userId).then(() => {
+                        this.$swal(
+                            "Deleted!",
+                            "User has been deleted.",
+                            "success"
+                        );
+                        this.$store.commit("user/deleteUser", userId);
+                    }).catch((e) => {
+                        console.log(e);
+                        this.$swal({
+                            position: "center",
+                            icon: "error",
+                            title: "User delete unsuccessful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+                }
+            });
+        }
     },
 
     mounted() {
         this.$store.dispatch("user/getUsers")
             .then((err) => {
-                if (err) {console.log(err)}
-                else {console.log("load successful")}
+                if (err) { console.log(err) } else { console.log("load successful") }
             })
             .catch(err => console.log("err from mounted", err));
     }
 };
 </script>
-
 <style scoped>
-.badge{
-	cursor: pointer;
+.badge {
+    cursor: pointer;
+}
+
+.link-text {
+    color: #ced4da;
+}
+
+.link-text:hover {
+    color: #3ad29f
 }
 </style>

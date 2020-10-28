@@ -2,10 +2,11 @@
     <div id="kyc">
         <Preloader v-if="isLoggingIn" />
         <div class="container" v-if="!isLoggingIn">
-            <h2 class="form-title">Verify your identity</h2>
-            <form @submit.prevent="signup" class="register-form">
+            <h2 v-if="path === '/signup'" class="form-title">Verify your identity</h2>
+            <h2 v-else class="form-title">Upload proof of payment</h2>
+            <form @submit.prevent="runKyc" class="register-form">
                 <div class="form-group">
-                    <p class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
+                    <p v-if="path === '/signup'" class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
                     <!-- <input id="kyc-input" type="file" name="kyc"> -->
                     <!-- <label for="fileInput" class="form-control-label">Upload your passport image, national ID, or Driver's Licence</label> -->
                     <br />
@@ -20,8 +21,12 @@
                     <!-- <span class="help-block">Please enter your password</span> -->
                     <!-- <handy-uploader data-app :documentAttachment.sync="handyAttachments" :fileUploaderType="'simple'" :maxFileSize="10240" :imageCompressor="true" :imageCompressLevel="0.8" :maxFileCount="10" :badgeCounter="false" :thumb="true" :changeFileName="true" :addFileDescription="true" :addFileTag="true" :tags="['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']" :btnColor="'#6dabe4'" :cardType="'raised'"></handy-uploader> -->
                 </div>
-                <div class="form-group form-button">
-                    <input type="submit" name="signup" id="signup" class="form-submit " value="Signup" />
+                <div v-if="path === '/signup'" class="form-group form-button">
+                    <button type="submit" class="form-submit">Upload</button>
+                    <!-- <input type="submit" name="signup" id="signup" class="form-submit " value="Signup" /> -->
+                </div>
+                <div v-else class="form-group form-button">
+                    <button type="submit" class="form-submit">Upload</button>
                 </div>
             </form>
         </div>
@@ -38,7 +43,8 @@ export default {
     data() {
         return {
             handyAttachments: [],
-            isLoggingIn: false
+            isLoggingIn: false,
+            path: this.$route.path
 
         };
     },
@@ -58,6 +64,13 @@ export default {
     // },
 
     methods: {
+        runKyc() {
+            if (this.path === "/signup") {
+                this.signup();
+            } else {
+                this.uploadProofOfPayment();
+            }
+        },
         signup() {
             const kyc = document.querySelector("#file-Input");
             console.log("kyc: ", kyc);
@@ -98,6 +111,43 @@ export default {
                     }
                 });
             // .catch(err => console.log(err));
+        },
+
+        uploadProofOfPayment() {
+            const kyc = document.querySelector("#file-Input");
+            console.log("beans: ", kyc);
+            const fd = new FormData();
+            fd.append("kyc", kyc.files[0]);
+            // this.$store.dispatch("user/uploadProof", fd)
+            //     .then((err) => {
+            //         if (err) {
+            //             this.isLoggingIn = false;
+            //             console.log(err);
+            //             this.$swal({
+            //             icon: "error",
+            //             title: "Signup Unsuccessful",
+            //             toast: true,
+            //             position: "top-end",
+            //             showConfirmButton: false,
+            //             timer: 3000,
+            //             timerProgressBar: true,
+            //             onOpen: (toast) => {
+            //                 toast.addEventListener("mouseenter", this.$swal.stopTimer);
+            //                 toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+            //             }
+            //         });
+            //         } else {
+            //             this.isLoggingIn = false;
+            //             this.$swal({
+            //             position: "center",
+            //             icon: "success",
+            //             title: "Signup Successful",
+            //             showConfirmButton: false,
+            //             timer: 1500
+            //         });
+            //             this.$router.push({ path: "/login" });
+            //         }
+            //     });
         },
 
         preview() {

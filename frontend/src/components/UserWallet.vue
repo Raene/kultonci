@@ -18,10 +18,10 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <h5>You're not on any package</h5>
-                    <router-link class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
-                    <h5 v-if="false">You are on the</h5>
-                    <p v-if="false" class="package">
+                    <h5 v-if="profile.email!=='perkinsproperties2015@gmail.com' || profile.email !== 'isairobles5@gmail.com'">You're not on any package</h5>
+                    <router-link style="text-decoration: none !important;" v-if="profile.email!=='perkinsproperties2015@gmail.com' || profile.email !== 'isairobles5@gmail.com'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
+                    <h5 v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'">You are on the</h5>
+                    <p v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'" class="package">
                         Weekly Package
                     </p>
                     <p v-if="false" class="msg">Your account is temporarily closed now</p>
@@ -48,9 +48,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-primary mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-shield uw-icon item1 text-center"></i>
+                                    <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Total Deposits</p>
                                     </span>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email==="isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Locked Deposits</p>
                                     </span>
                                 </div>
@@ -75,9 +75,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -88,9 +88,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-credit-card uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -103,7 +103,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">{{ profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
                                         <p class="card-text">Compounded Earnings</p>
                                     </span>
                                 </div>
@@ -114,7 +114,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Earnings</p>
@@ -156,9 +156,9 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-bank uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 1000</h5>
+                                        <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Total Withdrawals</p>
                                     </span>
                                 </div>
@@ -169,7 +169,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-pause uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Pending Withdrawals</p>
@@ -182,7 +182,7 @@
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
                                 <div class="card-body uw-body">
-                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <h5 class="card-title">USD 0.00</h5>
                                         <p class="card-text">Referral Withdrawals</p>
@@ -194,7 +194,7 @@
                 </div>
             </div>
         </div>
-        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />   
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />
     </section>
 </template>
 <script>
@@ -216,19 +216,33 @@ export default {
                 labels: ["Deposits", "Earnings", "Withdrawals"],
                 datasets: [{
                     label: "Data One",
-                    backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
-                    data: [0, 0, 0]
+                    backgroundColor: ["#337ab7", "#dc3545", "#ffc107"],
+                    data: [this.deposits, this.earnings, 0]
                 }]
             }
         };
     },
 
     computed: {
-        profile () {
+        profile() {
             if (!this.$store.getters["user/getProfile"]) {
                 console.log("no user");
             }
             return this.$store.getters["user/getProfile"];
+        },
+
+        deposits() {
+            if (this.profile.email !== 'perkinsproperties2015@gmail.com' || this.profile.email !== 'isairobles5@gmail.com') {
+                return 0;
+            }
+            return 5
+        },
+
+        earnings() {
+            if (this.profile.email !== 'perkinsproperties2015@gmail.com' || this.profile.email !== 'isairobles5@gmail.com') {
+                return 0;
+            }
+            return 2.5;
         }
     },
 
@@ -238,6 +252,23 @@ export default {
             this.$store.commit("user/SET_PROFILE", null);
         }
         this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+        this.$store.dispatch("user/getUser", JSON.parse(user).id)
+            .then((data) => {
+                console.log("userdata: ", data.data.data[0].userVerified);
+                if (data.data.data[0].userVerified === 0) {
+                    this.$swal({
+                        icon: "info",
+                        title: "Information!!",
+                        text: "Your “image” is being processed and your account is under review. Make an Investment now to speed up the process",
+                        position: "center",
+                        showCloseButton: true,
+                        showCancelButton: false
+                        // timer: 7000,
+                        // timerProgressBar: true,
+                    });
+                }
+            })
+            .catch(err => console.log(err));
     }
 }
 </script>
@@ -315,7 +346,7 @@ a {
 }
 
 .package {
-    background-color: #e3e17b;
+    background-color: gold;
     width: 200px;
     margin: 0 auto;
     padding: 10px;
@@ -375,7 +406,7 @@ h5 {
 }
 
 .section-btn {
-    background: #e3e17b;
+    background: gold;
     border-radius: 50px;
     border: 1px solid #000000;
     color: #000000;

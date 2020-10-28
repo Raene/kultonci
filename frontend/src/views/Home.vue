@@ -1,9 +1,17 @@
 <template>
     <div id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    	<!-- <Preloader /> -->
-    	<TheHeader />
-    	<Banner id="home" />
+        <!-- <Preloader /> -->
+        <TheHeader />
+        <Banner id="home" />
         <SecondBanner />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <coingecko-coin-list-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-list-widget>
+                </div>
+            </div>
+        </div>
+        <AboutPreview />
         <HowItWorks />
         <!-- <About id="about-us" /> -->
         <!-- <Mission />
@@ -11,11 +19,12 @@
         <Goals /> -->
         <WhyUs />
         <InvestmentPreview />
-    	<RiskDisclaimer />
+        <RiskDisclaimer />
         <InvestNow />
-    	<TheFooter />
+        <TheFooter />
         <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
         <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-list-widget.js" />
         <VueInjectJs src="/landing/js/jquery.js" />
         <!-- <VueInjectJs src="/landing/js/smoothscroll.js" /> -->
         <VueInjectJs src="/landing/js/bootstrap.min.js" />
@@ -32,7 +41,7 @@ import VueInjectJs from "vue-inject-js";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
-// import About from "@/components/About.vue";
+import AboutPreview from "@/components/AboutPreview.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 // import Mission from "@/components/Mission.vue";
 // import Vision from "@/components/Vision.vue";
@@ -51,7 +60,7 @@ export default {
         TheHeader,
         Banner,
         SecondBanner,
-        // About,
+        AboutPreview,
         HowItWorks,
         // Mission,
         // Vision,
@@ -61,6 +70,18 @@ export default {
         RiskDisclaimer,
         InvestNow,
         TheFooter
+    },
+    mounted() {
+        this.$swal({
+            position: "center",
+            icon: "info",
+            title: "ANNOUNCEMENT!!",
+            html: `<strong>Promotion Commencement<br></strong>
+            I would like to announce to you the commencement of our promotion packages for the months of October and November. Promotion investments start with $25,000 to $300,000 and All the clients involved with this will be receiving a 60% Profits of every amount you start with on the Promotion Package every week. This promotion is for both new and existing clients and it will last for the months of October and November. Good luck dear esteemed investors.<br> <strong><i>Brought to you by the Chief Trader, Kulton CI Trade</i></strong>`,
+            showCloseButton: true,
+            showCancelButton: false
+            // timer: 1500
+        });
     }
 };
 </script>

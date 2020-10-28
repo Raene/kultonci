@@ -5,6 +5,8 @@ import _ from "lodash";
 import Home from "../views/Home.vue";
 import UserList from "@/components/dashboard/UserList.vue";
 import SingleUser from "@/components/dashboard/SingleUser.vue";
+import ChangeBtcAddress from "@/components/dashboard/ChangeBtcAddress.vue";
+import UserProfile from "@/components/dashboard/UserProfile.vue";
 
 Vue.use(VueRouter);
 
@@ -49,6 +51,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "investment-packages" */ "../views/InvestmentPackages.vue")
+  },
+  {
+    path: "/investment-packages/:id",
+    name: "singlePackage",
+    // route level code-splitting
+    // this generates a separate chunk (investment-packages.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "single-package" */ "../views/SinglePackage.vue")
   },
   {
     path: "/faqs",
@@ -112,6 +123,14 @@ const routes = [
         {
           path: "users/:id",
           component: SingleUser
+        },
+        {
+          path: "users/:profileId/profile",
+          component: UserProfile
+        },
+        {
+          path: "change_btc_address",
+          component: ChangeBtcAddress
         }
       ],
       meta: { requiresAuth: true }
