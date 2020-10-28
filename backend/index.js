@@ -8,6 +8,9 @@ const { port,password,host,user,database } = require('./config/env');
 const {auth} = require('./routes/auth');
 const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
+const {payment}      = require('./routes/payment');
+const {users}         = require('./routes/user');
+
 const cors = require('@koa/cors');
 const koaOptions = {
   origin: '*',
@@ -18,12 +21,12 @@ const Bree = require('bree');
 const root = path.join(__dirname, 'jobs');
 const jobArr = require(root);
 
-const bree = new Bree({
-    jobs:  jobArr
-    // closeWorkerAfterMs: ms('10s')
-})
+// const bree = new Bree({
+//     jobs:  jobArr
+//     // closeWorkerAfterMs: ms('10s')
+// })
 
-bree.start();
+// bree.start();
 
 let con = require('./models/connection')(host,user,password,database);
 
@@ -77,6 +80,8 @@ app.use(json());
 router.use(auth(koaRouter,con).routes());
 router.use(subscription(koaRouter,con).routes());
 router.use(admin(koaRouter,con).routes());
+router.use(users(koaRouter,con).routes());
+router.use(payment(koaRouter,con).routes());
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());
