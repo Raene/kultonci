@@ -20,7 +20,7 @@
                 <li class="nav-item">
                     <router-link to="/dashboard/change_btc_address" class="nav-link pl-3">
                         <i class="fe fe-edit-3 fe-16"></i>
-                        <span class="ml-3 item-text">Change BTC Address</span>
+                        <span class="ml-3 item-text">Create BTC Address</span>
                     </router-link>
                 </li>
                 <li class="nav-item">
