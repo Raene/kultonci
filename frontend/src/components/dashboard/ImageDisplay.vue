@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow mb-4">
         <div class="card-body text-center">
-            <img :src="'https://kultonci.com/images/'+path" alt="...">
+            <img :src="url + path" alt="...">
             <div class="card-footer">
                 <div class="row align-items-center justify-content-between">
                     <!-- <div class="col-auto">
@@ -18,6 +18,11 @@
 <script>
 export default {
     props: ['path', 'displayImage'],
+    data() {
+        return {
+            url: process.env.VUE_APP_IMAGE_URL
+        }
+    },
     methods: {
     	closePreview() {
     		this.$emit("exitPreview", false);

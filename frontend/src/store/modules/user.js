@@ -2,6 +2,7 @@ import Vue from "vue";
 import axios from "axios";
 import _ from "lodash";
 
+const url = process.env.VUE_APP_URL;
 const user = {
 	namespaced: true,
 	state: {
@@ -40,7 +41,7 @@ const user = {
 	actions: {
 		signup(context, user) {
 			console.log("user: ", user);
-			return axios.post("https://kultonci.com/server/auth/register", user)
+			return axios.post(url + "/auth/register", user)
 				.then((data) => {
 					console.log(data);
 				})
@@ -50,12 +51,12 @@ const user = {
 		},
 
 		login(context, user) {
-			return axios.post("https://kultonci.com/server/auth/login", user);
+			return axios.post(url + "/auth/login", user);
 		},
 
 		getUsers(context) {
 			const token = localStorage.getItem("token");
-			return axios.get("https://kultonci.com/server/admin/users", { headers: { Authorization: `Bearer ${token}` } })
+			return axios.get(url + "/admin/users", { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("data: ", data.data);
 					context.commit("SET_USERS", data.data.data);
@@ -67,12 +68,12 @@ const user = {
 
 		getUser(context, userId) {
 			const token = localStorage.getItem("token");
-			return axios.get("https://kultonci.com/server/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
+			return axios.get(url + "/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
 		},
 
 		verifyUser(context, userId) {
 			const token = localStorage.getItem("token");
-			return axios.post("https://kultonci.com/server/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
+			return axios.post(url + "/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
 				.then((data) => {
 					console.log("verify user data: ", data);
 				})
