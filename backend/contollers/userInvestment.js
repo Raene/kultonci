@@ -1,12 +1,11 @@
 'use strict';
-
 let UserInvestmentModel = require('../models/userInvestments');
 
 exports.getInvestments = function (con) {
     return async (ctx) => {
         try {
             const  id = ctx.params.id;
-            const userInvestments = new UserInvestmentModel({},con,'userInvestmens');
+            const userInvestments = new UserInvestmentModel({},con,'userInvestments');
 
             let payload = await userInvestments.get(id, 'id');
 

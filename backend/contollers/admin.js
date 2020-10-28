@@ -9,18 +9,13 @@ exports.verifySub = function (con) {
         try {
             const data = ctx.request.body;
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
-            
             let investment = await userInvestment.get(data.id,'id')
-            if(investment[0].id > 0){
-                let new_deposit = investment[0].total_deposit + data.newDeposit
-                
-                let invest = await userInvestment.update('total_deposit','id',new_deposit,investment[0].id)
+        
+            // let new_deposit = investment[0].total_deposit + data.newDeposit
+            let invest = await userInvestment.update(investment[0].id,'id')
 
-                ctx.body = {data: invest, success: true}
-                return;
-            }
-             const payload = await userInvestment.create()
-             ctx.body = {data: payload, success: true}
+            ctx.body = {data: invest, success: true}
+            ctx.status = 200;
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
@@ -35,7 +30,7 @@ exports.insertBTCaddr = function (con) {
             const btc = new BTCModel(data,con,'btc');
             await btc.create();
 
-            ctx.body = {message: 'Address Created'}
+            ctx.body = {message: 'Address Created', address:data.address}
             ctx.status = 200;
         } catch (error) {
             ctx.throw(500, error.message);

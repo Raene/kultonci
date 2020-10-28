@@ -8,7 +8,7 @@ exports.admin = function(router,con) {
     const route = new router({
         prefix: '/server/admin'
     });
-    return route.post('/verifySub',loginRequired,isAdmin,controller.verifySub(con))
+    return route.post('/verifySub',controller.verifySub(con))
                 .post('/btcAddress',loginRequired,isAdmin,controller.insertBTCaddr(con))
                 .get('/users',loginRequired,isAdmin,controller.getAllUsers(con))
                 .post('/users',loginRequired,isAdmin,controller.verifyUser(con))
