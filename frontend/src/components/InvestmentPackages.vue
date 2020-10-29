@@ -176,6 +176,10 @@ export default {
         return {
             user: localStorage.getItem("user")
         }
+    },
+
+    beforeMount() {
+        this.$store.dispatch("subscription/getInvestmentPackages");
     }
     // computed: {
     //     path() {

@@ -10,6 +10,7 @@ exports.subscribe = function (con) {
             const sub = new SubModel({},con,'investmentPKG');
             let payload ={}
             payload.subscription = await sub.get();
+            console.log(payload.subscription);
             
             const BTC = new BTCModel({},con,'btc');
             payload.btc = await BTC.GetLatest()
