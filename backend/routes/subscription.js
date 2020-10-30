@@ -8,5 +8,5 @@ exports.subscription = function (router,con) {
        prefix: '/server/subscription'
    });
    return route.get('/', controller.subscribe(con))
-               .get('/investments/:id', userInvestment.getInvestments(con));
+               .get('/:id', controller.getPKGByValue(con));
 }

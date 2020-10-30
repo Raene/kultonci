@@ -45,8 +45,18 @@ Db.prototype.getLatest = function () {
 
 Db.prototype.getJoin = function () {
     return new Promise((resolve,reject)=>{
-        let sql= `CREATE VIEW Wallet AS SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id`;
+        let sql= `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id`;
         this.con.query(sql,function (err,result) {
+        if(err) reject(err);
+        resolve(result);
+        }) 
+    });
+}
+
+Db.prototype.getJoinWhere = function (value,valueType) {
+    return new Promise((resolve,reject)=>{
+        let sql= `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id WHERE ${valueType} = ?`;
+        this.con.query(sql,value,function (err,result) {
         if(err) reject(err);
         resolve(result);
         }) 

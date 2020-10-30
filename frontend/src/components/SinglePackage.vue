@@ -10,18 +10,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-12">
+                <div v-for="pkg in packages" :key="pkg.PackageId" class="col-md-4 col-sm-12">
                     <div class="feature-thumb">
-                        <h4>Daily - Bronze</h4>
+                        <h4>{{ pkg.PackageName }}</h4>
                         <hr>
                         <div>
-                            <p>Minimum Investment of <strong>$2,500</strong></p>
-                            <p>Maximum Investment of <strong>$4,999</strong></p>
+                            <p>Minimum Investment of <strong>${{ pkg.minprice }}</strong></p>
+                            <p>Maximum Investment of <strong>${{ pkg.maxprice }}</strong></p>
                         </div>
-                        <button @click="showForm" class="section-btn btn btn-default smoothScroll">Select<i class="fa fa-angle-right"></i></button>
+                        <button @click="showForm(pkg.PackageName, pkg.name)" class="section-btn btn btn-default smoothScroll">Select<i class="fa fa-angle-right"></i></button>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <!-- <div class="col-md-4 col-sm-12">
                     <div class="feature-thumb">
                         <h4>Daily - Silver</h4>
                         <hr>
@@ -42,7 +42,7 @@
                         </div>
                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select<i class="fa fa-angle-right"></i></router-link>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-md-12 col-sm-12">
@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <KnowYourCustomer/>
+                        <KnowYourCustomer />
                     </div>
                 </div>
             </div>
@@ -69,11 +69,31 @@ export default {
     },
     data() {
         return {
-            kycReady: false
+            kycReady: false,
+            routeId: this.$route.params.id
         }
     },
+
+    computed: {
+        packages() {
+            return this.$store.getters["subscription/getPackage"];
+        },
+
+        btcAddress() {
+            return this.$store.getters["subscription/getBtcAddress"];
+        }
+    },
+
+    created() {
+        this.$store.dispatch("subscription/getInvestmentPackage", this.routeId);
+    },
+
+    mounted() {
+        console.log("package: ", this.package);
+    },
+
     methods: {
-        showForm() {
+        showForm(pkg_level, pkg_name) {
             this.$swal({
                 title: "Input Amount",
                 input: "text",
@@ -83,11 +103,25 @@ export default {
                 if (result.value) {
                     const amount = this.$swal.getInput().value;
                     console.log("amount: ", amount);
+                    const user = JSON.parse(localStorage.getItem("user"));
+                    this.$store.dispatch("subscription/createDeposit", {
+                            user_id: user.id,
+                            locked_deposit: amount,
+                            total_deposit: amount,
+                            package_level: pkg_level,
+                            package_name: pkg_name
+                        })
+                        .then((data) => {
+                            console.log("deposit data: ", data.data.data);
+                            // this.dep_id = data.data.data;
+                            localStorage.setItem("deposit_id", data.data.data);
+                        })
+                        .catch(err => console.log(err))
                     this.$swal({
                         title: "BTC Address",
                         text: "Make payment using BTC address, then upload proof of payment",
                         input: "text",
-                        inputValue: "ag56shdbja777",
+                        inputValue: this.btcAddress,
                         inputAttributes: {
                             disabled: true
                         },
@@ -120,6 +154,10 @@ export default {
 
 hr {
     border-color: black;
+}
+
+h4 {
+    text-transform: uppercase;
 }
 
 h4,
