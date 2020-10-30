@@ -53,6 +53,16 @@ Db.prototype.getJoin = function () {
     });
 }
 
+Db.prototype.getJoinWhere = function (value,valueType) {
+    return new Promise((resolve,reject)=>{
+        let sql= `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id WHERE ${valueType} = ?`;
+        this.con.query(sql,value,function (err,result) {
+        if(err) reject(err);
+        resolve(result);
+        }) 
+    });
+}
+
 Db.prototype.getUsersJoin = function () {
     return new Promise((resolve,reject)=>{
         let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified, user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id`;

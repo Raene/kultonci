@@ -14,34 +14,36 @@
             </div>
         </section>
         <section id="testimonial" class="sect">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="section-title">
-                        
-                    </div>
-                    <section id="feature" class="inner-section">
-                        <div class="container">
-                            <div class="row">
-                                <!-- <div class="col-md-12 col-sm-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="section-title">
+                        </div>
+                        <section id="feature" class="inner-section">
+                            <div class="container">
+                                <div v-for="(p, index) in packages" :key="index" class="row">
+                                    <!-- <div class="col-md-12 col-sm-12">
                                     <div class="contact-image">
                                         <img src="../assets/landing/images/contact-image.jpg" class="img-responsive" alt="Smiling Two Girls">
                                     </div>
                                 </div> -->
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="feature-thumb">
-                                        <!-- <span>01</span> -->
-                                        <h3 class="inv-title">Daily Investment Packages</h3>
-                                        <!-- <hr> -->
-                                        <div class="sub-packages">
-                                            <h5>DAILY - BRONZE</h5>
-                                            <p>Minimum Investment of <strong>$2,500</strong></p>
-                                            <p>Maximum Investment of <strong>$4,999</strong></p>
-                                            <p><strong>DAILY RETURNS 1%</strong></p>
-                                            <p><strong>REFERRAL BONUS 5%</strong></p>
-                                        </div>
-                                        <hr>
-                                        <div class="sub-packages">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="feature-thumb">
+                                            <!-- <span>01</span> -->
+                                            <h3 class="inv-title">{{ Object.keys(p)[0] }}</h3>
+                                            <!-- <hr> -->
+                                            <div v-for="(subPackage, j) in p" :key="j" class="sub-packages">
+                                                <div v-for="(value, k) in subPackage" :key="k">
+                                                    <h5>{{ value.PackageName }}</h5>
+                                                    <!-- <span v-if="false">{{ holdId.push(value.investmentPkg_id) }}</span> -->
+                                                    <p>Minimum Investment of <strong>${{ value.minprice }}</strong></p>
+                                                    <p>Maximum Investment of <strong>${{ value.maxprice }}</strong></p>
+                                                    <p><strong>RETURNS {{ value.percentageReturns }}%</strong></p>
+                                                    <p><strong>REFERRAL BONUS 5%</strong></p>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="sub-packages">
                                             <h5>DAILY - SILVER</h5>
                                             <p>Minimum Investment of <strong>$5,000</strong></p>
                                             <p>Maximum Investment of <strong>$9,999</strong></p>
@@ -55,12 +57,12 @@
                                             <p>Maximum Investment of <strong>$19,999</strong></p>
                                             <p><strong>DAILY RETURNS 2%</strong></p>
                                             <p><strong>REEFERRAL BONUS 10%</strong></p>
+                                        </div> -->
+                                            <router-link :to="!user? '/login': '/investment-packages/'+Object.keys(p)[0]" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                         </div>
-                                        <router-link :to="!user? '/login': '/investment-packages/2'" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                                <!-- <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb middle">
                                         <h3 class="inv-title2">Weekly Investment Packages</h3>
@@ -98,12 +100,11 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> -->
+                                <!-- <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb">
                                         <h3 class="inv-title">Compounding Investment Packages</h3>
-                                        <!-- <hr> -->
                                         <div class="sub-packages">
                                             <h5>MONTHLY - BRONZE</h5>
                                             <p>Minimum Investment of <strong>$2,000</strong></p>
@@ -139,12 +140,11 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> -->
+                                <!-- <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="feature-thumb middle">
                                         <h3 class="inv-title2">Investment Plan For NFP Trade</h3>
-                                        <!-- <hr> -->
                                         <div class="sub-packages">
                                             <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
                                             <p>Minimum Investment of <strong>$3,000</strong></p>
@@ -160,53 +160,56 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
+                            </div> -->
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </div>
 </template>
-
 <script>
 export default {
-    data () {
+    data() {
         return {
             user: localStorage.getItem("user")
         }
+    },
+
+    beforeMount() {
+        this.$store.dispatch("subscription/getInvestmentPackages");
+    },
+
+    computed: {
+        packages() {
+            return this.$store.getters["subscription/getPackages"];
+        }
     }
-    // computed: {
-    //     path() {
-    //         const user = localStorage.getItem("user");
-    //         if(!user) {
-    //             return "/login";
-    //         }
-    //         return "/signup";
-    //     }
-    // }
 }
 </script>
-
 <style scoped>
 .col-md-12 {
     max-width: 650px;
     margin: 0 auto;
 }
+
 section {
-    padding:  230px 0;
+    padding: 230px 0;
 }
 
 .sect {
     padding: 40px 0 !important;
 }
+
 .inner-section {
     padding: 30px 0;
 }
+
 .relative {
     position: relative;
 }
+
 .overlay {
     position: absolute;
     left: 0;
@@ -215,27 +218,32 @@ section {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 .page-top-banner {
-  background: url(../assets/landing/images/bitcoin pocket_1.jpg);
-  background-attachment: fixed;
+    background: url(../assets/landing/images/bitcoin pocket_1.jpg);
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  /* opacity: .9; */
-  /* background-color: black; */
+    /* opacity: .9; */
+    /* background-color: black; */
 }
+
 .page-top-banner .overlay-bg {
-  opacity: 1;
+    opacity: 1;
 }
+
 .page-top-banner h1 {
-  color: #fff;
-  font-size: 55px;
-  margin-bottom: 10px;
+    color: #fff;
+    font-size: 55px;
+    margin-bottom: 10px;
 }
+
 .page-top-banner h4 {
-  color: #fff;
-  font-weight: 400;
+    color: #fff;
+    font-weight: 400;
 }
+
 @media (min-width: 960px) {
     .col-md-4 {
         max-width: 100% !important;
@@ -264,6 +272,7 @@ p {
 
 h5 {
     color: gold;
+    text-transform: uppercase;
 }
 
 .container .row {
@@ -301,7 +310,7 @@ h5 {
 }
 
 .sub-packages {
-    margin-bottom: 7px; 
+    margin-bottom: 7px;
 }
 
 .inv-title {
@@ -318,7 +327,8 @@ h5 {
     background-color: gold;
 }
 
-.middle h5, .middle p {
+.middle h5,
+.middle p {
     color: black;
 }
 

@@ -48,4 +48,13 @@ SubModel.prototype.get = async function () {
     }
 }
 
+SubModel.prototype.getByParam = async function (value,valueType) {
+    try {
+        let sub = await this.getJoinWhere(value, valueType);
+        return sub;
+        
+    } catch (error) {
+        throw new Error(error);
+    }
+}
 module.exports = SubModel;

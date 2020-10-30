@@ -40,11 +40,13 @@ export default {
         // handyUploader
         Preloader
     },
+   
     data() {
         return {
             handyAttachments: [],
             isLoggingIn: false,
-            path: this.$route.path
+            path: this.$route.path,
+            invId: null
 
         };
     },
@@ -62,6 +64,10 @@ export default {
     // updated() {
     //     console.log("handyAttachments: ", this.handyAttachments);
     // },
+
+    beforeMount() {
+        this.$store.dispatch("subscription/getUserInvestment", localStorage.getItem("deposit_id"));
+    },
 
     methods: {
         runKyc() {
@@ -117,37 +123,38 @@ export default {
             const kyc = document.querySelector("#file-Input");
             console.log("beans: ", kyc);
             const fd = new FormData();
-            fd.append("kyc", kyc.files[0]);
-            // this.$store.dispatch("user/uploadProof", fd)
-            //     .then((err) => {
-            //         if (err) {
-            //             this.isLoggingIn = false;
-            //             console.log(err);
-            //             this.$swal({
-            //             icon: "error",
-            //             title: "Signup Unsuccessful",
-            //             toast: true,
-            //             position: "top-end",
-            //             showConfirmButton: false,
-            //             timer: 3000,
-            //             timerProgressBar: true,
-            //             onOpen: (toast) => {
-            //                 toast.addEventListener("mouseenter", this.$swal.stopTimer);
-            //                 toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-            //             }
-            //         });
-            //         } else {
-            //             this.isLoggingIn = false;
-            //             this.$swal({
-            //             position: "center",
-            //             icon: "success",
-            //             title: "Signup Successful",
-            //             showConfirmButton: false,
-            //             timer: 1500
-            //         });
-            //             this.$router.push({ path: "/login" });
-            //         }
-            //     });
+            fd.append("paymentImg", kyc.files[0]);
+            fd.append("id", localStorage.getItem("deposit_id"));
+            this.$store.dispatch("subscription/uploadProofOfPaymnent", fd)
+                .then((err) => {
+                    if (err) {
+                        this.isLoggingIn = false;
+                        console.log(err);
+                        this.$swal({
+                        icon: "error",
+                        title: "Upload Unsuccessful",
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                            toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                        }
+                    });
+                    } else {
+                        this.isLoggingIn = false;
+                        this.$swal({
+                        position: "center",
+                        icon: "success",
+                        title: "Payment proof upload successful. Awaiting approval.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                        this.$router.push({ path: "/investment-packages" });
+                    }
+                });
         },
 
         preview() {

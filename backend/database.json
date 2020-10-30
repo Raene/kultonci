@@ -5,7 +5,7 @@
       "port": "3306",
       "user": "root",
       "password": "bootstrap0107",
-      "database": "kultonci",
+      "database": "kulton-ci",
       "multipleStatements": true
     },
     
