@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="row jsutify-content-center">
+        <div v-if="!displayImage" class="row justify-content-center">
             <div class="col-12">
                 <h2 class="h3 mb-4 page-title">Profile</h2>
                 <div class="row mt-5 align-items-center">
@@ -47,7 +47,14 @@
                                 </div> <!-- .row -->
                             </div> <!-- .card-body -->
                             <div class="card-footer">
-                                <button class="btn btn-success d-flex justify-content-between"><span>Approve Deposit</span></button>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <button class="btn btn-success d-flex justify-content-between"><span>Approve Deposit</span></button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button @click="viewImage" class="btn btn-success d-flex justify-content-between"><span>View Payment Proof</span></button>
+                                    </div>
+                                </div>
                             </div>
                         </div> <!-- .card -->
                     </div> <!-- .col-md-->
@@ -206,29 +213,50 @@
               </table> -->
             </div>
         </div>
+        <div v-else class="row justify-content-center">
+            <div class="col-12">
+                <ImageDisplay @exitPreview="closePreview($event)" :path="kycPath" :displayImage="displayImage" />
+            </div>
+        </div>
     </div>
 </template>
 <script>
+import ImageDisplay from "@/components/dashboard/ImageDisplay.vue";
 export default {
+    components: {
+        ImageDisplay
+    },
+    
     data() {
         return {
             userId: this.$route.params.profileId,
             kycPath: null,
-            url: process.env.VUE_APP_IMAGE_URL
+            url: process.env.VUE_APP_IMAGE_URL,
+            displayImage: false
         };
     },
 
     computed: {
-    	user() {
-    		return this.$store.getters["user/getUser"];
-    	}
+        user() {
+            return this.$store.getters["user/getUser"];
+        }
+    },
+
+    methods: {
+        viewImage() {
+            this.displayImage = true;
+        },
+
+        closePreview(value) {
+            this.displayImage = value;
+        }
     },
 
     beforeMount() {
-    	console.log("userId: ", this.userId);
+        console.log("userId: ", this.userId);
         this.$store.dispatch("user/getUser", this.userId)
             .then((data) => {
-            	console.log("userdata: ", data.data.data[0]);
+                console.log("userdata: ", data.data.data[0]);
                 this.$store.commit("user/SET_USER", data.data.data[0]);
                 const fullUserPath = data.data.data[0].kycPath;
                 this.kycPath = fullUserPath;
@@ -246,6 +274,18 @@ export default {
 }
 
 img {
-	border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.card-footer .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 380px) {
+    .card-footer .row {
+        justify-content: center !important;
+    }
 }
 </style>
