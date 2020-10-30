@@ -5,6 +5,8 @@ exports.getInvestments = function (con) {
     return async (ctx) => {
         try {
             const  id = ctx.params.id;
+            const valueType = ctx.query['type'];
+            console.log(valueType);
             const userInvestments = new UserInvestmentModel({},con,'userInvestments');
 
             let payload = await userInvestments.get(id, 'id');
