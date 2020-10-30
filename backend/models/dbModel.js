@@ -44,6 +44,16 @@ Db.prototype.getAllDb = function () {
     });
 }
 
+Db.prototype.dbDelete = function (value,valueType) {
+    return new Promise((resolve,reject) => {
+        let sql = `DELETE FROM ${this.TableName} WHERE ${valueType} = ?`;
+        this.con.query(sql,value, function (err,results) {
+            if(err) reject(err);
+            resolve(results);
+        });
+    })
+}
+
 Db.prototype.getLatest = function () {
     return new Promise((resolve,reject)=> {
         this.con.query(`SELECT * FROM ${this.TableName} ORDER BY id DESC LIMIT 1`,function (err,results) {

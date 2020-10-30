@@ -92,3 +92,17 @@ exports.userToAdmin = function (con) {
         }
     }
 }
+
+exports.deleteuser = function (con) {
+    return async (ctx) => {
+        try {
+            const id = ctx.params.id;
+            const user = new UserModel({}, null, con, 'user');
+            let status = await user.delete(id,'id');
+            ctx.body = {success: status};
+            ctx.status = 200;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+}

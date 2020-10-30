@@ -48,6 +48,8 @@
     "test": "node node_modules/mocha/bin/mocha --timeout 10000",
     "monitor": "node node_modules/pm2/bin/pm2 monit",
     "db-migrate": "node node_modules/db-migrate/bin/db-migrate",
-    "db-seed": "node_modules/.bin/knex seed:run --env development"
+    "db-seed": "node_modules/.bin/knex seed:run --env development",
+    "knex": "node_modules/.bin/knex migrate:make --env development",
+    "knex-migrate": "node_modules/.bin/knex migrate:latest --env development"
   }
 }

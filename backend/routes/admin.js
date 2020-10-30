@@ -13,5 +13,6 @@ exports.admin = function(router,con) {
                 .get('/users',loginRequired,isAdmin,controller.getAllUsers(con))
                 .post('/users',loginRequired,isAdmin,controller.verifyUser(con))
                 .get('/users/:id',loginRequired,isAdmin,controller.getUserById(con))
-                .post('/make-admin',loginRequired,isSuperAdmin,controller.userToAdmin(con));
+                .post('/make-admin',loginRequired,isSuperAdmin,controller.userToAdmin(con))
+                .delete('/deleteUser/:id',controller.deleteuser(con));
 }

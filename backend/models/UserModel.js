@@ -76,6 +76,15 @@ UserModel.prototype.getUserByJoin = async function (value,valueType) {
     }
 }
 
+UserModel.prototype.delete = async function (value,valueType) {
+    try {
+        await this.dbDelete(value,valueType);
+        return true;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 UserModel.prototype.getAll = async function () {
     try {
         let user = await this.getUsersJoin();
