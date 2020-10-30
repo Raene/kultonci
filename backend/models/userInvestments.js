@@ -35,7 +35,7 @@ InvestmentModel.prototype.update = async function (whereValue,whereType) {
 
 InvestmentModel.prototype.get = async function (value,valueType) {
     try {
-        let sub = await this.getByField(value, valueType);
+        let sub = await this.getByFieldLatest(value, valueType);
         return sub;
     } catch (error) {
         throw new Error(error)
