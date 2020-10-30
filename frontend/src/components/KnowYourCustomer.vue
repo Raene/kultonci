@@ -65,9 +65,9 @@ export default {
     //     console.log("handyAttachments: ", this.handyAttachments);
     // },
 
-    beforeMount() {
-        this.$store.dispatch("subscription/getUserInvestment", localStorage.getItem("deposit_id"));
-    },
+    // beforeMount() {
+    //     this.$store.dispatch("subscription/getUserInvestment", localStorage.getItem("deposit_id"));
+    // },
 
     methods: {
         runKyc() {

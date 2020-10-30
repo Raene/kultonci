@@ -18,7 +18,7 @@
                         </div>
                         <!-- <div class="row mb-4">
                     <div class="col-md-7">
-                      <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>
+                      <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>Deposit
                     </div>
                     <div class="col">
                       <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
@@ -42,14 +42,14 @@
                                         <a href="#">
                                             <h3 class="h5 mt-4 mb-1">Deposits</h3>
                                         </a>
-                                        <p class="text-muted">USD 0.00</p>
+                                        <p class="text-muted">USD {{ currentInvestment.total_deposit }}</p>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .card-body -->
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-auto">
-                                        <button class="btn btn-success d-flex justify-content-between"><span>Approve Deposit</span></button>
+                                        <button @click="approveDeposit" class="btn btn-success d-flex justify-content-between"><span>{{ depositApproved || currentInvestment.verified === 1? "Deposit Approved": "Approve Deposit"}}</span></button>
                                     </div>
                                     <div class="col-auto">
                                         <button @click="viewImage" class="btn btn-success d-flex justify-content-between"><span>View Payment Proof</span></button>
@@ -87,22 +87,25 @@
                     <div class="card mb-4 shadow">
                         <div class="card-body text-center my-4">
                             <a href="#">
-                                <h3 class="h5 mt-4 mb-0">Basic</h3>
+                                <h3 class="h5 mt-4 mb-0">{{ currentInvestment.package_name }}</h3>
                             </a>
-                            <p class="text-muted">package</p>
-                            <span class="h1 mb-0">$9.9</span>
-                            <p class="text-muted">year</p>
-                            <ul class="list-unstyled">
+                            <p class="text-muted">{{ currentInvestment.package_level }}</p>
+                            <span class="h1 mb-0">${{ currentInvestment.total_deposit }}</span>
+                            <!-- <p class="text-muted">year</p>
+                            <ul <button type="button" class="btn mb-2 btn-primary btn-lg">Ugrade</button>class="list-unstyled">
                                 <li>Lorem ipsum dolor sit amet</li>
                                 <li>Consectetur adipiscing elit</li>
                                 <li>Integer molestie lorem at massa</li>
                                 <li>Eget porttitor lorem</li>
-                            </ul>
-                            <span class="dot dot-lg bg-success"></span>
-                            <span class="text-muted ml-3">Active</span>
+                            </ul> -->
+                            <div>
+                                <span class="dot dot-lg bg-success"></span>
+                                <span class="text-muted ml-3">Active</span>
+                            </div>
+                            <button type="button" class="btn mt-3 mb-2 btn-primary btn-lg">Ugrade</button>
                         </div> <!-- .card-body -->
                     </div> <!-- .card -->
-                    <div class="card mb-4">
+                    <!-- <div class="card mb-4">
                         <div class="card-body text-center my-4">
                             <a href="#">
                                 <h3 class="h5 mt-4 mb-0">Professional</h3>
@@ -117,8 +120,8 @@
                                 <li>Eget porttitor lorem</li>
                             </ul>
                             <button type="button" class="btn mb-2 btn-primary btn-lg">Ugrade</button>
-                        </div> <!-- .card-body -->
-                    </div> <!-- .card -->
+                        </div> .card-body
+                    </div> .card -->
                 </div> <!-- .card-group -->
                 <!-- <h6 class="mb-3">Last payment</h6>
               <table class="table table-borderless table-striped">
@@ -232,13 +235,18 @@ export default {
             userId: this.$route.params.profileId,
             kycPath: null,
             url: process.env.VUE_APP_IMAGE_URL,
-            displayImage: false
+            displayImage: false,
+            depositApproved: false
         };
     },
 
     computed: {
         user() {
             return this.$store.getters["user/getUser"];
+        },
+
+        currentInvestment() {
+            return this.$store.getters["subscription/getCurrentInvestment"];
         }
     },
 
@@ -249,10 +257,21 @@ export default {
 
         closePreview(value) {
             this.displayImage = value;
+        },
+
+        approveDeposit() {
+            this.$store.dispatch("user/approveDeposit", { id:this.currentInvestment.id, verified: true })
+                .then((data) => {
+                    console.log("approve data: ", data.data.success);
+                    if(data.data.success === true) {
+                        this.depositApproved = true;
+                    }
+                })
+                .catch(err => console.log(err));
         }
     },
 
-    beforeMount() {
+    mounted() {
         console.log("userId: ", this.userId);
         this.$store.dispatch("user/getUser", this.userId)
             .then((data) => {
@@ -261,6 +280,7 @@ export default {
                 const fullUserPath = data.data.data[0].kycPath;
                 this.kycPath = fullUserPath;
                 console.log("kycPath: ", this.kycPath);
+                this.$store.dispatch("subscription/getUserInvestment", this.userId);
             })
             .catch(err => {
                 console.log(err);
