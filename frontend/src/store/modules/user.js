@@ -80,6 +80,11 @@ const user = {
 				.catch(err => {
 					return err;
 				});
+		},
+
+		approveDeposit(context, depositId) {
+			const token = localStorage.getItem("token");
+			return axios.post(url + "/admin/verifySub", depositId, { headers: { Authorization: `Bearer ${token}` } });
 		}
 	},
 	getters: {

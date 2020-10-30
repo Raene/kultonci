@@ -8,7 +8,8 @@ const subscription = {
     state: {
         packages: [],
         btcAddress: null,
-        package: []
+        package: [],
+        currentInvestment: {}
     },
     mutations: {
         SET_PACKAGES(state, payload) {
@@ -24,6 +25,11 @@ const subscription = {
         SET_BTC_ADDRESS(state, payload) {
         	Vue.set(state, "btcAddress", payload);
         	console.log("btcAddress set: ", state.btcAddress);
+        },
+
+        SET_CURRENT_INVESTMENT(state, payload) {
+            Vue.set(state, "currentInvestment", payload);
+            console.log("current Investment set: ", state.currentInvestment);
         }
     },
     actions: {
@@ -60,9 +66,11 @@ const subscription = {
         },
 
         getUserInvestment(context, payload) {
-        	return axios.get(url + "/user/investments/" +payload)
+        	return axios.get(url + "/user/investments/" +payload+"?type=user_id")
         		.then((data) => {
-        			console.log("user inv: ", data.data.data[0]);
+        			console.log("user inv: ", data.data.data[data.data.data.length-1]);
+                    let currentInv = data.data.data[data.data.data.length-1];
+                    context.commit("SET_CURRENT_INVESTMENT", currentInv);
         		})
         		.catch(err => console.log(err));
         }
@@ -78,6 +86,10 @@ const subscription = {
 
         getBtcAddress(state) {
         	if (state.btcAddress.length > 0) return state.btcAddress;
+        },
+
+        getCurrentInvestment(state) {
+            if (_.isEmpty(state.currentInvestment) === false || state.currentInvestment !== []) return state.currentInvestment;
         }
     }
 }
