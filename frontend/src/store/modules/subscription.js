@@ -46,9 +46,9 @@ const subscription = {
         getInvestmentPackage(context, payload) {
         	return axios.get(url + "/subscription/" + payload)
         		.then((data) => {
-        			console.log("single package: ", data.data.data.btc[0].address);
+        			// console.log("single package: ", data.data.data.btc[0].address);
         			context.commit("SET_PACKAGE", data.data.data.subscription);
-        			context.commit("SET_BTC_ADDRESS", data.data.data.btc[0].address)
+        			// context.commit("SET_BTC_ADDRESS", data.data.data.btc[0].address)
         		});
         },
 
