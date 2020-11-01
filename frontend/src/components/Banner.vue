@@ -1,6 +1,6 @@
 <template>
     <section id="home">
-        <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+        <!-- <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
             <div class="overlay overlay-bg"></div>
             <div class="container">
                 <div class="row section-gap-half">
@@ -9,21 +9,20 @@
                         <hr>
                         <h3>Become a member of our company to start growing your funds every day!</h3>
                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Get Started</router-link>
-                        <!-- <h4>Contact Us For Request & Inquiries</h4> -->
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- <div class="row">
+        </section> -->
+        <div class="row">
+            <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
             <div class="owl-carousel owl-theme home-slider">
                 <div class="item item-first">
                     <div class="caption banner-caption show-on-scroll">
                         <div class="container">
                             <div class="col-md-6 col-sm-12 banner-caption show-on-scroll">
-                                <h1>Finance Your Future with Kulton CI.</h1>
+                                <h1>Welcome To Kulton CI.</h1>
                                 <hr>
-                                <h3>Become a member of our company to start growing your funds every day!</h3>
-                                <router-link to="/login" class="section-btn btn btn-default smoothScroll">Get Started</router-link>
+                                <!-- <h3>Become a member of our company to start growing your funds every day!</h3> -->                                <router-link to="/login" class="section-btn btn btn-default smoothScroll">Get Started</router-link>
                             </div>
                         </div>
                     </div>
@@ -32,9 +31,8 @@
                     <div class="caption">
                         <div class="container">
                             <div class="col-md-6 col-sm-12">
-                                <h1>Make Money
-                                    Quickly & Easily
-                                    with Kulton CI.</h1>
+                                <h1>Finance Your Future
+                                    With Kulton CI.</h1>
                                     <hr>
                                 <h3>Trade CFDs on Shares, Indices, Forex, Binary and Cryptocurrencies.</h3>
                                 <a href="#courses" class="section-btn btn btn-default smoothScroll">Learn More</a>
@@ -42,8 +40,33 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
-        <!-- </div> -->
+                <div class="item item-third">
+                    <div class="caption">
+                        <div class="container">
+                            <div class="col-md-6 col-sm-12">
+                                <h1>Create a Timely Passive Income</h1>
+                                    <hr>
+                                <!-- <h3>Trade CFDs on Shares, Indices, Forex, Binary and Cryptocurrencies.</h3> -->
+                                <a href="#courses" class="section-btn btn btn-default smoothScroll">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-fourth">
+                    <div class="caption">
+                        <div class="container">
+                            <div class="col-md-6 col-sm-12">
+                                <h1>Become a Member</h1>
+                                    <hr>
+                                <!-- <h3>Trade CFDs on Shares, Indices, Forex, Binary and Cryptocurrencies.</h3> -->
+                                <a href="#courses" class="section-btn btn btn-default smoothScroll">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />
         <VueInjectJs src="/landing/js/show-on-scroll.js" />
     </section>
 </template>

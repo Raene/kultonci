@@ -194,6 +194,7 @@ a:focus {
 section {
     position: relative;
     padding: 10px 0;
+    /*margin-bottom: 10px;*/
 }
 
 /*#team,
@@ -446,19 +447,22 @@ section {
 }
 
 .home-slider .item-first {
-    background-image: url(../images/coin.jpg);
+    background-image: url(../images/strategize.jpg);
     background-position: center;
 }
 
 .home-slider .item-second {
-    background-image: url(../images/strategize.jpg);
+    background-image: url(../images/coins_1.jpg);
     /*opacity: .5;*/
 }
 
 .home-slider .item-third {
-    background-image: url(../images/slider-image1.jpg);
+    background-image: url(../images/man silver bitcoin.jpg);
 }
 
+.home-slider .item-fourth {
+    background-image: url(../images/talk.jpg);
+}
 
 
 /*---------------------------------------

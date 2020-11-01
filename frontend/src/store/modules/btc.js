@@ -1,16 +1,17 @@
 import Vue from "vue";
 import axios from "axios";
-import _ from "lodash";
+// import _ from "lodash";
 
 const url = process.env.VUE_APP_URL;
 const btc = {
 	namespaced: true,
 	state: {
-		btc_address: {}
+		btc_address: null
 	},
 	mutations: {
 		SET_BTC_ADDRESS(state, payload) {
 			Vue.set(state, "btc_address", payload);
+			localStorage.setItem("btcAddress", payload);
 			console.log("btc address set: ", state.btc_address);
 		}
 	},
@@ -22,7 +23,7 @@ const btc = {
 	},
 	getters: {
 		getBtcAddress(state) {
-			if (_.isEmpty(state.btc_address) === false) return state.btc_address;
+			if (state.btcAddress!==null) return state.btc_address;
 		}
 	}
 }

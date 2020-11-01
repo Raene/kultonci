@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div v-if="!displayImage" class="row justify-content-center">
-            <div class="col-12">
+            <div v-if="!showForm" class="col-12">
                 <h2 class="h3 mb-4 page-title">Profile</h2>
                 <div class="row mt-5 align-items-center">
                     <div class="col-md-3 text-center mb-5">
@@ -16,16 +16,16 @@
                                 <p class="small mb-3"><span class="badge badge-dark">{{ user.userEmail }}</span></p>
                             </div>
                         </div>
-                        <!-- <div class="row mb-4">
+                        <div class="row mb-4">
                     <div class="col-md-7">
-                      <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>Deposit
+                      <button @click="showUpdateForm" class="btn btn-success"> Update user wallet </button>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                       <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
                       <p class="small mb-0 text-muted">P.O. Box 464, 5975 Eget Avenue</p>
                       <p class="small mb-0 text-muted">(537) 315-1481</p>
-                    </div>
-                  </div> -->
+                    </div> -->
+                  </div>
                     </div>
                 </div>
                 <div class="row my-4">
@@ -102,7 +102,7 @@
                                 <span class="dot dot-lg bg-success"></span>
                                 <span class="text-muted ml-3">Active</span>
                             </div>
-                            <button type="button" class="btn mt-3 mb-2 btn-primary btn-lg">Ugrade</button>
+                            <button v-if="currentInvestment.verified === 1" type="button" class="btn mt-3 mb-2 btn-primary btn-lg">Deactivate</button>
                         </div> <!-- .card-body -->
                     </div> <!-- .card -->
                     <!-- <div class="card mb-4">
@@ -215,28 +215,33 @@
                 </tbody>
               </table> -->
             </div>
+            <UpdateUserWalletForm v-else :wallet_details="currentInvestment"/>
         </div>
         <div v-else class="row justify-content-center">
             <div class="col-12">
-                <ImageDisplay @exitPreview="closePreview($event)" :path="kycPath" :displayImage="displayImage" />
+                <ImageDisplay @exitPreview="closePreview($event)" :path="paymentProof" :displayImage="displayImage" />
             </div>
         </div>
     </div>
 </template>
 <script>
 import ImageDisplay from "@/components/dashboard/ImageDisplay.vue";
+import UpdateUserWalletForm from "@/components/dashboard/UpdateUserWalletForm.vue";
 export default {
     components: {
-        ImageDisplay
+        ImageDisplay,
+        UpdateUserWalletForm
     },
-    
+
     data() {
         return {
             userId: this.$route.params.profileId,
             kycPath: null,
             url: process.env.VUE_APP_IMAGE_URL,
             displayImage: false,
-            depositApproved: false
+            depositApproved: false,
+            paymentProof: null,
+            showForm: false
         };
     },
 
@@ -246,7 +251,14 @@ export default {
         },
 
         currentInvestment() {
-            return this.$store.getters["subscription/getCurrentInvestment"];
+            if (this.$store.getters["subscription/getCurrentInvestment"] !== undefined) {
+                return this.$store.getters["subscription/getCurrentInvestment"];
+            }
+            return {
+                total_deposit: 0.00,
+                package_level: "null",
+                package_name: "null"
+            }
         }
     },
 
@@ -260,14 +272,30 @@ export default {
         },
 
         approveDeposit() {
-            this.$store.dispatch("user/approveDeposit", { id:this.currentInvestment.id, verified: true })
+            this.$store.dispatch("user/approveDeposit", { id: this.currentInvestment.id, verified: true })
                 .then((data) => {
                     console.log("approve data: ", data.data.success);
-                    if(data.data.success === true) {
+                    if (data.data.success === true) {
                         this.depositApproved = true;
+                        this.$swal({
+                            icon: "success",
+                            title: "Deposit Approved",
+                            timer: 1500
+                        });
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err);
+                    this.$swal({
+                            icon: "error",
+                            title: "Deposit Not Approved",
+                            timer: 1500
+                        });
+                });
+        },
+
+        showUpdateForm() {
+            this.showForm = true;
         }
     },
 
@@ -280,10 +308,13 @@ export default {
                 const fullUserPath = data.data.data[0].kycPath;
                 this.kycPath = fullUserPath;
                 console.log("kycPath: ", this.kycPath);
-                this.$store.dispatch("subscription/getUserInvestment", this.userId);
             })
             .catch(err => {
                 console.log(err);
+            });
+        this.$store.dispatch("subscription/getUserInvestment", this.userId)
+            .then((paymentProof) => {
+                this.paymentProof = paymentProof;
             });
     }
 }

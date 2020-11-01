@@ -4,29 +4,16 @@
         <TheHeader />
         <Banner id="home" />
         <SecondBanner />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <coingecko-coin-list-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-list-widget>
-                </div>
-            </div>
-        </div>
         <AboutPreview />
         <HowItWorks />
-        <!-- <About id="about-us" /> -->
-        <!-- <Mission />
-        <Vision />
-        <Goals /> -->
         <WhyUs />
         <InvestmentPreview />
+        <Stat />
         <RiskDisclaimer />
+        <BitcoinConverter />
         <InvestNow />
         <TheFooter />
-        <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-        <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-        <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-list-widget.js" />
         <VueInjectJs src="/landing/js/jquery.js" />
-        <!-- <VueInjectJs src="/landing/js/smoothscroll.js" /> -->
         <VueInjectJs src="/landing/js/bootstrap.min.js" />
         <VueInjectJs src="/landing/js/owl.carousel.min.js" />
         <VueInjectJs src="/landing/js/custom.js" />
@@ -43,12 +30,11 @@ import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
 import AboutPreview from "@/components/AboutPreview.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
-// import Mission from "@/components/Mission.vue";
-// import Vision from "@/components/Vision.vue";
-// import Goals from "@/components/Goals.vue";
 import WhyUs from "@/components/WhyUs.vue";
+import Stat from "@/components/Stat.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
+import BitcoinConverter from "@/components/BitcoinConverter.vue";
 import InvestNow from "@/components/InvestNow.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
@@ -62,17 +48,17 @@ export default {
         SecondBanner,
         AboutPreview,
         HowItWorks,
-        // Mission,
-        // Vision,
-        // Goals,
         WhyUs,
+        Stat,
         InvestmentPreview,
         RiskDisclaimer,
+        BitcoinConverter,
         InvestNow,
         TheFooter
     },
     mounted() {
-        this.$swal({
+        setTimeout(() => {
+            this.$swal({
             position: "center",
             icon: "info",
             title: "ANNOUNCEMENT!!",
@@ -82,6 +68,7 @@ export default {
             showCancelButton: false
             // timer: 1500
         });
+        }, 3000)
     }
 };
 </script>

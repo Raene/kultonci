@@ -18,11 +18,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <h5 v-if="profile.email!=='perkinsproperties2015@gmail.com' || profile.email !== 'isairobles5@gmail.com'">You're not on any package</h5>
-                    <router-link style="text-decoration: none !important;" v-if="profile.email!=='perkinsproperties2015@gmail.com' || profile.email !== 'isairobles5@gmail.com'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
-                    <h5 v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'">You are on the</h5>
+                    <h5 v-if="currentInvestment.package_name === 'null'">You're not on any package</h5>
+                    <router-link style="text-decoration: none !important;" v-if="currentInvestment.package_name === 'null'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
+                    <!-- <h5 v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'">You are on the</h5>
                     <p v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'" class="package">
                         Weekly Package
+                    </p> -->
+                    <h5 v-if="currentInvestment.package_name !== 'null'">You are on the</h5>
+                    <p v-if="currentInvestment.package_name !== 'null'" class="package">
+                        {{ currentInvestment.package_name }}
                     </p>
                     <p v-if="false" class="msg">Your account is temporarily closed now</p>
                 </div>
@@ -34,7 +38,7 @@
                                     <h5 style="color: #000000;">Overall portfolio</h5>
                                 </div>
                                 <div class="col-md-12" style="max-width: 70%; margin: 0 auto;">
-                                    <pie-chart :data="chartData" :options="chartOptions"></pie-chart>
+                                    <pie-chart :chart-data="chartData" :options="chartOptions"></pie-chart>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +54,8 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD {{ currentInvestment.total_deposit }}</h5>
                                         <p class="card-text">Total Deposits</p>
                                     </span>
                                 </div>
@@ -63,8 +68,23 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email==="isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email==="isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD {{ currentInvestment.locked_deposit }}</h5>
                                         <p class="card-text">Locked Deposits</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-primary mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-lock uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD 0.00</h5>
+                                        <p class="card-text">Compounded Deposits</p>
                                     </span>
                                 </div>
                             </div>
@@ -77,7 +97,8 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5>
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null?"0.00": currentInvestment.earnings }}</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -90,7 +111,8 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-credit-card uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5>
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null?"0.00": currentInvestment.earnings }}</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -200,6 +222,7 @@
 <script>
 import VueInjectJs from "vue-inject-js";
 import PieChart from "../utils/pie-chart.js";
+// import Vue from "vue";
 export default {
     components: {
         PieChart,
@@ -210,39 +233,52 @@ export default {
             chartOptions: {
                 hoverBorderWidth: 20
             },
-            chartData: {
+            chartData: null
+        };
+    },
+
+    computed: {
+        currentInvestment() {
+            if (this.$store.getters["subscription/getCurrentInvestment"] !== undefined && this.$store.getters["subscription/getCurrentInvestment"].verified !== 0) {
+                return this.$store.getters["subscription/getCurrentInvestment"];
+            }
+            return {
+                total_deposit: "0.00",
+                package_level: "null",
+                package_name: "null",
+                locked_deposit: "0.00",
+                earnings: "0.00"
+            }
+        },
+
+        profile() {
+            if (!this.$store.getters["user/getProfile"]) {
+                console.log("no user");
+            }
+            return this.$store.getters["user/getProfile"];
+        }
+    },
+
+    methods: {
+        fillData() {
+            this.chartData = {
                 hoverBackgroundColor: "red",
                 hoverBorderWidth: 10,
                 labels: ["Deposits", "Earnings", "Withdrawals"],
                 datasets: [{
                     label: "Data One",
                     backgroundColor: ["#337ab7", "#dc3545", "#ffc107"],
-                    data: [this.deposits, this.earnings, 0]
+                    data: [this.getDeposit(), this.getEarning(), 0]
                 }]
             }
-        };
-    },
-
-    computed: {
-        profile() {
-            if (!this.$store.getters["user/getProfile"]) {
-                console.log("no user");
-            }
-            return this.$store.getters["user/getProfile"];
         },
 
-        deposits() {
-            if (this.profile.email !== 'perkinsproperties2015@gmail.com' || this.profile.email !== 'isairobles5@gmail.com') {
-                return 0;
-            }
-            return 5
+        getDeposit() {
+            return this.currentInvestment.total_deposit;
         },
 
-        earnings() {
-            if (this.profile.email !== 'perkinsproperties2015@gmail.com' || this.profile.email !== 'isairobles5@gmail.com') {
-                return 0;
-            }
-            return 2.5;
+        getEarning() {
+            return this.currentInvestment.earnings;
         }
     },
 
@@ -263,12 +299,14 @@ export default {
                         position: "center",
                         showCloseButton: true,
                         showCancelButton: false
-                        // timer: 7000,
-                        // timerProgressBar: true,
                     });
                 }
             })
             .catch(err => console.log(err));
+        this.$store.dispatch("subscription/getUserInvestment", this.profile.id)
+            .then(() => {
+                this.fillData();
+            });
     }
 }
 </script>
