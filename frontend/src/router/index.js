@@ -41,7 +41,8 @@ const routes = [
     // this generates a separate chunk (login.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/LogIn.vue")
+      import(/* webpackChunkName: "login" */ "../views/LogIn.vue"),
+    meta: { isLoggedIn: true }
   },
   {
     path: "/investment-packages",
@@ -146,9 +147,21 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     console.log("profile: ", _.isEmpty(store.state.profile));
-    if(_.isEmpty(store.state.profile)) {
+    if(_.isEmpty(JSON.parse(localStorage.getItem("user")))) {
       next({
         name: "LogIn"
+      })
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+
+  if (to.matched.some(record => record.meta.isLoggedIn)) {
+    if (_.isEmpty(JSON.parse(localStorage.getItem("user")))===false) {
+      next({
+        name: "Home"
       })
     } else {
       next();

@@ -18,6 +18,7 @@
 <style scoped>
 p {
 	font-size: 18px;
+    text-align: center;
 }
 
 section {
