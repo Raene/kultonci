@@ -3,6 +3,7 @@
         <div class="card shadow mb-4">
             <div class="card-header">
                 <strong class="card-title">Create BTC address</strong>
+                <strong><br>Current BTC address: {{ BTC }}</strong>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -28,13 +29,30 @@ export default {
         };
     },
 
+    mounted() {
+        const btc = localStorage.getItem("btcAddress");
+        if(!btc) {
+            this.$store.commit("btc/SET_BTC_ADDRESS", null);
+        }
+        this.$store.commit("btc/SET_BTC_ADDRESS", btc);
+    },
+
+    computed: {
+        BTC() {
+            if (!this.$store.getters["btc/getBtcAddress"]) {
+                return "null"
+            }
+            return this.$store.getters["btc/getBtcAddress"];
+        }
+    },
+
     methods: {
         changeBtcAddress() {
             console.log("changed to: ", this.btcAddress);
-            this.$store.dispatch("btc/create_btc_address", {address: this.btcAddress})
+            this.$store.dispatch("btc/create_btc_address", { address: this.btcAddress })
                 .then((data) => {
-                    console.log("btc data: ", data.data);
-                    this.$store.commit("btc/SET_BTC_ADDRESS", data);
+                    console.log("btc data: ", data.data.address);
+                    this.$store.commit("btc/SET_BTC_ADDRESS", data.data.address);
                     this.$swal({
                         position: "center",
                         icon: "success",

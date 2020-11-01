@@ -152,6 +152,10 @@
   /* opacity: .9; */
   /* background-color: black; */
 }
+section {
+    margin-bottom: 0;
+}
+
 footer h2 {
     font-size: 20px !important;
     text-transform: capitalize;
