@@ -82,8 +82,8 @@ export default {
                 earnings: this.earnings,
                 package_level: this.package_level,
                 package_name: this.package_name,
-                verified: 0,
-                paymentProof: null,
+                verified: this.wallet_details.verified,
+                paymentProof: this.wallet_details.paymentProof,
                 user_id: this.$route.params.id
             })
             .then((data) => {
