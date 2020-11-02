@@ -32,3 +32,14 @@ WithdrawalModel.prototype.update = async function (whereValue, wheretype) {
         throw new Error(error);
     }
 }
+
+WithdrawalModel.prototype.get = async function (value,valueType) {
+    try {
+        let sub = await this.getByFieldLatest(value, valueType);
+        return sub;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+module.exports = WithdrawalModel;

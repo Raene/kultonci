@@ -10,6 +10,7 @@ const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
 const {payment}      = require('./routes/payment');
 const {users}         = require('./routes/user');
+const {withdrawal}         = require('./routes/withdrawal');
 
 const cors = require('@koa/cors');
 const koaOptions = {
@@ -82,6 +83,7 @@ router.use(subscription(koaRouter,con).routes());
 router.use(admin(koaRouter,con).routes());
 router.use(users(koaRouter,con).routes());
 router.use(payment(koaRouter,con).routes());
+router.use(withdrawal(koaRouter,con).routes());
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());
