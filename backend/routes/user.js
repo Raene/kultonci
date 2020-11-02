@@ -7,6 +7,7 @@ exports.users = function(router, con) {
         prefix: '/server/user'
     });
 
-    return route.post('/createDeposit',loginRequired, controller.createDeposit(con))
+    return route.post('/createDeposit',controller.createDeposit(con))
+        .post('/updateDeposit',controller.updateDeposit(con))
         .get('/investments/:id',loginRequired, userInvestment.getInvestments(con));
 }

@@ -3,7 +3,7 @@ const { parentPort } = require('worker_threads');
 
 function daily(con){
    return new Promise((resolve, reject) => {
-    con.query(`SELECT * FROM packageLevels WHERE name = 'bronze'`,function(err, results){
+    con.query(`SELECT * FROM packageLevels WHERE (name = 'bronze' AND investmentPkg_id = 1)`,function(err, results){
         if(err) reject(err);
         resolve(results);
     })
@@ -12,7 +12,7 @@ function daily(con){
 
 daily(con).then((results)=>{
     let percent = results[0].percentageReturns / 100;
-    let sql = `UPDATE userInvestments SET earnings = (earnings * ${percent}) + earnings WHERE investmentPkg_id = ${results[0].id}`
+    let sql = `UPDATE userInvestments SET paid_earnings = (initial_deposit * ${percent}) + paid_earnings AND SET compounded_earnings = (compounded_deposits * ${percent}) + compounded_earnings  WHERE investmentPkg_id = ${results[0].id}`
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log(result.affectedRows + " record(s) updated");

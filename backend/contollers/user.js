@@ -32,10 +32,34 @@ exports.getUserById = function (con) {
 exports.createDeposit = function (con) {
     return async (ctx) => {
         try {
-            const data = ctx.request.body;
+            let data = ctx.request.body;
+            let initial = data.initial_deposit
+            data.total_deposit = initial
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
              const payload = await userInvestment.create()
              ctx.body = {data: payload.insertId, success: true}
+             ctx.status = 200;
+        } catch (error) {
+            console.log(error);
+            ctx.throw(500, error);
+        }
+    }
+}
+
+exports.updateDeposit = function (con) {
+    return async (ctx) => {
+        try {
+            let data = ctx.request.body;
+            
+            data.compounded_deposits = data.compounded_deposits + data.amount;
+
+            data.locked_deposit = data.compounded_deposits + data.initial_deposits
+
+            data.total_deposit = data.total_deposit + data.amount;
+
+            const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
+            await userInvestment.update(data.id,'id');
+            ctx.body = {message: 'Payment Proof Upload succesful'};
              ctx.status = 200;
         } catch (error) {
             console.log(error);
