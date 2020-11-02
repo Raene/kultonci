@@ -53,11 +53,13 @@ const subscription = {
         },
 
         createDeposit(context, payload) {
-        	return axios.post(url + "/user/createDeposit", payload);
+            const token = localStorage.getItem("token");
+        	return axios.post(url + "/user/createDeposit", payload, { headers: { Authorization: `Bearer ${token}` } });
         },
 
         uploadProofOfPaymnent(context, payload) {
-        	return axios.post(url + "/payment/proofOfPayment", payload)
+            const token = localStorage.getItem("token");
+        	return axios.post(url + "/payment/proofOfPayment", payload, { headers: { Authorization: `Bearer ${token}` } })
         		.then((data) => {
         			console.log("payment proof: ", data);
         		})
@@ -67,7 +69,8 @@ const subscription = {
         },
 
         getUserInvestment(context, payload) {
-        	return axios.get(url + "/user/investments/" +payload+"?type=user_id")
+            const token = localStorage.getItem("token");
+        	return axios.get(url + "/user/investments/" +payload+"?type=user_id", { headers: { Authorization: `Bearer ${token}` } })
                 .then((data) => {
                 if (data.data.data[0] !== undefined) {
                     console.log("payment inv: ", data.data.data[0]);

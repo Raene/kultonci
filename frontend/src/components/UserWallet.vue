@@ -24,8 +24,8 @@
                     <p v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'" class="package">
                         Weekly Package
                     </p> -->
-                    <h5 v-if="currentInvestment.package_name !== 'null'">You are on the</h5>
-                    <p v-if="currentInvestment.package_name !== 'null'" class="package">
+                    <h5 v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0">You are on the</h5>
+                    <p v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="package">
                         {{ currentInvestment.package_name }}
                     </p>
                     <p v-if="false" class="msg">Your account is temporarily closed now</p>
@@ -55,7 +55,7 @@
                                     <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.total_deposit }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.total_deposit === null || isApproved?"0.00": currentInvestment.total_deposit }}</h5>
                                         <p class="card-text">Total Deposits</p>
                                     </span>
                                 </div>
@@ -69,7 +69,7 @@
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email==="isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.locked_deposit }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.locked_deposit === null || isApproved?"0.00": currentInvestment.locked_deposit }}</h5>
                                         <p class="card-text">Locked Deposits</p>
                                     </span>
                                 </div>
@@ -98,7 +98,7 @@
                                     <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null?"0.00": currentInvestment.earnings }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null || isApproved?"0.00": currentInvestment.earnings }}</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -112,7 +112,7 @@
                                     <i class="fa fa-credit-card uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null?"0.00": currentInvestment.earnings }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null || isApproved?"0.00": currentInvestment.earnings }}</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -249,6 +249,13 @@ export default {
                 locked_deposit: "0.00",
                 earnings: "0.00"
             }
+        },
+
+        isApproved() {
+            if (this.currentInvestment.verified !== 0) {
+                return true;
+            }
+            return false;
         },
 
         profile() {
