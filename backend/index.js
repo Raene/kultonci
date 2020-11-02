@@ -21,12 +21,12 @@ const Bree = require('bree');
 const root = path.join(__dirname, 'jobs');
 const jobArr = require(root);
 
-// const bree = new Bree({
-//     jobs:  jobArr
-//     // closeWorkerAfterMs: ms('10s')
-// })
+const bree = new Bree({
+    jobs:  jobArr
+    // closeWorkerAfterMs: ms('10s')
+})
 
-// bree.start();
+bree.start();
 
 let con = require('./models/connection')(host,user,password,database);
 
