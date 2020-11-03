@@ -29,6 +29,10 @@
                         {{ currentInvestment.package_name }}
                     </p>
                     <p v-if="false" class="msg">Your account is temporarily closed now</p>
+                    <div v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="btn-container">
+                        <button class="btn btn-danger bg-danger btn-lg">Request Withdrawal</button>
+                        <button class="btn btn-danger bg-danger btn-lg">Add Deposits</button>
+                    </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="card white-card text-white bg-light mb-3">
@@ -57,6 +61,20 @@
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
                                         <h5 class="card-title">USD {{ currentInvestment.total_deposit === null || isApproved?"0.00": currentInvestment.total_deposit }}</h5>
                                         <p class="card-text">Total Deposits</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row item-row">
+                        <div class="col-md-9">
+                            <div class="card text-white bg-primary mb-3 text-left">
+                                <div class="card-body uw-body">
+                                    <i class="fa fa-money uw-icon item1 text-center"></i>
+                                    <span class="item2">
+                                        <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com" || profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
+                                        <h5 class="card-title">USD {{ currentInvestment.total_deposit === null || isApproved?"0.00": currentInvestment.total_deposit }}</h5>
+                                        <p class="card-text">Initial Deposits</p>
                                     </span>
                                 </div>
                             </div>
@@ -318,6 +336,11 @@ export default {
 }
 </script>
 <style scoped>
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .get-bitcoin {
     border: 1px solid #e3e17b;
     background-color: #e3e17b;
@@ -481,5 +504,10 @@ h5 {
 
 .coingecko-script {
     margin-bottom: 50px;
+}
+
+.btn-danger {
+    margin-top: 20px;
+
 }
 </style>
