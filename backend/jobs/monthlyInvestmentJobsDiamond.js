@@ -12,7 +12,7 @@ function monthly(con){
 
 monthly(con).then((results)=>{
     let percent = results[0].percentageReturns / 100;
-    let sql = `UPDATE userInvestments SET paid_earnings = (initial_deposit * ${percent}) + paid_earnings,compounded_earnings = (compounded_deposits * ${percent}) + compounded_earnings  WHERE (package_level ='diamond' AND package_name='monthly compounding investment packages')`
+    let sql = `UPDATE userInvestments SET paid_earnings = (initial_deposit * ${percent}) + paid_earnings,compounded_earnings = (compounded_deposits * ${percent}) + compounded_earnings  WHERE (package_level ='diamond' AND package_name='monthly compounding investment packages'AND verified = 1)`
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log(result.affectedRows + " record(s) updated");
