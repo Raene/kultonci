@@ -49,6 +49,7 @@ exports.createDeposit = function (con) {
             let data = ctx.request.body;
             let initial = data.initial_deposit
             data.total_deposit = initial
+            data.locked_deposit =initial
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
              const payload = await userInvestment.create()
              ctx.body = {data: payload.insertId, success: true}
