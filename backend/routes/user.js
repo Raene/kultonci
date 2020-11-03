@@ -10,5 +10,5 @@ exports.users = function(router, con) {
     return route.post('/createDeposit',controller.createDeposit(con))
         .post('/updateDeposit',controller.updateDeposit(con))
         .get('/referrals/:id',controller.getAllreferrals(con))
-        .get('/investments/:id',loginRequired, userInvestment.getInvestments(con));
+        .get('/investments/:id',userInvestment.getInvestments(con));
 }

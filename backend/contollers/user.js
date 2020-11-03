@@ -67,7 +67,7 @@ exports.updateDeposit = function (con) {
             
             data.compounded_deposits = data.compounded_deposits + data.amount;
 
-            data.locked_deposit = data.compounded_deposits + data.initial_deposits
+            data.locked_deposit = data.compounded_deposits + data.locked_deposit
 
             data.total_deposit = data.total_deposit + data.amount;
 
