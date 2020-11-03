@@ -106,8 +106,8 @@ export default {
                     const user = JSON.parse(localStorage.getItem("user"));
                     this.$store.dispatch("subscription/createDeposit", {
                             user_id: user.id,
-                            locked_deposit: amount,
-                            total_deposit: amount,
+                            locked_deposit: +amount,
+                            initial_deposit: +amount,
                             package_level: pkg_level,
                             package_name: pkg_name
                         })
