@@ -24,6 +24,16 @@ Db.prototype.getByField = function (value,valueType){
     });
 };
 
+Db.prototype.getByFieldUser = function (value,valueType){
+    return new Promise((resolve, reject) => {
+        let sql = `SELECT id,name,email,kyc_id,created_at,updated_at,deleted_at,role,verified,referral,referee_id FROM ${this.TableName} WHERE ${valueType} = ?`;
+        this.con.query(sql,value, function (err,results) {
+            if(err) reject(err);
+            resolve(results);
+        });
+    });
+};
+
 Db.prototype.getByFieldLatest = function (value,valueType){
     return new Promise((resolve, reject) => {
         let sql = `SELECT * FROM ${this.TableName} WHERE ${valueType} = ?  ORDER BY id DESC LIMIT 1`;

@@ -15,6 +15,20 @@ exports.getAllUsers = function (con) {
     }
 }
 
+exports.getAllreferrals = function (con) {
+    return async(ctx) => {
+        try {
+            const user = new UserModel({},null,con,'user');
+            const id = ctx.params.id;
+            let payload = await user.getByValue(id,'referee_id');
+            ctx.body = {success: true, data: payload};
+            ctx.status = 200;
+        } catch (error) {
+            ctx.throw(500,error.message);
+        }
+    }
+}
+
 exports.getUserById = function (con) {
     return async(ctx) => {
         try {

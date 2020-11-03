@@ -2,15 +2,17 @@
 
 const Db = require('./dbModel');
 const bcrypt = require('bcrypt');
-const db = require('../jobs/connection');
+const voucher_codes = require('voucher-code-generator');
 const jwt = require("jsonwebtoken");
 
 const UserModel = function (userSchema, kyc_id, con, TableName) {
     Db.call(this, con, TableName);
-    ({ name: this.name, email: this.email, password: this.password } = userSchema);
-    this.userSchema = Object.assign({}, { name: this.name, email: this.email, password: this.password });
+    ({ name: this.name, email: this.email, password: this.password} = userSchema);
+    this.userSchema = Object.assign({}, { name: this.name, email: this.email, password: this.password});
 
-    this.userSchema.kyc_id = kyc_id
+    this.referral_code = userSchema.referral_code;
+
+    this.userSchema.kyc_id = kyc_id;
 
 }
 
@@ -31,17 +33,28 @@ UserModel.prototype.create = async function () {
         if (u.length > 0) {
             throw new Error("User already exists");
         }
+
+        //check if user is signing up with a referral code
+        //get the first char from the string, that is the referee id
+        if (this.referral_code != "") {
+            this.userSchema.referee_id = this.referral_code.substring(0, 1);
+        }
         this.userSchema.password = await hashPassword(this.userSchema.password)
         let user = await this.insertToTable(this.userSchema);
+        this.userSchema.referral = voucher_codes.generate({
+            prefix: user.insertId,
+            length: 6
+        });
+        await this.updateDbDynamic({ referral: this.userSchema.referral }, user.insertId, 'id');
         return user;
     } catch (error) {
         throw new Error(error);
     }
 }
 
-UserModel.prototype.update = async function (valueType,whereType,value,whereValue) {
+UserModel.prototype.update = async function (valueType, whereType, value, whereValue) {
     try {
-        let u = await this.updateDb(valueType,whereType,value,whereValue);
+        let u = await this.updateDb(valueType, whereType, value, whereValue);
         return u;
     } catch (error) {
         throw new Error(error)
@@ -58,27 +71,27 @@ UserModel.get = async function (con, TableName, value, valueType) {
     }
 }
 
-UserModel.prototype.getByValue = async function (value,valueType) {
+UserModel.prototype.getByValue = async function (value, valueType) {
     try {
-        let user = await this.getByField(value,valueType);
+        let user = await this.getByFieldUser(value, valueType);
         return user;
     } catch (error) {
         throw new Error(error)
     }
 }
 
-UserModel.prototype.getUserByJoin = async function (value,valueType) {
+UserModel.prototype.getUserByJoin = async function (value, valueType) {
     try {
-        let user = await this.getUserJoin(value,valueType);
+        let user = await this.getUserJoin(value, valueType);
         return user;
     } catch (error) {
         throw new Error(error);
     }
 }
 
-UserModel.prototype.delete = async function (value,valueType) {
+UserModel.prototype.delete = async function (value, valueType) {
     try {
-        await this.dbDelete(value,valueType);
+        await this.dbDelete(value, valueType);
         return true;
     } catch (error) {
         throw new Error(error);
@@ -101,7 +114,7 @@ UserModel.prototype.login = async function () {
             throw new Error("Email does not exist");
         }
         console.log(u);
-        let {id,email,role,name} = u[0];
+        let { id, email, role, name, referral, referee_id } = u[0];
         let exists = await compareHashPassword(this.userSchema.password, u[0].password);
         if (exists != true) {
             throw new Error('Password is incorrect')
@@ -115,7 +128,7 @@ UserModel.prototype.login = async function () {
             process.env.SECRET_KEY,
             { expiresIn: "120h" }
         )
-        return {id,name,email,token,role}
+        return { id, name, email, token, role, referral, referee_id }
     } catch (error) {
         throw new Error(error);
     }

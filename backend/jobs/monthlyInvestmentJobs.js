@@ -17,8 +17,8 @@ monthly(con).then((results)=>{
         if (err) throw err;
         console.log(result.affectedRows + " record(s) updated");
       });
-    // if (parentPort) parentPort.postMessage('done');
-    // else process.exit(0);
+    if (parentPort) parentPort.postMessage('done');
+    else process.exit(0);
 }).catch((error)=>{
     throw new Error(error);
 })
