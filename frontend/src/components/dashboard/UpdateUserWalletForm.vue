@@ -6,6 +6,17 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <form @submit.prevent="updateWallet">
+                            <!-- deposits -->
+                            <p class="mb-2"><strong>Enter initial deposit</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="initial_deposit" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
                             <p class="mb-2"><strong>Enter total deposit</strong></p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -26,12 +37,84 @@
                                     <span class="input-group-text">.00</span>
                                 </div>
                             </div>
-                            <p class="mb-2"><strong>Enter earnings</strong></p>
+                            <p class="mb-2"><strong>Enter compounded deposit</strong></p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input v-model="earnings" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input v-model="compounded_deposit" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <!-- earnings -->
+                            <p class="mb-2"><strong>Enter total earnings</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="total_earnings" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <p class="mb-2"><strong>Enter paid earnings</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="paid_earnings" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <p class="mb-2"><strong>Enter compounded earnings</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="compounded_earnings" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <p class="mb-2"><strong>Enter referral earnings</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="referral_earnings" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <!-- withdrawals -->
+                            <p class="mb-2"><strong>Enter total withdrawals</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="total_withdrawals" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <p class="mb-2"><strong>Enter pending withdrawals</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="pending_withdrawals" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <p class="mb-2"><strong>Enter referral withdrawals</strong></p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="referral_withdrawals" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                     <span class="input-group-text">.00</span>
                                 </div>
@@ -57,9 +140,20 @@ export default {
     props: ["wallet_details"],
     data() {
         return {
+            // deposit
+            initial_deposit: null,
             total_deposit: null,
             locked_deposit: null,
-            earnings: null,
+            compounded_deposit: null,
+            // earnings
+            paid_earnings: null,
+            total_earnings: null,
+            compounded_earnings: null,
+            referral_earnings: null,
+            // withdrawals
+            total_withdrawals: null,
+            pending_withdrawals: null,
+            referral_withdrawals: null,
             package_level: null,
             package_name: null
         }
