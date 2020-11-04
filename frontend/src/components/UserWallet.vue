@@ -33,6 +33,13 @@
                         <button class="btn btn-danger bg-danger btn-lg">Request Withdrawal</button>
                         <button class="btn btn-danger bg-danger btn-lg">Add Deposits</button>
                     </div>
+                    <div class="card white-card" style="margin-top: 10px;">
+                        <div class="card-body">
+                            <h5 style="color: black;" class="text-left">Referral link</h5>
+                            <input id="referral_value" v-model="referral_code" type="text" class="form-control" disabled>
+                            <button @click="copyLink" style="margin-top: 15px;" class="btn btn-primary link-btn">Copy Link</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="card white-card text-white bg-light mb-3">
@@ -231,6 +238,42 @@
                             </div>
                         </div>
                     </div>
+                    <div v-if="referrals.length > 0" class="row item-row">
+                        <div class="col-md-12">
+                            <div class="card text-white bg-warning mb-3">
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th scope="col">#</th> -->
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Date Joined</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(referral, index) in referrals" :key="index">
+                                                <!-- <th scope="row">1</th> -->
+                                                <td>{{ referral.name }}</td>
+                                                <td>{{ referral.email }}</td>
+                                                <td>{{ referral.dateJoined }}</td>
+                                            </tr>
+                                            <!-- <p v-if="referral.noVal === false">You have no referrals</p> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="row item-row">
+                        <div class="col-md-12">
+                            <div class="card text-white bg-warning mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">No Referrals</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,7 +294,8 @@ export default {
             chartOptions: {
                 hoverBorderWidth: 20
             },
-            chartData: null
+            chartData: null,
+            referral_code: null
         };
     },
 
@@ -281,6 +325,17 @@ export default {
                 console.log("no user");
             }
             return this.$store.getters["user/getProfile"];
+        },
+
+        referrals() {
+            let referralData = [];
+            if (this.$store.getters["user/getReferrals"].length > 0) {
+                referralData = this.$store.getters["user/getReferrals"];
+            }
+            // else {
+            //     referralData.push({ name: null, email: null, dateJoined: null, noVal: false });
+            // }
+            return referralData;
         }
     },
 
@@ -304,6 +359,18 @@ export default {
 
         getEarning() {
             return this.currentInvestment.earnings;
+        },
+
+        copyLink() {
+            const copyText = document.querySelector("#referral_value");
+            copyText.select();
+            console.log("copytext: ", copyText)
+            navigator.clipboard.writeText(copyText.value);
+            const linkBtn = document.querySelector(".link-btn");
+            linkBtn.textContent = "Copied!";
+            setInterval(() => {
+                linkBtn.textContent = "Copy Link"
+            }, 2000)
         }
     },
 
@@ -313,6 +380,7 @@ export default {
             this.$store.commit("user/SET_PROFILE", null);
         }
         this.$store.commit("user/SET_PROFILE", JSON.parse(user));
+        this.referral_code = process.env.VUE_APP_REFERRAL + this.profile.referral;
         this.$store.dispatch("user/getUser", JSON.parse(user).id)
             .then((data) => {
                 console.log("userdata: ", data.data.data[0].userVerified);
@@ -332,15 +400,31 @@ export default {
             .then(() => {
                 this.fillData();
             });
+        this.$store.dispatch("user/getReferrals");
     }
 }
 </script>
 <style scoped>
+th {
+    text-align: center;
+}
+
+.btn:focus {
+    border: none !important;
+    outline: none !important; 
+}
+
+.btn:active {
+    outline: none !important; 
+    border: none !important;
+}
+
 .btn-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .get-bitcoin {
     border: 1px solid #e3e17b;
     background-color: #e3e17b;

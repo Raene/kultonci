@@ -9,7 +9,8 @@ const user = {
 		initialSignupDetails: {},
 		profile: {},
 		users: [],
-		user: {}
+		user: {},
+		referrals: []
 	},
 	mutations: {
 		SET_INITIAL_SIGNUP_DETAILS(state, payload) {
@@ -44,6 +45,11 @@ const user = {
 			localStorage.removeItem("user");
             localStorage.removeItem("token");
 			console.log("user cleared: ", state.profile);
+		},
+
+		SET_REFERRALS(state, payload) {
+			Vue.set(state, "referrals", payload);
+			console.log("referral data: ", state.referrals);
 		}
 	},
 	actions: {
@@ -103,6 +109,17 @@ const user = {
 		 updateDeposit(context, payload) {
 		 	console.log("upadte payload: ", payload);
             return axios.post(url + "/user/updateDeposit", payload);
+        },
+
+        getReferrals(context, payload) {
+        	return axios.get(url + "/user/referrals/" + payload)
+        		.then((data) => {
+        			console.log("referral data: ", data.data.data);
+        			context.commit("SET_REFERRALS", data.data.data);
+        		})
+        		.catch(err => {
+        			console.log(err);
+        		});
         }
 	},
 	getters: {
@@ -127,6 +144,10 @@ const user = {
 
 		getUser(state) {
 			if (_.isEmpty(state.user) === false) return state.user;
+		},
+
+		getReferrals(state) {
+			return state.referrals;
 		}
 	}
 }

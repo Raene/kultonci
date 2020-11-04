@@ -2,7 +2,7 @@
     <div id="kyc">
         <Preloader v-if="isLoggingIn" />
         <div class="container" v-if="!isLoggingIn">
-            <h2 v-if="path === '/signup'" class="form-title">Verify your identity</h2>
+            <h2 v-if="path.includes('signup')" class="form-title">Verify your identity</h2>
             <h2 v-else class="form-title">Upload proof of payment</h2>
             <form @submit.prevent="runKyc" class="register-form">
                 <div class="form-group">
@@ -71,9 +71,9 @@ export default {
 
     methods: {
         runKyc() {
-            if (this.path === "/signup") {
+            if (this.path.includes("signup")) {
                 this.signup();
-            } else {
+            } else if (this.path.includes("investment-packages")) {
                 this.uploadProofOfPayment();
             }
         },
@@ -81,10 +81,12 @@ export default {
             const kyc = document.querySelector("#file-Input");
             console.log("kyc: ", kyc);
             const fd = new FormData();
+            console.log("initial: ", this.initialSignupDetails);
             fd.append("name", this.initialSignupDetails.name);
             fd.append("email", this.initialSignupDetails.email);
             fd.append("password", this.initialSignupDetails.password);
             fd.append("repeat_password", this.initialSignupDetails.repeat_password);
+            fd.append("referral_code", this.initialSignupDetails.referral_code? this.initialSignupDetails.referral_code: "");
             fd.append("kyc", kyc.files[0]);
             this.$store.dispatch("user/signup", fd)
                 .then((err) => {
@@ -113,7 +115,7 @@ export default {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                        this.$router.push({ path: "/login" });
+                        this.$router.replace({ path: "/login" });
                     }
                 });
             // .catch(err => console.log(err));

@@ -160,6 +160,7 @@ export default {
     },
 
     mounted() {
+        console.log("wallet: ", this.wallet_details);
     	this.total_deposit = this.wallet_details.total_deposit;
     	this.locked_deposit = this.wallet_details.locked_deposit;
         this.initial_deposit = this.wallet_details.initial_deposit;
@@ -183,6 +184,7 @@ export default {
                 initial_deposit: this.initial_deposit,
                 total_deposit: this.total_deposit,
                 locked_deposit: this.locked_deposit,
+                compounded_deposits: this.compounded_deposit,
                 paid_earnings: this.paid_earnings,
                 total_earnings: +this.total_earnings,
                 compounded_earnings: this.compounded_earnings,

@@ -25,8 +25,8 @@ InvestmentModel.prototype.create = async function () {
 
 InvestmentModel.prototype.update = async function (whereValue,whereType) {
     try {
+        console.log(this.obj);
         let i = await this.updateDbDynamic(this.obj,whereValue,whereType);
-        console.log(i);
         return i;
     } catch (error) {
         throw new Error(error)
