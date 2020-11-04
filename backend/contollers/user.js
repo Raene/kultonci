@@ -72,9 +72,10 @@ exports.updateDeposit = function (con) {
 
             data.total_deposit = data.total_deposit + data.amount;
 
+            delete data.amount
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
             await userInvestment.update(data.id,'id');
-            ctx.body = {message: 'Payment Proof Upload succesful'};
+            ctx.body = {message: 'update succesful'};
              ctx.status = 200;
         } catch (error) {
             console.log(error);

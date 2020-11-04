@@ -7,6 +7,7 @@ const UserModel = require('../models/UserModel');
 exports.verifySub = function (con) {
     return async (ctx) => {
         try {
+            //when verifying sub send referee_id and referral_bonus of selected package
             const data = ctx.request.body;
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
             let investment = await userInvestment.get(data.id,'id')
@@ -14,6 +15,12 @@ exports.verifySub = function (con) {
             // let new_deposit = investment[0].total_deposit + data.newDeposit
             let invest = await userInvestment.update(investment[0].id,'id')
 
+            if(data.referee_id != null && data.referee_id > 0){
+                let investment = await userInvestment.get(data.referee_id,'user_id');
+                let percent = data.referral_bonus / 100;
+                investment.referral_earnings = (data.initial_deposit * percent) + investment.referral_earnings; 
+                await userInvestment.update(investment[0].id,'id');
+            }
             ctx.body = {data: invest, success: true}
             ctx.status = 200;
         } catch (error) {
