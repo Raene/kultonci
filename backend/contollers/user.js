@@ -65,6 +65,8 @@ exports.updateDeposit = function (con) {
     return async (ctx) => {
         try {
             let data = ctx.request.body;
+
+            console.log("data req: " + JSON.stringify(data));
             
             data.compounded_deposits = data.compounded_deposits + data.amount;
 
