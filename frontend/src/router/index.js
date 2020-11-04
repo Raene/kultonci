@@ -35,6 +35,15 @@ const routes = [
       import(/* webpackChunkName: "signup" */ "../views/SignUp.vue")
   },
   {
+    path: "/signup/:referral_code",
+    name: "SignUpWithRef",
+    // route level code-splitting
+    // this generates a separate chunk (signup.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "signupwithref" */ "../views/SignUpWithRef.vue")
+  },
+  {
     path: "/login",
     name: "LogIn",
     // route level code-splitting

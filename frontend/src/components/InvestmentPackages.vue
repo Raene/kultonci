@@ -39,7 +39,7 @@
                                                     <p>Minimum Investment of <strong>${{ value.minprice }}</strong></p>
                                                     <p>Maximum Investment of <strong>${{ value.maxprice }}</strong></p>
                                                     <p><strong>RETURNS {{ value.percentageReturns }}%</strong></p>
-                                                    <p><strong>REFERRAL BONUS 5%</strong></p>
+                                                    <p><strong>REFERRAL BONUS {{ value.referral_bonus }}%</strong></p>
                                                     <hr>
                                                 </div>
                                             </div>

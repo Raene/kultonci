@@ -40,9 +40,9 @@
                                     </div> <!-- .col -->
                                     <div class="col">
                                         <a href="#">
-                                            <h3 class="h5 mt-4 mb-1">Deposits</h3>
+                                            <h3 class="h5 mt-4 mb-1">Initial Deposits</h3>
                                         </a>
-                                        <p class="text-muted">USD {{ currentInvestment.total_deposit }}</p>
+                                        <p class="text-muted">USD {{ currentInvestment.initial_deposit }}</p>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .card-body -->
@@ -69,15 +69,208 @@
                                     </div> <!-- .col -->
                                     <div class="col">
                                         <a href="#">
-                                            <h3 class="h5 mt-4 mb-1">Withdrawals</h3>
+                                            <h3 class="h5 mt-4 mb-1">Total Deposit</h3>
                                         </a>
-                                        <p class="text-muted">USD 0.00</p>
+                                        <p class="text-muted">USD {{ currentInvestment.total_deposit }}</p>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .card-body -->
                             <!-- <div class="card-footer">
                       <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
                     </div> -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                </div> <!-- .row-->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-dollar-sign fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Locked Deposit</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.locked_deposit }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-credit-card fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Compounded Deposit</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.compounded_deposits }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                            <!-- <div class="card-footer">
+                      <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
+                    </div> -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                </div> <!-- .row-->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-dollar-sign fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Paid Earnings</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.paid_earnings }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-credit-card fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Total Earnings</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.total_earnings }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                            <!-- <div class="card-footer">
+                      <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
+                    </div> -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                </div> <!-- .row-->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-dollar-sign fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Compounded Earnings</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.compounded_earnings }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-credit-card fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Referral Earnings</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.referral_earnings }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                            <!-- <div class="card-footer">
+                      <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
+                    </div> -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                </div> <!-- .row-->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-dollar-sign fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Total Withdrawals</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.total_withdrawals }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-credit-card fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Referral Withdrawals</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.referral_withdrawals }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
+                            <!-- <div class="card-footer">
+                      <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
+                    </div> -->
+                        </div> <!-- .card -->
+                    </div> <!-- .col-md-->
+                </div> <!-- .row-->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow">
+                            <div class="card-body my-n3">
+                                <div class="row align-items-center">
+                                    <div class="col-3 text-center">
+                                        <span class="circle circle-lg bg-light">
+                                            <i class="fe fe-dollar-sign fe-24 text-primary"></i>
+                                        </span>
+                                    </div> <!-- .col -->
+                                    <div class="col">
+                                        <a href="#">
+                                            <h3 class="h5 mt-4 mb-1">Pending Withdrawals</h3>
+                                        </a>
+                                        <p class="text-muted">USD {{ currentInvestment.pending_withdrawals }}</p>
+                                    </div> <!-- .col -->
+                                </div> <!-- .row -->
+                            </div> <!-- .card-body -->
                         </div> <!-- .card -->
                     </div> <!-- .col-md-->
                 </div> <!-- .row-->
@@ -123,15 +316,13 @@
                         </div> .card-body
                     </div> .card -->
                 </div> <!-- .card-group -->
-                <!-- <h6 class="mb-3">Last payment</h6>
-              <table class="table table-borderless table-striped">
+                <h6 v-if="false" class="mb-3">Withdrawals History</h6>
+              <table v-if="false" class="table table-borderless table-striped">
                 <thead>
                   <tr role="row">
                     <th>ID</th>
-                    <th>Purchase Date</th>
+                    <th>Withdrawal Date</th>
                     <th>Total</th>
-                    <th>Payment</th>
-                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -140,8 +331,6 @@
                     <th scope="col">1331</th>
                     <td>2020-12-26 01:32:21</td>
                     <td>$16.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-warning mr-2"></span>Due</td>
                     <td>
                       <div class="dropdown">
                         <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -150,7 +339,6 @@
                         <div class="dropdown-menu dropdown-menu-right">
                           <a class="dropdown-item" href="#">Edit</a>
                           <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
                         </div>
                       </div>
                     </td>
@@ -159,8 +347,6 @@
                     <th scope="col">1156</th>
                     <td>2020-04-21 00:38:38</td>
                     <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-danger mr-2"></span>False</td>
                     <td>
                       <div class="dropdown">
                         <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -169,7 +355,6 @@
                         <div class="dropdown-menu dropdown-menu-right">
                           <a class="dropdown-item" href="#">Edit</a>
                           <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
                         </div>
                       </div>
                     </td>
@@ -178,8 +363,6 @@
                     <th scope="col">1038</th>
                     <td>2019-06-25 19:13:36</td>
                     <td>$9.9</td>
-                    <td>Credit Card </td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
                     <td>
                       <div class="dropdown">
                         <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -188,7 +371,6 @@
                         <div class="dropdown-menu dropdown-menu-right">
                           <a class="dropdown-item" href="#">Edit</a>
                           <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
                         </div>
                       </div>
                     </td>
@@ -197,8 +379,6 @@
                     <th scope="col">1227</th>
                     <td>2021-01-22 13:28:00</td>
                     <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
                     <td>
                       <div class="dropdown">
                         <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -207,13 +387,12 @@
                         <div class="dropdown-menu dropdown-menu-right">
                           <a class="dropdown-item" href="#">Edit</a>
                           <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
                         </div>
                       </div>
                     </td>
                   </tr>
                 </tbody>
-              </table> -->
+              </table>
             </div>
             <UpdateUserWalletForm v-else :wallet_details="currentInvestment"/>
         </div>
