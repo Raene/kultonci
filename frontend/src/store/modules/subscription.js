@@ -54,6 +54,7 @@ const subscription = {
 
         createDeposit(context, payload) {
             const token = localStorage.getItem("token");
+            console.log("deposit payload: ", payload);
         	return axios.post(url + "/user/createDeposit", payload, { headers: { Authorization: `Bearer ${token}` } });
         },
 
