@@ -9,6 +9,7 @@ exports.admin = function(router,con) {
         prefix: '/server/admin'
     });
     return route.post('/verifySub',controller.verifySub(con))
+                .post('/verifySub/:referee_id/:referral_bonus',controller.verifySub(con))
                 .post('/btcAddress',loginRequired,isAdmin,controller.insertBTCaddr(con))
                 .get('/users',loginRequired,isAdmin,controller.getAllUsers(con))
                 .post('/users',loginRequired,isAdmin,controller.verifyUser(con))
