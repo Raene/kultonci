@@ -95,7 +95,7 @@ Db.prototype.getJoinWhere = function (value,valueType) {
 
 Db.prototype.getUsersJoin = function () {
     return new Promise((resolve,reject)=>{
-        let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified, user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id`;
+        let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified, user.referee_id as referee_id,user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id`;
         this.con.query(sql,function (err,result) {
         if(err) reject(err);
         resolve(result);
@@ -105,7 +105,7 @@ Db.prototype.getUsersJoin = function () {
 
 Db.prototype.getUserJoin = function (value,valueType) {
     return new Promise((resolve,reject)=>{
-        let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified, user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
+        let sql= `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified,user.referee_id as referee_id, user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
         this.con.query(sql,value,function (err,result) {
         if(err) reject(err);
         resolve(result);
