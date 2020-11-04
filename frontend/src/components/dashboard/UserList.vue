@@ -58,13 +58,14 @@ export default {
                 confirmButtonText: "Yes, delete user!"
             }).then((result) => {
                 if (result.value) {
-                    this.$store.dispatch("user/deleteUser", userId).then(() => {
+                    this.$store.dispatch("user/deleteUser", userId).then((data) => {
+                        console.log("delete data: ", data);
                         this.$swal(
                             "Deleted!",
                             "User has been deleted.",
                             "success"
                         );
-                        this.$store.commit("user/deleteUser", userId);
+                        this.$store.commit("user/DELETE_USER", userId);
                     }).catch((e) => {
                         console.log(e);
                         this.$swal({

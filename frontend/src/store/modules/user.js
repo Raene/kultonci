@@ -31,6 +31,14 @@ const user = {
 			console.log("user set");
 		},
 
+		DELETE_USER(state, payload) {
+			for(const i in state.users) {
+				if (+state.users[i].userId === +payload) {
+					state.users.splice(i, 1);
+				}
+			}
+		},
+
 		CLEAR_TOKEN(state) {
 			Vue.set(state, "profile", null);
 			localStorage.removeItem("user");
@@ -71,6 +79,11 @@ const user = {
 			return axios.get(url + "/admin/users/" + userId, { headers: { Authorization: `Bearer ${token}` } });
 		},
 
+		deleteUser(context, userId) {
+			const token = localStorage.getItem("token");
+			return axios.delete(url + "/admin/deleteUser/" + userId, { headers: { Authorization: `Bearer ${token}` } });
+		},
+
 		verifyUser(context, userId) {
 			const token = localStorage.getItem("token");
 			return axios.post(url + "/admin/users", userId, { headers: { Authorization: `Bearer ${token}` } })
@@ -85,7 +98,12 @@ const user = {
 		approveDeposit(context, depositId) {
 			const token = localStorage.getItem("token");
 			return axios.post(url + "/admin/verifySub", depositId, { headers: { Authorization: `Bearer ${token}` } });
-		}
+		},
+
+		 updateDeposit(context, payload) {
+		 	console.log("upadte payload: ", payload);
+            return axios.post(url + "/user/updateDeposit", payload);
+        }
 	},
 	getters: {
 		getInitialSignupDetails(state) {
