@@ -141,10 +141,10 @@
                                     </div>
                                 </div>
                             </div> -->
-                                <!-- <div class="row">
+                                <div class="row">
                                 <div class="col-md-12 col-sm-12">
-                                    <div class="feature-thumb middle">
-                                        <h3 class="inv-title2">Investment Plan For NFP Trade</h3>
+                                    <div class="feature-thumb">
+                                        <h3 class="inv-title">Investment Plan For NFP Trade</h3>
                                         <div class="sub-packages">
                                             <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
                                             <p>Minimum Investment of <strong>$3,000</strong></p>
@@ -160,7 +160,7 @@
                                         <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             </div>
                         </section>
                     </div>

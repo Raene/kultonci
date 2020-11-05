@@ -1,24 +1,26 @@
 <template>
     <section id="testimonial">
-        <div class="container">
+        <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+            <div class="overlay overlay-bg"></div>
             <div class="row coingecko-script">
-                <div class="col-md-12 col-sm-12">
-                    <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="section-title">
-                        <h2 class="invert-col">Welcome, {{ profile.name }}</h2>
-                        <hr>
-                        <h5 class="invert-col">We're glad you took the bold step to invest with us.</h5>
-                        <p class="invert-col" style="font-size: 18px;">Keep up with the progress of your investments - view your <strong>Deposits & Earnings</strong> on your fully secure personal investments page.</p>
+                    <div class="col-md-12 col-sm-12">
+                        <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="style-span col-md-6 col-sm-12">
-                    <!-- <span> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="section-title">
+                            <h2 class="invert-col">Welcome, {{ profile.name }}</h2>
+                            <hr>
+                            <h5 class="invert-col">We're glad you took the bold step to invest with us.</h5>
+                            <p class="invert-col" style="font-size: 18px;">Keep up with the progress of your investments - view your <strong>Deposits & Earnings</strong> on your fully secure personal investments page.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="style-span col-md-6 col-sm-12">
+                        <!-- <span> -->
                         <span>
                             <h5 class="invert-col" v-if="currentInvestment.package_name === 'null'">You're not on any package</h5>
                             <router-link style="text-decoration: none !important;" v-if="currentInvestment.package_name === 'null'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
@@ -43,23 +45,26 @@
                                 <button @click="copyLink" style="margin-top: 15px;" class="btn btn-primary link-btn">Copy Link</button>
                             </div>
                         </div>
-                    <!-- </span> -->
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card white-card text-white bg-light mb-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 style="color: #000000;">Overall portfolio</h5>
-                                </div>
-                                <div class="col-md-12" style="max-width: 70%; margin: 0 auto;">
-                                    <pie-chart :chart-data="chartData" :options="chartOptions"></pie-chart>
+                        <!-- </span> -->
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card white-card text-white bg-light mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 style="color: #000000;">Overall portfolio</h5>
+                                    </div>
+                                    <div class="col-md-12" style="max-width: 70%; margin: 0 auto;">
+                                        <pie-chart :chart-data="chartData" :options="chartOptions"></pie-chart>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h5 class="text-left deposit-title">Deposits</h5>
@@ -176,8 +181,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h5 class="text-left">Get More Bitcoin!</h5>
-                    <p class="text-left">Boost your investment. Sign up & buy bitcoins. <a href="">Help?</a></p>
+                    <h5 class="text-left invert-col">Get More Bitcoin!</h5>
+                    <p class="text-left invert-col">Boost your investment. Sign up & buy bitcoins. <a class="invert-col" href="">Help?</a></p>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card text-white get-bitcoin mb-3 text-left">
@@ -409,26 +414,59 @@ export default {
 }
 </script>
 <style scoped>
+.relative {
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-top-banner {
+    background: url(../assets/landing/images/bitcoin pocket_1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: .9; */
+    /* background-color: black; */
+}
+
+.page-top-banner .overlay-bg {
+    opacity: 1;
+}
+
 .deposit-title {
     color: #337ab7;
 }
+
 .earning-title {
     color: #dc3545;
 }
+
 .withdrawal-title {
     color: #ffc107;
 }
+
 .invert-col {
-    color: #000000;
+    color: #ffffff;
 }
+
 #testimonial {
     background-color: #ffffff;
+    padding-top: 0;
 }
+
 .style-span {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
+    justify-content: space-around;
 }
+
 th {
     text-align: center;
 }
