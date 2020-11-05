@@ -55,20 +55,6 @@ export default {
         BitcoinConverter,
         InvestNow,
         TheFooter
-    },
-    mounted() {
-        setTimeout(() => {
-            this.$swal({
-            position: "center",
-            icon: "info",
-            title: "ANNOUNCEMENT!!",
-            html: `<strong>Promotion Commencement<br></strong>
-            I would like to announce to you the commencement of our promotion packages for the months of October and November. Promotion investments start with $25,000 to $300,000 and All the clients involved with this will be receiving a 60% Profits of every amount you start with on the Promotion Package every week. This promotion is for both new and existing clients and it will last for the months of October and November. Good luck dear esteemed investors.<br> <strong><i>Brought to you by the Chief Trader, Kulton CI Trade</i></strong>`,
-            showCloseButton: true,
-            showCancelButton: false
-            // timer: 1500
-        });
-        }, 3000)
     }
 };
 </script>

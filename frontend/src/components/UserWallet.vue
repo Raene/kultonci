@@ -9,37 +9,41 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h2>Welcome, {{ profile.name }}</h2>
+                        <h2 class="invert-col">Welcome, {{ profile.name }}</h2>
                         <hr>
-                        <h5>We're glad you took the bold step to invest with us.</h5>
-                        <p style="font-size: 18px;">Keep up with the progress of your investments - view your <strong>Deposits & Earnings</strong> on your fully secure personal investments page.</p>
+                        <h5 class="invert-col">We're glad you took the bold step to invest with us.</h5>
+                        <p class="invert-col" style="font-size: 18px;">Keep up with the progress of your investments - view your <strong>Deposits & Earnings</strong> on your fully secure personal investments page.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <h5 v-if="currentInvestment.package_name === 'null'">You're not on any package</h5>
-                    <router-link style="text-decoration: none !important;" v-if="currentInvestment.package_name === 'null'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
-                    <!-- <h5 v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'">You are on the</h5>
+                <div class="style-span col-md-6 col-sm-12">
+                    <!-- <span> -->
+                        <span>
+                            <h5 class="invert-col" v-if="currentInvestment.package_name === 'null'">You're not on any package</h5>
+                            <router-link style="text-decoration: none !important;" v-if="currentInvestment.package_name === 'null'" class="section-btn btn btn-default" to="/investment-packages">Select a package</router-link>
+                            <!-- <h5 v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'">You are on the</h5>
                     <p v-if="profile.email==='perkinsproperties2015@gmail.com' || profile.email==='isairobles5@gmail.com'" class="package">
                         Weekly Package
                     </p> -->
-                    <h5 v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0">You are on the</h5>
-                    <p v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="package">
-                        {{ currentInvestment.package_name }}
-                    </p>
-                    <p v-if="false" class="msg">Your account is temporarily closed now</p>
-                    <div v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="btn-container">
-                        <button class="btn btn-danger bg-danger btn-lg">Request Withdrawal</button>
-                        <button class="btn btn-danger bg-danger btn-lg">Add Deposits</button>
-                    </div>
-                    <div class="card white-card" style="margin-top: 10px;">
-                        <div class="card-body">
-                            <h5 style="color: black;" class="text-left">Referral link</h5>
-                            <input id="referral_value" v-model="referral_code" type="text" class="form-control" disabled>
-                            <button @click="copyLink" style="margin-top: 15px;" class="btn btn-primary link-btn">Copy Link</button>
+                            <h5 class="invert-col" v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0">You are on the</h5>
+                            <p v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="package invert-col">
+                                {{ currentInvestment.package_name }}
+                            </p>
+                        </span>
+                        <p v-if="false" class="msg">Your account is temporarily closed now</p>
+                        <div v-if="currentInvestment.package_name !== 'null' && currentInvestment.verified !== 0" class="btn-container">
+                            <button class="btn btn-danger bg-danger btn-lg">Request Withdrawal</button>
+                            <button class="btn btn-danger bg-danger btn-lg">Add Deposits</button>
                         </div>
-                    </div>
+                        <div class="card white-card" style="margin-top: 10px;">
+                            <div class="card-body">
+                                <h5 style="color: black;" class="text-left">Referral link</h5>
+                                <input id="referral_value" v-model="referral_code" type="text" class="form-control" disabled>
+                                <button @click="copyLink" style="margin-top: 15px;" class="btn btn-primary link-btn">Copy Link</button>
+                            </div>
+                        </div>
+                    <!-- </span> -->
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="card white-card text-white bg-light mb-3">
@@ -58,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="text-left">Deposits</h5>
+                    <h5 class="text-left deposit-title">Deposits</h5>
                     <div class="row">
                         <div class="col-md-9">
                             <div class="card text-white bg-primary mb-3 text-left">
@@ -115,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="text-left">Earnings</h5>
+                    <h5 class="text-left earning-title">Earnings</h5>
                     <div class="row">
                         <div class="col-md-9">
                             <div class="card text-white bg-danger mb-3 text-left">
@@ -175,7 +179,7 @@
                     <h5 class="text-left">Get More Bitcoin!</h5>
                     <p class="text-left">Boost your investment. Sign up & buy bitcoins. <a href="">Help?</a></p>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card text-white get-bitcoin mb-3 text-left">
                                 <div class="card-body uw-body">
                                     <div class="row">
@@ -198,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="text-left">Withdrawals</h5>
+                    <h5 class="text-left withdrawal-title">Withdrawals</h5>
                     <div class="row">
                         <div class="col-md-9">
                             <div class="card text-white bg-warning mb-3 text-left">
@@ -405,17 +409,37 @@ export default {
 }
 </script>
 <style scoped>
+.deposit-title {
+    color: #337ab7;
+}
+.earning-title {
+    color: #dc3545;
+}
+.withdrawal-title {
+    color: #ffc107;
+}
+.invert-col {
+    color: #000000;
+}
+#testimonial {
+    background-color: #ffffff;
+}
+.style-span {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+}
 th {
     text-align: center;
 }
 
 .btn:focus {
     border: none !important;
-    outline: none !important; 
+    outline: none !important;
 }
 
 .btn:active {
-    outline: none !important; 
+    outline: none !important;
     border: none !important;
 }
 

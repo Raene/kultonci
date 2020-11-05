@@ -34,7 +34,7 @@ h6 {
 
 h1 {
     color: #252525;
-    font-size: 3em;
+    font-size: 5em;
     line-height: normal;
 }
 
@@ -447,7 +447,7 @@ section {
 }
 
 .home-slider .item-first {
-    background-image: url(../images/strategize.jpg);
+    background-image: url(../images/strategize_1.jpg);
     background-position: center;
 }
 
@@ -457,11 +457,11 @@ section {
 }
 
 .home-slider .item-third {
-    background-image: url(../images/man silver bitcoin.jpg);
+    background-image: url(../images/man silver bitcoin_1.jpg);
 }
 
 .home-slider .item-fourth {
-    background-image: url(../images/talk.jpg);
+    background-image: url(../images/talk_1.jpg);
 }
 
 
