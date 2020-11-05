@@ -37,12 +37,12 @@ UserModel.prototype.create = async function () {
         //check if user is signing up with a referral code
         //get the first char from the string, that is the referee id
         if (this.referral_code != "") {
-            this.userSchema.referee_id = this.referral_code.substring(0, 1);
+            this.userSchema.referee_id = this.referral_code.split("-")[0];
         }
         this.userSchema.password = await hashPassword(this.userSchema.password)
         let user = await this.insertToTable(this.userSchema);
         this.userSchema.referral = voucher_codes.generate({
-            prefix: user.insertId,
+            prefix: `${user.insertId}-`,
             length: 6
         });
         await this.updateDbDynamic({ referral: this.userSchema.referral }, user.insertId, 'id');
