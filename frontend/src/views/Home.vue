@@ -10,7 +10,7 @@
         <InvestmentPreview />
         <Stat />
         <RiskDisclaimer />
-        <BitcoinConverter />
+        <!-- <BitcoinConverter /> -->
         <InvestNow />
         <TheFooter />
         <VueInjectJs src="/landing/js/jquery.js" />
@@ -34,7 +34,7 @@ import WhyUs from "@/components/WhyUs.vue";
 import Stat from "@/components/Stat.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
-import BitcoinConverter from "@/components/BitcoinConverter.vue";
+// import BitcoinConverter from "@/components/BitcoinConverter.vue";
 import InvestNow from "@/components/InvestNow.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
@@ -52,7 +52,7 @@ export default {
         Stat,
         InvestmentPreview,
         RiskDisclaimer,
-        BitcoinConverter,
+        // BitcoinConverter,
         InvestNow,
         TheFooter
     }

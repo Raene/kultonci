@@ -34,7 +34,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="section-background">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-12">
@@ -114,6 +114,10 @@ export default {
 };
 </script>
 <style scoped>
+#section-background {
+  background: #ffffff;
+}
+
 .contact-image img {
   object-fit: cover;
   float: left;
@@ -146,7 +150,7 @@ export default {
 }
 
 .page-top-banner {
-  background: url(../assets/landing/images/coins effect_1.jpg);
+  background: url(../assets/landing/images/meeting_1.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -165,6 +169,10 @@ export default {
   }
 }
 
+#section-background h2, #section-background p {
+  color: #000000;
+}
+
 h2 {
   margin-bottom: 20px;
 }
@@ -178,6 +186,7 @@ p {
   font-size: 18px;
   /*font-weight: 600;*/
   text-align: center;
+  /*color: #000000;*/
 }
 
 .section-title {

@@ -142,25 +142,25 @@
                                 </div>
                             </div> -->
                                 <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="feature-thumb">
-                                        <h3 class="inv-title">Investment Plan For NFP Trade</h3>
-                                        <div class="sub-packages">
-                                            <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
-                                            <p>Minimum Investment of <strong>$3,000</strong></p>
-                                            <p>Maximum Investment of <strong>$1,000,000</strong></p>
-                                            <p><strong>MONTHLY RETURNS 50% PROFIT</strong></p>
-                                            <P>Every first Saturday of the month is the payday for NFP.</P>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="feature-thumb">
+                                            <h3 class="inv-title">Investment Plan For NFP Trade</h3>
+                                            <div class="sub-packages">
+                                                <h5>INVESTMENT PLAN FOR NFP TRADE</h5>
+                                                <p>Minimum Investment of <strong>$3,000</strong></p>
+                                                <p>Maximum Investment of <strong>$1,000,000</strong></p>
+                                                <p><strong>MONTHLY RETURNS 50% PROFIT</strong></p>
+                                                <P>Every first Saturday of the month is the payday for NFP.</P>
+                                            </div>
+                                            <hr>
+                                            <div class="sub-packages">
+                                                <h5>WHAT IS NFP ( NON-FARM PAYROLL)?</h5>
+                                                <p>The non-farm payroll ( NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of nonprofit organisations. Non-farm Payroll is among the biggest market movers in the foreign exchange market. On the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S - along with other labour market.</p>
+                                            </div>
+                                            <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                         </div>
-                                        <hr>
-                                        <div class="sub-packages">
-                                            <h5>WHAT IS NFP ( NON-FARM PAYROLL)?</h5>
-                                            <p>The non-farm payroll ( NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of nonprofit organisations. Non-farm Payroll is among the biggest market movers in the foreign exchange market. On the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S - along with other labour market.</p>
-                                        </div>
-                                        <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </section>
                     </div>
@@ -189,9 +189,25 @@ export default {
 }
 </script>
 <style scoped>
-.col-md-12 {
-    max-width: 650px;
-    margin: 0 auto;
+@media (max-width: 1600px) {
+    .col-md-12 {
+        max-width: 650px;
+        margin: 0 135px;
+    }
+}
+
+@media (max-width: 1262px) {
+    .col-md-12 {
+        max-width: 650px;
+        margin: 0 63px;
+    }
+}
+
+@media (max-width: 892px) {
+    .col-md-12 {
+        max-width: 650px;
+        margin: 0 auto;
+    }
 }
 
 section {
@@ -220,7 +236,7 @@ section {
 }
 
 .page-top-banner {
-    background: url(../assets/landing/images/bitcoin pocket_1.jpg);
+    background: url(../assets/landing/images/gir bitcoin hand_1.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

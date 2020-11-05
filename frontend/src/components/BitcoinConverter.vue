@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="bitcoin-converter" class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-title text-center">
@@ -20,3 +20,16 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.col-md-12 {
+    padding-bottom: 0;
+}
+
+h2 {
+    color: black;
+}
+hr {
+    border: 2px solid black;
+}
+</style>

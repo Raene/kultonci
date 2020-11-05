@@ -1,6 +1,7 @@
 	<template>
     <section id="testimonial">
-        <div class="container-fluid">
+        <BitcoinConverter />
+        <div class="invest-container container-fluid">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
@@ -14,8 +15,19 @@
     </section>
 </template>
 
+<script>
+import BitcoinConverter from "@/components/BitcoinConverter.vue";
+export default {
+    components: {
+        BitcoinConverter
+    }
+}
+</script>
 <style scoped>
-.container-fluid {
+#testimonial {
+    background: gold;
+}
+.invest-container {
 	background-color: #ffffff;
 	/*background: rgba(255, 215, 0, 0.8);*/
 	padding: 40px;
@@ -34,8 +46,9 @@
 }
 
 .container {
-	padding-left: 11%;
-	padding-right: 11%;
+	/*padding-left: 11%;
+	padding-right: 11%;*/
+    padding-bottom: 0;
 }
 
 hr {
@@ -52,6 +65,7 @@ h2 {
 }
 
 section {
+    padding-top: 0;
 	padding-bottom: 0;
     margin-bottom: 0;
 }
