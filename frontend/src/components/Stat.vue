@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-stat">
                         <h1>
-                            $<span class="counter">4159400</span>
+                            $<span class="counter">24159400</span>
                         </h1>
                         <h4>Total Deposited</h4>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-stat">
                         <h1>
-                            $<span class="counter">5976593</span>
+                            $<span class="counter">59765930</span>
                         </h1>
                         <h4>Total Withdraw</h4>
                     </div>
