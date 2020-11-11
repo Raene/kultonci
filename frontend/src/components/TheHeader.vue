@@ -76,6 +76,19 @@ export default {
         logout() {
             this.$store.commit("user/CLEAR_TOKEN");
             this.$router.push("/");
+            this.$swal({
+                icon: "success",
+                title: "You've been logged out",
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                    toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                }
+            });
         }
     }
 }
@@ -92,6 +105,7 @@ export default {
         margin-top: -21px;
     }
 }
+
 @media (max-width: 480px) {
     .navbar-img {
         max-width: 87px;
@@ -114,17 +128,20 @@ export default {
     background-color: gold;
     color: black;
 }
+
 .section-btn:active {
     background-color: black;
     color: gold;
     border: none;
 }
+
 .section-btn:focus {
     background-color: black;
     color: gold;
     border: none;
     outline: none;
 }
+
 .container {
     padding-right: 15px !important;
     padding-left: 15px !important;

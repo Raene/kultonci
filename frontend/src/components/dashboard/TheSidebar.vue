@@ -38,7 +38,20 @@ export default {
     methods: {
         logout() {
             this.$store.commit("user/CLEAR_TOKEN");
-            window.location.href = "http://localhost:8080";
+            window.location.href = process.env.VUE_APP_HOME_URL;
+            this.$swal({
+                icon: "success",
+                title: "You've been logged out",
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                    toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                }
+            });
         }
     }
 }

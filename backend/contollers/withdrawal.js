@@ -26,11 +26,12 @@ exports.get = function (con) {
             const valueType = ctx.query['type'];
 
             const withdrawal = new Withdrawal({}, con, 'withdrawals');
-            let payload = await withdrawal.getAllById(id, valueType)
+            let payload = await withdrawal.get(id, valueType)
 
             ctx.body = { data: payload, success: true }
             ctx.status = 200;
         } catch (error) {
+            console.log(error);
             ctx.throw(500, error);
         }
     }

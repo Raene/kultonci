@@ -161,8 +161,8 @@ export default {
 
     mounted() {
         console.log("wallet: ", this.wallet_details);
-    	this.total_deposit = this.wallet_details.total_deposit;
-    	this.locked_deposit = this.wallet_details.locked_deposit;
+        this.total_deposit = this.wallet_details.total_deposit;
+        this.locked_deposit = this.wallet_details.locked_deposit;
         this.initial_deposit = this.wallet_details.initial_deposit;
         this.compounded_deposit = this.wallet_details.compounded_deposits;
         this.paid_earnings = this.wallet_details.paid_earnings;
@@ -171,52 +171,50 @@ export default {
         this.referral_earnings = this.wallet_details.referral_earnings;
         this.total_withdrawals = this.wallet_details.total_withdrawals;
         this.pending_withdrawals = this.wallet_details.pending_withdrawals;
-    	this.referral_withdrawals = this.wallet_details.referral_withdrawals;
-    	this.package_level = this.wallet_details.package_level;
-    	this.package_name = this.wallet_details.package_name;
+        this.referral_withdrawals = this.wallet_details.referral_withdrawals;
+        this.package_level = this.wallet_details.package_level;
+        this.package_name = this.wallet_details.package_name;
     },
 
     methods: {
         updateWallet() {
             this.$store.dispatch("user/updateDeposit", {
-                id: this.wallet_details.id,
-                amount: 0,
-                initial_deposit: this.initial_deposit,
-                total_deposit: this.total_deposit,
-                locked_deposit: this.locked_deposit,
-                compounded_deposits: this.compounded_deposit,
-                paid_earnings: this.paid_earnings,
-                total_earnings: +this.total_earnings,
-                compounded_earnings: this.compounded_earnings,
-                referral_earnings: this.referral_earnings,
-                total_withdrawals: this.total_withdrawals,
-                pending_withdrawals: this.pending_withdrawals,
-                referral_withdrawals: this.referral_withdrawals,
-                package_level: this.package_level,
-                package_name: this.package_name,
-                verified: this.wallet_details.verified,
-                paymentProof: this.wallet_details.paymentProof
-            })
-            .then((data) => {
-            	console.log("updated wallet", data.data.success);
-            	if (data.data.success === true) {
-            		this.$swal({
-            			icon: "success",
-            			title: "Wallet updated successfully",
-            			showConfirmButton: false,
-            			timer: 1500
-            		})
-            	}
-            })
-            .catch(err => {
-            	console.log(err);
-            	this.$swal({
-            		icon: "error",
-            		title: "Wallet update unsuccessful",
-            		showConfirmButton: false,
-            		timer: 1500
-            	})
-            });
+                    id: this.wallet_details.id,
+                    amount: 0,
+                    initial_deposit: this.initial_deposit,
+                    total_deposit: this.total_deposit,
+                    locked_deposit: this.locked_deposit,
+                    compounded_deposits: this.compounded_deposit,
+                    paid_earnings: this.paid_earnings,
+                    total_earnings: +this.total_earnings,
+                    compounded_earnings: this.compounded_earnings,
+                    referral_earnings: this.referral_earnings,
+                    total_withdrawals: this.total_withdrawals,
+                    pending_withdrawals: this.pending_withdrawals,
+                    referral_withdrawals: this.referral_withdrawals,
+                    package_level: this.package_level,
+                    package_name: this.package_name,
+                    verified: this.wallet_details.verified,
+                    paymentProof: this.wallet_details.paymentProof
+                })
+                .then((data) => {
+                    console.log("updated wallet", data.data.success);
+                    this.$swal({
+                        icon: "success",
+                        title: "Wallet updated successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                    this.$swal({
+                        icon: "error",
+                        title: "Wallet update unsuccessful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                });
         }
     }
 }
