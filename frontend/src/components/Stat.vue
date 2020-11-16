@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-stat">
                         <h1>
-                            $<span class="counter">24159400</span>
+                            $<span class="counter">2415391400</span>
                         </h1>
                         <h4>Total Deposited</h4>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-stat">
                         <h1>
-                            $<span class="counter">59765930</span>
+                            $<span class="counter">5973645930</span>
                         </h1>
                         <h4>Total Withdraw</h4>
                     </div>
@@ -93,6 +93,7 @@ section {
 
 .stat-section .single-stat h1 {
     margin: 20px 0px;
+    font-size: 25px;
 }
 
 /*.relative {

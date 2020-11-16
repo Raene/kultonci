@@ -60,53 +60,52 @@
         <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
             <div class="overlay overlay-bg"></div>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6">
+                <div class="make-flex">
+                    <div class="col-flex-1">
                         <div class="footer-info">
-                            <div class="section-title">
+                            <div class="section-title m-bottom">
                                 <h2>Contact Us</h2>
                             </div>
-                            <p class="text-left">For enquiries, request or complaints...</p>
-                            <figure>
-                                <span><i class="fa fa-address-card"></i></span>
-                                <figcaption>
-                                    <h4>Address</h4>
-                                    <address>
-                                        <p>
-                                            St Andrews Square, Central Edinburgh, Edinburgh. EH2 , United Kingdom
-                                        </p>
-                                    </address>
-                                </figcaption>
-                            </figure>
-                            <figure>
+                            <p class="m-bottom"><i class="fa fa-address-card"></i>
+                                St Andrews Square, Central Edinburgh, Edinburgh. EH2 , United Kingdom
+                            </p>
+                            <p class="m-bottom"><i class="fa fa-envelope"></i><a href="mailto:support@kultonci.com">support@kultonci.com</a></p>
+                            <!-- <figure>
                                 <span><i class="fa fa-envelope"></i></span>
                                 <figcaption>
                                     <h4>Email</h4>
                                     <p><a href="mailto:support@kultonci.com">support@kultonci.com</a></p>
                                 </figcaption>
                             </figure>
+ -->
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="footer-info">
+                    <div class="col-flex-2">
+                        <!-- <img class="img-fluid footer_image" src="@/assets/landing/images/Kulton CI.png"> -->
+                        <div class="footer-info about-content">
+                            <p>Kulton CI Trades is an officially registered company in UK. Kulton CI Trades operates under the strict compliance of the United States of America and United Kingdom's law. We give our clients all required guarantees, including confidentiality of data provided by clients at the registration procedure.</p>
+                        </div>
+                    </div>
+                    <div class="col-flex-3">
+                        <div class="footer-info link-info">
                             <div class="section-title">
-                                <h2>Quick Links</h2>
+                                <h2 class="center">Quick Links</h2>
                             </div>
                             <div class="footer_menu">
-                                <ul>
+                                <ul class="center">
                                     <li><a href="#">Investments</a></li>
                                     <li><a href="#">About</a></li>
                                     <li><a href="#">FAQs</a></li>
                                     <li><a href="#">Support</a></li>
                                 </ul>
                             </div>
-                            <div class="footer_image">
+                            <!-- <div class="footer_image">
                                 <img class="img-responsive" src="@/assets/landing/images/Kulton CI.jpg">
                             </div>
                             <div class="copyright-text" style="margin-top: 30px;">
                                 <p>Copyright &copy; 2015 - 2020 Kulton CI Trading</p>
                                 <p>All rights reserved</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- <div class="col-md-4 col-sm-12">
@@ -127,13 +126,68 @@
                 </div> -->
                 </div>
             </div>
+            <div class="row bg-white">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright &copy; 2015 - 2020 Kulton CI Trading</p>
+                </div>
+            </div>
         </section>
     </footer>
 </template>
 <style scoped>
-.relative {
+.make-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    flex-wrap: wrap;
+}
+
+.col-flex-1{
+    flex-basis: 220px;
+}
+
+.col-flex-2 {
+    flex-basis: 350px;
+}
+
+.footer-info.about-content {
+    padding-top: 20px !important;
+}
+p, li a {
+    font-size: 12px !important;
+}
+
+section {
+    padding-bottom: 0;
+}
+.bg-white {
+    background-color: #ffffff;
+}
+
+.bg-white p{
+    color: #000000;
+}
+
+.m-bottom {
+    margin-bottom: 10px !important;
+}
+.fa {
+    margin-right: 7px;
+}
+
+/*.link-info {
+    width: 200px !important;
+    margin: 0 auto !important;
+}*/
+
+/*.center {
+    text-align: center !important;
+}*/
+
+/*.relative {
     position: relative;
 }
+
 .overlay {
     position: absolute;
     left: 0;
@@ -143,22 +197,23 @@
     background-color: rgba(255, 215, 0, 0.6);
 
 }
+
 .page-top-banner {
-  background: url(../assets/landing/images/coin_1.jpg);
-  background-size: cover;
-  background-attachment: fixed;
+    background: url(../assets/landing/images/coin_1.jpg);
+    background-size: cover;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-  /* opacity: .9; */
-  /* background-color: black; */
+    
 }
+*/
 section {
     margin-bottom: 0;
 }
 
 footer h2 {
-    font-size: 20px !important;
-    text-transform: capitalize;
+    font-size: 15px !important;
+    text-transform: uppercase;
     text-align: left;
 }
 
@@ -201,7 +256,7 @@ address p {
 
 .footer_image {
     width: 60px;
-    margin-top: 15px;
+    text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -211,6 +266,13 @@ address p {
         padding-bottom: 0 !important;
         margin-bottom: 0 !important;
     }
+
+    .bg-white p {
+        text-align: center !important;
+    }
+    /*.link-info {
+        margin-left: 0 !important;
+    }*/
 }
 
 /*figure {

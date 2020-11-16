@@ -3,14 +3,14 @@
         <!-- <Preloader /> -->
         <TheHeader />
         <Banner id="home" />
-        <SecondBanner />
         <AboutPreview />
+        <SecondBanner />
         <HowItWorks />
         <WhyUs />
         <InvestmentPreview />
         <Stat />
+        <TestimonyVideos />
         <RiskDisclaimer />
-        <!-- <BitcoinConverter /> -->
         <InvestNow />
         <TheFooter />
         <VueInjectJs src="/landing/js/jquery.js" />
@@ -22,9 +22,7 @@
 <script>
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
-// @ is an alias to /src
 import VueInjectJs from "vue-inject-js";
-// import Preloader from "@/components/Preloader.vue";
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
 import SecondBanner from "@/components/SecondBanner.vue";
@@ -32,9 +30,9 @@ import AboutPreview from "@/components/AboutPreview.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 import WhyUs from "@/components/WhyUs.vue";
 import Stat from "@/components/Stat.vue";
+import TestimonyVideos from "@/components/TestimonyVideos.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
-// import BitcoinConverter from "@/components/BitcoinConverter.vue";
 import InvestNow from "@/components/InvestNow.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
@@ -42,7 +40,6 @@ export default {
     name: "Home",
     components: {
         VueInjectJs,
-        // Preloader,
         TheHeader,
         Banner,
         SecondBanner,
@@ -50,9 +47,9 @@ export default {
         HowItWorks,
         WhyUs,
         Stat,
+        TestimonyVideos,
         InvestmentPreview,
         RiskDisclaimer,
-        // BitcoinConverter,
         InvestNow,
         TheFooter
     }
