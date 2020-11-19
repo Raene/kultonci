@@ -9,7 +9,6 @@
         <WhyUs />
         <InvestmentPreview />
         <Stat />
-        <TestimonyVideos />
         <RiskDisclaimer />
         <InvestNow />
         <TheFooter />
@@ -30,7 +29,6 @@ import AboutPreview from "@/components/AboutPreview.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 import WhyUs from "@/components/WhyUs.vue";
 import Stat from "@/components/Stat.vue";
-import TestimonyVideos from "@/components/TestimonyVideos.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
 import InvestNow from "@/components/InvestNow.vue";
@@ -47,7 +45,6 @@ export default {
         HowItWorks,
         WhyUs,
         Stat,
-        TestimonyVideos,
         InvestmentPreview,
         RiskDisclaimer,
         InvestNow,
