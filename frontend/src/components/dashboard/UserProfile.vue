@@ -495,6 +495,7 @@ export default {
             .then((paymentProof) => {
                 this.paymentProof = paymentProof;
             });
+        this.$store.dispatch("user/getWithdrawals", this.userId);
     }
 }
 </script>

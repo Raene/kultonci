@@ -181,8 +181,8 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h5 class="text-left invert-col">Get More Bitcoin!</h5>
-                    <p class="text-left invert-col">Boost your investment. Sign up & buy bitcoins. <a class="invert-col" href="">Help?</a></p>
+                    <h5 class="text-left col-invert">Get More Bitcoin!</h5>
+                    <p class="text-left col-invert">Boost your investment. Sign up & buy bitcoins. <a class="invert-col" href="">Help?</a></p>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card text-white get-bitcoin mb-3 text-left">
@@ -409,11 +409,15 @@ export default {
             .then(() => {
                 this.fillData();
             });
-        this.$store.dispatch("user/getReferrals");
+        this.$store.dispatch("user/getReferrals",
+            this.profile.id);
     }
 }
 </script>
 <style scoped>
+.col-invert {
+    color: black;
+}
 .relative {
     position: relative;
 }
@@ -442,14 +446,17 @@ export default {
 
 .deposit-title {
     color: #337ab7;
+    font-size: 46px;
 }
 
 .earning-title {
     color: #dc3545;
+    font-size: 46px;
 }
 
 .withdrawal-title {
     color: #ffc107;
+    font-size: 46px;
 }
 
 .invert-col {

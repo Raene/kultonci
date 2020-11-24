@@ -120,6 +120,14 @@ const user = {
         		.catch(err => {
         			console.log(err);
         		});
+        },
+
+        getWithdrawals(context, payload) {
+        	return axios.get(url + "/withdrawal/" + payload +"?type=user_id")
+        		.then((data) => {
+        			console.log("Withdrawals data: ", data);
+        		})
+        		.catch(err => console.log(err));
         }
 	},
 	getters: {
