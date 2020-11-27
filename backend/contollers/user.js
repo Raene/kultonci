@@ -50,10 +50,20 @@ exports.createDeposit = function (con) {
             let initial = data.initial_deposit
             data.total_deposit = initial
             data.locked_deposit =initial
+            // if (data.package_name == 'nfp') {
+            //  delete data.package_name
+            //  const userInvestment = new UserInvestmentModel(data,con,'nfp')
+            //  const payload = await userInvestment.create()
+            //  console.log(payload);
+            //  ctx.body = {data: payload.insertId, success: true}
+            //  ctx.status = 200;
+            //  return                
+            // }
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
              const payload = await userInvestment.create()
              ctx.body = {data: payload.insertId, success: true}
              ctx.status = 200;
+             return
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
@@ -65,14 +75,25 @@ exports.updateDeposit = function (con) {
     return async (ctx) => {
         try {
             let data = ctx.request.body;
-            
             data.compounded_deposits = data.compounded_deposits + data.amount;
 
             data.locked_deposit = data.compounded_deposits + data.locked_deposit
 
             data.total_deposit = data.total_deposit + data.amount;
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','')
+            console.log(data.updated_at)
 
             delete data.amount
+
+            // if (data.package_name == 'nfp') {
+            //     delete data.package_name
+            //     const userInvestment = new UserInvestmentModel(data,con,'nfp')
+            //     console.log(data.id)
+            //     await userInvestment.update(data.id,'id');
+            //     ctx.body = {message: 'update succesful'};
+            //     ctx.status = 200;
+            //     return                
+            //    }
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
             await userInvestment.update(data.id,'id');
             ctx.body = {message: 'update succesful'};
