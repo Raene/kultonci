@@ -50,15 +50,15 @@ exports.createDeposit = function (con) {
             let initial = data.initial_deposit
             data.total_deposit = initial
             data.locked_deposit =initial
-            if (data.package_name == 'nfp') {
-             delete data.package_name
-             const userInvestment = new UserInvestmentModel(data,con,'nfp')
-             const payload = await userInvestment.create()
-             console.log(payload);
-             ctx.body = {data: payload.insertId, success: true}
-             ctx.status = 200;
-             return                
-            }
+            // if (data.package_name == 'nfp') {
+            //  delete data.package_name
+            //  const userInvestment = new UserInvestmentModel(data,con,'nfp')
+            //  const payload = await userInvestment.create()
+            //  console.log(payload);
+            //  ctx.body = {data: payload.insertId, success: true}
+            //  ctx.status = 200;
+            //  return                
+            // }
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
              const payload = await userInvestment.create()
              ctx.body = {data: payload.insertId, success: true}
@@ -85,15 +85,15 @@ exports.updateDeposit = function (con) {
 
             delete data.amount
 
-            if (data.package_name == 'nfp') {
-                delete data.package_name
-                const userInvestment = new UserInvestmentModel(data,con,'nfp')
-                console.log(data.id)
-                await userInvestment.update(data.id,'id');
-                ctx.body = {message: 'update succesful'};
-                ctx.status = 200;
-                return                
-               }
+            // if (data.package_name == 'nfp') {
+            //     delete data.package_name
+            //     const userInvestment = new UserInvestmentModel(data,con,'nfp')
+            //     console.log(data.id)
+            //     await userInvestment.update(data.id,'id');
+            //     ctx.body = {message: 'update succesful'};
+            //     ctx.status = 200;
+            //     return                
+            //    }
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
             await userInvestment.update(data.id,'id');
             ctx.body = {message: 'update succesful'};
