@@ -75,15 +75,15 @@ exports.updateDeposit = function (con) {
     return async (ctx) => {
         try {
             let data = ctx.request.body;
-            data.compounded_deposits = data.compounded_deposits + data.amount;
+            // data.compounded_deposits = data.compounded_deposits + data.amount;
 
-            data.locked_deposit = data.compounded_deposits + data.locked_deposit
+            // data.locked_deposit = data.compounded_deposits + data.locked_deposit
 
-            data.total_deposit = data.total_deposit + data.amount;
+            // data.total_deposit = data.total_deposit + data.amount;
             data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','')
             console.log(data.updated_at)
 
-            delete data.amount
+            // delete data.amount
 
             // if (data.package_name == 'nfp') {
             //     delete data.package_name
