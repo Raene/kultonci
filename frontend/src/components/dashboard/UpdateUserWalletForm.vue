@@ -180,7 +180,7 @@ export default {
         updateWallet() {
             this.$store.dispatch("user/updateDeposit", {
                     id: this.wallet_details.id,
-                    amount: 0,
+                    // amount: 0,
                     initial_deposit: +this.initial_deposit,
                     total_deposit: +this.total_deposit,
                     locked_deposit: +this.locked_deposit,
