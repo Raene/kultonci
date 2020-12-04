@@ -161,6 +161,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <button @click="kycReady = true" class="section-btn btn btn-default smoothScroll">Upload Proof of Payment<i class="fa fa-angle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-if="kycReady" id="kycSection">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <KnowYourCustomer />
+                                    </div>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -170,10 +184,15 @@
     </div>
 </template>
 <script>
+import KnowYourCustomer from "@/components/KnowYourCustomer.vue";
 export default {
+    components: {
+        KnowYourCustomer
+    },
     data() {
         return {
-            user: localStorage.getItem("user")
+            user: localStorage.getItem("user"),
+            kycReady: false
         }
     },
 
@@ -184,6 +203,10 @@ export default {
     computed: {
         packages() {
             return this.$store.getters["subscription/getPackages"];
+        },
+
+        btcAddress() {
+            return this.$store.getters["subscription/getBtcAddress"];
         }
     },
 
@@ -265,6 +288,10 @@ export default {
 
 section {
     padding: 230px 0;
+}
+
+#kycSection {
+    padding: 80px 0 !important;
 }
 
 .sect {
