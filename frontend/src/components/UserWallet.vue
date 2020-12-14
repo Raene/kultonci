@@ -117,7 +117,7 @@
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">USD {{ isApproved === false?"0.00": currentInvestment.compounded_deposits }}</h5>
                                         <p class="card-text">Compounded Deposits</p>
                                     </span>
                                 </div>
@@ -132,7 +132,7 @@
                                     <i class="fa fa-money uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null || isApproved === false?"0.00": currentInvestment.earnings }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.total_earnings === null || isApproved === false?"0.00": currentInvestment.total_earnings }}</h5>
                                         <p class="card-text">Total Earnings</p>
                                     </span>
                                 </div>
@@ -146,7 +146,7 @@
                                     <i class="fa fa-credit-card uw-icon item1 text-center"></i>
                                     <span class="item2">
                                         <!-- <h5 class="card-title">{{ profile.email === "perkinsproperties2015@gmail.com"?"USD 15,000.00":"USD 0.00" }}</h5> -->
-                                        <h5 class="card-title">USD {{ currentInvestment.earnings === null || isApproved === false?"0.00": currentInvestment.earnings }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.paid_earnings === null || isApproved === false?"0.00": currentInvestment.paid_earnings }}</h5>
                                         <p class="card-text">Paid Earnings</p>
                                     </span>
                                 </div>
@@ -159,7 +159,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-lock uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">{{ profile.email === "isairobles5@gmail.com"?"USD 30,000.00":"USD 0.00" }}</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.compounded_earnings === null || isApproved === false?"0.00": currentInvestment.compounded_earnings }}</h5>
                                         <p class="card-text">Compounded Earnings</p>
                                     </span>
                                 </div>
@@ -172,7 +172,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.referral_earnings === null || isApproved === false?"0.00": currentInvestment.referral_earnings }}</h5>
                                         <p class="card-text">Referral Earnings</p>
                                     </span>
                                 </div>
@@ -214,7 +214,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-bank uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.total_withdrawals === null || isApproved === false?"0.00": currentInvestment.total_withdrawals }}</h5>
                                         <p class="card-text">Total Withdrawals</p>
                                     </span>
                                 </div>
@@ -227,7 +227,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-pause uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.pending_withdrawals === null || isApproved === false?"0.00": currentInvestment.pending_withdrawals }}</h5>
                                         <p class="card-text">Pending Withdrawals</p>
                                     </span>
                                 </div>
@@ -240,7 +240,7 @@
                                 <div class="card-body uw-body">
                                     <i class="fa fa-retweet uw-icon item1 text-center"></i>
                                     <span class="item2">
-                                        <h5 class="card-title">USD 0.00</h5>
+                                        <h5 class="card-title">USD {{ currentInvestment.referral_withdrawals === null || isApproved === false?"0.00": currentInvestment.referral_withdrawals }}</h5>
                                         <p class="card-text">Referral Withdrawals</p>
                                     </span>
                                 </div>
