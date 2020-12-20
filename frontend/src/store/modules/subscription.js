@@ -37,8 +37,10 @@ const subscription = {
         getInvestmentPackages({ commit }) {
             return axios.get(url + "/subscription")
                 .then((data) => {
+                    console.log("btc: ", data.data.data.btc[0].address);
                     console.log("subs data: ", data.data.data.subscription);
                     commit("SET_PACKAGES", data.data.data.subscription);
+                    commit("SET_BTC_ADDRESS", data.data.data.btc[0].address);
                 })
                 .catch(err => console.log(err));
         },

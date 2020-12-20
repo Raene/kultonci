@@ -157,8 +157,22 @@
                                                 <h5>WHAT IS NFP ( NON-FARM PAYROLL)?</h5>
                                                 <p>The non-farm payroll ( NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of nonprofit organisations. Non-farm Payroll is among the biggest market movers in the foreign exchange market. On the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S - along with other labour market.</p>
                                             </div>
-                                            <router-link to="/login" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></router-link>
+                                            <button @click="showForm('nfp')" class="section-btn btn btn-default smoothScroll">Select package <i class="fa fa-angle-right"></i></button>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <button @click="kycReady = true" class="section-btn btn btn-default smoothScroll">Upload Proof of Payment<i class="fa fa-angle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-if="kycReady" id="kycSection">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <KnowYourCustomer />
                                     </div>
                                 </div>
                             </div>
@@ -170,10 +184,15 @@
     </div>
 </template>
 <script>
+import KnowYourCustomer from "@/components/KnowYourCustomer.vue";
 export default {
+    components: {
+        KnowYourCustomer
+    },
     data() {
         return {
-            user: localStorage.getItem("user")
+            user: localStorage.getItem("user"),
+            kycReady: false
         }
     },
 
@@ -184,6 +203,63 @@ export default {
     computed: {
         packages() {
             return this.$store.getters["subscription/getPackages"];
+        },
+
+        btcAddress() {
+            return this.$store.getters["subscription/getBtcAddress"];
+        }
+    },
+
+    methods: {
+        showForm(pkg_name) {
+            this.$swal({
+                title: "Input Amount",
+                input: "text",
+                showConfirmButton: true,
+                confirmButtonText: "Submit"
+            }).then((result) => {
+                if (result.value) {
+                    const amount = this.$swal.getInput().value;
+                    console.log("amount: ", amount);
+                    const user = JSON.parse(localStorage.getItem("user"));
+                    this.$store.dispatch("subscription/createDeposit", {
+                            user_id: user.id,
+                            // locked_deposit: +amount,
+                            initial_deposit: +amount,
+                            package_name: pkg_name
+                        })
+                        .then((data) => {
+                            console.log("deposit data: ", data.data.data);
+                            // this.dep_id = data.data.data;
+                            localStorage.setItem("deposit_id", data.data.data);
+                        })
+                        .catch(err => console.log(err))
+                    this.$swal({
+                        title: "BTC Address",
+                        text: "Make payment using BTC address, then upload proof of payment",
+                        input: "text",
+                        inputValue: this.btcAddress,
+                        inputAttributes: {
+                            disabled: true
+                        },
+                        showConfirmButton: true,
+                        confirmButtonText: "Copy BTC address"
+                    }).then((result) => {
+                        if (result.value) {
+                            const copyText = this.$swal.getInput();
+                            copyText.select();
+                            navigator.clipboard.writeText(copyText.value);
+                            this.$swal({
+                                position: "center",
+                                icon: "success",
+                                title: "Copied",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    });
+                }
+            })
         }
     }
 }
@@ -212,6 +288,10 @@ export default {
 
 section {
     padding: 230px 0;
+}
+
+#kycSection {
+    padding: 80px 0 !important;
 }
 
 .sect {
