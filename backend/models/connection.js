@@ -17,16 +17,12 @@ const mysql = require('mysql');
 // }();
 
 const db = function(host,user,password,database){
-  const con = mysql.createConnection({
+  const con = mysql.createPool({
+	      connectionLimit : 1000,
               host: host,
               user: user,
               password: password,
               database: database
-  });
-
-  con.connect(function(err) {
-    if (err) console.log(err);
-     console.log("Connected!");
   });
 
   return con;
