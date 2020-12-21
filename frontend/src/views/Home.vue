@@ -10,6 +10,7 @@
         <InvestmentPreview />
         <Stat />
         <RiskDisclaimer />
+        <PrivacyPolicy />
         <InvestNow />
         <TheFooter />
         <VueInjectJs src="/landing/js/jquery.js" />
@@ -31,6 +32,7 @@ import WhyUs from "@/components/WhyUs.vue";
 import Stat from "@/components/Stat.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import RiskDisclaimer from "@/components/RiskDisclaimer.vue";
+import PrivacyPolicy from "@/components/PrivacyPolicy.vue";
 import InvestNow from "@/components/InvestNow.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
@@ -47,6 +49,7 @@ export default {
         Stat,
         InvestmentPreview,
         RiskDisclaimer,
+        PrivacyPolicy,
         InvestNow,
         TheFooter
     }
