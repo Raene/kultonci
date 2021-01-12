@@ -67,7 +67,9 @@
                                 <h2>Contact Us</h2>
                             </div>
                             <p class="m-bottom"><i class="fa fa-address-card"></i>
-                                St Andrews Square, Central Edinburgh, Edinburgh. EH2 , United Kingdom
+                                1210 8th St SW
+                                Petrowest Plaza
+                                Calgary, AB
                             </p>
                             <p class="m-bottom"><i class="fa fa-envelope"></i><a href="mailto:support@kultonci.com">support@kultonci.com</a></p>
                             <!-- <figure>
@@ -138,11 +140,11 @@
 .make-flex {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: space-between !important; 
+    justify-content: space-between !important;
     flex-wrap: wrap;
 }
 
-.col-flex-1{
+.col-flex-1 {
     flex-basis: 220px;
 }
 
@@ -153,24 +155,28 @@
 .footer-info.about-content {
     padding-top: 20px !important;
 }
-p, li a {
+
+p,
+li a {
     font-size: 12px !important;
 }
 
 section {
     padding-bottom: 0;
 }
+
 .bg-white {
     background-color: #ffffff;
 }
 
-.bg-white p{
+.bg-white p {
     color: #000000;
 }
 
 .m-bottom {
     margin-bottom: 10px !important;
 }
+
 .fa {
     margin-right: 7px;
 }
@@ -270,6 +276,7 @@ address p {
     .bg-white p {
         text-align: center !important;
     }
+
     /*.link-info {
         margin-left: 0 !important;
     }*/

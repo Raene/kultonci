@@ -3,7 +3,7 @@
       "driver": "mysql",
       "host": "localhost",
       "port": "3306",
-      "user": "root",
+      "user": "mosi",
       "password": "bootstrap0107",
       "database": "kulton-ci",
       "multipleStatements": true
