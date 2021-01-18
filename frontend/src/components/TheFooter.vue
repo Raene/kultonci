@@ -85,7 +85,7 @@
                     <div class="col-flex-2">
                         <!-- <img class="img-fluid footer_image" src="@/assets/landing/images/Kulton CI.png"> -->
                         <div class="footer-info about-content">
-                            <p>Kulton CI Trades is an officially registered company in UK. Kulton CI Trades operates under the strict compliance of the United States of America and United Kingdom's law. We give our clients all required guarantees, including confidentiality of data provided by clients at the registration procedure.</p>
+                            <p>Kulton CI Trades is an officially registered company in Canada. Kulton CI Trades operates under the strict compliance of Canada's law. We give our clients all required guarantees, including confidentiality of data provided by clients at the registration procedure.</p>
                         </div>
                     </div>
                     <div class="col-flex-3">
