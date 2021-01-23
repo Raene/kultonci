@@ -10,9 +10,9 @@ Db.prototype.makeQuery = async function (queryfunction) {
             if (err) {
                 reject(err);
             }
-            connection.on('error', function (err) {
-                reject(err);
-            });
+            // connection.on('error', function (err) {
+            //     reject(err);
+            // });
             resolve(connection)
         })
     });
@@ -21,6 +21,7 @@ Db.prototype.makeQuery = async function (queryfunction) {
     } catch (error) {
         throw new Error(error)
     } finally {
+        console.log("connection released");
         connection.release()
     }
 }
@@ -234,6 +235,7 @@ Db.prototype.updateDb = async function (valueType, whereType, value, whereValue)
 Db.prototype.updateDbDynamic = async function (obj, whereValue, whereType) {
     try {
         let sql = `UPDATE ${this.TableName} SET ${Object.keys(obj).map(key => `${key} = ?`).join(", ")}  WHERE ${whereType} = ?`;
+        console.log(obj);
         let result = await this.makeQuery(async connection => {
             return new Promise((resolve, reject) => {
                 let arr = [...Object.values(obj), whereValue]
