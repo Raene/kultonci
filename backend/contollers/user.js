@@ -74,6 +74,7 @@ exports.createDeposit = function (con) {
 exports.updateDeposit = function (con) {
     return async (ctx) => {
         try {
+            console.log('update route');
             let data = ctx.request.body;
             // data.compounded_deposits = data.compounded_deposits + data.amount;
 

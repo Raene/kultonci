@@ -10,9 +10,6 @@ Db.prototype.makeQuery = async function (queryfunction) {
             if (err) {
                 reject(err);
             }
-            // connection.on('error', function (err) {
-            //     reject(err);
-            // });
             resolve(connection)
         })
     });
