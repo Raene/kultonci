@@ -74,31 +74,35 @@ exports.createDeposit = function (con) {
 exports.updateDeposit = function (con) {
     return async (ctx) => {
         try {
-            console.log('update route');
             let data = ctx.request.body;
-            // data.compounded_deposits = data.compounded_deposits + data.amount;
 
-            // data.locked_deposit = data.compounded_deposits + data.locked_deposit
-
-            // data.total_deposit = data.total_deposit + data.amount;
-            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','')
-            console.log(data.updated_at)
-
-            // delete data.amount
-
-            // if (data.package_name == 'nfp') {
-            //     delete data.package_name
-            //     const userInvestment = new UserInvestmentModel(data,con,'nfp')
-            //     console.log(data.id)
-            //     await userInvestment.update(data.id,'id');
-            //     ctx.body = {message: 'update succesful'};
-            //     ctx.status = 200;
-            //     return                
-            //    }
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
+        
             const userInvestment = new UserInvestmentModel(data,con,'userInvestments')
             await userInvestment.update(data.id,'id');
             ctx.body = {message: 'update succesful'};
              ctx.status = 200;
+             return
+        } catch (error) {
+            console.log(error);
+            ctx.throw(500, error);
+        }
+    }
+}
+
+exports.updateUser = function (con) {
+    return async (ctx) =>{
+        try {
+            let data = ctx.request.body;
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
+            if (myObj.hasOwnProperty('password')){
+                delete data.password;
+            }
+
+            const user = new UserModel(data,null,con,'user');
+            await user.updateDynamic(data.id,'id');
+            ctx.status = 200;
+            return;
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
