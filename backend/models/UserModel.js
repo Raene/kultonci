@@ -7,12 +7,14 @@ const jwt = require("jsonwebtoken");
 
 const UserModel = function (userSchema, kyc_id, con, TableName) {
     Db.call(this, con, TableName);
-    ({ name: this.name, email: this.email, password: this.password} = userSchema);
-    this.userSchema = Object.assign({}, { name: this.name, email: this.email, password: this.password});
+    
+    this.referral_code = userSchema.user.referral_code;
+    delete userSchema.user.referral_code;
+    delete userSchema.user.repeat_password;
+    this.userSchema = Object.assign({}, userSchema);
 
-    this.referral_code = userSchema.referral_code;
 
-    this.userSchema.kyc_id = kyc_id;
+    this.userSchema.user.kyc_id = kyc_id;
 
 }
 
@@ -29,7 +31,7 @@ Object.defineProperty(UserModel.prototype, 'constructor', {
 UserModel.prototype.create = async function () {
     try {
         //this.insertToTable, since UserMdel is now child of Db no need to use call on methods
-        let u = await this.getByField(this.userSchema.email, 'email');
+        let u = await this.getByField(this.userSchema.user.email, 'email');
         if (u.length > 0) {
             throw new Error("User already exists");
         }
@@ -37,15 +39,16 @@ UserModel.prototype.create = async function () {
         //check if user is signing up with a referral code
         //get the first char from the string, that is the referee id
         if (this.referral_code != "") {
-            this.userSchema.referee_id = this.referral_code.split("-")[0];
+            this.userSchema.user.referee_id = this.referral_code.split("-")[0];
         }
-        this.userSchema.password = await hashPassword(this.userSchema.password)
-        let user = await this.insertToTable(this.userSchema);
-        this.userSchema.referral = voucher_codes.generate({
+
+        this.userSchema.user.password = await hashPassword(this.userSchema.user.password)
+        let user = await this.insertTransaction(this.userSchema);
+        this.userSchema.user.referral = voucher_codes.generate({
             prefix: `${user.insertId}-`,
             length: 6
         });
-        await this.updateDbDynamic({ referral: this.userSchema.referral }, user.insertId, 'id');
+        await this.updateDbDynamic({ referral: this.userSchema.user.referral }, user.insertId, 'id');
         return user;
     } catch (error) {
         throw new Error(error);
