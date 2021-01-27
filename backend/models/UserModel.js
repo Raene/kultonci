@@ -8,13 +8,8 @@ const jwt = require("jsonwebtoken");
 const UserModel = function (userSchema, kyc_id, con, TableName) {
     Db.call(this, con, TableName);
     
-    this.referral_code = userSchema.user.referral_code;
-    delete userSchema.user.referral_code;
-    delete userSchema.user.repeat_password;
     this.userSchema = Object.assign({}, userSchema);
-
-
-    this.userSchema.user.kyc_id = kyc_id;
+    this.kyc_id = kyc_id;
 
 }
 
@@ -35,13 +30,15 @@ UserModel.prototype.create = async function () {
         if (u.length > 0) {
             throw new Error("User already exists");
         }
-
+        this.userSchema.user.kyc_id = this.kyc_id
+        let referral_code = userSchema.user.referral_code;
         //check if user is signing up with a referral code
         //get the first char from the string, that is the referee id
-        if (this.referral_code != "") {
+        if (referral_code != "") {
             this.userSchema.user.referee_id = this.referral_code.split("-")[0];
         }
-
+        delete userSchema.user.referral_code;
+        delete userSchema.user.repeat_password;
         this.userSchema.user.password = await hashPassword(this.userSchema.user.password)
         let user = await this.insertTransaction(this.userSchema);
         this.userSchema.user.referral = voucher_codes.generate({
