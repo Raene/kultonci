@@ -22,6 +22,8 @@ const UserRegister = Joi.object({
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
         .trim()
         .required(),
+        phone: Joi.string(),
+        dob: Joi.string(),
 
     repeat_password: Joi.ref('password')
 }).with('password', 'repeat_password');
