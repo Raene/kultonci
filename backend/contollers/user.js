@@ -9,6 +9,7 @@ exports.getAllUsers = function (con) {
             let payload = await user.getAll();
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
+            return;
         } catch (error) {
             ctx.throw(500, error.message);
         }
@@ -23,6 +24,7 @@ exports.getAllreferrals = function (con) {
             let payload = await user.getByValue(id,'referee_id');
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
+            return;
         } catch (error) {
             ctx.throw(500,error.message);
         }
@@ -37,6 +39,7 @@ exports.getUserById = function (con) {
             let payload = await user.getUserByJoin(id,'user.id');
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
+            return;
         } catch (error) {
             throw new Error(error.message)
         }
@@ -63,7 +66,7 @@ exports.createDeposit = function (con) {
              const payload = await userInvestment.create()
              ctx.body = {data: payload.insertId, success: true}
              ctx.status = 200;
-             return
+             return;
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
@@ -82,7 +85,7 @@ exports.updateDeposit = function (con) {
             await userInvestment.update(data.id,'id');
             ctx.body = {message: 'update succesful'};
              ctx.status = 200;
-             return
+             return;
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
@@ -101,11 +104,29 @@ exports.updateUser = function (con) {
 
             const user = new UserModel(data,null,con,'user');
             await user.updateDynamic(data.id,'id');
+            ctx.body = {message: 'update succesful'};
             ctx.status = 200;
             return;
         } catch (error) {
             console.log(error);
             ctx.throw(500, error);
+        }
+    }
+}
+
+exports.updatePassword = function (con) {
+    return async (ctx) => {
+        try {
+            let data = ctx.request.body;
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
+            const user = new UserModel(data,null,con,'user');
+            await user.updatePassword(data.id,'id');
+            ctx.body = {message: 'update succesful'};
+            ctx.status = 200;
+            return;
+        } catch (error) {
+            console.log(error)
+            ctx.throw(500,error);
         }
     }
 }

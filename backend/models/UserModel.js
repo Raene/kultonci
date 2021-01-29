@@ -61,6 +61,15 @@ UserModel.prototype.update = async function (valueType, whereType, value, whereV
     }
 }
 
+UserModel.prototype.updateDynamic = async function (whereValue,whereType) {
+    try {
+        let u = await this.updateDbDynamic(this.obj,whereValue,whereType);
+        return u;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
 UserModel.get = async function (con, TableName, value, valueType) {
     try {
         let db = new Db(con, TableName);
@@ -130,6 +139,26 @@ UserModel.prototype.login = async function () {
         )
         return { id, name, email, token, role, referral, referee_id }
     } catch (error) {
+        throw new Error(error);
+    }
+}
+
+UserModel.prototype.updatePassword = async function (whereValue,whereType) {
+    try {
+        let u = await this.getByField(this.userSchema.email, 'email');
+        if (u.length <= 0) {
+            throw new Error("Email does not exist");
+        }
+        console.log(u);
+        let exists = await compareHashPassword(this.userSchema.oldPassword, u[0].password);
+        if (exists != true) {
+            throw new Error('Password is incorrect')
+        }
+        this.userSchema.password = await hashPassword(this.userSchema.password)
+        let np = await this.updateDbDynamic(this.userSchema,whereValue,whereType);
+        return np;
+    } catch (error) {
+        console.log(error);
         throw new Error(error);
     }
 }
