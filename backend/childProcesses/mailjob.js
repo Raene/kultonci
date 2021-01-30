@@ -10,11 +10,11 @@ let mailOptions = {
 };
 
 let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: mail_host,
     port: 465,
     auth: {
-        user: 'bob.salau@gmail.com',
-        pass: 'bobbysalau101'
+        user: mail_user,
+        pass: mail_pass
     }
 });
 
