@@ -3,6 +3,7 @@
 const mime = require('mime-types')
 let UserModel = require('../models/UserModel');
 let KYCModel = require('../models/kycModel');
+const { fork } = require('child_process');
 var fs = require('fs');
 
 exports.register = function (con) {
@@ -26,6 +27,7 @@ exports.register = function (con) {
                     phone: data.phone
                 },
                 address: {
+                    address: data.address,
                     city: data.city,
                     state: data.state,
                     country: data.country,
@@ -37,9 +39,15 @@ exports.register = function (con) {
                 }
             }
 
-
             const user = new UserModel(formattedData, kycID.insertId, con, 'user');
-            await user.create();
+            //await user.create();
+            let mail = {
+                email: data.email,
+                subject:  "Welcome",
+                text: `Hello ${data.name}`
+            }
+
+            mailProcess(mail,'START')
             ctx.body = { message: 'User Created' };
             ctx.status = 200;
         } catch (error) {
@@ -115,4 +123,22 @@ async function upload(fileObj) {
     // console.log(`fileExtension: ${fileExtension}`)
 
     return name;
+}
+
+function mailProcess (obj,command) {
+    var args = [JSON.stringify(obj)];
+    const child = fork('./childProcesses/mailjob', args);
+    child.send(command);
+    child.on('message', (message) => {
+        if (message.error) {
+            console.error(message.error);
+        } else {
+            console.log('mail sent', message);
+        }
+    });
+
+    child.on("exit", (code) => {
+        console.log(`child_process exited with code ${code}`);
+    });
+    return
 }

@@ -1,6 +1,4 @@
 'use strict';
-
-const { func } = require('@hapi/joi');
 const Db = require('./dbModel');
 
 const AddressModel = function (addressSchema,con,TableName) {
@@ -19,7 +17,6 @@ Object.defineProperty(AddressModel.prototype, 'constructor', {
 
 AddressModel.prototype.create = async function () {
     try {
-        console.log(this.addressSchema);
         let address = await this.insertToTable(this.addressSchema);
         return address;
     } catch (error) {
@@ -29,7 +26,6 @@ AddressModel.prototype.create = async function () {
 
 AddressModel.prototype.update = async function (whereValue,whereType) {
     try {
-        console.log(this.addressSchema)
         let address = await this.updateDbDynamic(this.addressSchema,whereValue,whereType);
         return address;
     } catch (error) {

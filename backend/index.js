@@ -87,6 +87,7 @@ router.use(users(koaRouter,con).routes());
 router.use(payment(koaRouter,con).routes());
 router.use(payment(koaRouter,con).routes());
 router.use(questions(koaRouter,con).routes());
+router.use(withdrawal(koaRouter,con).routes());
 
 //Router Middleware
 app.use(router.routes()).use(router.allowedMethods());

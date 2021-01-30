@@ -4,6 +4,7 @@ const Db = require('./dbModel');
 const bcrypt = require('bcrypt');
 const voucher_codes = require('voucher-code-generator');
 const jwt = require("jsonwebtoken");
+const { user } = require('../config/env');
 
 const UserModel = function (userSchema, kyc_id, con, TableName) {
     Db.call(this, con, TableName);
@@ -31,14 +32,15 @@ UserModel.prototype.create = async function () {
             throw new Error("User already exists");
         }
         this.userSchema.user.kyc_id = this.kyc_id
-        let referral_code = userSchema.user.referral_code;
+        let referral_code = this.userSchema.user.referral_code;
+        console.log(this.userSchema)
         //check if user is signing up with a referral code
         //get the first char from the string, that is the referee id
         if (referral_code != "") {
             this.userSchema.user.referee_id = this.referral_code.split("-")[0];
         }
-        delete userSchema.user.referral_code;
-        delete userSchema.user.repeat_password;
+        delete this.userSchema.user.referral_code;
+        delete this.userSchema.user.repeat_password;
         this.userSchema.user.password = await hashPassword(this.userSchema.user.password)
         let user = await this.insertTransaction(this.userSchema);
         this.userSchema.user.referral = voucher_codes.generate({
