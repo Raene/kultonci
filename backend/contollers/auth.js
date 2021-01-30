@@ -10,12 +10,35 @@ exports.register = function (con) {
         try {
             const data = ctx.request.body;
             const kyc = {};
-            kyc.kycId    = await upload(ctx.request.files.kyc);
-    
-            const kycUser = new KYCModel(kyc,con,'kyc');
-            const kycID   = await kycUser.create();
-        
-            const user = new UserModel(data,kycID.insertId, con, 'user');
+            kyc.kycId = await upload(ctx.request.files.kyc);
+
+            const kycUser = new KYCModel(kyc, con, 'kyc');
+            const kycID = await kycUser.create();
+
+            let formattedData = {
+                user: {
+                    email: data.email,
+                    referral_code: data.referral_code,
+                    name: data.name,
+                    password: data.password,
+                    repeat_password: data.repeat_password,
+                    dob: data.dob,
+                    phone: data.phone
+                },
+                address: {
+                    city: data.city,
+                    state: data.state,
+                    country: data.country,
+                    zip: data.zip
+                },
+                questions_user: {
+                    answer: data.answer,
+                    security_questions_id: data.security_questions_id
+                }
+            }
+
+
+            const user = new UserModel(formattedData, kycID.insertId, con, 'user');
             await user.create();
             ctx.body = { message: 'User Created' };
             ctx.status = 200;
@@ -29,7 +52,7 @@ exports.login = function (con) {
     return async (ctx) => {
         try {
             const data = ctx.request.body;
-            const user = new UserModel(data,null,con,'user')
+            const user = new UserModel(data, null, con, 'user')
             let payload = await user.login()
             ctx.body = { message: payload };
             ctx.status = 200;
@@ -44,15 +67,15 @@ exports.passwordResetToken = function (con) {
     return async (ctx) => {
         try {
             const data = ctx.request.body;
-            const user = new UserModel({},null,con,'user');
-            let userExists = await user.getByValue(data.email,'email');
-            if(userExists.length <= 0){
+            const user = new UserModel({}, null, con, 'user');
+            let userExists = await user.getByValue(data.email, 'email');
+            if (userExists.length <= 0) {
                 throw new Error("Email not Found");
             }
 
         } catch (error) {
             console.log(error);
-            ctx.throw(500,error)
+            ctx.throw(500, error)
         }
     }
 }
@@ -60,10 +83,10 @@ exports.passwordResetToken = function (con) {
 exports.passwordReset = function (con) {
     return async (ctx) => {
         try {
-            
+
         } catch (error) {
             console.log(error);
-            ctx.throw(500,error)
+            ctx.throw(500, error)
         }
     }
 }
