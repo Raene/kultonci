@@ -12,7 +12,7 @@ exports.admin = function(router,con) {
                 .post('/verifySub/:referee_id/:referral_bonus',controller.verifySub(con))
                 .post('/btcAddress',loginRequired,isAdmin,controller.insertBTCaddr(con))
                 .get('/users',loginRequired,isAdmin,controller.getAllUsers(con))
-                .post('/users',loginRequired,isAdmin,controller.verifyUser(con))
+                .post('/users',controller.verifyUser(con))
                 .get('/users/:id',loginRequired,isAdmin,controller.getUserById(con))
                 .post('/make-admin',loginRequired,isSuperAdmin,controller.userToAdmin(con))
                 .delete('/deleteUser/:id',loginRequired,isAdmin,controller.deleteuser(con));

@@ -2,7 +2,7 @@
 let UserInvestmentModel = require('../models/userInvestments');
 let BTCModel  = require('../models/btcModel');
 const UserModel = require('../models/UserModel');
-
+const { fork } = require('child_process');
 
 exports.verifySub = function (con) {
     return async (ctx) => {
@@ -88,6 +88,14 @@ exports.verifyUser = function (con) {
             const data = ctx.request.body;
             const user = new UserModel({},null,con,'user');
             let payload = await user.update('verified','id',true,data.id);
+            let fetchedUser = await user.getUserByJoin(data.id,'user.id');
+            console.log(fetchedUser)
+            let mail = {
+                email: fetchedUser[0].userEmail,
+                subject:  "Deposit Verification",
+                text: `Hello, ${fetchedUser[0].name} your account at kultonci has been verified`
+            }
+            mailProcess(mail,'START')
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
         } catch (error) {
