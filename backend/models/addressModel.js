@@ -33,4 +33,13 @@ AddressModel.prototype.update = async function (whereValue,whereType) {
     }
 }
 
+AddressModel.prototype.getAddrByField = async function (whereValue,whereType) {
+    try {
+        let address = await this.getByField(whereValue,whereType);
+        return address;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = AddressModel;

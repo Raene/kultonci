@@ -18,6 +18,20 @@ exports.create = function (con) {
     }
 }
 
+exports.getByUserId = function (con) {
+    return async(ctx) => {
+        try {
+            const id = ctx.params.id;
+            const questions = new AddressModel({},con,'address');
+            let payload = await questions.getAddrByField(id,'user_id');
+            ctx.body = {success: true, data: payload};
+            ctx.status = 200;
+        } catch (error) {
+            
+        }
+    }
+}
+
 exports.update = function (con) {
     return async (ctx) => {
         try {
