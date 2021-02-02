@@ -40,7 +40,7 @@ exports.register = function (con) {
             }
 
             const user = new UserModel(formattedData, kycID.insertId, con, 'user');
-            //await user.create();
+            await user.create();
             let mail = {
                 email: data.email,
                 subject:  "Welcome",
