@@ -10,7 +10,8 @@ const user = {
 		profile: {},
 		users: [],
 		user: {},
-		referrals: []
+		referrals: [],
+		security_questions: []
 	},
 	mutations: {
 		SET_INITIAL_SIGNUP_DETAILS(state, payload) {
@@ -50,6 +51,10 @@ const user = {
 		SET_REFERRALS(state, payload) {
 			Vue.set(state, "referrals", payload);
 			console.log("referral data: ", state.referrals);
+		},
+
+		SET_SECURITY_QUESTIONS(state, payload) {
+			Vue.set(state, "security_questions", payload);
 		}
 	},
 	actions: {
@@ -128,6 +133,17 @@ const user = {
         			console.log("Withdrawals data: ", data);
         		})
         		.catch(err => console.log(err));
+        },
+
+        getSecurityQuestions({ commit }) {
+        	return axios.get(url + "/security-questions")
+        		.then((data) => {
+        			console.log("questions: ", data.data.data);
+        			commit("SET_SECURITY_QUESTIONS", data.data.data);
+        		})
+        		.catch((err) => {
+        			console.log(err);
+        		});
         }
 	},
 	getters: {
@@ -156,6 +172,10 @@ const user = {
 
 		getReferrals(state) {
 			return state.referrals;
+		},
+
+		getSecurityQuestions(state) {
+			return state.security_questions;
 		}
 	}
 }
