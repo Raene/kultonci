@@ -43,3 +43,25 @@ const UserLogin = Joi.object({
 })
 
 exports.UserLogin = UserLogin;
+
+const EmailUpdate = Joi.object({
+    email: Joi.string()
+           .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+           .trim()
+           .required(),
+    id: Joi.number()
+})
+
+exports.EmailUpdate = EmailUpdate;
+
+const PasswordUpdate = Joi.object({
+    password: Joi.string()
+    .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+    .trim()
+    .required(),
+    repeat_password: Joi.ref('password'),
+    id: Joi.number()
+    
+}).with('password', 'repeat_password');
+
+exports.PasswordUpdate = PasswordUpdate;

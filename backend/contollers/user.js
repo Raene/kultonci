@@ -130,3 +130,20 @@ exports.updatePassword = function (con) {
         }
     }
 }
+
+exports.updateEmail = function (con) {
+    return async (ctx) => {
+        try {
+            let data = ctx.request.body;
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
+            const user = new UserModel(data,null,con,'user');
+            await user.updateDynamic(data.id,'id');
+            ctx.body = {message: 'update succesful'};
+            ctx.status = 200;
+            return;
+        } catch (error) {
+            console.log(error)
+            ctx.throw(500,error);
+        }
+    }
+}
