@@ -214,6 +214,7 @@ Db.prototype.getJoin = async function () {
 
 Db.prototype.getJoinWhere = async function (value, valueType) {
     try {
+        
         let sql = `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id WHERE ${valueType} = ?`;
         let result = await this.makeQuery(async connection => {
             return new Promise((resolve, reject) => {
@@ -248,7 +249,7 @@ Db.prototype.getUsersJoin =async function () {
 
 Db.prototype.getUserJoin = async function (value, valueType) {
     try {
-        let sql = `SELECT user.name as name,user.id as userId,user.email as userEmail,user.ssn as ssn, user.phone as phone,user.dob as dob,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified,user.referee_id as referee_id, user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath , address.city as city, address.state as state, address.address as address, address.zip as zip, address.country as country FROM user INNER JOIN kyc ON user.kyc_id = kyc.id INNER JOIN address ON user.id = address.user_id WHERE ${valueType} = ?`;
+        let sql = `SELECT user.name as name,user.id as userId,user.email as userEmail,user.ssn as ssn, user.phone as phone,user.dob as dob,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified,user.referee_id as referee_id, user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
         let result = await this.makeQuery(async connection => {
             return new Promise((resolve, reject) => {
                 connection.query(sql, value, function (err, result) {

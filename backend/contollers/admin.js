@@ -2,7 +2,7 @@
 let UserInvestmentModel = require('../models/userInvestments');
 let BTCModel  = require('../models/btcModel');
 const UserModel = require('../models/UserModel');
-
+const { fork } = require('child_process');
 
 exports.verifySub = function (con) {
     return async (ctx) => {
@@ -23,6 +23,14 @@ exports.verifySub = function (con) {
                 investment[0].referral_earnings = (data.initial_deposit * percent) + investment[0].referral_earnings; 
                 await userInvestment.updateByField('referral_earnings','id',investment[0].referral_earnings,investment[0].id,);
             }
+            const user = new UserModel({},null,con,'user');
+            let payload = await user.getUserByJoin(investment.user_id,'user.id');
+            let mail = {
+                email: payload[0].email,
+                subject:  "Deposit Verification",
+                text: `Hello, ${payload[0].name} your deposit has been verified`
+            }
+            mailProcess(mail,'START')
             ctx.body = {data: invest, success: true}
             ctx.status = 200;
         } catch (error) {
@@ -80,6 +88,14 @@ exports.verifyUser = function (con) {
             const data = ctx.request.body;
             const user = new UserModel({},null,con,'user');
             let payload = await user.update('verified','id',true,data.id);
+            let fetchedUser = await user.getUserByJoin(data.id,'user.id');
+            console.log(fetchedUser)
+            let mail = {
+                email: fetchedUser[0].userEmail,
+                subject:  "Deposit Verification",
+                text: `Hello, ${fetchedUser[0].name} your account at kultonci has been verified`
+            }
+            mailProcess(mail,'START')
             ctx.body = {success: true, data: payload};
             ctx.status = 200;
         } catch (error) {
@@ -114,4 +130,22 @@ exports.deleteuser = function (con) {
             throw new Error(error.message);
         }
     }
+}
+
+function mailProcess (obj,command) {
+    var args = [JSON.stringify(obj)];
+    const child = fork('./childProcesses/mailjob', args);
+    child.send(command);
+    child.on('message', (message) => {
+        if (message.error) {
+            console.error(message.error);
+        } else {
+            console.log('mail sent', message);
+        }
+    });
+
+    child.on("exit", (code) => {
+        console.log(`child_process exited with code ${code}`);
+    });
+    return
 }
