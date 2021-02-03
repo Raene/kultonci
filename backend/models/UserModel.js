@@ -158,6 +158,7 @@ UserModel.prototype.updatePassword = async function (whereValue,whereType) {
             throw new Error('Password is incorrect')
         }
         this.userSchema.password = await hashPassword(this.userSchema.password)
+        delete this.userSchema.oldPassword;
         let np = await this.updateDbDynamic(this.userSchema,whereValue,whereType);
         return np;
     } catch (error) {

@@ -42,7 +42,7 @@
                         <div class="feature-icon"><i class="icon-wallet"></i></div>
                         <div class="feature-content">
                             <h4>MOUTHWATERING ROI</h4>
-                            <p>ROI offered by KULTON CI can't be matched by any bank while still enjoying full coverage of insurance.</p>
+                            <p>ROI offered by Lunar Alliance can't be matched by any bank while still enjoying full coverage of insurance.</p>
                         </div>
                     </div>
                 </div>

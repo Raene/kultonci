@@ -15,4 +15,5 @@ exports.users = function(router, con) {
         .get('/referrals/:id',controller.getAllreferrals(con))
         .get('/investments/:id',userInvestment.getInvestments(con))
         .post('/email',emailUpdate,loginRequired,controller.updateEmail(con))
+        .post('/update',loginRequired,controller.updateUser(con))
 }

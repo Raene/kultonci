@@ -39,7 +39,7 @@
                         <!-- widget-tags -->
                         <div class="widget widget-tags">
                             <h4 class="widget-title">Wallet</h4>
-                            <router-link to="/user-wallet/user" class="btn btn-default btn-xs">Dashboard</router-link> <br> <router-link to="/user-wallet/user/profile" class="btn btn-default btn-xs">View Profile</router-link> <br> <router-link to="/investment-packages" class="btn btn-default btn-xs">Invest</router-link> <br> <a href="#" class="btn btn-default btn-xs">Reqiest Withdrawal</a><br>
+                            <router-link to="/user-wallet/user" class="btn btn-default btn-xs">Dashboard</router-link> <br> <router-link to="/user-wallet/user/profile" class="btn btn-default btn-xs">View Profile</router-link> <br> <router-link to="/investment-packages" class="btn btn-default btn-xs">Invest</router-link> <br> <a href="#" class="btn btn-default btn-xs">Request Withdrawal</a><br> <router-link to="/user-wallet/referrals" class="btn btn-default btn-xs">Referrals</router-link>
                         </div>
                         <div class="widget">
                             <h4 class="widget-title">Referral Link</h4>
@@ -48,7 +48,7 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label required sr-only ">Name <span class="require">*</span></label>
-                                            <input type="text" class="form-control" required>
+                                            <input v-model="referral_code" type="text" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">

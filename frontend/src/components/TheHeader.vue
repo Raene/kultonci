@@ -13,7 +13,7 @@
                             <ul>
                                 <li class="active"><router-link to="/">Home</router-link></li>
                                 <li class="active"><router-link to="/about">About</router-link></li>
-                                <li class="active"><router-link to="/Investment-packages">Investment Packages</router-link></li>
+                                <li class="active"><router-link to="/Investment-packages">Packages</router-link></li>
                                 <li class="active"><router-link to="/cryptocurrency-list">Cryptocurrency</router-link></li>
                                 <li class="active"><router-link to="/testimonies">Testimonies</router-link></li>
                                 <li class="active"><router-link to="/faqs">FAQS</router-link></li>
@@ -101,6 +101,6 @@ export default {
 
 <style scoped>
 img {
-    width: 150px !important;
+    width: 100px !important;
 }
 </style>

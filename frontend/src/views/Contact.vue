@@ -75,7 +75,7 @@
                             Information</h2>
                         <p class="mb0">1210 8th St SW Petrowest Plaza Calgary, AB</p>
                         <!-- <p class="text-bold text-primary mb0">+ 180 - 123 - 4567</p> -->
-                        <p class="text-bold text-primary">support@kultonci.com</p>
+                        <p class="text-bold text-primary">support@lunaralliane.com</p>
                     </div>
                 </div>
             </div>

@@ -56,8 +56,8 @@
                         <div class="mb30">
                             <h2 class="mb40">Investment</h2>
                             <div class="mb30">
-                                <h4>How can I invest with Kulton CI?</h4>
-                                <p>To make a investment you must first become a member of Kulton CI and have an e-currency account. Once you are signed up, you can make your first deposit. All deposits for investments must be made through the <a href="investment.html">Investment Packages</a> page.</p>
+                                <h4>How can I invest with Lunar Alliance?</h4>
+                                <p>To make a investment you must first become a member of Lunar Alliance and have an e-currency account. Once you are signed up, you can make your first deposit. All deposits for investments must be made through the <a href="investment.html">Investment Packages</a> page.</p>
                             </div>
                             <div class="mb30">
                                 <h4>How long does it take for my deposit to be added to my account?</h4>
@@ -77,7 +77,7 @@
                             <h2 class="mb40">Security</h2>
                             <div class="mb30">
                                 <h4>How can I change my email address or password?</h4>
-                                <p>Log into your kultonci.com account and click on the "Account Information". You can change your e-mail address and password there.</p>
+                                <p>Log into your lunaralliance.investments account and click on the "Account Information". You can change your e-mail address and password there.</p>
                             </div>
                             <div class="mb30">
                                 <h4>How can I change my password?</h4>

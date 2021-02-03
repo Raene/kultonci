@@ -59,6 +59,10 @@ const PasswordUpdate = Joi.object({
     .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
     .trim()
     .required(),
+    email: Joi.string()
+           .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+           .trim()
+           .required(),
     oldPassword: Joi.ref('password'),
     id: Joi.number()
     

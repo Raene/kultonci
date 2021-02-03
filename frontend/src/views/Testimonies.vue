@@ -39,7 +39,7 @@
                                                     <div class="author-header">
                                                         <h5 class="author-title">Diana Bateman </h5> <span class="author-meta ">(Business Owner)</span>
                                                     </div>
-                                                    <p class="author-text">"Kulton CI is the REAL DEAL. It is honest, cares about it’s clients, and offers up well vetted Investment contracts. They stay on top of our “investments” and so far have always, each deal has ended with a positive outcome for me. I highly recommend this company so you can count on a positive return on your hard earned money."
+                                                    <p class="author-text">"Lunar Alliance is the REAL DEAL. It is honest, cares about it’s clients, and offers up well vetted Investment contracts. They stay on top of our “investments” and so far have always, each deal has ended with a positive outcome for me. I highly recommend this company so you can count on a positive return on your hard earned money."
                                                     </p>
                                                     <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> </div> -->
                                                 </div>
@@ -58,7 +58,7 @@
                                                     <div class="author-header">
                                                         <h5 class="author-title">Mark Robinson </h5> <span class="author-meta ">(Business Owner)</span>
                                                     </div>
-                                                    <p class="author-text">"Working with Kulton CI has been like working with an extension of our family business. Their strong business ethics and integrity is top notch and has made our working relationship very pleasurable and efficient."
+                                                    <p class="author-text">"Working with Lunar Alliance has been like working with an extension of our family business. Their strong business ethics and integrity is top notch and has made our working relationship very pleasurable and efficient."
                                                     </p>
                                                     <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> </div> -->
                                                 </div>
@@ -77,7 +77,7 @@
                                                     <div class="author-header">
                                                         <h5 class="author-title">Chad Shockley </h5> <span class="author-meta ">(Global Investor)</span>
                                                     </div>
-                                                    <p class="author-text">"As an overseas investor, I needed assurance in a company through every stage of the process, Kulton CI have provided just that. Their professionalism and commitment meant that my money is in safe hands."
+                                                    <p class="author-text">"As an overseas investor, I needed assurance in a company through every stage of the process, Lunar Alliance have provided just that. Their professionalism and commitment meant that my money is in safe hands."
                                                     </p>
                                                     <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> </div> -->
                                                 </div>
@@ -96,7 +96,7 @@
                                                     <div class="author-header">
                                                         <h5 class="author-title">George Gabrielson </h5> <span class="author-meta ">(Global Investor)</span>
                                                     </div>
-                                                    <p class="author-text">I have a dozen different investments throughout the world and Kulton CI rank among the absolute best. Wesley and his team are very knowledgeable in their field, professional and only look for the opportunities that promise good returns. I am in numerous investments with Kulton CI and can say enough good.
+                                                    <p class="author-text">I have a dozen different investments throughout the world and Lunar Alliance rank among the absolute best. Wesley and his team are very knowledgeable in their field, professional and only look for the opportunities that promise good returns. I am in numerous investments with Lunar Alliance and can say enough good.
                                                     </p>
                                                     <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> </div> -->
                                                 </div>

@@ -5,6 +5,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import UserProfile from "@/components/UserProfile.vue";
 import User from "@/components/User.vue";
+import Referrals from "@/components/Referrals.vue"
+import ChangePassword from "@/components/ChangePassword.vue"
+import ChangeEmail from "@/components/ChangeEmail.vue"
 import UserList from "@/components/Dashboard/UserList.vue";
 import SingleUser from "@/components/Dashboard/SingleUser.vue";
 import UserProfileAdmin from "@/components/Dashboard/UserProfile.vue";
@@ -85,6 +88,18 @@ const routes = [
         {
           path: "user",
           component: User
+        },
+        {
+          path: "referrals",
+          component: Referrals
+        },
+        {
+          path: "change-password",
+          component: ChangePassword
+        },
+        {
+          path: "change-email",
+          component: ChangeEmail
         }
       ],
       meta: { requiresAuth: true }

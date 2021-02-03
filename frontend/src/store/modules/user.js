@@ -144,6 +144,27 @@ const user = {
         		.catch((err) => {
         			console.log(err);
         		});
+        },
+
+        updatePassword(context, payload) {
+        	const token = localStorage.getItem("token");
+        	return axios.post(url + "/user/updatepassword", payload, { headers: { Authorization: `Bearer ${token}` } });
+        },
+
+        updateEmail(context, payload) {
+        	const token = localStorage.getItem("token");
+        	return axios.post(url + "/user/email", payload, { headers: { Authorization: `Bearer ${token}` } });
+        },
+
+        updateUser(context, payload) {
+        	const token = localStorage.getItem("token");
+        	return axios.post(url + "/user/update", payload, { headers: { Authorization: `Bearer ${token}` } })
+        		.then((data) => {
+        			console.log("update: ", data);
+        		})
+        		.catch((err) => {
+        			console.log(err);
+        		});
         }
 	},
 	getters: {
