@@ -126,7 +126,7 @@ UserModel.prototype.login = async function () {
             throw new Error("Email does not exist");
         }
         console.log(u);
-        let { id, email, role, name, referral, referee_id } = u[0];
+        let { id, email, role, name, referral, referee_id,phone,dob,ssn } = u[0];
         let exists = await compareHashPassword(this.userSchema.password, u[0].password);
         if (exists != true) {
             throw new Error('Password is incorrect')
@@ -140,7 +140,7 @@ UserModel.prototype.login = async function () {
             process.env.SECRET_KEY,
             { expiresIn: "120h" }
         )
-        return { id, name, email, token, role, referral, referee_id }
+        return { id, name, email, token, role, referral, referee_id,phone,dob,ssn }
     } catch (error) {
         throw new Error(error);
     }
