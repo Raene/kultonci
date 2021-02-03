@@ -98,7 +98,7 @@ exports.updateUser = function (con) {
         try {
             let data = ctx.request.body;
             data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
-            if (myObj.hasOwnProperty('password')){
+            if (data.hasOwnProperty('password')){
                 delete data.password;
             }
 
@@ -135,6 +135,7 @@ exports.updateEmail = function (con) {
     return async (ctx) => {
         try {
             let data = ctx.request.body;
+            console.log(data)
             data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
             const user = new UserModel(data,null,con,'user');
             await user.updateDynamic(data.id,'id');
