@@ -76,6 +76,12 @@ const routes = [
       import(/* webpackChunkName: "signup" */ "../views/Signup.vue")
   },
   {
+    path: "/signup/:referral_code",
+    name: "SignUpWithRef",
+    component: () =>
+      import(/* webpackChunkName: "signupwithref" */ "../views/SignUpWithRef.vue")
+  },
+  {
     path: "/user-wallet",
     name: "UserWallet",
     component: () =>

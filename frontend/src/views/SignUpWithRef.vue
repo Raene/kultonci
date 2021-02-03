@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group">
                       <ValidationProvider rules="required|password:@confirm" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="password"></label>
-                        <input v-model="user.password" id="password" type="password" name="password" placeholder="create password" :class="{ 'form-control': true, invalid, valid, untouched }" required>
+                        <input v-model="user.password" id="password" type="password" placeholder="create password" :class="{ 'form-control': true, invalid, valid, untouched }" required>
                         <span>{{ errors[0] }}</span>
                       </ValidationProvider>
                     </div>
@@ -145,7 +145,6 @@ export default {
         state: null,
         country: null,
         zip: null,
-        ssn: null,
         security_question: "Security Question",
         answer: null
       },
@@ -180,7 +179,7 @@ export default {
           repeat_password: this.user.repeat_password,
           dob: this.user.dob,
           phone: this.user.phone,
-          ssn: this.user.ssn
+          referral_code: this.$route.params.referral_code
         },
         address: {
           address: this.user.address,
