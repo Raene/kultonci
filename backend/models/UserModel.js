@@ -65,7 +65,7 @@ UserModel.prototype.update = async function (valueType, whereType, value, whereV
 
 UserModel.prototype.updateDynamic = async function (whereValue,whereType) {
     try {
-        let u = await this.updateDbDynamic(this.obj,whereValue,whereType);
+        let u = await this.updateDbDynamic(this.userSchema,whereValue,whereType);
         return u;
     } catch (error) {
         throw new Error(error)
