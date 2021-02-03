@@ -42,6 +42,58 @@ Db.prototype.insertToTable = async function (obj) {
     }
 };
 
+Db.prototype.insertTransaction = async function (obj) {
+    try {
+        let result = await this.makeQuery(async connection => {
+            return new Promise((resolve, reject)=>{
+                let sql = `INSERT INTO ${this.TableName} SET ?`;
+                connection.beginTransaction(function (err) {
+                    if(err) {reject(err)};
+                    connection.query(sql,obj.user,function (err,results) {
+                        if (err) { 
+                            return connection.rollback(function() {
+                             console.log(err)
+                              reject(err);
+                            });
+                        }
+                    let userId = results.insertId;
+                    obj.address.user_id = userId;
+                        connection.query(`INSERT INTO address SET ?`,obj.address,function (err,results) {
+                            if (err) { 
+                                console.log(err);
+                                return connection.rollback(function() {
+                                  reject(err);
+                                });
+                            }
+                        let q_sql = `INSERT INTO questions_user SET ?`;
+                        obj.questions_user.user_id = userId;
+                            connection.query(q_sql,obj.questions_user,function (err,results) {
+                                if (err) { 
+                                        return connection.rollback(function() {
+                                        reject(err);
+                                    });
+                                }
+                                connection.commit(function(err) {
+                                    if (err) { 
+                                      return connection.rollback(function() {
+                                        reject (err);
+                                      });
+                                    }
+                                    console.log('success!');
+                                })
+                            })
+                        })
+                        resolve(results);
+                    })
+                })
+            })
+        })
+        return result;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
 Db.prototype.getByField = async function (value, valueType) {
     try {
         let sql = `SELECT * FROM ${this.TableName} WHERE ${valueType} = ?`;
@@ -162,6 +214,7 @@ Db.prototype.getJoin = async function () {
 
 Db.prototype.getJoinWhere = async function (value, valueType) {
     try {
+        
         let sql = `SELECT *,packageLevels.name as PackageName,packageLevels.id as PackageId FROM packageLevels INNER JOIN investmentPKG ON packageLevels.investmentPkg_id = investmentPKG.id WHERE ${valueType} = ?`;
         let result = await this.makeQuery(async connection => {
             return new Promise((resolve, reject) => {
@@ -196,7 +249,7 @@ Db.prototype.getUsersJoin =async function () {
 
 Db.prototype.getUserJoin = async function (value, valueType) {
     try {
-        let sql = `SELECT user.name as name,user.id as userId,user.email as userEmail,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified,user.referee_id as referee_id, user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
+        let sql = `SELECT user.name as name,user.id as userId,user.email as userEmail,user.ssn as ssn, user.phone as phone,user.dob as dob,user.kyc_id as kycId, user.role as userRole, user.verified as userVerified,user.referee_id as referee_id, user.referral as  referral_code,user.created_at as userCreatedAt, kyc.kycId as kycPath FROM user INNER JOIN kyc ON user.kyc_id = kyc.id WHERE ${valueType} = ?`;
         let result = await this.makeQuery(async connection => {
             return new Promise((resolve, reject) => {
                 connection.query(sql, value, function (err, result) {

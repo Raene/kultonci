@@ -1,4 +1,4 @@
-# kulton-ci
+# kulton-v2.0
 
 ## Project setup
 ```

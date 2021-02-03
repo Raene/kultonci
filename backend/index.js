@@ -9,8 +9,10 @@ const {auth} = require('./routes/auth');
 const {subscription} = require('./routes/subscription');
 const {admin}        = require('./routes/admin');
 const {payment}      = require('./routes/payment');
-const {users}         = require('./routes/user');
-const {withdrawal}         = require('./routes/withdrawal');
+const {users}        = require('./routes/user');
+const {withdrawal}   = require('./routes/withdrawal');
+const {questions}   = require('./routes/questions');
+const {address}   = require('./routes/address');
 
 const cors = require('@koa/cors');
 const koaOptions = {
@@ -44,6 +46,7 @@ app.use( async (ctx, next) => {
       await next()
     } catch(err) {
       console.log(err.status)
+      console.log(err.message);
       ctx.status = err.status || 500;
       ctx.body = err.message;
     }
@@ -83,6 +86,9 @@ router.use(subscription(koaRouter,con).routes());
 router.use(admin(koaRouter,con).routes());
 router.use(users(koaRouter,con).routes());
 router.use(payment(koaRouter,con).routes());
+router.use(payment(koaRouter,con).routes());
+router.use(questions(koaRouter,con).routes());
+router.use(address(koaRouter,con).routes());
 router.use(withdrawal(koaRouter,con).routes());
 
 //Router Middleware

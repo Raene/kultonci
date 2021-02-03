@@ -22,6 +22,9 @@ const UserRegister = Joi.object({
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
         .trim()
         .required(),
+        phone: Joi.string(),
+        dob: Joi.string(),
+        ssn: Joi.string(),
 
     repeat_password: Joi.ref('password')
 }).with('password', 'repeat_password');
@@ -41,3 +44,29 @@ const UserLogin = Joi.object({
 })
 
 exports.UserLogin = UserLogin;
+
+const EmailUpdate = Joi.object({
+    email: Joi.string()
+           .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+           .trim()
+           .required(),
+    id: Joi.number()
+})
+
+exports.EmailUpdate = EmailUpdate;
+
+const PasswordUpdate = Joi.object({
+    password: Joi.string()
+    .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+    .trim()
+    .required(),
+    email: Joi.string()
+           .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+           .trim()
+           .required(),
+    oldPassword: Joi.ref('password'),
+    id: Joi.number()
+    
+}).with('password', 'oldPassword');
+
+exports.PasswordUpdate = PasswordUpdate;
