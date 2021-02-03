@@ -7,4 +7,6 @@ exports.address = function (router,con) {
         prefix: '/server/address'
     });
     return route.get('/:id',controller.getByUserId(con))
+                .post('/',controller.create(con))
+                .post('/updtae',controller.update(con))
 }

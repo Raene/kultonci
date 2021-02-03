@@ -18,6 +18,23 @@ exports.create = function (con) {
     }
 }
 
+exports.update = function (con) {
+    return async (ctx) => {
+        try {
+            let data = ctx.request.body;
+            data.updated_at    = new Date().toISOString().replace('T',' ').replace('Z','');
+            const address = new AddressModel(data,con,'address')
+            await address.update(data.id,'id');
+            ctx.body = {message: 'update succesful'};
+            ctx.status = 200;
+            return;
+        } catch (error) {
+            console.log(error)
+            ctx.throw(500,error);
+        }
+    }
+}
+
 exports.getByUserId = function (con) {
     return async(ctx) => {
         try {
