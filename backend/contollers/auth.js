@@ -24,7 +24,8 @@ exports.register = function (con) {
                     password: data.password,
                     repeat_password: data.repeat_password,
                     dob: data.dob,
-                    phone: data.phone
+                    phone: data.phone,
+                    ssn:data.ssn
                 },
                 address: {
                     address: data.address,
