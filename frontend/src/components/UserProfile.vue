@@ -85,13 +85,13 @@
                                         <input type="text" class="form-control" placeholder="What is your mother's maiden name?" required>
                                     </div>
                                 </div> -->
-                <div @click.prevent="updateUser" class="align-center col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div @click.prevent="updateUser" class="align-center col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                   <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
                 </div>
-                <div class="align-center secnd col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="align-center secnd col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                   <router-link to="/user-wallet/change-password" id="singlebutton" name="singlebutton" class="btn btn-primary">Change password</router-link>
                 </div>
-                <div class="align-center secnd col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="align-center secnd col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                   <router-link to="/user-wallet/change-email" id="singlebutton" name="singlebutton" class="btn btn-primary">Change Email</router-link>
                 </div>
               </div>
@@ -123,19 +123,95 @@ export default {
     }
   },
 
+  mounted() {
+    this.$store.dispatch("user/getAddress", this.user.id)
+        .then((data) => {
+            this.address = data.address;
+            this.city = data.city;
+            this.country = data.country;
+            this.state = data.state;
+            this.zip = data.zip;
+            this.ssn = this.user.ssn;
+            this.phone = this.user.phone;
+            this.name = this.user.name;
+        })
+  },
+
   methods: {
+    resetFields() {
+        this.name = null;
+        this.address = null;
+        this.city = null;
+        this.state = null;
+        this.country = null;
+        this.zip = null;
+        this.phone = null;
+        this.ssn = null;
+    },
+
     updateUser() {
-      this.$store.dispatch("user/updateUser", {
-        id: this.user.id,
-        name: this.name,
-        address: this.address,
-        city: this.city,
-        state: this.state,
-        country: this.country,
-        zip: this.zip,
-        phone: this.phone,
-        ssn: this.ssn
-      });
+      let user_info;
+      let address_info;
+      if (this.name !== null || this.phone !== null || this.ssn !== null) {
+        user_info = {
+          id: this.user.id,
+          name: this.name,
+          phone: this.phone,
+          ssn: this.ssn
+        }
+        console.log("user_info: ", user_info)
+        this.$store.dispatch("user/updateUser", user_info)
+        .then((data) => {
+          console.log("update: ", data.data.message);
+          this.resetFields();
+          this.$swal({
+            icon: "success",
+            title: data.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch((err) => {
+          console.log(err.response);
+          this.$swal({
+            icon: "success",
+            title: "error",
+            showConfirmButton: false,
+            timer: 1500
+          })
+        });
+      }
+      if (this.address !== null || this.city !== null || this.state !== null || this.country !== null || this.zip !== null) {
+        address_info = {
+          user_id: this.user.id,
+          address: this.address,
+          city: this.city,
+          state: this.state,
+          country: this.country,
+          zip: this.zip,
+        }
+        console.log("address: ", address_info);
+        this.$store.dispatch("user/updateAddress", address_info)
+        .then((data) => {
+          console.log("update: ", data.data.message);
+          this.resetFields();
+          this.$swal({
+            icon: "success",
+            title: data.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch((err) => {
+          console.log(err.response);
+          this.$swal({
+            icon: "error",
+            title: "error",
+            showConfirmButton: false,
+            timer: 1500
+          })
+        });
+      }
     }
   }
 }

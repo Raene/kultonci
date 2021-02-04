@@ -6,7 +6,7 @@
                     <!-- login-form -->
                     <div class="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
                         <div class="login-form">
-                            <h2 class="text-center mb30">Sign in to CoinTrade</h2>
+                            <h2 class="text-center mb30">Sign in</h2>
                             <form>
                                 <div class="form-group">
                                     <label class="control-label sr-only" for="email"></label>
@@ -16,10 +16,10 @@
                                     <label class="control-label sr-only" for="password"></label>
                                     <input v-model="user.password" id="password" type="password" name="password" placeholder="password" class="form-control" required>
                                 </div>
-                                <span>
+                                <!-- <span>
                                     <input id="box1" type="checkbox" class="with-font">
                                     <label for="box1">Keep me signed in on this computer</label>
-                                </span>
+                                </span> -->
                                 <button @click.prevent="login" type="submit" name="singlebutton" class="btn btn-default btn-lg  btn-block mt20">Sign In</button>
                             </form>
                         </div>

@@ -94,6 +94,7 @@ export default {
       fd.append("repeat_password", this.initialSignupDetails.user.repeat_password);
       fd.append("dob", this.initialSignupDetails.user.dob);
       fd.append("phone", this.initialSignupDetails.user.phone);
+      fd.append("ssn", this.initialSignupDetails.user.ssn);
       fd.append("address", this.initialSignupDetails.address.address);
       fd.append("city", this.initialSignupDetails.address.city);
       fd.append("state", this.initialSignupDetails.address.state);
@@ -104,7 +105,7 @@ export default {
       fd.append("referral_code", this.initialSignupDetails.referral_code ? this.initialSignupDetails.referral_code : "");
       fd.append("kyc", kyc.files[0]);
       // this.initialSignupDetails.user.kyc = kyc.files[0];
-      // console.log("kyc: ", this.initialSignupDetails);
+      console.log("signup: ", this.initialSignupDetails);
       // this.initialSignupDetails.user.referral_code = kyc.files[0];
       this.$store.dispatch("user/signup", fd)
         .then((err) => {

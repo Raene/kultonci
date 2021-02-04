@@ -48,11 +48,11 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="form-group">
                                             <label class="control-label required sr-only ">Name <span class="require">*</span></label>
-                                            <input v-model="referral_code" type="text" class="form-control" required>
+                                            <input id="referral_value" v-model="referral_code" type="text" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Copy Link</button>
+                                        <button @click.prevent="copyLink" id="singlebutton" name="singlebutton" class="btn btn-primary link-btn">Copy Link</button>
                                     </div>
                                 </div>
                             </form>
