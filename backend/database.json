@@ -5,7 +5,7 @@
       "port": "3306",
       "user": "mosi",
       "password": "bootstrap0107",
-      "database": "kulton-ci",
+      "database": "lunar",
       "multipleStatements": true
     },
     
@@ -15,7 +15,7 @@
       "port": "3306",
       "user": "root",
       "password": "root",
-      "database": "kulton-ci-test",
+      "database": "lunar",
       "multipleStatements": true
     }
   }
