@@ -4,13 +4,15 @@ const Db = require('./dbModel');
 const bcrypt = require('bcrypt');
 const voucher_codes = require('voucher-code-generator');
 const jwt = require("jsonwebtoken");
-const { user } = require('../config/env');
 
 const UserModel = function (userSchema, kyc_id, con, TableName) {
     Db.call(this, con, TableName);
-    
-    this.userSchema = Object.assign({}, userSchema);
-    this.kyc_id = kyc_id;
+    ({ name: this.name, email: this.email, password: this.password} = userSchema);
+    this.userSchema = Object.assign({}, { name: this.name, email: this.email, password: this.password});
+
+    this.referral_code = userSchema.referral_code;
+
+    this.userSchema.kyc_id = kyc_id;
 
 }
 
@@ -27,27 +29,23 @@ Object.defineProperty(UserModel.prototype, 'constructor', {
 UserModel.prototype.create = async function () {
     try {
         //this.insertToTable, since UserMdel is now child of Db no need to use call on methods
-        let u = await this.getByField(this.userSchema.user.email, 'email');
+        let u = await this.getByField(this.userSchema.email, 'email');
         if (u.length > 0) {
             throw new Error("User already exists");
         }
-        this.userSchema.user.kyc_id = this.kyc_id
-        let referral_code = this.userSchema.user.referral_code;
-        console.log(this.userSchema)
+
         //check if user is signing up with a referral code
         //get the first char from the string, that is the referee id
-        if (referral_code != "") {
-            this.userSchema.user.referee_id = this.referral_code.split("-")[0];
+        if (this.referral_code != "") {
+            this.userSchema.referee_id = this.referral_code.split("-")[0];
         }
-        delete this.userSchema.user.referral_code;
-        delete this.userSchema.user.repeat_password;
-        this.userSchema.user.password = await hashPassword(this.userSchema.user.password)
-        let user = await this.insertTransaction(this.userSchema);
-        this.userSchema.user.referral = voucher_codes.generate({
+        this.userSchema.password = await hashPassword(this.userSchema.password)
+        let user = await this.insertToTable(this.userSchema);
+        this.userSchema.referral = voucher_codes.generate({
             prefix: `${user.insertId}-`,
             length: 6
         });
-        await this.updateDbDynamic({ referral: this.userSchema.user.referral }, user.insertId, 'id');
+        await this.updateDbDynamic({ referral: this.userSchema.referral }, user.insertId, 'id');
         return user;
     } catch (error) {
         throw new Error(error);
@@ -57,15 +55,6 @@ UserModel.prototype.create = async function () {
 UserModel.prototype.update = async function (valueType, whereType, value, whereValue) {
     try {
         let u = await this.updateDb(valueType, whereType, value, whereValue);
-        return u;
-    } catch (error) {
-        throw new Error(error)
-    }
-}
-
-UserModel.prototype.updateDynamic = async function (whereValue,whereType) {
-    try {
-        let u = await this.updateDbDynamic(this.userSchema,whereValue,whereType);
         return u;
     } catch (error) {
         throw new Error(error)
@@ -93,7 +82,6 @@ UserModel.prototype.getByValue = async function (value, valueType) {
 
 UserModel.prototype.getUserByJoin = async function (value, valueType) {
     try {
-        console.log(value)
         let user = await this.getUserJoin(value, valueType);
         return user;
     } catch (error) {
@@ -126,7 +114,7 @@ UserModel.prototype.login = async function () {
             throw new Error("Email does not exist");
         }
         console.log(u);
-        let { id, email, role, name, referral, referee_id,phone,dob,ssn } = u[0];
+        let { id, email, role, name, referral, referee_id } = u[0];
         let exists = await compareHashPassword(this.userSchema.password, u[0].password);
         if (exists != true) {
             throw new Error('Password is incorrect')
@@ -140,29 +128,8 @@ UserModel.prototype.login = async function () {
             process.env.SECRET_KEY,
             { expiresIn: "120h" }
         )
-        return { id, name, email, token, role, referral, referee_id,phone,dob,ssn }
+        return { id, name, email, token, role, referral, referee_id }
     } catch (error) {
-        throw new Error(error);
-    }
-}
-
-UserModel.prototype.updatePassword = async function (whereValue,whereType) {
-    try {
-        let u = await this.getByField(this.userSchema.email, 'email');
-        if (u.length <= 0) {
-            throw new Error("Email does not exist");
-        }
-        console.log(u);
-        let exists = await compareHashPassword(this.userSchema.oldPassword, u[0].password);
-        if (exists != true) {
-            throw new Error('Password is incorrect')
-        }
-        this.userSchema.password = await hashPassword(this.userSchema.password)
-        delete this.userSchema.oldPassword;
-        let np = await this.updateDbDynamic(this.userSchema,whereValue,whereType);
-        return np;
-    } catch (error) {
-        console.log(error);
         throw new Error(error);
     }
 }

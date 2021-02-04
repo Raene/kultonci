@@ -1,64 +1,59 @@
 <template>
-	<!-- header-section-->
-    <div class="header-wrapper fixed-top">
+    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12">
-                    <div class="logo"> <a href="index.html"><img class="img-fluid" src="../assets/images/lunaralliance-2.png" alt=""> </a> </div>
-                </div>
-                <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
-                    <!-- navigations-->
-                    <div class="navigation">
-                        <div id="navigation">
-                            <ul>
-                                <li class="active"><router-link to="/">Home</router-link></li>
-                                <li class="active"><router-link to="/about">About</router-link></li>
-                                <li class="active"><router-link to="/Investment-packages">Packages</router-link></li>
-                                <li class="active"><router-link to="/cryptocurrency-list">Cryptocurrency</router-link></li>
-                                <li class="active"><router-link to="/testimonies">Testimonies</router-link></li>
-                                <li class="active"><router-link to="/faqs">FAQS</router-link></li>
-                                <li class="active"><router-link to="contact">Contact</router-link></li>
-                              
-                                <!-- <li class="has-sub"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-default.html">Blog Default</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.navigations-->
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 d-none d-xl-block d-lg-block">
-                    <div v-if="!profile" class="header-quick-info">
-                        <router-link to="/login" class="btn btn-white btn-xs mr-1">Login</router-link>
-                        <router-link to="/signup" class="btn btn-default btn-xs">Sign up</router-link>
-                    </div>
-                    <div v-else-if="profile && !path.includes('user-wallet')" class="header-quick-info">
-                        <router-link to="/user-wallet/user" class="btn btn-default btn-xs">My wallet</router-link>
-                    </div>
-                    <div v-if="profile && path.includes('user-wallet')" class="header-quick-info">
-                        <a @click="logout" href="#" class="btn btn-default btn-xs">Logout</a>
-                    </div>
-                </div>
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <!-- lOGO TEXT HERE -->
+                <a href="https://kultonci.com" class="navbar-brand"><img class="navbar-img" src="@/assets/landing/images/Kulton CI.png"></a>
+            </div>
+            <!-- MENU LINKS -->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <router-link v-if="routeName!=='Home'" to="/" class="smoothScroll">Home</router-link>
+                        <a v-else href="#home" class="smoothScroll">Home</a>
+                    </li>
+                    <li>
+                        <!-- <a v-if="routeName==='Home'" href="#about-us" class="smoothScroll">About</a> -->
+                        <router-link to="/about-us" class="smoothScroll">About</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/investment-packages" class="smoothScroll">Investment Packages</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/cryptocurrency-list" class="smoothScroll">Cryptocurrency List</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/faqs" class="smoothScroll">FAQs</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/testimonies" class="smoothScroll">Testimony</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/support" class="smoothScroll">Support</router-link>
+                    </li>
+                    <!-- <li><a href="#riskdisclaimer" class="smoothScroll">Risk Disclaimer</a></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-nav-first">
+                    <li>
+                        <router-link v-if="!profile" to="/login"><i class="fa fa-user"></i> Log In or Sign Up</router-link>
+                        <router-link v-else-if="profile && routeName!=='UserWallet'" to="/user-wallet"><i class="fa fa-user"></i> {{ profile.name }}</router-link>
+                        <button style="margin-top: 10px;" @click="logout" v-if="profile && routeName === 'UserWallet'" class="section-btn btn btn-default"><i class="fa fa-user"></i> Log Out</button>
+                    </li>
+                </ul>
             </div>
         </div>
-        <VueInjectJs src="/js/menumaker.js" />
-    </div>
-    <!-- /. header-section-->
+    </section>
 </template>
-
 <script>
-import VueInjectJs from "vue-inject-js"
 export default {
-	components: {
-		VueInjectJs
-	},
     data() {
         return {
-            routeName: this.$route.name,
-            path: this.$route.path
+            routeName: this.$route.name
         };
     },
 
@@ -98,9 +93,82 @@ export default {
     }
 }
 </script>
-
 <style scoped>
-img {
-    width: 100px !important;
+.navbar-img {
+    max-width: 87px;
+    margin-top: -25px;
+}
+
+@media (max-width: 768px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -21px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-img {
+        max-width: 87px;
+        margin-top: -33px;
+    }
+}
+
+.section-btn {
+    background-color: black;
+    color: gold;
+    border: none;
+    /*transform: scale(1); */
+    text-transform: none;
+    letter-spacing: normal;
+    transition: all .3s ease-out;
+}
+
+.section-btn:hover {
+    /*transform: scale(1.01);*/
+    background-color: gold;
+    color: black;
+}
+
+.section-btn:active {
+    background-color: black;
+    color: gold;
+    border: none;
+}
+
+.section-btn:focus {
+    background-color: black;
+    color: gold;
+    border: none;
+    outline: none;
+}
+
+.container {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.custom-navbar .navbar-brand,
+.top-nav-collapse .navbar-brand {
+    color: gold;
+    font-weight: 600;
+}
+
+.custom-navbar .nav li a,
+.top-nav-collapse .nav li a {
+    color: gold;
+}
+
+.custom-navbar .navbar-toggle .icon-bar {
+    background: gold;
+    border-color: transparent;
+}
+
+.router-link-exact-active {
+    background-color: gold;
+    color: #000000 !important;
 }
 </style>

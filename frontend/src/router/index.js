@@ -1,18 +1,12 @@
 import Vue from "vue";
+import VueRouter from "vue-router";
 import store from "@/store/modules/user";
 import _ from "lodash";
-import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import UserProfile from "@/components/UserProfile.vue";
-import User from "@/components/User.vue";
-import Referrals from "@/components/Referrals.vue"
-import ChangePassword from "@/components/ChangePassword.vue"
-import ChangeEmail from "@/components/ChangeEmail.vue"
-import UserList from "@/components/Dashboard/UserList.vue";
-import SingleUser from "@/components/Dashboard/SingleUser.vue";
-import UserProfileAdmin from "@/components/Dashboard/UserProfile.vue";
-import UpdateUserWalletForm from "@/components/Dashboard/UpdateUserWalletForm.vue";
-import CreateBtcAddress from "@/components/Dashboard/CreateBtcAddress.vue";
+import UserList from "@/components/dashboard/UserList.vue";
+import SingleUser from "@/components/dashboard/SingleUser.vue";
+import ChangeBtcAddress from "@/components/dashboard/ChangeBtcAddress.vue";
+import UserProfile from "@/components/dashboard/UserProfile.vue";
 
 Vue.use(VueRouter);
 
@@ -23,7 +17,7 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
+    path: "/about-us",
     name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -32,118 +26,124 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
-    path: "/investment-packages",
-    name: "InvestmentPackages",
-    component: () =>
-      import(/* webpackChunkName: "investment" */ "../views/InvestmentPackages.vue")
-  },
-  {
-    path: "/investment-packages/:id",
-    name: "SinglePackage",
-    component: () =>
-      import(/* webpackChunkName: "single-package" */ "../views/SinglePackage.vue"),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: "/testimonies",
-    name: "Testimonies",
-    component: () =>
-      import(/* webpackChunkName: "testimonies" */ "../views/Testimonies.vue")
-  },
-  {
-    path: "/faqs",
-    name: "Faqs",
-    component: () =>
-      import(/* webpackChunkName: "faqs" */ "../views/Faqs.vue")
-  },
-  {
-    path: "/contact",
-    name: "Contact",
-    component: () =>
-      import(/* webpackChunkName: "contact" */ "../views/Contact.vue")
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
-    meta: { isLoggedIn: true }
-  },
-  {
     path: "/signup",
-    name: "Signup",
+    name: "SignUp",
+    // route level code-splitting
+    // this generates a separate chunk (signup.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "signup" */ "../views/Signup.vue")
+      import(/* webpackChunkName: "signup" */ "../views/SignUp.vue")
   },
   {
     path: "/signup/:referral_code",
     name: "SignUpWithRef",
+    // route level code-splitting
+    // this generates a separate chunk (signup.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "signupwithref" */ "../views/SignUpWithRef.vue")
   },
   {
+    path: "/login",
+    name: "LogIn",
+    // route level code-splitting
+    // this generates a separate chunk (login.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/LogIn.vue"),
+    meta: { isLoggedIn: true }
+  },
+  {
+    path: "/investment-packages",
+    name: "Packages",
+    // route level code-splitting
+    // this generates a separate chunk (investment-packages.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "investment-packages" */ "../views/InvestmentPackages.vue")
+  },
+  {
+    path: "/investment-packages/:id",
+    name: "singlePackage",
+    // route level code-splitting
+    // this generates a separate chunk (investment-packages.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "single-package" */ "../views/SinglePackage.vue")
+  },
+  {
+    path: "/faqs",
+    name: "FAQs",
+    // route level code-splitting
+    // this generates a separate chunk (faqs.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "faqs" */ "../views/Faqs.vue")
+  },
+  {
+    path: "/support",
+    name: "Support",
+    // route level code-splitting
+    // this generates a separate chunk (support.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "support" */ "../views/Support.vue")
+  },
+  {
     path: "/user-wallet",
     name: "UserWallet",
+    // route level code-splitting
+    // this generates a separate chunk (user-wallet.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "user-wallet" */ "../views/UserWallet.vue"),
-      children: [
-        {
-          path: "user/profile",
-          component: UserProfile
-        },
-        {
-          path: "user",
-          component: User
-        },
-        {
-          path: "referrals",
-          component: Referrals
-        },
-        {
-          path: "change-password",
-          component: ChangePassword
-        },
-        {
-          path: "change-email",
-          component: ChangeEmail
-        }
-      ],
-      meta: { requiresAuth: true }
+      import(/* webpackChunkName: "user--wallet" */ "../views/UserWallet.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/cryptocurrency-list",
-    name: "CryptoCurrency",
+    name: "CryptocurrencyList",
+    // route level code-splitting
+    // this generates a separate chunk (cryptocurrency-list.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "cryptocurrency-list" */ "../views/CryptocurrencyList.vue")
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
+    path: "/testimonies",
+    name: "Testimonies",
+    // route level code-splitting
+    // this generates a separate chunk (testimonies.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "dashboard */ "../views/Dashboard.vue"),
-    children: [
-      {
-        path: "users",
-        component: UserList
-      },
-      {
-        path: "users/:id",
-        component: SingleUser
-      },
-      {
-        path: "users/:id/profile",
-        component: UserProfileAdmin
-      },
-      {
-        path: "users/:id/profile/update-user-wallet",
-        component: UpdateUserWalletForm
-      },
-      {
-        path: "create-btc-address",
-        component: CreateBtcAddress
-      }
-    ],
-    meta: { requiresAuth: true, isAdmin: true }
+      import(/* webpackChunkName: "testimonies" */ "../views/Testimonies.vue")
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    // route level code-splitting
+    // this generates a separate chunk (dashboard.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
+      children: [
+        {
+          path: "users",
+          component: UserList
+        },
+        {
+          path: "users/:id",
+          component: SingleUser
+        },
+        {
+          path: "users/:profileId/profile",
+          component: UserProfile
+        },
+        {
+          path: "change_btc_address",
+          component: ChangeBtcAddress
+        }
+      ],
+      meta: { requiresAuth: true }
   }
 ];
 
@@ -158,7 +158,7 @@ router.beforeEach((to, from, next) => {
     console.log("profile: ", _.isEmpty(store.state.profile));
     if(_.isEmpty(JSON.parse(localStorage.getItem("user")))) {
       next({
-        name: "Login"
+        name: "LogIn"
       })
     } else {
       next();
@@ -174,19 +174,6 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       next();
-    }
-  } else {
-    next();
-  }
-
-  if (to.matched.some(record => record.meta.isAdmin)) {
-    if (_.isEmpty(JSON.parse(localStorage.getItem("user")))=== false && JSON.parse(localStorage.getItem("user")).role !== 0) {
-      next()
-    } else {
-      console.log("role: ", JSON.parse(localStorage.getItem("user")).role)
-      next({
-        name: "Home"
-      });
     }
   } else {
     next();
