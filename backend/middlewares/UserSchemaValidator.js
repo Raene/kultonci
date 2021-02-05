@@ -8,6 +8,7 @@ module.exports = async (ctx,next) => {
             allowUnknown: true, // allow unknown keys that will be ignored
             stripUnknown: true // remove unknown keys from the validated data
         };
+        console.log(ctx.request.body)
        const validData = await UserRegister.validateAsync(ctx.request.body,_validationOptions);
        ctx.state.data = validData;
        await next();

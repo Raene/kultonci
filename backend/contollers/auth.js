@@ -8,6 +8,8 @@ var fs = require('fs');
 exports.register = function (con) {
     return async (ctx) => {
         try {
+            console.log("controller")
+            console.log(ctx.request.body)
             const data = ctx.request.body;
             const kyc = {};
             kyc.kycId    = await upload(ctx.request.files.kyc);
