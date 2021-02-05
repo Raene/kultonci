@@ -13,6 +13,7 @@ module.exports = async (ctx,next) => {
        ctx.state.data = validData;
        await next();
     } catch (error) {
+        console.log(error)
         ctx.body = {'error': error};
         ctx.status = 422;
     }
