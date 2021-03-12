@@ -19,6 +19,10 @@ const user = {
       Vue.set(state, "initialSignupDetails", payload);
     },
 
+    SET_USER_ADDRESS_DETAILS(state, payload) {
+      Vue.set(state, "user_address_details", payload);
+    },
+
     SET_PROFILE(state, payload) {
       Vue.set(state, "profile", payload);
       console.log("state.profile: ", state.profile);
@@ -189,6 +193,10 @@ const user = {
       return state.initialSignupDetails;
     },
 
+    getUserAddressDetails(state) {
+      return state.user_address_details
+    },
+
     getUsers(state) {
       if (state.users) return state.users;
     },
@@ -198,10 +206,9 @@ const user = {
     },
 
     getProfile(state) {
-      if (!state.profile) {
-        return null;
+      if (_.isEmpty(state.profile) === false) {
+        return state.profile;
       }
-      return state.profile;
     },
 
     getUser(state) {

@@ -1,190 +1,112 @@
 <template>
-    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-md-12 col-12 mb30">
-                        <h3 class="related-post-title">Deposits</h3>
-                    </div>
-                </div>
-                <div class="post-holder">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/deposit.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.total_deposit === null || isApproved === false?"0.00": currentInvestment.total_deposit }} </h5> <span class="author-meta ">Total Deposits</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/deposit.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.total_deposit === null || isApproved === false?"0.00": currentInvestment.initial_deposit }} </h5> <span class="author-meta ">Initial Deposits</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/deposit.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.locked_deposit === null || isApproved === false?"0.00": currentInvestment.locked_deposit }} </h5> <span class="author-meta ">Locked Deposits</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.post author -->
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/deposit.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ isApproved === false?"0.00": currentInvestment.compounded_deposits }} </h5> <span class="author-meta ">Compounded Deposits</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-md-12 col-12 mb30">
-                            <h3 class="related-post-title">Withdrawals</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block bg-gold">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/withdrawal.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.total_withdrawals === null || isApproved === false?"0.00": currentInvestment.total_withdrawals }} </h5> <span class="author-meta ">Total Withdrawals</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block bg-gold">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/withdrawal.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.pending_withdrawals === null || isApproved === false?"0.00": currentInvestment.pending_withdrawals }} </h5> <span class="author-meta ">Pending Withdrawals</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block bg-gold">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/withdrawal.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.referral_withdrawals === null || isApproved === false?"0.00": currentInvestment.referral_withdrawals }} </h5> <span class="author-meta ">Referral Withdrawals</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.post author -->
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-md-12 col-12 mb30">
-                            <h3 class="related-post-title">Earnings</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/earnings.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.total_earnings === null || isApproved === false?"0.00": currentInvestment.total_earnings }} </h5> <span class="author-meta ">Total Earnings</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/earnings.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.paid_earnings === null || isApproved === false?"0.00": currentInvestment.paid_earnings }} </h5> <span class="author-meta ">Paid Earnings</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/earnings.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.compounded_earnings === null || isApproved === false?"0.00": currentInvestment.compounded_earnings }} </h5> <span class="author-meta ">Compounded Earnings</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="author-block">
-                                <!-- Post author -->
-                                <div class="author-img">
-                                    <a href="#"><img src="../assets/images/earnings.svg" alt=""></a>
-                                </div>
-                                <div class="author-content">
-                                    <div class="author-header">
-                                        <h5 class="author-title">USD {{ currentInvestment.referral_earnings === null || isApproved === false?"0.00": currentInvestment.referral_earnings }} </h5> <span class="author-meta ">Referral Earnings</span>
-                                    </div>
-                                    <!-- <a href="#" class="btn btn-default btn-sm">View All Post</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.post author -->
-                    </div>
-                </div>
-            </div>
+  <div class="col-lg-8 py-3">
+  	<!-- Deposits -->
+  	<div class="row">
+  		<div class="col-lg-12">
+  			<h3>Deposits</h3>
+  		</div>
+  	</div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-primary">
+          <h5 class="fg-gray">USD {{ currentInvestment.total_deposit === null || isApproved === false?"0.00": currentInvestment.total_deposit }}</h5>
+          <hr>
+          <p class="fs-small">Total Deposits</p>
         </div>
+      </div>
+      <div class="col-lg-6 mg-mt">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-primary">
+          <h5 class="fg-gray">USD {{ currentInvestment.initial_deposit === null || isApproved === false?"0.00": currentInvestment.initial_deposit }}</h5>
+          <hr>
+          <p class="fs-small">Initial Deposits</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-primary">
+          <h5 class="fg-gray">USD {{ currentInvestment.locked_deposit === null || isApproved === false?"0.00": currentInvestment.locked_deposit }}</h5>
+          <hr>
+          <p class="fs-small">Locked Deposits</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-primary">
+          <h5 class="fg-gray">USD {{ isApproved === false?"0.00": currentInvestment.compounded_deposits }}</h5>
+          <hr>
+          <p class="fs-small">Compounded Deposits</p>
+        </div>
+      </div>
     </div>
+    <!-- End deposits -->
+
+    <!-- Withdrawals -->
+    <div class="row mt-4">
+  		<div class="col-lg-12">
+  			<h3>Withdrawals</h3>
+  		</div>
+  	</div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-success">
+          <h5 class="fg-gray">USD {{ currentInvestment.total_withdrawals === null || isApproved === false?"0.00": currentInvestment.total_withdrawals }}</h5>
+          <hr>
+          <p class="fs-small">Total Withdrawals</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mg-mt">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-success">
+          <h5 class="fg-gray">USD {{ currentInvestment.pending_withdrawals === null || isApproved === false?"0.00": currentInvestment.pending_withdrawals }}</h5>
+          <hr>
+          <p class="fs-small">Pending Withdrawals</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-success">
+          <h5 class="fg-gray">USD {{ currentInvestment.referral_withdrawals === null || isApproved === false?"0.00": currentInvestment.referral_withdrawals }}</h5>
+          <hr>
+          <p class="fs-small">Referral Withdrawals</p>
+        </div>
+      </div>
+    </div>
+    <!-- End withdrawals -->
+
+    <!-- Earnings -->
+    <div class="row mt-4">
+  		<div class="col-lg-12">
+  			<h3>Earnings</h3>
+  		</div>
+  	</div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-warning">
+          <h5 class="fg-gray">USD {{ currentInvestment.total_earnings === null || isApproved === false?"0.00": currentInvestment.total_earnings }}</h5>
+          <hr>
+          <p class="fs-small">Total Earnings</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mg-mt">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-warning">
+          <h5 class="fg-gray">USD {{ currentInvestment.paid_earnings === null || isApproved === false?"0.00": currentInvestment.paid_earnings }}</h5>
+          <hr>
+          <p class="fs-small">Paid Earnings</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-warning">
+          <h5 class="fg-gray">USD {{ currentInvestment.compounded_earnings === null || isApproved === false?"0.00": currentInvestment.compounded_earnings }}</h5>
+          <hr>
+          <p class="fs-small">Compounded Earnings</p>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4">
+        <div class="card card-body border-0 text-center shadow pt-5 bg-warning">
+          <h5 class="fg-gray">USD {{ currentInvestment.referral_earnings === null || isApproved === false?"0.00": currentInvestment.referral_earnings }}</h5>
+          <hr>
+          <p class="fs-small">Referral Earnings</p>
+        </div>
+      </div>
+    </div>
+    <!-- End Earnings -->
+  </div>
 </template>
 
 <script>
@@ -263,3 +185,15 @@ export default {
     }
 }
 </script>
+<style scoped>
+.fg-gray,
+.fs-small {
+  color: #ffffff !important;
+}
+
+@media (max-width: 500px) {
+	.mg-mt {
+		margin-top: 1.5rem;
+	}
+}
+</style>

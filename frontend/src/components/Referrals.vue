@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="referrals.length > 0" class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
-      <h3 class="mb20 ">Referrals</h3>
+    <div v-if="referrals.length > 0" class="col-lg-8 py-3">
+      <h3 class="mb-5">Referrals</h3>
       <div class="table-responsive ">
         <table class="table table-striped ">
           <thead>
@@ -21,11 +21,12 @@
         </table>
       </div>
     </div>
-    <div class="col-12">
-        <h3 class="mb20 msg">No Referrals</h3>
+    <div class="col-12 py-3">
+      <h3 class="mb20 msg">No Referrals</h3>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   computed: {
@@ -35,6 +36,10 @@ export default {
         referralData = this.$store.getters["user/getReferrals"];
       }
       return referralData;
+    },
+
+    profile() {
+    	return this.$store.getters["user/getProfile"];
     }
   },
 

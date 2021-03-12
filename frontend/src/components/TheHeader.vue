@@ -1,60 +1,49 @@
 <template>
-	<!-- header-section-->
-    <div class="header-wrapper fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12">
-                    <div class="logo"> <a href="index.html"><img class="img-fluid" src="../assets/images/lunaralliance-2.png" alt=""> </a> </div>
-                </div>
-                <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
-                    <!-- navigations-->
-                    <div class="navigation">
-                        <div id="navigation">
-                            <ul>
-                                <li class="active"><router-link to="/">Home</router-link></li>
-                                <li class="active"><router-link to="/about">About</router-link></li>
-                                <li class="active"><router-link to="/Investment-packages">Packages</router-link></li>
-                                <li class="active"><router-link to="/cryptocurrency-list">Cryptocurrency</router-link></li>
-                                <li class="active"><router-link to="/testimonies">Testimonies</router-link></li>
-                                <li class="active"><router-link to="/faqs">FAQS</router-link></li>
-                                <li class="active"><router-link to="contact">Contact</router-link></li>
-                              
-                                <!-- <li class="has-sub"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-default.html">Blog Default</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.navigations-->
-                </div>
-                <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 d-none d-xl-block d-lg-block">
-                    <div v-if="!profile" class="header-quick-info">
-                        <router-link to="/login" class="btn btn-white btn-xs mr-1">Login</router-link>
-                        <router-link to="/signup" class="btn btn-default btn-xs">Sign up</router-link>
-                    </div>
-                    <div v-else-if="profile && !path.includes('user-wallet')" class="header-quick-info">
-                        <router-link to="/user-wallet/user" class="btn btn-default btn-xs">My wallet</router-link>
-                    </div>
-                    <div v-if="profile && path.includes('user-wallet')" class="header-quick-info">
-                        <a @click="logout" href="#" class="btn btn-default btn-xs">Logout</a>
-                    </div>
-                </div>
-            </div>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-floating">
+    <div class="container">
+      <router-link class="navbar-brand" to="/">
+        <img src="../assets/img/lunaralliance.jpg" alt="" width="40">
+      </router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/about">About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/investment-packages">Investment Packages</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/faqs">FAQs</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/testimonies">Testimonies</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact">Contact</router-link>
+          </li>
+        </ul>
+        <div v-if="!profile" class="ml-auto my-2 my-lg-0">
+          <router-link to="/login" class="btn btn-primary rounded-pill">Login</router-link>
         </div>
-        <VueInjectJs src="/js/menumaker.js" />
+        <div v-else-if="profile && !path.includes('user-wallet')" class="ml-auto my-2 my-lg-0">
+          <router-link to="/user-wallet/user" class="btn btn-outline-primary rounded-pill">My wallet</router-link>
+        </div>
+        <div v-if="profile && path.includes('user-wallet')" class="ml-auto my-2 my-lg-0">
+          <a href="#"  @click="logout" to="/login" class="btn btn-primary rounded-pill">Logout</a>
+        </div>
+      </div>
     </div>
-    <!-- /. header-section-->
+  </nav>
 </template>
 
 <script>
-import VueInjectJs from "vue-inject-js"
 export default {
-	components: {
-		VueInjectJs
-	},
     data() {
         return {
             routeName: this.$route.name,
@@ -100,7 +89,7 @@ export default {
 </script>
 
 <style scoped>
-img {
-    width: 100px !important;
-}
+  .navbar-dark .navbar-toggler {
+    background-color: #2c75af !important; 
+  }
 </style>

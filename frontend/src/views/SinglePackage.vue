@@ -1,67 +1,42 @@
 <template>
   <div>
-    <div v-if="!kycReady">
-      <TheHeader />
-      <!-- page-header -->
-      <div class="page-header invest-header">
-        <div class="other-overlay"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="page-caption">
-                <!-- <h1 class="page-title">Blog Page</h1> -->
-              </div>
+    <TheHeader />
+    <div class="page-hero-section bg-image hero-mini">
+      <div class="overlay"></div>
+      <div class="hero-caption">
+        <div class="container fg-white h-100">
+          <div class="row justify-content-center align-items-center text-center h-100">
+            <div class="col-lg-6">
+              <h3 class="mb-4 fw-medium">Select a sub package</h3>
             </div>
           </div>
         </div>
       </div>
-      <!-- /.page-header-->
-      <div class="content">
-        <div class="container">
-          <div class="row ">
-            <!--  section-title -->
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-              <div class="section-title text-center">
-                <h2>Select a subpackage</h2>
-              </div>
-            </div>
-            <!--  /.section-title -->
-          </div>
-          <div class="row">
-            <div class="offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12">
-              <div class="row">
-                <!-- post block -->
-                <div v-for="pkg in packages" :key="pkg.PackageId" class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mx-auto">
-                  <div class="post-block">
-                    <div class="post-content text-center">
-                      <h2 class="post-title"><a href="#" class="title">{{ pkg.PackageName }}</a></h2>
-                      <hr>
-                      <p>Minimum Investment 0f ${{ pkg.minprice }}</p>
-                      <p>Maximum Investment 0f ${{ pkg.maxprice }}</p>
-                      <a @click.prevent="showForm(pkg.PackageName, pkg.name)" href="#" class="btn btn-default">Get Started</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.post block -->
-              </div>
-              <!-- <hr> -->
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12">
-              <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mx-auto">
-                  <a @click.prevent="kycReady = true" href="#" class="btn btn-default">Upload proof of payment</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <TheFooter />
     </div>
-    <KnowYourCustomer v-else />
+    <div v-if="!kycReady" class="page-section no-scroll">
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-10">
+          <div class="row justify-content-center">
+            <div v-for="pkg in packages" :key="pkg.PackageId" class="col-md-6 col-lg-6 py-3 wow fadeInLeft">
+              <div class="card card-body border-0 text-center shadow pt-5">
+                <h5 class="fg-gray">{{ pkg.PackageName }}</h5>
+                <hr>
+                <p class="fs-small">Minimum Investment 0f ${{ pkg.minprice }}</p>
+                <p class="fs-small">Minimum Investment 0f ${{ pkg.maxprice }}</p>
+                <a @click.prevent="showForm(pkg.PackageName, pkg.name)" href="#" class="btn btn-dark">Invest</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+      	<div class="col-lg-4 mx-auto">
+      		<a @click.prevent="kycReady = true" href="#" class="btn btn-dark">Upload proof of payment</a>
+      	</div>
+      </div>
+    </div>
+    <KnowYourCustomer @closeKyc="kycReady = false" v-else />
+    <TheFooter />
   </div>
 </template>
 <script>
@@ -155,3 +130,23 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+hr {
+  border-color: #3d58f3 !important;
+  /*width: 250px;*/
+}
+
+.bg-image {
+  background-image: url(../assets/img/bitcoin-pocket_1.jpg);
+}
+
+.col-lg-4 {
+	flex: 0 0 20%;
+	/*width: 300px;*/
+}
+
+.form-title {
+	color: #000000 !important-
+}
+</style>

@@ -1,81 +1,25 @@
 <template>
-	<!-- footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="row ">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                    <div class="ft-logo img-fluid"><img src="../assets/images/lunaralliance-2.png" alt=""></div>
-                </div>
-            </div>
-            <hr class="footer-line">
-            <div class="row ">
-                <!-- footer-about -->
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                    <div class="footer-widget ">
-                        <div class="footer-title">Company</div>
-                        <ul class="list-unstyled">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Legal & Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.footer-about -->
-                <!-- footer-links -->
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                    <div class="footer-widget ">
-                        <div class="footer-title">Quick Links</div>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Investment Packages</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.footer-links -->
-                <!-- footer-links -->
-                <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                    <div class="footer-widget ">
-                        <div class="footer-title">Social</div>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Google +</a></li>
-                            <li><a href="#">Linked In</a></li>
-                            <li><a href="#">Facebook</a></li>
-                        </ul>
-                    </div>
-                </div> -->
-                <!-- /.footer-links -->
-                <!-- footer-links -->
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6 ">
-                    <div class="footer-widget ">
-                        <h3 class="footer-title">Subscribe Newsletter</h3>
-                        <form>
-                            <div class="newsletter-form">
-                                <input class="form-control" placeholder="Enter Your Email address" type="text">
-                                <button class="btn btn-default btn-sm" type="submit">Go</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- /.footer-links -->
-                <!-- tiny-footer -->
-            </div>
-            <div class="row ">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center ">
-                    <div class="tiny-footer">
-                        <p>Copyright © All Rights Reserved 2020 | Luna Alliance Investments</p>
-                    </div>
-                </div>
-                <!-- /. tiny-footer -->
-            </div>
+  <div class="page-footer-section bg-dark fg-white">
+    <div class="container mb-5">
+      <div class="row justify-content-center text-center wow fadeInUp">
+        <div class="col-lg-8">
+          <div class="text-center mb-3">
+            <img src="../assets/img/lunaralliance.png" alt="" height="80">
+          </div>
+          <!-- <h3 class="mb-3"><span class="fg-primary">Mob</span>ster</h3> -->
+          <p class="caption">Lunar Alliance is an officially registered company in Canada. Lunar Alliance operates under the strict compliance of Canada's law. We give our clients all required guarantees, including confidentiality of data provided by clients at the registration procedure.</p>
+          <ul class="nav justify-content-center py-3">
+            <li class="nav-item"><router-link to="/" class="nav-link fg-white px-4">Home</router-link></li>
+            <li class="nav-item"><router-link to="/about" class="nav-link fg-white px-4">About</router-link></li>
+            <li class="nav-item"><router-link to="/investment-packages" class="nav-link fg-white px-4">Invest now</router-link></li>
+            <li class="nav-item"><router-link to="/testimonies" class="nav-link fg-white px-4">Testimonies</router-link></li>
+            <li class="nav-item"><router-link to="/faqs" class="nav-link fg-white px-4">FAQ</router-link></li>
+          </ul>
         </div>
+      </div>
     </div>
-    <!-- /.footer -->
+    <hr>
+    <!-- Please don't remove or modify the credits below -->
+    <p class="text-center mt-4 wow fadeIn">Copyright &copy; 2021 <router-link to="/" class="fg-white fw-medium">Lunar Alliance</router-link>. All right reserved</p>
+  </div>
 </template>
-
-<style scoped>
-img {
-    width: 100px !important;
-}
-</style>

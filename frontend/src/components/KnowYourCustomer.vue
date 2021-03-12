@@ -1,52 +1,53 @@
 <template>
-  <div class="bg-primary pdt30 pdb30">
-    <div class="content">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-11 mx-auto">
-            <h2 v-if="path.includes('signup')" class="form-title text-center">Verify your identity</h2>
-            <h2 v-else class="form-title text-center">Upload proof of payment</h2>
-            <form @submit.prevent="runKyc" class="register-form">
-              <div class="form-group">
-                <p v-if="path === '/signup'" class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
-                <!-- <input id="kyc-input" type="file" name="kyc"> -->
-                <!-- <label for="fileInput" class="form-control-label">Upload your passport image, national ID, or Driver's Licence</label> -->
-                <br />
-                <label class="form-submit btn btn-default btn-lg mb10">
-                  <input @change="preview" type="file" id="file-Input" />
-                  Insert Image
-                </label>
-                <div class="imagepreview" id="image-Preview">
-                  <img src="" alt="Image Preview" class="imagepreview__image">
-                  <span class="imagepreview__default-text">Image Preview</span>
-                </div>
-                <!-- <span class="help-block">Please enter your password</span> -->
-                <!-- <handy-uploader data-app :documentAttachment.sync="handyAttachments" :fileUploaderType="'simple'" :maxFileSize="10240" :imageCompressor="true" :imageCompressLevel="0.8" :maxFileCount="10" :badgeCounter="false" :thumb="true" :changeFileName="true" :addFileDescription="true" :addFileTag="true" :tags="['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']" :btnColor="'#6dabe4'" :cardType="'raised'"></handy-uploader> -->
+  <div class="page-section no-scroll wow fadeInUp">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-10">
+          <!-- <div class="row justify-content-center"> -->
+          <h2 v-if="path.includes('signup')" class="form-title text-center">Verify your identity</h2>
+          <h2 style="color: #000000 !important;" v-else class="form-title text-center">Upload proof of payment</h2>
+          <form @submit.prevent="runKyc" class="register-form">
+            <div class="form-group">
+              <p v-if="path === '/signup'" class="text-center">Upload your passport image, national ID, or Driver's Licence</p>
+              <!-- <input id="kyc-input" type="file" name="kyc"> -->
+              <!-- <label for="fileInput" class="form-control-label">Upload your passport image, national ID, or Driver's Licence</label> -->
+              <br />
+              <label class="form-submit btn btn-dark btn-lg mb10">
+                <input @change="preview" type="file" id="file-Input" />
+                Insert Image
+              </label>
+              <div class="imagepreview" id="image-Preview">
+                <img src="" alt="Image Preview" class="imagepreview__image">
+                <span class="imagepreview__default-text">Image Preview</span>
               </div>
-              <div v-if="path === '/signup'" class="form-group form-button">
-                <button type="submit" class="form-submit form-submit btn btn-default btn-lg btn-block mb10">Upload</button>
-                <!-- <input type="submit" name="signup" id="signup" class="form-submit " value="Signup" /> -->
+            </div>
+            <div v-if="path === '/signup'" class=" form-button d-flex justify-content-around">
+              <button type="submit" class="form-submit form-submit btn btn-dark mb10">Upload</button>
+              <button @click.prevent="goBack" type="submit" class="form-submit form-submit btn btn-dark mb10">Back</button>
+              <!-- <input type="submit" name="signup" id="signup" class="form-submit " value="Signup" /> -->
+            </div>
+            <div v-else class="form-group form-button d-flex justify-content-around" style="flex-direction: row !important;">
+              <button type="submit" class="form-submit btn btn-dark btn-lg mb10">Upload</button>
+              <button @click.prevent="goBack" type="submit" class="form-submit form-submit btn btn-dark mb10">Back</button>
+            </div>
+          </form>
+          <!-- <div v-for="pkg in packages" :key="pkg.PackageId" class="col-md-6 col-lg-4 py-3 wow fadeInLeft">
+              <div class="card card-body border-0 text-center shadow pt-5">
+                <h5 class="fg-gray">{{ pkg.PackageName }}</h5>
+                <hr>
+                <p class="fs-small">Minimum Investment 0f ${{ pkg.minprice }}</p>
+                <p class="fs-small">Minimum Investment 0f ${{ pkg.maxprice }}</p>
+                <a @click.prevent="showForm(pkg.PackageName, pkg.name)" href="#" class="btn btn-dark">Invest</a>
               </div>
-              <div v-else class="form-group form-button">
-                <button type="submit" class="form-submit btn btn-default btn-lg btn-block mb10">Upload</button>
-              </div>
-            </form>
-          </div>
+            </div> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
-    <!-- <Preloader v-if="isLoggingIn" /> -->
   </div>
 </template>
 <script>
-// import Preloader from "@/components/Preloader.vue";
-// import handyUploader from 'handy-uploader/src/components/handyUploader';
 export default {
-  components: {
-    // handyUploader
-    // Preloader
-  },
-
   data() {
     return {
       handyAttachments: [],
@@ -57,23 +58,15 @@ export default {
     };
   },
 
-  // mounted() {
-  //     document.querySelector(".v-btn").style.color = 'white';
-  //     document.querySelector(".v-btn__content").style.color = 'white';
-  // },
-
   computed: {
     initialSignupDetails() {
       return this.$store.getters["user/getInitialSignupDetails"];
+    },
+
+    userAddressDetails() {
+      return this.$store.getters["user/getUserAddressDetails"];
     }
   },
-  // updated() {
-  //     console.log("handyAttachments: ", this.handyAttachments);
-  // },
-
-  // beforeMount() {
-  //     this.$store.dispatch("subscription/getUserInvestment", localStorage.getItem("deposit_id"));
-  // },
 
   methods: {
     runKyc() {
@@ -95,17 +88,18 @@ export default {
       fd.append("dob", this.initialSignupDetails.user.dob);
       fd.append("phone", this.initialSignupDetails.user.phone);
       fd.append("ssn", this.initialSignupDetails.user.ssn);
-      fd.append("address", this.initialSignupDetails.address.address);
-      fd.append("city", this.initialSignupDetails.address.city);
-      fd.append("state", this.initialSignupDetails.address.state);
-      fd.append("country", this.initialSignupDetails.address.country);
-      fd.append("zip", this.initialSignupDetails.address.zip);
+      fd.append("address", this.userAddressDetails.user_address.address);
+      fd.append("city", this.userAddressDetails.user_address.city);
+      fd.append("state", this.userAddressDetails.user_address.state);
+      fd.append("country", this.userAddressDetails.user_address.country);
+      fd.append("zip", this.userAddressDetails.user_address.zip);
       fd.append("answer", this.initialSignupDetails.questions_user.answer);
       fd.append("security_questions_id", this.initialSignupDetails.questions_user.security_questions_id);
       fd.append("referral_code", this.initialSignupDetails.referral_code ? this.initialSignupDetails.referral_code : "");
       fd.append("kyc", kyc.files[0]);
       // this.initialSignupDetails.user.kyc = kyc.files[0];
-      console.log("signup: ", this.initialSignupDetails);
+      console.log("init signup: ", this.initialSignupDetails);
+      console.log("address signup: ", this.userAddressDetails);
       // this.initialSignupDetails.user.referral_code = kyc.files[0];
       this.$store.dispatch("user/signup", fd)
         .then((err) => {
@@ -200,14 +194,36 @@ export default {
         previewImage.style.display = null;
         previewImage.setAttribute("src", "");
       }
+    },
+
+    goBack() {
+      this.$emit("closeKyc");
     }
   }
 };
 </script>
 <style scoped>
-.pdb30 {
-    padding-bottom: 120px !important;
+.imagepreview {
+  width: 300px;
+  min-height: 100px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #eeeeee;
 }
+
+.imagepreview__image {
+  display: none;
+  width: 100%;
+}
+
+.pdb30 {
+  padding-bottom: 120px !important;
+}
+
 #kyc {
   font-family: 'Nunito', sans-serif;
 }
@@ -231,9 +247,6 @@ input[type="file"] {
   margin-top: 10px;
 }
 
-.form-button .form-submit {
-  width: 300px;
-}
 
 @media (min-width: 960px) {
   .col-md-4 {
@@ -256,6 +269,11 @@ input[type="file"] {
   /*border: 1px dashed gold;*/
 }
 
+.form-title {
+  color: #ffffff !important;
+  font-size: 3rem !important;
+}
+
 .text-center {
   text-align: center;
   color: #ffffff;
@@ -263,23 +281,11 @@ input[type="file"] {
 }
 
 p.text-center {
-    color: #000000;
+  color: #ffffff;
 }
 
-.imagepreview {
-  width: 300px;
-  min-height: 100px;
-  border: 2px solid #dddddd;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #eeeeee;
-}
-
-.imagepreview__image {
-  display: none;
-  width: 100%;
+.page-section {
+  padding-bottom: 0;
+  padding-top: 20px;
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <TheHeader />
     <Banner />
-    <About />
-    <Process />
+    <!-- <About /> -->
+    <GetStarted />
     <InvestmentPreview />
-    <Feature />
+    <Features />
     <InvestNow />
+    <Clients />
     <TheFooter />
   </div>
 </template>
@@ -16,11 +16,12 @@
 // @ is an alias to /src
 import TheHeader from "@/components/TheHeader.vue";
 import Banner from "@/components/Banner.vue";
-import About from "@/components/About.vue";
-import Process from "@/components/Process.vue";
+import GetStarted from "@/components/GetStarted.vue";
+// import About from "@/components/About.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
-import Feature from "@/components/Feature.vue";
+import Features from "@/components/Features.vue";
 import InvestNow from "@/components/InvestNow.vue";
+import Clients from "@/components/Clients.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 export default {
@@ -28,11 +29,12 @@ export default {
   components: {
     TheHeader,
     Banner,
-    About,
-    Process,
+    // About,
+    GetStarted,
     InvestmentPreview,
-    Feature,
+    Features,
     InvestNow,
+    Clients,
     TheFooter
   }
 };

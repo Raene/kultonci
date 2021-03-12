@@ -66,8 +66,8 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
-    meta: { isLoggedIn: true }
+      import(/* webpackChunkName: "login" */ "../views/Login.vue")
+    // meta: { isLoggedIn: true }
   },
   {
     path: "/signup",

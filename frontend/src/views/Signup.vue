@@ -1,136 +1,85 @@
 <template>
-  <div>
-    <div v-if="!kycReady" class="bg-primary pdt30 pdb30">
-      <div class="content">
-        <div class="container">
-          <div class="row">
-            <!-- register-form -->
-            <div class="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
-              <div class="register-form">
-                <h2 class="text-center mb30">Create Your Account</h2>
-                <ValidationObserver v-slot="{ invalid }">
-                  <form>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="name"></label>
-                        <input v-model="user.name" id="name" type="text" placeholder="name" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="email"></label>
-                        <input v-model="user.email" id="email" type="text" name="email" placeholder="Email" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="dob"></label>
-                        <input v-model="user.dob" id="dob" type="date" name="email" placeholder="Date of Birth" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="address"></label>
-                        <input v-model="user.address" id="address" type="text" placeholder="address" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="city"></label>
-                        <input v-model="user.city" id="city" type="text" placeholder="city" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="state"></label>
-                        <input v-model="user.state" id="state" type="text" placeholder="state" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="country"></label>
-                        <input v-model="user.country" id="country" type="text" placeholder="country" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="zip"></label>
-                        <input v-model="user.zip" id="zip" type="text" placeholder="zip" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="phone"></label>
-                        <input v-model="user.phone" id="phone" type="tel" placeholder="phone number" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="ssn"></label>
-                        <input v-model="user.ssn" id="ssn" type="text" placeholder="SSN" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="security-question"></label>
-                        <!--  <input v-model="" id="security-question" type="text" placeholder="security question" :class="{ 'form-control': true, invalid, valid, untouched }" required> -->
-                        <select id="security_question" :class="{ 'form-control': true, invalid, valid, untouched }" v-model="user.security_question">
-                          <option value="" disabled selected>Select a security question (For those in the US region only)</option>
-                          <option v-for="question in security_questions" :key="question.id">{{ question.question }}</option>
-                        </select>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="answer"></label>
-                        <input v-model="user.answer" id="answer" type="text" placeholder="answer" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required|password:@confirm" v-slot="{ errors, invalid, valid, untouched }"> <label class="control-label sr-only" for="password"></label>
-                        <input v-model="user.password" id="password" type="password" name="password" placeholder="create password" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                      <ValidationProvider rules="required" v-slot="{ errors, invalid, valid, untouched }" name="confirm"> <label class="control-label sr-only" for="password"></label>
-                        <input v-model="user.repeat_password" id="repeat-password" type="password" placeholder="confirm password" :class="{ 'form-control': true, invalid, valid, untouched }" required>
-                        <span>{{ errors[0] }}</span>
-                      </ValidationProvider>
-                    </div>
-                    <span>
-                      <input id="box1" type="checkbox" class="with-font">
-                      <label for="box1"></label>
-                    </span>
-                    <p class="register-text">I certify that I agree to the User Agreement and<a href="#" class="btn-link"> Privacy Policy.</a></p>
-                    <button @click.prevent="storeSignUpDetails" type="submit" :disabled="invalid" name="singlebutton" class="btn btn-default btn-lg  btn-block mb10">create Account</button>
-                  </form>
-                </ValidationObserver>
-              </div>
-              <p class="text-white">Already have an account?<router-link to="/login" class="text-yellow"> Log in</router-link> <span class="pull-right">
-                  <router-link to="/" class="text-white">Back to Home</router-link>
-                </span> </p>
+  <div class="page-hero-section bg-image hero-home-2">
+    <div class="overlay"></div>
+    <div class="hero-caption">
+      <div class="container fg-white h-100">
+        <div class="row align-items-center h-100">
+          <div v-if="!isAddressForm" class="col-lg-10 d-lg-block wow fadeInUp mx-auto">
+            <div class="form-title">
+              <h3 class="text-center">Sign up</h3>
             </div>
-            <!-- /.register-form -->
+            <div class="shadow floating-animate">
+              <!-- <img src="../assets/img/app_showcase.svg" alt=""> -->
+              <form>
+                <div class="form-group">
+                  <label class="control-label sr-only" for="name"></label>
+                  <input v-model="user.name" id="name" type="text" name="name" placeholder="Name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="control-label sr-only" for="email"></label>
+                  <input v-model="user.email" id="email" type="email" name="email" placeholder="Email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="control-label sr-only" for="dob">Date of birth</label>
+                  <input v-model="user.email" id="dob" type="date" name="dob" placeholder="Date of birth" class="form-control" required>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input v-model="user.phone" id="phone" type="tel" placeholder="Phone number" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="control-label sr-only" for="ssn"></label>
+                      <input v-model="user.ssn" id="ssn" type="text" placeholder="SSN" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <select class="form-control" v-model="user.security_question">
+                        <option value="" disabled selected>Select a security question (For those in the US region only)</option>
+                        <option v-for="question in security_questions" :key="question.id">{{ question.question }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="control-label sr-only" for="answer"></label>
+                      <input v-model="user.answer" id="answer" type="text" placeholder="Answer" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label sr-only" for="password"></label>
+                  <input v-model="user.password" id="password" type="password" placeholder="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label class="control-label sr-only" for="confirm_password"></label>
+                  <input v-model="user.confirm_password" id="confirm_password" type="password" placeholder="Confirm password" class="form-control" required>
+                </div>
+                <button @click.prevent="storeSignUpDetails" class="btn btn-dark">Next</button>
+              </form>
+            </div>
+            <p class="text-white mt-5">Already a member? <router-link to="/login" class="text-yellow">Sign in</router-link><span class="pull-right">
+                <router-link to="/" class="text-white">Back to Home</router-link>
+              </span></p>
           </div>
+          <AddressForm @goback="closeAddressForm" v-else/>
         </div>
       </div>
     </div>
-    <KnowYourCustomer v-else />
   </div>
 </template>
 <script>
-// import VueInjectJs from "vue-inject-js";
-import KnowYourCustomer from "@/components/KnowYourCustomer.vue";
-import { ValidationProvider, ValidationObserver } from "vee-validate";
+import AddressForm from "@/components/AddressForm.vue"
 export default {
   components: {
-    // VueInjectJs,
-    KnowYourCustomer,
-    ValidationProvider,
-    ValidationObserver
+    AddressForm
   },
-
   data() {
     return {
       user: {
@@ -140,17 +89,12 @@ export default {
         repeat_password: null,
         dob: null,
         phone: null,
-        address: null,
-        city: null,
-        state: null,
-        country: null,
-        zip: null,
         ssn: null,
-        security_question: "Security Question",
+        security_question: null,
         answer: null
       },
-      kycReady: false
-    };
+      isAddressForm: false
+    }
   },
 
   computed: {
@@ -165,6 +109,14 @@ export default {
   },
 
   methods: {
+    showAddressForm() {
+      this.isAddressForm = true;
+    },
+
+    closeAddressForm() {
+      this.isAddressForm = false;
+    },
+
     storeSignUpDetails() {
       let qId;
       for (const q of this.security_questions) {
@@ -182,52 +134,55 @@ export default {
           phone: this.user.phone,
           ssn: this.user.ssn
         },
-        address: {
-          address: this.user.address,
-          city: this.user.city,
-          state: this.user.state,
-          country: this.user.country,
-          zip: this.user.zip
-        },
         questions_user: {
           answer: this.user.answer,
           security_questions_id: qId
         }
       }
-      // this.$store.dispatch("user/signup", info)
-      //   .then((err) => {
-      //     if (err) {
-      //       // this.isLoggingIn = false;
-      //       console.log(err);
-      //       this.$swal({
-      //         icon: "error",
-      //         title: "Signup Unsuccessful",
-      //         toast: true,
-      //         position: "top-end",
-      //         showConfirmButton: false,
-      //         timer: 3000,
-      //         timerProgressBar: true,
-      //         onOpen: (toast) => {
-      //           toast.addEventListener("mouseenter", this.$swal.stopTimer);
-      //           toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-      //         }
-      //       });
-      //     } else {
-      //       // this.isLoggingIn = false;
-      //       this.$swal({
-      //         position: "center",
-      //         icon: "success",
-      //         title: "Signup Successful",
-      //         showConfirmButton: false,
-      //         timer: 1500
-      //       });
-      //       this.$router.replace({ path: "/login" });
-      //     }
-      //   });
       this.$store.commit("user/SET_INITIAL_SIGNUP_DETAILS", info);
-      this.kycReady = true;
-      // console.log("shit, it worked");
+      this.isAddressForm = true;
     }
   }
-};
+}
 </script>
+<style scoped>
+.bg-image {
+  background-image: url(../assets/img/deal_1.jpg);
+}
+
+.form-control {
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #2c75af;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #2c75af;
+  box-shadow: none;
+}
+
+::placeholder {
+  color: #ffffff;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.mobile-preview1 {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.hero-home-2 .mobile-preview1 {
+  border-radius: 40px;
+}
+</style>

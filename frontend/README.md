@@ -1,4 +1,4 @@
-# kulton-v2.0
+# lunar-alliance
 
 ## Project setup
 ```
@@ -22,3 +22,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+# lunar-alliance
