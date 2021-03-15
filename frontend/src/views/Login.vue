@@ -100,6 +100,7 @@ export default {
 	border-right: none;
 	border-bottom: 2px solid #2c75af;
 	box-shadow: none;
+  color: #ffffff;
 }
 
 .form-control:focus {

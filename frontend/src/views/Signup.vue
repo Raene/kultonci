@@ -20,8 +20,8 @@
                   <input v-model="user.email" id="email" type="email" name="email" placeholder="Email" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label class="control-label sr-only" for="dob">Date of birth</label>
-                  <input v-model="user.email" id="dob" type="date" name="dob" placeholder="Date of birth" class="form-control" required>
+                  <label class="control-label sr-only" for="dob"></label>
+                  <input v-model="user.dob" id="dob" type="text" name="dob" placeholder="Date of birth" class="form-control" onblur="this.type='text'" onfocus="this.type='date'" required>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
@@ -157,6 +157,7 @@ export default {
   border-right: none;
   border-bottom: 2px solid #2c75af;
   box-shadow: none;
+  color: #ffffff;
 }
 
 .form-control:focus {
@@ -184,5 +185,9 @@ export default {
 
 .hero-home-2 .mobile-preview1 {
   border-radius: 40px;
+}
+
+option {
+  color: black;
 }
 </style>
