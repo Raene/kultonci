@@ -34,7 +34,7 @@
                   <div class="col-md-6 text-center py-3 py-md-2">
                     <i class="mai-mail-open-outline h3"></i>
                     <p class="fg-primary fw-medium fs-vlarge">Email</p>
-                    <p class="mb-1">support@lunaralliance.com</p>
+                    <p class="mb-1">support@lunaralliance.investments</p>
                     <!-- <p class="mb-0">support@macodeid.com</p>
  -->                  </div>
                 </div>
