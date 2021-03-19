@@ -6,6 +6,7 @@
     <GetStarted />
     <InvestmentPreview />
     <Features />
+    <BitcoinConverter />
     <InvestNow />
     <Clients />
     <TheFooter />
@@ -20,6 +21,7 @@ import GetStarted from "@/components/GetStarted.vue";
 // import About from "@/components/About.vue";
 import InvestmentPreview from "@/components/InvestmentPreview.vue";
 import Features from "@/components/Features.vue";
+import BitcoinConverter from "@/components/BitcoinConverter.vue";
 import InvestNow from "@/components/InvestNow.vue";
 import Clients from "@/components/Clients.vue";
 import TheFooter from "@/components/TheFooter.vue";
@@ -33,6 +35,7 @@ export default {
     GetStarted,
     InvestmentPreview,
     Features,
+    BitcoinConverter,
     InvestNow,
     Clients,
     TheFooter

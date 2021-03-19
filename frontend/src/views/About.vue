@@ -200,7 +200,7 @@
             <div class="col-lg-12">
               <div class="privacy">
                 <p>
-                  Only an account owner oa Lunar Alliance Investments Investment Wallet can make enquiries about said Wallet'
+                  Only an account owner of Lunar Alliance Investments Investment Wallet can make enquiries about said Wallet'
                   All investment wallets are secured with SSL-encryption against hacks. That is, 100% consumer protection.
                   All users are expected to pay 30% of their investment capital as brokerage fees a few weeks after receiving their first payment.
                 </p>

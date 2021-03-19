@@ -26,3 +26,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  /*.mt-lg-5 {
+    margin-top: 8rem !important;
+  }*/
+</style>

@@ -26,6 +26,10 @@
             <label class="control-label sr-only" for="zip"></label>
             <input v-model="user.zip" id="zip" type="text" placeholder="Zip" class="form-control" required>
           </div>
+          <div class="form-check mb-4 mt-4">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">I agree to the <router-link to="/about">terms of service</router-link></label>
+          </div>
           <div class="d-flex justify-content-between">
             <button @click="storeSignUpDetails" class="btn btn-dark">Next</button>
             <button @click.prevent="goBack" class="btn btn-dark">Back</button>
