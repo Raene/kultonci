@@ -8,5 +8,5 @@ exports.address = function (router,con) {
     });
     return route.get('/:id',controller.getByUserId(con))
                 .post('/',controller.create(con))
-                .post('/updtae',controller.update(con))
+                .post('/update',controller.update(con))
 }
