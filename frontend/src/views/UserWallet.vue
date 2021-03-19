@@ -31,6 +31,9 @@
             <!-- Sidebar -->
             <div class="col-lg-4 py-3">
               <div class="widget-wrap">
+                <pie-chart :chart-data="chartData" :options="chartOptions"></pie-chart>
+              </div>
+              <div class="widget-wrap">
                 <h3 class="widget-title">Wallet</h3>
                 <div class="tag-clouds">
                   <router-link to="/user-wallet/user" class="tag-cloud-link">Dashboard</router-link> <br>
@@ -59,9 +62,11 @@
 <script>
 // @ is an alias to /src
 import TheHeader from "@/components/TheHeader.vue";
-import TheFooter from "@/components/TheFooter.vue"
+import TheFooter from "@/components/TheFooter.vue";
+import PieChart from "../utils/pie-chart.js";
 export default {
     components: {
+        PieChart,
         TheHeader,
         TheFooter
     },
@@ -112,25 +117,25 @@ export default {
     },
 
     methods: {
-        // fillData() {
-        //     this.chartData = {
-        //         hoverBackgroundColor: "red",
-        //         hoverBorderWidth: 10,
-        //         labels: ["Deposits", "Earnings", "Withdrawals"],
-        //         datasets: [{
-        //             label: "Data One",
-        //             backgroundColor: ["#337ab7", "#dc3545", "#ffc107"],
-        //             data: [this.getDeposit(), this.getEarning(), 0]
-        //         }]
-        //     }
-        // },
+        fillData() {
+            this.chartData = {
+                hoverBackgroundColor: "red",
+                hoverBorderWidth: 10,
+                labels: ["Deposits", "Earnings", "Withdrawals"],
+                datasets: [{
+                    label: "Data One",
+                    backgroundColor: ["#337ab7", "#dc3545", "#ffc107"],
+                    data: [this.getDeposit(), this.getEarning(), 0]
+                }]
+            }
+        },
 
         getDeposit() {
             return this.currentInvestment.total_deposit;
         },
 
         getEarning() {
-            return this.currentInvestment.earnings;
+            return this.currentInvestment.total_earnings;
         },
 
         copyLink() {
@@ -170,7 +175,7 @@ export default {
             .catch(err => console.log(err));
         this.$store.dispatch("subscription/getUserInvestment", this.profile.id)
             .then(() => {
-                // this.fillData();
+                this.fillData();
                 console.log("worlde")
             });
         this.$store.dispatch("user/getReferrals",
