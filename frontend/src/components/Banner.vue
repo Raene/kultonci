@@ -17,9 +17,21 @@
           </div> -->
         </div>
       </div>
+      <coingecko-coin-price-marquee-widget coin-ids="bitcoin,eos,ethereum,litecoin,ripple,bitcoin-cash,tether,stellar,tron,binancecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>
     </div>
+    <VueInjectJs src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js" />
   </div>
 </template>
+
+<script>
+import VueInjectJs from "vue-inject-js";
+export default {
+    components: {
+        VueInjectJs
+    }
+}
+</script>
+
 <style scoped>
 .bg-image {
   background-image: url(../assets/img/deal_1.jpg);
