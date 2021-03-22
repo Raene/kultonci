@@ -61,7 +61,7 @@
         <div class="seo-fact sbg2">
           <div class="p-4 d-flex justify-content-between align-items-center">
             <div class="seofct-icon"><i class="ti-share"></i> Compounded deposits</div>
-            <h2>${{ currentInvestment.compounded_deposit }}</h2>
+            <h2>${{ currentInvestment.compounded_deposits }}</h2>
           </div>
         </div>
       </div>

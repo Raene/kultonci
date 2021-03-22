@@ -77,19 +77,19 @@ const subscription = {
             const token = localStorage.getItem("token");
         	return axios.get(url + "/user/investments/" +payload+"?type=user_id", { headers: { Authorization: `Bearer ${token}` } })
                 .then((data) => {
-                if (data.data.data[0] !== undefined) {
+                // if (data.data.data[0] !== undefined) {
                     console.log("payment inv: ", data.data.data[0]);
                     let paymentProof = data.data.data[0].paymentProof;
                     context.commit("SET_CURRENT_INVESTMENT", data.data.data[0]);
                     return paymentProof;
-                } else {
-                    context.commit("SET_CURRENT_INVESTMENT", {
-                        total_deposit: 0.00,
-                        package_level: "null",
-                        package_name: "null",
-                        earnings: 0.00
-                    });
-                }
+                // } else {
+                    // context.commit("SET_CURRENT_INVESTMENT", {
+                    //     total_deposit: 0.00,
+                    //     package_level: "null",
+                    //     package_name: "null",
+                    //     earnings: 0.00
+                    // });
+                // }
                 // let currentInv = data.data.data[data.data.data.length-1];
             })
             .catch(err => console.log(err));
