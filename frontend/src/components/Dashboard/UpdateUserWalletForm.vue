@@ -93,14 +93,15 @@ export default {
 
   computed: {
     currentInvestment() {
-      if (this.$store.getters["subscription/getCurrentInvestment"] !== undefined) {
-        return this.$store.getters["subscription/getCurrentInvestment"];
-      }
-      return {
-        total_deposit: 0.00,
-        package_level: "null",
-        package_name: "null"
-      }
+      return this.$store.getters["subscription/getCurrentInvestment"];
+      // if (this.$store.getters["subscription/getCurrentInvestment"] !== undefined) {
+      //   return this.$store.getters["subscription/getCurrentInvestment"];
+      // }
+      // return {
+      //   total_deposit: 0.00,
+      //   package_level: "null",
+      //   package_name: "null"
+      // }
     }
   },
 
@@ -128,6 +129,7 @@ export default {
 
   methods: {
     updateWallet() {
+      console.log("curr: ", this.currentInvestment)
       this.$store.dispatch("user/updateDeposit", {
           id: this.currentInvestment.id,
           // amount: 0,
