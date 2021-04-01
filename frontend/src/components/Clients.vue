@@ -2,7 +2,7 @@
   <div class="page-section">
     <div class="container">
       <div class="text-center wow fadeIn">
-        <h2 class="mb-4">Our partners</h2>
+        <h2 class="mb-4">Our Partners</h2>
         <!-- <p>Become a <a href="#">partners?</a></p> -->
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center align-items-center mt-5">
