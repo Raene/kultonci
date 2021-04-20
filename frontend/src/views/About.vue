@@ -31,7 +31,7 @@
             <div class="card-page mt-5">
               <h5 class="fg-primary text-center">CORPORATE SPONSORSHIP</h5>
               <hr>
-              <p class="text-center">Fidelity partners with organizations that do good work locally and nationally, support shared corporate and community goals, and provide opportunities to strengthen relationships with key stakeholders.</p>
+              <p class="text-center">Lunar Alliance partners with organizations that do good work locally and nationally, support shared corporate and community goals, and provide opportunities to strengthen relationships with key stakeholders.</p>
             </div>
             <div class="card-page mt-5">
               <h5 class="fg-primary text-center">SUSTAINABILITY</h5>
