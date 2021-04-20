@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-6 mt-5 mb-3">
+    <div class="col-md-6 mx-auto mt-5 mb-3">
       <div class="card">
         <div class="seo-fact sbg1">
           <div class="p-4 d-flex justify-content-between align-items-center">
@@ -11,6 +11,51 @@
         </div>
       </div>
     </div>
+    <div class="col-10 mx-auto mt-5">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="header-title">User Info</h4>
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input v-model="user.userEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input v-model="user.phone" type="text" class="form-control" id="phone" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="dob">Date of birth</label>
+                        <input v-model="user.dob" type="text" class="form-control" id="dob" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">SSN</label>
+                        <input v-model="user.ssn" type="text" class="form-control" id="ssn" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">Address</label>
+                        <input v-model="address.address" type="text" class="form-control" id="address" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">City</label>
+                        <input v-model="address.city" type="text" class="form-control" id="city" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">Country</label>
+                        <input v-model="address.country" type="text" class="form-control" id="country" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">State</label>
+                        <input v-model="address.state" type="text" class="form-control" id="state" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="ssn">Zip</label>
+                        <input v-model="address.zip" type="text" class="form-control" id="zip" disabled>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
     <div class="col-md-6 mt-5 mb-3 mb-lg-0">
       <div class="card">
         <div class="seo-fact sbg1">
@@ -166,6 +211,11 @@ export default {
       return this.$store.getters["user/getUser"];
     },
 
+    address() {
+      return this.$store.getters["user/getAddress"];
+    },
+
+
     currentInvestment() {
       if (this.$store.getters["subscription/getCurrentInvestment"] !== undefined) {
         return this.$store.getters["subscription/getCurrentInvestment"];
@@ -234,6 +284,7 @@ export default {
         })
       });
     this.$store.dispatch("user/getWithdrawals", this.userId);
+    this.$store.dispatch("user/getAddress", this.userId);
   }
 }
 </script>
