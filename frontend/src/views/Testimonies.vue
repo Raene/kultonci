@@ -20,7 +20,7 @@
             <div class="card-page">
               <h5 class="fg-primary">Diana Bateman</h5>
               <hr>
-              <p>"Lunar Alliance is the REAL DEAL. It is honest, cares about it’s clients, and offers up well vetted Investment contracts. They stay on top of our “investments” and so far have always, each deal has ended with a positive outcome for me. I highly recommend this company so you can count on a positive return on your hard earned money."</p>
+              <p>"Lunar Alliance is the real deal. It is honest, cares about it’s clients, and offers up well vetted Investment contracts. They stay on top of our “investments” and so far have always, each deal has ended with a positive outcome for me. I highly recommend this company so you can count on a positive return on your hard earned money."</p>
               <!-- Video -->
               <!--  <div class="text-center py-5">
             <embed class="embed-video" src="https://www.youtube.com/embed/k1D0_wFlXgo?list=PLl-K7zZEsYLmnJ_FpMOZgyg6XcIGBu2OX">
