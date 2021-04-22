@@ -51,7 +51,8 @@
                   <li class="list-item">Minimum Investment of $3,000</li>
                   <li class="list-item">Maximum Investment of $1,000,000</li>
                   <li class="list-item">Get monthly returns of up to 50% profit</li>
-                  <li class="list-item">Every first Saturday of the month is the payday for NFP</li>
+                  <li class="list-item">WHAT IS NFP(NON FARM PAYROLL):</li>
+                  <li class="list-item">The non-farm payroll (NFP) report is a key economic indicator for the United States. It is intended to represent the total number of paid workers in the U.S. minus farm employees, government employees, private household employees and employees of non-profit organizations. Non-Farm Payroll is among the biggest  market movers  in the foreign exchange  market . on the first Friday of every month, the U.S bureau of labour releases numbers of new jobs in U.S- long with other labour market. While every Saturday is the profit payday.</li>
                   <!-- <li class="list-item">24/7 Support</li> -->
                 </ul>
               </div>
