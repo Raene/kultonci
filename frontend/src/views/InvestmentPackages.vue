@@ -57,7 +57,7 @@
                 </ul>
               </div>
               <div class="pricing-btn text-center">
-                <button class="btn btn-dark">Choose Plan</button>
+                <button @click="showForm('nfp')" class="btn btn-dark">Choose Plan</button>
               </div>
             </div>
           </div>
