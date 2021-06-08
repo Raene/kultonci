@@ -37,7 +37,7 @@ const app = new koa();
 //set cors
 app.use(cors(koaOptions));
 
-app.use(serve(__dirname + '/images'));
+// app.use(serve(__dirname + '/images'));
 const router = new koaRouter();
 
 //error middleware
