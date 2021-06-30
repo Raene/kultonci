@@ -1,7 +1,11 @@
 const jwt = require("jsonwebtoken");
 
 exports.loginRequired = async (ctx, next) => {
+<<<<<<< HEAD
     console.log("SECRET_KEY: " + process.env.SECRET_KEY)
+=======
+    console.log("SECRET_KEY: " + process.env.SECRET_KEY);
+>>>>>>> 4fc131cbdadad29b76c2d7cdab7e68b1d16858ae
     try {
         const token = ctx.headers.authorization.split(" ")[1];
         jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {

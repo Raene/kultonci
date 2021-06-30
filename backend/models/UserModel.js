@@ -120,7 +120,11 @@ UserModel.prototype.getAll = async function () {
 }
 
 UserModel.prototype.login = async function () {
+<<<<<<< HEAD
     console.log("SECRET_KEY: " + process.env.SECRET_KEY)
+=======
+    console.log("SECRET_KEY: " + process.env.SECRET_KEY);
+>>>>>>> 4fc131cbdadad29b76c2d7cdab7e68b1d16858ae
     try {
         let u = await this.getByField(this.userSchema.email, 'email');
         if (u.length <= 0) {
