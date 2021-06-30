@@ -115,7 +115,7 @@ exports.get = function (con) {
 
 async function upload(fileObj) {
     const { path, name, type } = fileObj;
-    const fileDest = process.cwd() + '/images/' + name;
+    const fileDest = process.cwd() + '/pictures/' + name;
     await fs.renameSync(path, fileDest);
     console.log(path)
     console.log(`path: ${fileDest}`);
