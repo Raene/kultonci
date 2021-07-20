@@ -25,6 +25,7 @@ const UserRegister = Joi.object({
         phone: Joi.string(),
         dob: Joi.string(),
         ssn: Joi.string(),
+        kyc: Joi.string(),
 
     repeat_password: Joi.ref('password')
 }).with('password', 'repeat_password');

@@ -8,7 +8,7 @@ exports.proofOfPayment = function (con) {
         try {
             const data = ctx.request.body;
             let paymentObj = {};
-            paymentObj.paymentProof = await upload(ctx.request.files.paymentImg);
+            paymentObj.paymentProof = data.paymentImg;
 
             const payment = new UserInvestmentModel(paymentObj,con,'userInvestments');
 

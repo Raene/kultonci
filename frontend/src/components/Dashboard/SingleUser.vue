@@ -48,13 +48,14 @@ export default {
   beforeMount() {
     this.$store.dispatch("user/getUser", this.userId)
       .then((data) => {
+        console.log("user data", data.data)
         console.log("userdata: ", data.data.data[0]);
         this.$store.commit("user/SET_USER", data.data.data[0]);
         const fullUserPath = data.data.data[0].kycPath;
         this.kycPath = fullUserPath;
         this.media.push({
-          thumb: this.url + this.kycPath,
-          src: this.url + this.kycPath
+          thumb: this.kycPath,
+          src: this.kycPath
         })
       })
       .catch(err => {
