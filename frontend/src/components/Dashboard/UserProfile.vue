@@ -279,8 +279,8 @@ export default {
         console.log("paymentProof: ", paymentProof);
         this.paymentProof = paymentProof;
         this.media.push({
-          thumb: this.url + paymentProof,
-          src: this.url + paymentProof
+          thumb: paymentProof,
+          src: paymentProof
         })
       });
     this.$store.dispatch("user/getWithdrawals", this.userId);

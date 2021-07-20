@@ -47,6 +47,8 @@
   </div>
 </template>
 <script>
+import firebase from "firebase/app"
+import "firebase/storage"
 export default {
   data() {
     return {
@@ -69,6 +71,14 @@ export default {
   },
 
   methods: {
+    uploadImage() {
+      const picture = document.getElementById("file-Input");
+      const file = picture.files[0]
+      const storageRef = firebase.storage().ref("user_images/" + file.name)
+      const uploadTask = storageRef.put(file)
+      console.log(picture.files[0])
+      return uploadTask
+    },
     runKyc() {
       if (this.path.includes("signup")) {
         this.signup();
@@ -77,98 +87,122 @@ export default {
       }
     },
     signup() {
-      const kyc = document.querySelector("#file-Input");
-      console.log("kyc: ", kyc);
-      const fd = new FormData();
-      console.log("initial: ", this.initialSignupDetails);
-      fd.append("name", this.initialSignupDetails.user.name);
-      fd.append("email", this.initialSignupDetails.user.email);
-      fd.append("password", this.initialSignupDetails.user.password);
-      fd.append("repeat_password", this.initialSignupDetails.user.repeat_password);
-      fd.append("dob", this.initialSignupDetails.user.dob);
-      fd.append("phone", this.initialSignupDetails.user.phone);
-      fd.append("ssn", this.initialSignupDetails.user.ssn);
-      fd.append("address", this.userAddressDetails.user_address.address);
-      fd.append("city", this.userAddressDetails.user_address.city);
-      fd.append("state", this.userAddressDetails.user_address.state);
-      fd.append("country", this.userAddressDetails.user_address.country);
-      fd.append("zip", this.userAddressDetails.user_address.zip);
-      fd.append("answer", this.initialSignupDetails.questions_user.answer);
-      fd.append("security_questions_id", this.initialSignupDetails.questions_user.security_questions_id);
-      fd.append("referral_code", this.initialSignupDetails.referral_code ? this.initialSignupDetails.referral_code : "");
-      fd.append("kyc", kyc.files[0]);
-      // this.initialSignupDetails.user.kyc = kyc.files[0];
-      console.log("init signup: ", this.initialSignupDetails);
-      console.log("address signup: ", this.userAddressDetails);
-      // this.initialSignupDetails.user.referral_code = kyc.files[0];
-      this.$store.dispatch("user/signup", fd)
-        .then((err) => {
-          if (err) {
-            // this.isLoggingIn = false;
-            console.log(err);
-            this.$swal({
-              icon: "error",
-              title: "Signup Unsuccessful",
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              onOpen: (toast) => {
-                toast.addEventListener("mouseenter", this.$swal.stopTimer);
-                toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-              }
-            });
-          } else {
-            // this.isLoggingIn = false;
-            this.$swal({
-              position: "center",
-              icon: "success",
-              title: "Signup Successful",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            this.$router.replace({ path: "/login" });
-          }
-        });
+      // const kyc = document.querySelector("#file-Input");
+      // console.log("kyc: ", kyc);
+      const uploadTask = this.uploadImage()
+      uploadTask.on("state_changed", (snapshot) => { console.log(snapshot) },
+        (error) => console.log("upload error: ", error),
+        () => {
+          // if upload is successful
+          uploadTask.snapshot.ref.getDownloadURL()
+            .then((downloadURL) => {
+              console.log("file available at", downloadURL)
+              // this.store_user(userData, data, downloadURL)
+              const fd = new FormData();
+              console.log("initial: ", this.initialSignupDetails);
+              fd.append("name", this.initialSignupDetails.user.name);
+              fd.append("email", this.initialSignupDetails.user.email);
+              fd.append("password", this.initialSignupDetails.user.password);
+              fd.append("repeat_password", this.initialSignupDetails.user.repeat_password);
+              fd.append("dob", this.initialSignupDetails.user.dob);
+              fd.append("phone", this.initialSignupDetails.user.phone);
+              fd.append("ssn", this.initialSignupDetails.user.ssn);
+              fd.append("address", this.userAddressDetails.user_address.address);
+              fd.append("city", this.userAddressDetails.user_address.city);
+              fd.append("state", this.userAddressDetails.user_address.state);
+              fd.append("country", this.userAddressDetails.user_address.country);
+              fd.append("zip", this.userAddressDetails.user_address.zip);
+              fd.append("answer", this.initialSignupDetails.questions_user.answer);
+              fd.append("security_questions_id", this.initialSignupDetails.questions_user.security_questions_id);
+              fd.append("referral_code", this.initialSignupDetails.referral_code ? this.initialSignupDetails.referral_code : "");
+              fd.append("kyc", downloadURL);
+              // this.initialSignupDetails.user.kyc = kyc.files[0];
+              console.log("init signup: ", this.initialSignupDetails);
+              console.log("address signup: ", this.userAddressDetails);
+              // this.initialSignupDetails.user.referral_code = kyc.files[0];
+              this.$store.dispatch("user/signup", fd)
+                .then((err) => {
+                  if (err) {
+                    // this.isLoggingIn = false;
+                    console.log(err);
+                    this.$swal({
+                      icon: "error",
+                      title: "Signup Unsuccessful",
+                      toast: true,
+                      position: "top-end",
+                      showConfirmButton: false,
+                      timer: 3000,
+                      timerProgressBar: true,
+                      onOpen: (toast) => {
+                        toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                        toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                      }
+                    });
+                  } else {
+                    // this.isLoggingIn = false;
+                    this.$swal({
+                      position: "center",
+                      icon: "success",
+                      title: "Signup Successful",
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    this.$router.replace({ path: "/login" });
+                  }
+                });
+            })
+        }
+      )
       // .catch(err => console.log(err));
     },
 
     uploadProofOfPayment() {
-      const kyc = document.querySelector("#file-Input");
-      console.log("beans: ", kyc);
-      const fd = new FormData();
-      fd.append("paymentImg", kyc.files[0]);
-      fd.append("id", localStorage.getItem("deposit_id"));
-      this.$store.dispatch("subscription/uploadProofOfPaymnent", fd)
-        .then((err) => {
-          if (err) {
-            console.log(err);
-            this.$swal({
-              icon: "error",
-              title: "Upload Unsuccessful",
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              onOpen: (toast) => {
-                toast.addEventListener("mouseenter", this.$swal.stopTimer);
-                toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-              }
-            });
-          } else {
-            this.$swal({
-              position: "center",
-              icon: "success",
-              title: "Payment proof upload successful. Awaiting approval.",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            this.$router.push({ path: "/investment-packages" });
-            this.$emit("closeKyc");
-          }
-        });
+      // const kyc = document.querySelector("#file-Input");
+      const uploadTask = this.uploadImage()
+      uploadTask.on("state_changed", (snapshot) => { console.log(snapshot) },
+        (error) => console.log("upload error: ", error),
+        () => {
+          // if upload is successful
+          uploadTask.snapshot.ref.getDownloadURL()
+            .then((downloadURL) => {
+              console.log("file available at", downloadURL)
+              // this.store_user(userData, data, downloadURL)
+              const fd = new FormData();
+              fd.append("paymentImg", downloadURL);
+              fd.append("id", localStorage.getItem("deposit_id"));
+              this.$store.dispatch("subscription/uploadProofOfPaymnent", fd)
+                .then((err) => {
+                  if (err) {
+                    console.log(err);
+                    this.$swal({
+                      icon: "error",
+                      title: "Upload Unsuccessful",
+                      toast: true,
+                      position: "top-end",
+                      showConfirmButton: false,
+                      timer: 3000,
+                      timerProgressBar: true,
+                      onOpen: (toast) => {
+                        toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                        toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                      }
+                    });
+                  } else {
+                    this.$swal({
+                      position: "center",
+                      icon: "success",
+                      title: "Payment proof upload successful. Awaiting approval.",
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    this.$router.push({ path: "/investment-packages" });
+                    this.$emit("closeKyc");
+                  }
+                });
+            })
+        }
+      )
+      // console.log("beans: ", kyc);
     },
 
     preview() {

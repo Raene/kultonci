@@ -11,7 +11,7 @@ exports.register = function (con) {
         try {
             const data = ctx.request.body;
             const kyc = {};
-            kyc.kycId = await upload(ctx.request.files.kyc);
+            kyc.kycId = data.kyc;
 
             const kycUser = new KYCModel(kyc, con, 'kyc');
             const kycID = await kycUser.create();
