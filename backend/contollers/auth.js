@@ -113,19 +113,19 @@ exports.get = function (con) {
     }
 };
 
-async function upload(fileObj) {
-    const { path, name, type } = fileObj;
-    const fileDest = process.cwd() + '/images/' + name;
-    await fs.renameSync(path, fileDest);
-    console.log(path)
-    console.log(`path: ${fileDest}`);
+//async function upload(fileObj) {
+    //const { path, name, type } = fileObj;
+    //const fileDest = process.cwd() + '/pictures/' + name;
+   // await fs.renameSync(path, fileDest);
+    //console.log(path)
+    //console.log(`path: ${fileDest}`);
     // const fileExtension = mime.extension(type);
-    console.log(`filename: ${name}`);
+    //console.log(`filename: ${name}`);
     // console.log(`type: ${type}`);
     // console.log(`fileExtension: ${fileExtension}`)
 
-    return name;
-}
+  //  return name;
+//}
 
 function mailProcess (obj,command) {
     var args = [JSON.stringify(obj)];
