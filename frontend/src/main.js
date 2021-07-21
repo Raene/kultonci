@@ -19,8 +19,11 @@ axios.interceptors.response.use(undefined, function (error) {
       console.log("rees: ", error.response.data.message)
       originalRequest._retry = true;
       if (error.response.data.message === "JsonWebTokenError: invalid signature") {
-      	console.log("yay. not working")
-        window.location.href = router.history.current.path
+      	console.log('router.history.current.path: ', router.history.current.path)
+      	if (router.history.current.path.includes("user_wallet")) {
+      		console.log("yay. not working")
+      	}
+        // window.location.href = router.history.current.path
       } else {
         store.commit('user/CLEAR_TOKEN')
         return router.push('/login')
