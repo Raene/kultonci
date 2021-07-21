@@ -8,8 +8,26 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueLazyLoad from 'vue-lazyload';
 import 'vue-image-lightbox/dist/vue-image-lightbox.min.css';
+import axios from "axios";
 Vue.use(VueLazyLoad)
 Vue.use(VueSweetalert2);
+
+axios.interceptors.response.use(undefined, function (error) {
+  if (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      console.log("rees: ", error.response.data.message)
+      originalRequest._retry = true;
+      if (error.response.data.message === "JsonWebTokenError: invalid signature") {
+      	console.log("yay. not working")
+        window.location.href = router.history.current.path
+      } else {
+        store.commit('user/CLEAR_TOKEN')
+        return router.push('/login')
+      }
+    }
+  }
+})
 
 Vue.config.productionTip = false;
 
