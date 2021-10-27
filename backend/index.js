@@ -19,15 +19,15 @@ const koaOptions = {
   origin: '*',
   credentials: true
 };
-const path = require('path');
-const Bree = require('bree');
-const root = path.join(__dirname, 'jobs');
-const jobArr = require(root);
+// const path = require('path');
+// const Bree = require('bree');
+// const root = path.join(__dirname, 'jobs');
+// const jobArr = require(root);
 
-const bree = new Bree({
-    jobs:  jobArr
-    // closeWorkerAfterMs: ms('10s')
-})
+// const bree = new Bree({
+//     jobs:  jobArr
+//     // closeWorkerAfterMs: ms('10s')
+// })
 
 //bree.start();
 
