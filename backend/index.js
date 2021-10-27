@@ -29,7 +29,7 @@ const bree = new Bree({
     // closeWorkerAfterMs: ms('10s')
 })
 
-bree.start();
+//bree.start();
 
 let con = require('./models/connection')(host,user,password,database);
 
