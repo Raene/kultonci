@@ -24,18 +24,18 @@
                   <input v-model="user.dob" id="dob" type="text" name="dob" placeholder="Date of birth" class="form-control" onblur="this.type='text'" onfocus="this.type='date'" required>
                 </div>
                 <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-12">
                     <div class="form-group">
                       <label class="control-label sr-only" for="phone"></label>
                       <input v-model="user.phone" id="phone" type="tel" placeholder="Phone number" class="form-control" required>
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <!-- <div class="col-lg-6">
                     <div class="form-group">
                       <label class="control-label sr-only" for="ssn"></label>
                       <input v-model="user.ssn" id="ssn" type="text" placeholder="SSN" class="form-control" required>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
@@ -89,7 +89,6 @@ export default {
         repeat_password: null,
         dob: null,
         phone: null,
-        ssn: null,
         security_question: null,
         answer: null
       },
@@ -132,7 +131,6 @@ export default {
           repeat_password: this.user.repeat_password,
           dob: this.user.dob,
           phone: this.user.phone,
-          ssn: this.user.ssn
         },
         questions_user: {
           answer: this.user.answer,
